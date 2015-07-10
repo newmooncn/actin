@@ -6,7 +6,7 @@
 #
 ##############################################################################
 {
-    'name': 'DM ACTIN',
+    'name': 'DMC ACTIN',
     'version': '1.0',
     'category': 'Customization',
     'author': 'DMEMS',
@@ -19,8 +19,8 @@ ACTIN Customization
 * Feature2
 
     """,
-    'depends': ['base'],
-    'data':[],
+    'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier'],
+    'data':['product_view.xml'],
     'auto_install': False,
     'installable': True
 }

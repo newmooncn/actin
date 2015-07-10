@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Product  -->
+		<record id="product_product_tree_view_actin" model="ir.ui.view">
+            <field name="name">product_product_tree_view_actin</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+            	<!-- hide attribute_value_ids, lst_price,  qty_available, virtual_available-->
+            	<field name='attribute_value_ids' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field> 
+            	<field name='lst_price' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field> 
+            	<field name='qty_available' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field> 
+            	<field name='virtual_available' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>
+            </field>
+        </record>
+        
+		<record id="product_normal_form_view_actin" model="ir.ui.view">
+            <field name="name">product_normal_form_view_actin</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+            	<!-- hide suppplier list, list price -->
+            	<field name='seller_ids' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>
+            	<field name='lst_price' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field>
+            	<group name="weight" position="replace">
+            	</group>
+            	<field name="description" position="replace">            	
+            	</field>
+            	<!-- ACTIN fields -->
+                <xpath expr="//page[@string='Information']/group[2]" position="before">  
+                     <group col="4">
+	                     <label for='description'/>
+	                     <field name="description" nolabel="1"/>
+	                	 <label for='tech_data'/>
+	                     <field name="tech_data" nolabel="1"/>
+	                     <label for='certificate'/>
+	                     <field name="certificate" nolabel="1"/>
+	                     <label for='labor'/>
+	                     <field name="labor" nolabel="1"/>
+                     </group>    
+                     <group>
+                     	<group>                  
+                         <field name="dimension"/>
+                         <field name="pack_type"/>
+                         <field name="pack_type_memo"/>
+                        </group>
+                     	<group>                  
+                         <field digits="(14, 3)" name="volume"/>
+                         <field name="weight"/>
+                         <field name="weight_net"/>
+                        </group>
+                     	<group>
+                         <field name="pack_out_dimension"/>
+                         <field name="pack_out_volume"/>
+                         <field name="pack_out_nw"/>
+                         <field name="pack_out_gw"/>
+                        </group>
+                     	<group>                         
+                         <field name="pack_inner_dimension"/>
+                         <field name="pack_inner_volume"/>
+                         <field name="pack_inner_nw"/>
+                         <field name="pack_inner_gw"/>
+                        </group>
+                     	<group>
+                         <field name="number_inner_outer"/>
+                         <field name="qty_pallet_eur"/>
+                         <field name="qty_pallet_us"/>
+                        </group>
+                     	<group>
+                         <field name="qty_20gp"/>
+                         <field name="qty_40gp"/>                         
+                         <field name="qty_40hq"/>
+                        </group>
+                     	<group>
+                         <field name="hs_code"/>
+                        </group>
+                     </group>
+                     <label for='additional_comments'/>
+                     <field name="additional_comments"/>
+                </xpath>
+            </data>
+            </field>
+		</record>
+<!-- Add supplier info -->
+		<record id="product_normal_form_view_supplier_actin" model="ir.ui.view">
+            <field name="name">product_normal_form_view_supplier_actin</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="dmp_prod_supplier.product_normal_form_view_supplier"/>
+            <field name="arch" type="xml">
+            <data>		
+            	<field name="seller_product_name" position="after">
+            		<field name="moq"/>
+            		<field name="seller_sample_price"/>
+            		<field name="seller_sample_lead_time"/>
+            		<field name="seller_lead_time"/>
+            		<field name="quote_validity"/>            		
+            	</field>
+            </data>
+           	</field>
+        </record>
+	</data>		    
+</openerp>	
