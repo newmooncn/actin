@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+        <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+            <field name="name">Factory product quotation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+        </record>
+        <menuitem action="purchase.purchase_rfq" id="purchase.menu_purchase_rfq"
+            parent="purchase.menu_procurement_management"
+            sequence="0"
+            name="Factory product quotation"/>
+            
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Proforma Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+        </record>            
+        <menuitem action="sale.action_orders" id="sale.menu_sale_order" 
+	        parent="base.menu_sales" sequence="6" 
+	        groups="base.group_sale_salesman,base.group_sale_manager"/>
+	        name='Proforma Invoice'
+	</data>		    
+</openerp>	

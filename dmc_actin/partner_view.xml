@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_partner_form_actin">
+            <field name="name">view_partner_form_actin</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']/group[1]" position="after">
+                	<group col="4">
+                		<field name="incoterm_id"/>
+                		<field name="port"
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+                		<field name="exp_company"/>
+                		<field name="exp_comp_act"/>
+                		<field name="forwarder"/>
+                	</group>
+                </xpath>
+            </field>
+        </record>
+        
+<!-- menu to set port list -->
+        <record id="action_option_list_partner_port" model="ir.actions.act_window">
+            <field name="name">Ports</field>
+            <field name="res_model">option.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('option_name','=','partner_port')]</field>
+            <field name="context">{'default_option_name':'partner_port'}</field>
+        </record>
+        <!-- under purchsase/configuration -->     
+        <menuitem
+            action="action_option_list_partner_port"
+            id="menu_option_list_partner_port_pur"
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="0"/>
+        <menuitem
+            action="stock.action_incoterms_tree"
+            id="menu_incoterm_pur"
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="0"/>
+        <!-- under sale/configuration -->    
+        <menuitem
+            action="action_option_list_partner_port"
+            id="menu_option_list_partner_port_sale"
+            parent="base.menu_base_config"
+            sequence="0"/> 
+        <menuitem
+            action="stock.action_incoterms_tree"
+            id="menu_incoterm_sale"
+            parent="base.menu_base_config"
+            sequence="0"/> 
+    </data>
+</openerp>

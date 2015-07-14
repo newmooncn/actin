@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_purchase_order_form_actin">
+            <field name="name">view_purchase_order_form_actin</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+            	<field name="partner_ref" position="before">
+            		<field name="client_order_ref"/>
+            	</field>
+            	<field name="incoterm_id" position="replace"></field>
+            	<field name="payment_term_id" position="replace"></field>
+            	<xpath expr="//sheet/group[1]/group[2]" position="after">
+            		<group>
+                		<field name="port_load_id"
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+                		<field name="port_discharge_id"
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+            			<field name="ship_type"
+							context="{'default_option_name':'ship_type','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>            		</group>
+            		<group>
+            			<field name="deliver_memo"/>
+            			<field name="incoterm_id"/>
+            			<field name="payment_term_id"/>
+            		</group>
+            	</xpath>
+            	<!-- remove RFQ&Bis page -->
+            	<xpath expr="//page[@string='RFQ &amp; Bid']" position="replace">
+            	</xpath>
+            	<!-- Add terms page -->
+            	<notebook position="inside">
+            		<page string="Terms">
+            			<group>
+							<field name="certs"/>
+							<field name="qc_requirement"/>
+							<field name="load_control"/>
+							<field name="penalties_on_delays"/>
+							<field name="discrepancy"/>
+							<field name="disputes"/>
+							<field name="doc_export"/>
+							<field name="confirmation"/>
+							<field name="artworks"/>            			
+            			</group>
+            		</page>
+            	</notebook>     
+            	<!-- Adjust states showing -->
+            	<field name="state" position="attributes">
+            		<attribute name="statusbar_visible">draft,approved,done</attribute>
+            	</field>       
+            	<button name='wkf_send_rfq' position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</button>       
+            </field>
+        </record>
+            	        
+<!-- menu to set ship type list -->
+        <record id="action_option_list_ship_type" model="ir.actions.act_window">
+            <field name="name">Shipment Type</field>
+            <field name="res_model">option.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('option_name','=','ship_type')]</field>
+            <field name="context">{'default_option_name':'ship_type'}</field>
+        </record>
+        <!-- under purchsase/configuration -->     
+        <menuitem
+            action="action_option_list_ship_type"
+            id="menu_option_list_partner_ship_type_pur"
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="0"/>       
+        <!-- under sales/configuration -->     
+        <menuitem
+            action="action_option_list_ship_type"
+            id="menu_option_list_partner_ship_type_sale"
+            parent="base.menu_base_config"
+            sequence="0"/> 
+    </data>
+</openerp>

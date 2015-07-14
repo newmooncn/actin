@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(842.0,595.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="42.0" y1="28.0" width="758" height="539"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="0"/>
+      <blockBottomPadding length="0"/>
+      <blockLeftPadding length="0"/>
+      <blockRightPadding length="0"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <blockTopPadding value="0"/>
+      <blockBottomPadding value="0"/>
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Header_Pur_ord_Line">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Order_Pur_line_Content">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="5,-1" stop="5,-1"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Outer_Notes">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica-Bold" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="26.0" leading="32" alignment="CENTER"/>
+    <paraStyle name="P4" fontName="Helvetica-Bold" fontSize="20.0" leading="25" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P5" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT"/>
+    <paraStyle name="P6" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT"/>
+    <paraStyle name="P7" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P8" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P9" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P10" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P11" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P12" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P13" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P14" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P15" fontName="Helvetica" fontSize="12.0" leading="15" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P16" fontName="Helvetica" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P17" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Heading 9" fontName="Helvetica-Bold" fontSize="75%" leading="NaN" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="Table Contents" fontName="Helvetica"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Horizontal Line" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="0.0" spaceAfter="14.0"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General_Right" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details_Centre" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details_Right" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_Right_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Right" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_address" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_9" fontName="Helvetica" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9_Right" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8_Italic" fontName="Helvetica-Oblique" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_2" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images>
+      <image name="100000000000009100000074C967F0C2.jpg">/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK
+CwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQU
+FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAB0AJEDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9U6KK
+KACiiigAooooAKKKKACiiigAoorC8V+OfDvgWy+1+IdbsNFtsZEl9cLEG+mTz+FVGLk+WKuyZSUV
+eTsjdor5/n/bP8H6tfSWPgnRvEPxBukO0nQtNdoQfQyPtA+vSq/jb48fEzw34RudfuvhzZ+G9PQr
+Gp1XV1luCzHCkRxKRnnOC3au9ZfiLpSjyt92k/uev4HF9eoO/JLm9E2vvWh6B8Vfjz4Y+EyLDqEz
+XuqyLuj060w0uOxbsg9z+ANeFXf7b+tvcFrTwlarb54E1yxYj3wMV4VYWt74t1i41PUp5Ly+u5DL
+LNKcszE13tn8PDJbbhETx6V9JTy7C4eKVVczOF4itVd4OyPc/h5+2H4d8T30On6/ZSeHLuVgiTO4
+e3LHoC3BX8Rj3r6AR1kUMpDKRkEHINfnD4o8H/ZFb5P0r6E/Y9+K97rEV54J1aVriTT4fPsJ3bLG
+EEBoz67SRj2OOwrz8fl1OFN18Pst1/kdOHxMnL2dX7z6cooor5o9QKKKKACiiigAooooAKKK8u+N
+n7R/gj4D6b53iLUlfUZFLW+k2pD3MvoduflX/abA+ta0qVSvNU6Ubt9EZVasKMHOo7Jdz1GvDvjN
++2L8Ofgx9ptLzVRrOuxZX+ydMIkkVvR2+6nuCc+1fKc3xw+OP7Zus3GgeBrVvCnhYNi5urZmRUQ9
+pbjqTj+BMZ9CK+ivgZ+wt4E+EzwapqsX/CW+JFAY3eoKGhifuY4umc92yfpXvPAYfAa4+d5fyR3+
+b6HhrHYjHaYGNo/zy2+S6nDaT8RP2iP2lfLfwxpVv8LfCM43DVrxC9zIh6FNwycjuqgf7Vd54M/Y
+a8F6fqP9teNr3UfiP4hchpLvXZ2ePPtHnkezE19HgBQABgDoBS1xVMyqWcMOlTj/AHd/nLdnZDL6
+d1LEN1Jf3tvktkUtI0bT/D+nw2OmWNvp1lCu2O2tYlijQegVQAK8M/bV83/hVNjsz5f9qw+Zj02S
+Y/XFfQFcZ8X/AAAnxM+H2q6CWEc8yeZbyHosqnKH6ZGD7GuXCVVTxEKk+j1O6tDmpShHsfEvw/8A
+K8yPOO1fTXhcaMdCk8/Hm7flr5AsLu98J6xcabqML2d9aSGKWGQYZWBrvrP4iNFb7BIQMdM19niq
+Eq2sWeNRqqC1N34kC3DTeXjFY/7Lfm/8L80/yc7Ps1x5uP7vlnr+O2uP8UeMPtaPl/1r6C/Y5+Fl
+1plrdeONTQxSajD5NhEwwfJJBaQ/7xAx7DPes8S1h8HPn6qy+Y4fva8eXpqfTtFFFfCHvhRRRQAV
+49+1P8Zrv4K/DE6lo6wzeJNQu4dP0u3mXeJJnOSSueQFDfjj1r2GvjD4n6o3xt/bA0vRIV83w78P
+bc3Nyx5R718ED6g7B/2zasMVjqGVYPEZniv4dCEptd7L3Y/9vStH5nHiXOSjRpP35tRXlfd/JXfy
+K3ij4rftMeD/AAze69ejwlc2ljD9omgt4HMpQctgZ6gZr6q8CfEjSfGnwz0nxot1DbaXeWK3kk0r
+hUh+X5wxPA2kEHPpXjmnePdD8Z+LvFfglWWW70uCNbqMnIkSVTuA+mQD7sK/P34p6z498IXF38F4
+tTvJfD1lqL/ZNMtgR9pEr74845cHIIU8AnpmvifDXiTMOM6tfLM6pwo4mChVjyx5eajOKd7Xd7Xi
+0+0vI5s1lDJksRQlKpTleOrvaaffz1v6H1Z8Tv2zvEnxI+KVt4G+C+o2ccM8MsD6rfwcPMoZi8TH
+OF2jgleTXhnhb9m7VtR/ad8J+GfiffnV28Qie9uJ7a7d5JQiSNhnYZGWTH0rS+EvwJ1z4G/H74ZQ
+eIXjTVNYsri+ezTk2o2SKEY924ycdOle869/yfH8JP8AsG3n/ouevtMZxJicr41w/DmXuP1aphp1
+HK3vuUfaWfN291dDxYYR47BPG42/PGrGPLf3Uny6W+Zu/HT4geLPgl468AfDX4TWGhaRZ6pZStHb
+3Vt+7RkJ5yD3AOScknrXn3jL9pn46fC7xBYaf4nk8NSC+sL26h+w27Ngwwswzkj+Lb+tdr+0t/yd
+/wDBv/rxu/8A2euL/aL8IS+P/jt8M/DcFwlpNqthqlok8illjLw43EDrjNeXV4hxFDjPLchlCDoV
+qE6k243lzR9s781/7i6Ho1qE3g8RiKc5KUJxjFJ2VnyaW+bNnwb8WP2lPHPhbTNf0+fwctlqEC3E
+ImhdXCnpkc81s/8ACW/tQf8APz4K/wC/Ulc/qv7PPxm+Dvwxvbiw+Klj/ZXh/T3lis49MXJjjUna
+GYH06muj8I+Otb1P9mJPFVzemTXTok12brYo/eqrENtAx2HavguMc94y4bnDE054SdGtW9nTShJy
+XNdx5rqK2WrV9T0MBQw2IvSqurGcYczvJWdrXtZvr3MvxF8Sf2mPDOg6hq13ceDWtrKB7iURwuWK
+qMnA9eK+iv2d/Hmp/E74MeF/E+s+T/aeo2xln+zpsTO9hwMnHAFfLPw8+EHxo+Ovwm07XJfilZW2
+ma9aNvspdMQsEJZSpZVHp2r6z+B/w6n+E3wq8PeErm8jv59LgMLXMSlVc7i2QD061+oZdSzmhhal
+LP6lCdZTXL7GMklFJ3UuaK1vbY5sO1OsqlBTVNx+209bq1rN9Cl8U/gN4W+K4FxqNu1pqqLtTUrT
+Cy47Buzgeh/DFeGXf7D+rpcEWfjC3NsTwZrRg4H4Ng19dVi+M/F+l+AfC2p+IdZuBa6Zp8LTzSH0
+HYepJwAPU17mHx2KpWp0pei3+47KtCjK85r57HwF+0p8HbD4VWPhfwpp2s3OtePPE98kECRoI0gg
+3BWfbyeWIAJPZj2r9AfCegw+FvDGk6NbjENhaRWqD2RAv9K+Jf2VtP1j9pr9oXXPjR4ijK6NpDm0
+0i3k5VHx8iL/ANc0bcT/AHnB9a+8K9HN6k4qnhqkryiry9X0+SPNyxKq54qKtGWkfRdfmwooor5w
+90KKKKAOd+InjC3+H3gXXvEl0R5Gl2ct0Qf4iqkgficD8a+Uv2WPDV7ZeANR8Y6kpuPEXi25k1Wc
+scEqSTGmT25J/wCBV0n7cfimbXv+EL+EumzlbzxZfpJfrGfmWziYMc+gLDP/AGzNcf8AtQ/GGf4C
+fD/RLDwyYbbVrmRbe1Dxh1igjUbztPH9xR9T6V+S+I6xubUsBwfldnXx0+Zpuy9nTvbmtqouSlJ2
+X2DLDVqNGtVx9f4KCt/29Le3nay/7ePPvg38GPit4O+PMvjPV7C2+xanNMuoFL1Gby5DnOM87SFO
+Pau2+O+nW3w1+NPw4+LK20b29tfppuql0DKI3BVJOehUM/PqFrG+Hq/tJfEX4XyeOLTVtFsrExSz
+29peWe24uY0BO5AEIw2CBkjPXoRXcaVfR/tL/s1yi5RDf6jZPDMmMCO7jPUDt86gj2NfP52+JuFO
+Isv4pz5UFSi44ap7BysqbUlaal2jdxa6xS6IwwkMHi8FUwWEU+Z/vY89tWmndW87X9Sx+0I6v+2L
+8Ip0YNFLpN1sYcg/6w8fmKz/ABD8n7cHwjY8KdOvFB9/Lm/xry268bajr3wz+FnxPkglvb74cX0u
+geJIF5mjiIVVlI7jbwT6n2Nez+OPAOlfHfT/AA74s8LeJ30nWtNYzaZrunMHMe7BKMueenQ8jkdz
+X1XF+LpcLcaZZnmY3WE9hUoSqJOSjJupa9rvacZaauLbSdjHBp5hg69KhrPnhUUdm17t7X80167k
+f7ShDftg/BxBywsLtiPQfP8A4Gqfjn5v2vPgko5IF8x+nl1N4Q+Cur6V48j8ffELxzN4w1vT7Vre
+1nuIVtobWMhtxwDjozenUms74UXf/C+f2uofE+jjzvCXgewktvt45juLqTcMIe/3ifomf4hXFl2a
+YTivj7D5lk8nVw2Dw04Tqcsox5pKqklzJPV1EldJuz0srm1alUw2ClSxEeWdarFqN03Zct27XW0W
+/uPpf4+/8kS8df8AYGuv/RbV8w+Av+TMI/8AsW7j/wBAevp74+/8kS8df9ga6/8ARbV8w+Av+TMI
+/wDsW7j/ANAetfE7/kV5b/2F0/8A0mR04b/fKv8A16l+aPdP2Nv+TZfAP/Xif/Rj17RXi/7G3/Js
+vgH/AK8T/wCjHr2S4uIrSCSeeRIYY1LvI7AKqjkkk9BX7Njv97q/4n+Zy4L/AHWl/hX5IJ54rSCS
+aaRYYY1LvI7YVVAySSegr85v2gfjPrP7YXxX034UeAJWXwul1++u1ztuin35n/6ZIMlR3OD6Yf8A
+tY/tgah8XtVPwz+GInuNOu5haXF7b58zUXJx5cfcR56n+L2HX6a/ZH/Zesf2fPCRub5Y7rxhqUam
+/uhyIV6iGM/3R3Pcj2Fe/QoRyij9bxC/ev4I9v7z/r/geFXryzat9Uw7/dL45d/Jf1/wfVvhh8Od
+I+E/gbSvC+iQiKysIgm7GGlfq8jerMck/Wuqoor5Wc5VJOcnds+nhCMIqEVZIKKKKgsKwvHHjPSv
+h54T1TxHrdytppmnwmaWRj6dFHqScADuSK3a/MX/AIKB/tHy+PvGL+AtDuyfDmiy4vGjPF1djrk9
+1ToPfJ9K9bLMBLMcQqS2WrfZf1seVmWOjl9B1Xvsl5nhfxr+O2t/F/4qX3jJpZdLmP7myS2lZGt4
+BkKoYHOcE59STWz+zx8O9W/aO+MWiaBql7fahp0G66vprid5TDbIRvwWJxuJVfqwrxmv0y/4JnfD
+ePQvhZq3jCeJftuuXZhhfHIt4fl/Vy//AHyK/SM0dDLcJ7anBKaXLF21Xo99Fdn5xltOpmOMUKkm
+03zS8/8Ah9EfX2n6XaaVplvp1pAkFlbxLBFAgwqoBgKB6Yr5quf2BfCf9o39xp3izxVotvd3D3P2
+PT77yoY2Y5IUAdP8K+oKK/KIVpwTSej3vZ/mfqdXDUa9vaRvbY8U+DP7Knhr4LjxHFaajqOu2Wvx
+CO/s9YZJo5SM/MRt5JDMDnrmvkP43XXwK+EPiDxWvgzWvHWmeJdIuPs97oHhc3EUBkyNw84xlFCq
+S3LEccV+krusSM7sERQSzMcAD1NfjR+0jqdrr/jX4rz6J4k0tfO8T3OoW17FrFkYJrc2vlvgb2ld
+mBKKqLgljnoKqriq1RSVR3Ut00mnba6ejt6ERwOG5Yx5NI7eV/Pc97+HWn/B/wCMXibw54d1v4p/
+EPWrzWyDb+H9WiuYoHcJvZDK0YVto/iGP1r678TeP/hV+yD4W0XSL1D4Y0i7aQWkNhp89z5jqF3s
+5iRju+ZeW6/hX5tfs3mHwZ8Z/g/NrHifQbjTLfVZ799TPiCykWNJrGBFR13CSNlKBNrjqML0Ofor
+/gpb8UIfD7adpy+M9LM0UCXVr4WjtZ2unlJYGaSeKZBHGUIwGz90kA54wVVql7KCUYLokoq/eysr
+mtPCUaU+eEdX13f3u7Ork/4KIfCD4pp458I602r6JofltYwatHYzzm9RwysyxpEWiIGDhwOo96qS
+fsm/DWz+D6+Mbbxz47uPBzWC3aQ2jyFnt2AwBb7A3IP3dv4V8KJ4X1T4X6F4hvTqlnqB0zVrO312
+QPPvV7qNnRrcx3S/aQoRs5CnkckEkfox4Y+Mml+Mf2Q7vWbv4iXpgtIZVl8S+HrB9NltlgCsIwJt
+3zY2Rk5bcXx1zWlLEVYR5IvTfZPVddRV8JQrNSqxu9it+z7+1p8L9C8EXnh/SLHxbZeDvBtnIt14
+k1rSmW3R0cEwsUyRJ+8ztIBx2rgv2p/j7N8cdG8X+DvAV9qKRaJ/ZjS/Ygrxa3HfBTEqEfOBhhx0
+PevlH9nb4pazpOh+P4rzxJqWkXfiCbUXtn8STQ/2HqF55URlhvBIABO0bcMSBkqMV9DfsT/E/wAC
+W37WHjzTbP8As20TXdO0i20qz0mMzWizwWv75Y3AwArBgGPXsTWmHxcqOJjiJe80769RYjCxq4eW
+HjomradDp/2bfht4T/Zf+KfhrSfHduZPH2uaNcauuoTSRrY6NbxBvMUsxHz4Ugv0HQcZJ950X9t3
+4Xax8V9f8Ft4j0qzg0q1juV1+41S3Wwuy4U+XE+/5mG45Hbaa+GviB4Q0z4kftqaZofgzwLrlw2L
++O9t/F99LDb3k0cj+dJGd53QqQRsBw3IIriPhlYT6z8cdOu28CfDi71DxRrB8N3Hgl9Pkb+xzblP
+OuBAQAgKjO7ccktxwcTisXVxlV1qzu3/AFZFYXCUsJSVKkrJf1dn7KWV7b6jZwXdpPHc2s6LLFNC
+wZJEIyGUjgggggip6rabp9tpOn21jZwR21pbRLDDBCu1I0UAKqjsAABirNc5uFFFFAHlP7UPxX/4
+U18FPEPiGGRU1Exi0sAT1uJPlUj1wMt9FNfi9c3Et3cSzzO0s0rF3djksxOST+NfeP8AwVJ8YzNq
+HgrwqkrC3WKXU5oweGYny0J+gEmPqa+Cq/WOG8KqOD9r1m7/ACWi/wA/mflvEWJdbGey6Q0+b1f9
+eQV+vn7CeoWt/wDsxeExbMpMHnwyhTysgmfIP5g/jX5B19Kfsc/tZP8As+6tc6PrUUt54P1KUSzr
+FzJaS4A81B3BAAZe+Bjpz057gqmNwnLS1lF3t3/q5zZJjKeDxXNV0i1a/Y/WeiuS8CfFnwd8TrNb
+nwv4j0/WFZdxjt5x5qD/AGoz8y/iK62vyGcJU5cs1Z+Z+sQnGouaDuhsiLLGyOoZGBBVhkEehr4r
+179gbUPil42uD4zn8IaL4HgvWmt9M8IaBFZ3l3GGJQT3G3cvHUKTn2r6v8VfE3wj4GRm8QeJtK0Y
+gZ2Xl5HG5+ik5P4CvBPiH/wUR+Fng9Hi0e4vPFt6M4SwhMcIPvI+P/HQa6aOCxOJdqVNv5affsc9
+bG4fDK9Wol89fu3ONsf+CfE/w98d2d14F1bw8/g571J7rR/EugW99c28e4FxBcujP06BunrXbftn
+eC/h54k03R5PHHj1vBenwxvb3drp6RG81O2YgiEHaZQgZckL8p5yOK+UPih/wUY+IvjMS23h2O28
+H2DZAa2Hm3JHvIwwPwAr5nvL/W/HPiDzrqe913Wr6UDfKzTzzOeAOckn2r6vCcL1Ze9ipcq7LV/f
+svxPlsXxNTj7uFjzPu9F927/AAPS9P8Ahr8J/AV5rF7qPjmS61e41KGbw9e+DmnkbSIow/72cTqo
+kJPlfICWGG5GcV718NtQ8RfHj4laboHhnRYPFXw60/TotP1q51ayFnY3zibz5LoxRgKkplIIC/Md
+o3d6n/Z1/wCCdOo64bTXfiYz6XYEiRNChb/SJR281h9wH+6OfpX6BeFfCej+B9CttG0HTbfStMtl
+2xW1qgRF9T7k9yeTXFinluX3p4Ve0m0029lf836HbhlmOPtUxL9nBNNJb6fkjw/4Nfsn6X4Tt/Hd
+r420zQfFdlrXi+68S6dbT2gnjtVkRUUFZFwHADDjjmrPwf8A2cJ/hh+0R8TvHESaTbeHvElvYw6b
+YWEWx7XyY9r5UKFUE8jaT7179RXylj6i58y+OP2eviX4g/aIu/idp3i/Rrb+ytGuNO8NWc9izmF5
+U588ggFd7OcjJwR6c+cWn7AvjnQteb4m6P8AE+O2+NFzPJcXl++mx/2bLvADRCPbkDH8XU+lfcNF
+Fguylo0F5a6RZQ6hcre38cKLcXKoEEsgA3MFHQE5OKu0UUxBRRRQB+a//BUXR54fij4S1RlP2W40
+c2yN23xzOzD8pVr4sr9mv2of2frL9oX4cS6QWjttcs2Nzpl644jlxgq2P4GHB/A9q/Inx/8ADnxH
+8MPEE+i+JtJuNKvoWI2zIQsgH8SN0ZT2Ir9Y4extOvhI0L+/Dp5dz8sz/B1KOKlXt7suvn2Obooo
+r6s+XHRSvDIrxu0bqchlOCD9a1JPF2uzReVJrWovFjGxrqQr+WayQM13PgX4H+PfiXcxReG/Cmp6
+ksh4uFtykA9zK2EA+prGpKnBc1RpLzNacak3y002/I4cksSSSSepNLHG00iois7scBVGSTX298Mv
++CY2v6jNDc+OfEFtpNrwXsdMHnzH2LnCr+G6vsL4U/st/Df4PBJdC8PQSaio/wCQlffv7jPqGb7v
+/AQK+bxfEWDw+lJ878tvv/yufRYXh/F19anuLz3+7/Ox+e/wQ/YJ8f8AxRktL/W7dvCHh6QBzPfp
+i5kX/Yh6jPq2B35r9Bfgv+y54A+BtvFJoekpc6wow+r3wElyxxztPRB7LivXKK+Dx2c4rHXjJ8se
+y/Xufc4LKMLgfeiry7v9OwUUUV4R7YUUUUAFFFFABRRRQAUUUUAFYvirwXoHjjTTp/iHRrHWrJjn
+yb6BZVB9RkcH3FFFVGTi+aLsyZRUlaSujx/U/wBhr4LapK0jeDo7Zj/z63U0Y/INiobP9hD4K2bh
+v+ESM5H/AD2vZmH5b6KK9VY7F8n8WX/gT/zPLeCwvP8Awo/cv8juvC/7Onwx8GypLpPgbRLedDlZ
+ntFlkU+oZwSD9K9ESNYlCooRR0CjAFFFebUq1KrvUk2/N3PRp04U1aEUvTQdRRRWRqFFFFABRRRQ
+AUUUUAFFFFABRRRQAUUUUAf/2Q==
+</image>
+    </images>
+  </stylesheet>
+  <story>
+    <para style="terp_default_8">[[repeatIn(objects,'o')]]</para>
+    <para style="terp_default_8">[[ setLang(o.partner_id.lang) ]]</para>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <blockTable colWidths="83.0,362.0,312.0" style="Table2">
+      <tr>
+        <td>
+          <illustration height="56.0" width="69.0">
+            <image x="0" y="0" file="100000000000009100000074C967F0C2.jpg" height="56.0" width="69.0"/>
+          </illustration>
+          <para style="P2">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="P3">[[ o.company_id.name ]]</para>
+          <para style="P4">采购订单 [[ o.name ]]</para>
+        </td>
+        <td>
+          <para style="P5">
+            <font color="white"> </font>
+          </para>
+          <para style="P5">公司地址: [[ display_address(o.company_id.partner_id) ]]</para>
+          <para style="P6">电话:[[ o.company_id.phone]] 传真:[[ o.company_id.fax]]</para>
+          <para style="P5"/>
+        </td>
+      </tr>
+    </blockTable>
+    <para style="Standard">
+      <font color="white"> </font>
+    </para>
+    <blockTable colWidths="387.0,130.0,240.0" style="Tableau1">
+      <tr>
+        <td>
+          <para style="P7">供方名称:[[o.partner_id.name]]([[o.partner_id.code]])</para>
+          <para style="P7">地址:[[display_address(o.partner_id) ]]</para>
+        </td>
+        <td>
+          <para style="P8">电话: [[ (o.partner_id and o.partner_id.phone)]] </para>
+          <para style="P8">传真: [[ (o.partner_id and o.partner_id.fax)]]</para>
+        </td>
+        <td>
+          <para style="P7">联系人:[[(o.partner_id.mobile and o.partner_id.mobile)]]</para>
+        </td>
+      </tr>
+    </blockTable>
+    <para style="terp_default_9">
+      <font color="white"> </font>
+    </para>
+    <blockTable colWidths="30.0,279.0,208.0,80.0,72.0,88.0" repeatRows="1" style="Table_Header_Pur_ord_Line">
+      <tr>
+        <td>
+          <para style="P9">序号</para>
+        </td>
+        <td>
+          <para style="P9">AUT物料名称</para>
+        </td>
+        <td>
+          <para style="P10">供应商规格</para>
+        </td>
+        <td>
+          <para style="P11">数量</para>
+        </td>
+        <td>
+          <para style="P12">交货日期</para>
+        </td>
+        <td>
+          <para style="P13">备注</para>
+        </td>
+      </tr>
+    </blockTable>
+    <section>
+      <para style="P14">[[repeatIn(o.order_line,'line')]]</para>
+      <blockTable colWidths="28.0,280.0,207.0,81.0,70.0,89.0" style="Table_Order_Pur_line_Content">
+        <tr>
+          <td>
+            <para style="P7">[[line.idx]]</para>
+          </td>
+          <td>
+            <para style="P7">[[line.product_id.default_code]],[[ line.name ]]</para>
+          </td>
+          <td>
+            <para style="P7">[[ line.supplier_prod_name ]]</para>
+          </td>
+          <td>
+            <para style="P15">[[ formatLang(line.product_qty,digits=get_digits(dp='Product UoS') ) ]] [[ line.product_uom.name ]] </para>
+          </td>
+          <td>
+            <para style="P16">[[ formatLang( line.date_planned, date=True) ]]</para>
+          </td>
+          <td>
+            <para style="P17">
+              <font color="white"> </font>
+            </para>
+          </td>
+        </tr>
+      </blockTable>
+    </section>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_default_8">
+      <font color="white"> </font>
+    </para>
+    <blockTable colWidths="757.0" style="Table_Outer_Notes">
+      <tr>
+        <td>
+          <para style="P7">说明:[[ format(o.comments or '') ]]</para>
+          <para style="P7">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P7">注意事项:</para>
+          <para style="P7">[[ format(o.notes or '') ]]</para>
+          <para style="P7">
+            <font color="white"> </font>
+          </para>
+        </td>
+      </tr>
+    </blockTable>
+    <blockTable colWidths="137.0,153.0,150.0,317.0" repeatRows="1" style="Table1">
+      <tr>
+        <td>
+          <para style="P18">制单:[[o.create_uid.name]]</para>
+        </td>
+        <td>
+          <para style="P7">审核:[[o.validator.name]]</para>
+        </td>
+        <td>
+          <para style="P7">批准:[[o.approver.name]]</para>
+        </td>
+        <td>
+          <para style="P7">供应商确认签字(盖章):</para>
+        </td>
+      </tr>
+    </blockTable>
+    <blockTable colWidths="757.0" repeatRows="1" style="Table3">
+      <tr>
+        <td>
+          <para style="P18">下单日期: [[formatLang(o.date_order,date=True)]]</para>
+        </td>
+      </tr>
+    </blockTable>
+    <para style="P7">
+      <font color="white"> </font>
+    </para>
+  </story>
+</document>
+

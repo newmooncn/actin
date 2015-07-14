@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!-- tax on purchase -->
+        <record model="ir.ui.view" id="view_purchase_order_form_notax">
+            <field name="name">view_purchase_order_form_notax</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='taxes_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+                <field name="amount_tax" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_purchase_order_tree_notax">
+            <field name="name">view_purchase_order_tree_notax</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        
+    <!-- tax on sale -->
+        <record model="ir.ui.view" id="view_sale_order_form_notax">
+            <field name="name">view_sale_order_form_notax</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+                <field name="amount_tax" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        
+	<!-- invoice tree -->        
+        <record model="ir.ui.view" id="view_invoice_tree_notax">
+            <field name="name">view_invoice_tree_notax</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        
+	<!-- Customer Invoice Form: action_invoice_tree1, invoice_form -->
+        <record model="ir.ui.view" id="view_cust_invoice_form_notax">
+            <field name="name">view_cust_invoice_form_notax</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_tax_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+                <xpath expr="//label[@for='amount_tax']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <button name="button_reset_taxes" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </button>
+                <field name="amount_tax" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>	
+	     
+	<!-- Supplier Invoice Form: action_invoice_tree2, invoice_supplier_form -->
+        <record model="ir.ui.view" id="view_supplier_invoice_form_notax">
+            <field name="name">view_supplier_invoice_form_notax</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_tax_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="amount_untaxed" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+                <xpath expr="//label[@for='amount_tax']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <button name="button_reset_taxes" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </button>
+                <field name="amount_tax" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+                <field name="tax_line" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
