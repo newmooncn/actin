@@ -14,13 +14,19 @@
     'description': """
 ACTIN Customization
 =====================
-
-* Feature1
-* Feature2
-
+* Add fields to product sheet
+* Add fields to partner sheet
+* Rename menu names
+* Remove tax on purchase, sale and invoice
+* Add below fields to purchase order
+'client_order_ref': for the customer order refererence
+port_load_id, port_discharge_id,deliver_dates,ship_type,penalties_on_delays,discrepancy,disputes,doc_export,confirmation,artworks
+certs, qc_memo, load_memo, 
+* Purchase: Remove 'remove RFQ&B' page, add 'Terms' page
+* Purchase: Remove the state showing for 'RFQ'/'Bid Received'
     """,
-    'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier'],
-    'data':['product_view.xml'],
+    'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier', 'dm_options'],
+    'data':['product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 'purchase_view.xml'],
     'auto_install': False,
     'installable': True
 }
