@@ -3,3 +3,4 @@ import product
 import partner
 import purchase
 import report
+import sale

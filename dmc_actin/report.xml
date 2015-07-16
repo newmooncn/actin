@@ -9,6 +9,23 @@
             name="purchase.order.actin" 
             file="dmc_actin/report/purchase_order.rml" 
             string="Purchase Order" 
+        />
+<!-- Proforma Invoice -->
+        <report 
+            id="sale.report_sale_order"
+            model="sale.order" 
+            report_type="pdf"
+            name="proforma.invoice.actin" 
+            file="dmc_actin/report/sale_order.rml" 
+            string="Proforma Invoice"
+        />			
+        <report 
+            id="report_sale_order_actin"
+            model="sale.order" 
+            report_type="pdf"
+            name="proforma.invoice.actin.new" 
+            file="dmc_actin/report/sale_order.rml" 
+            string="Proforma Invoice"
         />		
     </data>
 </openerp>
