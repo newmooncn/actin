@@ -6,11 +6,14 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//page[@name='sales_purchases']/group[1]" position="after">
-                	<group col="4">
+                <!-- <xpath expr="//page[@name='sales_purchases']/group[1]" position="after"> -->
+                <xpath expr="//sheet/group/group[2]" position="after">
+                	<group>
                 		<field name="incoterm_id"/>
                 		<field name="port"
 							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+					</group>
+					<group>
                 		<field name="exp_company"/>
                 		<field name="exp_comp_act"/>
                 		<field name="forwarder"/>

@@ -26,7 +26,8 @@ certs, qc_memo, load_memo,
 * Purchase: Remove the state showing for 'RFQ'/'Bid Received'
     """,
     'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier', 'dm_options'],
-    'data':['product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 'purchase_view.xml'],
+    'data':['product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
+            'purchase_view.xml', 'report.xml'],
     'auto_install': False,
     'installable': True
 }

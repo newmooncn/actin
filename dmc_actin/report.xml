@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- Purchase order -->
+        <report 
+            id="purchase.action_report_purchase_order" 
+            model="purchase.order" 
+            report_type="pdf"
+            name="purchase.order.actin" 
+            file="dmc_actin/report/purchase_order.rml" 
+            string="Purchase Order" 
+        />		
+    </data>
+</openerp>
