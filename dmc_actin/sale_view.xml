@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_sale_order_form_actin">
+            <field name="name">view_sale_order_form_actin</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<field name="incoterm" position="replace"></field>
+            	<field name="payment_term" position="replace"></field>
+            	<xpath expr="//sheet/group[1]/group[2]" position="after">
+            		<group>
+                		<field name="port_load_id"
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+                		<field name="port_discharge_id"
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+            			<field name="ship_type"
+							context="{'default_option_name':'ship_type','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>            		</group>
+            		<group>
+            			<field name="deliver_memo"/>
+            			<field name="incoterm"/>
+            			<field name="payment_term"/>
+            		</group>
+            	</xpath>
+            	<!-- Add terms page -->
+            	<notebook position="inside">
+            		<page string="Terms">
+            			<group>
+							<field name="terms_fix"/>    			
+            			</group>
+            		</page>
+            	</notebook>     
+            </field>
+        </record>
+    </data>
+</openerp>
