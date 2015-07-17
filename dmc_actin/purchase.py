@@ -64,9 +64,60 @@ class purchase_order(osv.osv):
 									   "received, the status becomes 'Done'. If a cancel action occurs in "
 									   "the invoice or in the receipt of goods, the status becomes "
 									   "in exception.",
-								  select=True, copy=False),		
+								  select=True, copy=False),	
+		#link to sale order
+		'sale_id':fields.many2one('sale.order','Factory Quotation')	
 	}
-	
-
+	def onchange_partner_id(self, cr, uid, ids, partner_id, context=None):
+		resu = super(purchase_order, self).onchange_partner_id(cr, uid, ids, partner_id, context=context)
+		customer = self.pool['res.partner'].browse(cr, uid, partner_id, context=context)
+		if customer.port:
+			resu['value'].update({'port_load_id':customer.port.id})
+		if customer.incoterm_id:
+			resu['value'].update({'incoterm_id':customer.incoterm_id.id})
+		
+		return resu
+		
+	def gen_sale_order(self, cr, uid, ids, context=None):
+		assert len(ids) == 1, 'Only one quotation can be select to generate sales order'
+		po = self.browse(cr, uid, ids[0], context=context)
+		#===========prepare sale_order===================
+		so_val = {}
+		sale_obj = self.pool['sale.order']
+		#update customer
+		customer_id = None
+		for po_line in po.order_line:
+			if po_line.product_id.customer_id:
+				customer_id = po_line.product_id.customer_id.id
+				break
+		if not customer_id:
+			raise osv.except_osv(_('Error'),'Please define customer for the products!')
+		so_val = {'partner_id':customer_id}
+		#update partner_invoice_id/partner_shipping_id/payment_term/fiscal_position/pricelist_id/port_discharge_id/incoterm
+		so_val.update(sale_obj.onchange_partner_id(cr, uid, [], customer_id, context=context)['value'])
+		#copy values from purchase order
+		so_val.update({'client_order_ref':po.client_order_ref, 'port_load_id':po.port_discharge_id.id})
+		so_id = sale_obj.create(cr, uid, so_val, context=context)
+		self.write(cr, uid, ids, {'sale_id':so_id}, context=context)
+		#===========prepare sale_order_line===================
+		sale_line_obj = self.pool['sale.order.line']
+		for po_line in po.order_line:
+			so_line_val = {'order_id':so_id, 'product_id': po_line.product_id.id, 'product_uom_qty':po_line.product_qty, 'price_unit':po_line.price_unit}
+			line_vals = sale_line_obj.product_id_change(cr, uid, [], so_val['pricelist_id'], po_line.product_id.id, partner_id=customer_id, context=None)
+			so_line_val.update(line_vals['value'])
+			sale_line_obj.create(cr, uid, so_line_val, context=context)
+		#===========goto sale order form page===================
+		form_view = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'sale', 'view_order_form')
+		form_view_id = form_view and form_view[1] or False
+		return {
+			'name': _('Sale Quotations'),
+			'view_type': 'form',
+			'view_mode': 'form',
+			'view_id': [form_view_id],
+			'res_model': 'sale.order',
+			'type': 'ir.actions.act_window',
+			'target': 'current',
+			'res_id': so_id,
+		}
 	
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

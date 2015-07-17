@@ -6,6 +6,7 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
+            <!-- GUI Fields -->
             	<field name="partner_ref" position="before">
             		<field name="client_order_ref"/>
             	</field>
@@ -44,13 +45,26 @@
             			</group>
             		</page>
             	</notebook>     
+            <!-- remove 'bid' state' -->  
             	<!-- Adjust states showing -->
             	<field name="state" position="attributes">
             		<attribute name="statusbar_visible">draft,approved,done</attribute>
             	</field>       
             	<button name='wkf_send_rfq' position="attributes">
             		<attribute name="invisible">True</attribute>
-            	</button>       
+            	</button>   
+            	<button name='print_quotation' position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</button>      
+            	
+            <!-- 'Convert to Sales Offer' button -->     
+	           	<button name='purchase_confirm' position="before">
+	           		<button name="gen_sale_order" string="Generate Sales Offer" type="object" 
+	           			attrs="{'invisible':['|',('state','not in',('draft','sent','bid','approved')), ('sale_id','!=',False)]}"/>
+	           	</button> 
+	           	<field name='date_order' position='after'>
+	           		<field name='sale_id'/>
+	           	</field>
             </field>
         </record>
             	        
