@@ -4,3 +4,4 @@ import partner
 import purchase
 import report
 import sale
+import invoice

@@ -18,14 +18,18 @@
             name="proforma.invoice.actin" 
             file="dmc_actin/report/sale_order.rml" 
             string="Proforma Invoice"
-        />			
+        />
+        
+<!-- Commercial Invoice -->
         <report 
-            id="report_sale_order_actin"
-            model="sale.order" 
+            id="account.account_invoices"
+            model="account.invoice"
             report_type="pdf"
-            name="proforma.invoice.actin.new" 
-            file="dmc_actin/report/sale_order.rml" 
-            string="Proforma Invoice"
-        />		
+            name="commercial.invoice.actin"
+            string="Commercial Invoice"
+            file="dmc_actin/report/sale_commercial_invoice.rml"
+            attachment_use=""
+            attachment=""
+        />
     </data>
 </openerp>

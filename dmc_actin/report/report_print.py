@@ -25,13 +25,6 @@ import time
 from openerp.report import report_sxw
 from openerp.addons.dm_base.rml import rml_parser_ext
 
-#class purchase_order_print(rml_parser_ext):
-#    def __init__(self, cr, uid, name, context):
-#        super(purchase_order_print, self).__init__(cr, uid, name, context=context)
-#        self.localcontext.update({
-#            'time': time,
-#        })
-
 report_sxw.report_sxw('report.purchase.order.actin',
                       'purchase.order',
                       'addons/dmc_actin/report/purchase_order.rml',
@@ -41,3 +34,20 @@ report_sxw.report_sxw('report.proforma.invoice.actin',
                       'sale.order',
                       'addons/dmc_actin/report/sale_order.rml',
                       parser=rml_parser_ext)
+
+class invoice_print(rml_parser_ext):
+    def __init__(self, cr, uid, name, context):
+        super(invoice_print, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({
+            'so': self.sale_order,
+#            'po': self.purchase_order,
+        })
+    def sale_order(self, inv):
+        return inv.sale_ids and inv.sale_ids[0] or False
+#    def purchase_order(self, inv):
+#        return inv.purchase_ids and inv.purchase_ids[0] or False
+
+report_sxw.report_sxw('report.commercial.invoice.actin',
+                      'account.invoice',
+                      'addons/dmc_actin/report/sale_commercial_invoice.rml',
+                      parser=invoice_print)
