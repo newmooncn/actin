@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-<!-- Purchase order -->
-        <report 
-            id="purchase.action_report_purchase_order" 
-            model="purchase.order" 
-            report_type="pdf"
-            name="purchase.order.actin" 
-            file="dmc_actin/report/purchase_order.rml" 
-            string="Purchase Order" 
-        />
 <!-- Proforma Invoice -->
         <report 
             id="sale.report_sale_order"
@@ -20,7 +11,7 @@
             string="Proforma Invoice"
         />
         
-<!-- Commercial Invoice -->
+<!-- Commercial Invoice-->
         <report 
             id="account.account_invoices"
             model="account.invoice"
@@ -32,6 +23,16 @@
             attachment=""
             groups="account.group_account_invoice"
         />
+<!-- Credit Note, only change name for the downloading file name, but use same 'string' and rml 'file' -->        
+        <report 
+            id="credit_note"
+            model="account.invoice"
+            report_type="pdf"
+            name="commercial.invoice.actin"
+            string="Credit Note"
+            file="dmc_actin/report/sale_commercial_invoice.rml"
+            groups="account.group_account_invoice"
+        />
 <!-- Packing List -->
         <report 
             id="packing_list"
@@ -40,8 +41,24 @@
             name="packing.list"
             string="Packing List"
             file="dmc_actin/report/packing_list.rml"
-            attachment_use=""
-            attachment=""
+        />
+<!-- Purchase order -->
+        <report 
+            id="purchase.action_report_purchase_order" 
+            model="purchase.order" 
+            report_type="pdf"
+            name="purchase.order.actin" 
+            string="Purchase Order" 
+            file="dmc_actin/report/purchase_order.rml" 
+        />
+<!-- Debit note -->        
+        <report 
+            id="debit_note"
+            model="account.invoice"
+            report_type="pdf"
+            name="debit.note"
+            string="Debit Note"
+            file="dmc_actin/report/debit_note.rml" 
         />
     </data>
 </openerp>

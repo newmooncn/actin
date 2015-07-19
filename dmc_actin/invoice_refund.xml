@@ -10,6 +10,8 @@
             	<!-- credit note -->
             	<button string="Refund Invoice" position="attributes">
             		<attribute name="string">Credit Note</attribute>
+            		<attribute name="states"></attribute>
+            		<attribute name="attrs">{'invisible':['|',('state','not in',('open','proforma2','paid')),('type','!=','out_invoice')]}</attribute>
             	</button>
             	<label string="Draft Refund" position="attributes">
             		<attribute name="string">Draft Credit Note</attribute>
@@ -17,6 +19,10 @@
             	<label string="Refund" position="attributes">
             		<attribute name="string">Credit Note</attribute>
             	</label>
+            	<!-- print button -->
+            	<button name="action_invoice_sent"  position="after">
+            		<button name="%(credit_note)d" string="Print" type="action"  attrs="{'invisible':[('type','!=','out_refund')]}"/>	
+            	</button>
             </field>
         </record>
         <record id="account.action_invoice_tree3" model="ir.actions.act_window">
@@ -27,13 +33,15 @@
         	parent="account.menu_finance_receivables"  string="Debit Notes"/>
     <!-- supplier invoice -->
         <record model="ir.ui.view" id="view_invoice_supplier_form_refund">
-            <field name="name">view_invoice_supplier_form_actin</field>
+            <field name="name">view_invoice_supplier_form_refund</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
             	<!-- debit note -->
             	<button string="Ask Refund" position="attributes">
             		<attribute name="string">Debit Note</attribute>
+            		<attribute name="states"></attribute>
+            		<attribute name="attrs">{'invisible':['|',('state','not in',('open','paid')),('type','!=','in_invoice')]}</attribute>
             	</button>
             	<label string="Draft Refund" position="attributes">
             		<attribute name="string">Draft Debit Note</attribute>
@@ -41,6 +49,11 @@
             	<label string="Refund" position="attributes">
             		<attribute name="string">Debit Note</attribute>
             	</label>
+            	<!-- print button -->
+            	<button name="invoice_open" position="before">
+            		<!-- print debit note -->
+            		<button name="%(debit_note)d" string="Print" type="action" attrs="{'invisible':[('type','!=','in_refund')]}"/>
+            	</button>
             </field>
         </record>
         <record id="account.action_invoice_tree4" model="ir.actions.act_window">

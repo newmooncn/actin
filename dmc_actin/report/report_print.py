@@ -40,12 +40,23 @@ class invoice_print(rml_parser_ext):
         super(invoice_print, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'so': self.sale_order,
-#            'po': self.purchase_order,
+            'po': self.purchase_order,
         })
     def sale_order(self, inv):
-        return inv.sale_ids and inv.sale_ids[0] or False
-#    def purchase_order(self, inv):
-#        return inv.purchase_ids and inv.purchase_ids[0] or False
+        so = inv.sale_ids and inv.sale_ids[0] or False
+        #origin_inv_id is from invoice_refund.py
+        if not so and inv.origin_inv_id:
+            #for customer refund / credit note
+            so = self.sale_order(inv.origin_inv_id)
+        return so
+            
+    def purchase_order(self, inv):
+        po = inv.purchase_ids and inv.purchase_ids[0] or False
+        #origin_inv_id is from invoice_refund.py
+        if not po and inv.origin_inv_id:
+            #for supplier refund / debit note
+            po = self.purchase_order(inv.origin_inv_id)
+        return po
 
 report_sxw.report_sxw('report.commercial.invoice.actin',
                       'account.invoice',
@@ -54,4 +65,8 @@ report_sxw.report_sxw('report.commercial.invoice.actin',
 report_sxw.report_sxw('report.packing.list',
                       'account.invoice',
                       'addons/dmc_actin/report/packing_list.rml',
+                      parser=invoice_print)
+report_sxw.report_sxw('report.debit.note',
+                      'account.invoice',
+                      'addons/dmc_actin/report/debit_note.rml',
                       parser=invoice_print)

@@ -45,7 +45,7 @@
             	</page>
             	<!-- print invoice button -->
             	<button name="invoice_print"  string="Print" position="replace">
-            		<button name="%(account.account_invoices)d" string="Print" type="action"/>	
+            		<button name="%(account.account_invoices)d" string="Print" type="action"  attrs="{'invisible':[('type','!=','out_invoice')]}"/>	
             	</button>
             	<button name="invoice_print"  string="Print Invoice" position="replace">
             	</button>
