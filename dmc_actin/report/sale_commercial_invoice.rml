@@ -227,7 +227,8 @@
   <story>
     <para style="P1">[[repeatIn(objects,'o')]]</para>
     <para style="P1">[[ setLang(o.partner_id.lang) ]]</para>
-    <para style="P2">COMMERCIAL INVOICE</para>
+    <para style="P2">[[o.type != 'out_invoice' and removeParentNode('para')]] COMMERCIAL INVOICE</para>
+    <para style="P2">[[o.type != 'out_refund' and removeParentNode('para')]] CREDIT NOTE</para>
     <para style="P3">
       <font color="white"> </font>
     </para>
@@ -383,7 +384,7 @@
     </blockTable>
     <section>
       <para style="P11">[[repeatIn(o.invoice_line,'line')]]</para>
-      <blockTable colWidths="67.0,152.0,111.0,94.0,112.0" style="Table_Order_Pur_line_Content">
+      <blockTable colWidths="68.0,152.0,111.0,94.0,112.0" style="Table_Order_Pur_line_Content">
         <tr>
           <td>
             <para style="P4">[[line.product_id.default_code]]</para>
@@ -464,7 +465,7 @@
       </tr>
       <tr>
         <td>
-          <para style="P17">BL NUMBER</para>
+          <para style="P17">[[o.type!='out_invoice' and removeParentNode('tr')]]BL NUMBER</para>
         </td>
         <td>
           <para style="P20">[[o.bl_number]]</para>
@@ -472,7 +473,7 @@
       </tr>
       <tr>
         <td>
-          <para style="P17">CONTAINER No</para>
+          <para style="P17">[[o.type!='out_invoice' and removeParentNode('tr')]]CONTAINER No</para>
         </td>
         <td>
           <para style="P20">[[o.container_no]]</para>
@@ -480,7 +481,7 @@
       </tr>
       <tr>
         <td>
-          <para style="P17">SEAL No</para>
+          <para style="P17">[[o.type!='out_invoice' and removeParentNode('tr')]]SEAL No</para>
         </td>
         <td>
           <para style="P20">[[o.seal_no]]</para>
@@ -488,15 +489,17 @@
       </tr>
       <tr>
         <td>
-          <para style="P17">SERIAL No</para>
+          <para style="P17">[[o.serial_no]][[o.type!='out_invoice' and removeParentNode('tr')]]SERIAL No</para>
         </td>
         <td>
-          <para style="P20">[[o.serial_no]]</para>
+          <para style="P20">
+            <font color="white"> </font>
+          </para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P17">HS CODE</para>
+          <para style="P17">[[o.type!='out_invoice' and removeParentNode('tr')]]HS CODE</para>
         </td>
         <td>
           <para style="P20">[[o.hs_code]]</para>

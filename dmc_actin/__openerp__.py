@@ -32,7 +32,7 @@ certs, qc_memo, load_memo,
     'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier', 'dm_options', 'dmp_account_pay_invoice'],
     'data':['product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
             'purchase_view.xml', 'report.xml', 'sale_view.xml', 'invoice_view.xml',
-            'packing_view.xml'],
+            'packing_view.xml','invoice_refund.xml'],
     'auto_install': False,
     'installable': True
 

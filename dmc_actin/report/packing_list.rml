@@ -352,7 +352,7 @@
           <para style="P4">Telephone</para>
         </td>
         <td>
-          <para style="P5">[[so(o).partner_shipping_id .phone]]</para>
+          <para style="P5">[[so(o).partner_shipping_id.phone]]</para>
         </td>
         <td>
           <para style="P4">[['']]</para>
@@ -366,7 +366,7 @@
           <para style="P4">Contact</para>
         </td>
         <td>
-          <para style="P5">[[so(o).partner_shipping_id .contact]]</para>
+          <para style="P5">[[so(o).partner_shipping_id.contact]]</para>
         </td>
         <td>
           <para style="P4">[['']]</para>

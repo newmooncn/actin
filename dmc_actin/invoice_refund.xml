@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!-- customer invoice -->
+        <record model="ir.ui.view" id="view_invoice_customer_form_refund">
+            <field name="name">view_invoice_customer_form_refund</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<!-- credit note -->
+            	<button string="Refund Invoice" position="attributes">
+            		<attribute name="string">Credit Note</attribute>
+            	</button>
+            	<label string="Draft Refund" position="attributes">
+            		<attribute name="string">Draft Credit Note</attribute>
+            	</label>
+            	<label string="Refund" position="attributes">
+            		<attribute name="string">Credit Note</attribute>
+            	</label>
+            </field>
+        </record>
+        <record id="account.action_invoice_tree3" model="ir.actions.act_window">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.invoice</field>
+        </record>
+        <menuitem action="account.action_invoice_tree3" id="account.menu_action_invoice_tree3" 
+        	parent="account.menu_finance_receivables"  string="Debit Notes"/>
+    <!-- supplier invoice -->
+        <record model="ir.ui.view" id="view_invoice_supplier_form_refund">
+            <field name="name">view_invoice_supplier_form_actin</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<!-- debit note -->
+            	<button string="Ask Refund" position="attributes">
+            		<attribute name="string">Debit Note</attribute>
+            	</button>
+            	<label string="Draft Refund" position="attributes">
+            		<attribute name="string">Draft Debit Note</attribute>
+            	</label>
+            	<label string="Refund" position="attributes">
+            		<attribute name="string">Debit Note</attribute>
+            	</label>
+            </field>
+        </record>
+        <record id="account.action_invoice_tree4" model="ir.actions.act_window">
+            <field name="name">Debit Notes</field>
+            <field name="res_model">account.invoice</field>
+        </record>
+        <menuitem action="account.action_invoice_tree4" id="account.menu_action_invoice_tree4" 
+        	parent="account.menu_finance_payables" string="Debit Notes"/>
+    </data>
+</openerp>
