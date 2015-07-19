@@ -51,3 +51,7 @@ report_sxw.report_sxw('report.commercial.invoice.actin',
                       'account.invoice',
                       'addons/dmc_actin/report/sale_commercial_invoice.rml',
                       parser=invoice_print)
+report_sxw.report_sxw('report.packing.list',
+                      'account.invoice',
+                      'addons/dmc_actin/report/packing_list.rml',
+                      parser=invoice_print)

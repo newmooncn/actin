@@ -27,13 +27,12 @@ certs, qc_memo, load_memo,
 * Purchase: PO PDF
 * Purchase: Convert to SO
 * Sales Order: new fields
-* Sales Order: PDF
-
-  
+* Sales Order: PDF  
     """,
     'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_prod_supplier', 'dm_options', 'dmp_account_pay_invoice'],
     'data':['product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
-            'purchase_view.xml', 'report.xml', 'sale_view.xml', 'invoice_view.xml'],
+            'purchase_view.xml', 'report.xml', 'sale_view.xml', 'invoice_view.xml',
+            'packing_view.xml'],
     'auto_install': False,
     'installable': True
 

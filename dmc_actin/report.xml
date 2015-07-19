@@ -30,6 +30,18 @@
             file="dmc_actin/report/sale_commercial_invoice.rml"
             attachment_use=""
             attachment=""
+            groups="account.group_account_invoice"
+        />
+<!-- Packing List -->
+        <report 
+            id="packing_list"
+            model="account.invoice"
+            report_type="pdf"
+            name="packing.list"
+            string="Packing List"
+            file="dmc_actin/report/packing_list.rml"
+            attachment_use=""
+            attachment=""
         />
     </data>
 </openerp>

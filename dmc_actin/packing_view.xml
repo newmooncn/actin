@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_pack_tree" model="ir.ui.view">
+            <field name="name">view_pack_tree</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Packing List" create="0" delete="0">
+                    <field name="partner_id" groups="base.group_user"/>
+                    <field name="commercial_partner_id" invisible="1"/>
+                    <field name="date_invoice" string="Date"/>
+                    <field name="etd"/>
+                    <field name="eta"/>
+                    <field name="number"/>
+                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="origin"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="state"/>
+                    <field name="type" invisible="context.get('type',True)"/>
+                </tree>
+            </field>
+        </record>
+	<!-- packing form -->
+        <record id="view_pack_form" model="ir.ui.view">
+            <field name="name">view_pack_form</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Packing List" create="0" delete="0">
+                <field name="state" invisible="1"/>
+                <header>
+                    <button name="%(packing_list)d" string="Print" type="action" groups="base.group_user"/>
+                </header>
+                <sheet string="Invoice">
+                    <h1>
+                        <label string="Packing List"/>
+                        <field name="number" readonly="1" class="oe_inline"/>
+                    </h1>
+                    <field name="type" invisible="1"/>
+                    <group>
+                        <group>
+                            <field string="Customer" name="partner_id"
+                                on_change="onchange_partner_id(type, partner_id, date_invoice, payment_term, partner_bank_id, company_id, context)"
+                                context="{'search_default_customer':1, 'show_address': 1}"
+                                options='{"always_reload": True}'
+                                domain="[('customer', '=', True)]"/>
+                        </group>
+                        <group>
+                            <field name="date_invoice" string="Date"/>
+                            <field name="internal_number" invisible="1"/>
+                        </group>
+	            		<group>
+	                		<field name="total_shipped"/>
+	                		<field name="contract_n"/>
+	                		<field name="bl_number"/>
+	            			<field name="container_no"/>
+	                		<field name="etd"/>
+	                		<field name="eta"/>
+	            		</group>
+	            		<group>		
+	            			<field name="seal_no"/>
+	            			<field name="serial_no"/>
+	                		<field name="hs_code"/>
+	            		</group>
+                    </group>
+                    <field name="sent" invisible="1"/>
+                    <separator string="Packing Lines"/>
+                    <field name="invoice_line" nolabel="1" widget="one2many_list" context="{'type': type}" attrs="{'readonly':[('state','!=','open')]}">
+                        <tree string="Invoice Lines" editable="bottom" create="0" delete="0">
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id"
+                                on_change="product_id_change(product_id, uos_id, quantity, name, parent.type, parent.partner_id, parent.fiscal_position, price_unit, parent.currency_id, parent.company_id, context)"/>
+                            <field name="name"/>
+                            <field name="qty_per_carton"/>
+                            <field name="qty_carton" sum="Total"/>    
+                            <field name="quantity" readonly="1"/>
+                            <field name="uos_id" groups="product.group_uom" readonly="1"/>
+                            <field name="weight_net" sum="Total"/>
+                            <field name="weight_gross" sum="Total"/>
+                            <field name="m3" sum="Total"/>
+                            <field name="company_id" invisible="1"/>
+                        </tree>
+                    </field>
+                    <label for='pack_comment'/>
+					<field name="pack_comment"/>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        
+	<!-- set invoice line to be readonly  for customer/supplier invoice-->
+        <record model="ir.ui.view" id="view_invoice_customer_form_pack">
+            <field name="name">view_invoice_customer_form_pack</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<field name="invoice_line" position="attributes">
+            		<attribute name="attrs">{'readonly':[('state','!=','draft')]}</attribute>
+            	</field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_invoice_supplier_form_pack">
+            <field name="name">view_invoice_supplier_form_pack</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<field name="invoice_line" position="attributes">
+            		<attribute name="attrs">{'readonly':[('state','!=','draft')]}</attribute>
+            	</field>
+            </field>
+        </record>
+            
+    <!-- packing action -->
+        <record id="action_pack" model="ir.actions.act_window">
+            <field name="name">Packing List</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('type','=','out_invoice'),('state','in',('open','done'))]</field>
+            <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        </record>
+
+
+        <record id="action_pack_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_pack_tree"/>
+            <field name="act_window_id" ref="action_pack"/>
+        </record>
+
+        <record id="action_pack_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_pack_form"/>
+            <field name="act_window_id" ref="action_pack"/>
+        </record>
+	<!-- packing menu -->
+        <menuitem action="action_pack" id="menu_pack" parent="purchase.menu_procurement_management" sequence="10"/>        
+        
+    </data>
+</openerp>
