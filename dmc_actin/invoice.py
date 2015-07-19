@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+		# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -36,6 +36,9 @@ class account_invoice(osv.osv):
 		#new fields for estimated deliver an arrival
 		'etd': fields.date('ETD'),
 		'eta': fields.date('ETA'),
+		#used for service invoice, related to the commercial invoice
+		'parent_id': fields.many2one('account.invoice', 'Related Invoice', select=True),
+		'child_ids': fields.one2many('account.invoice', 'parent_id', 'Service Invoices'),
 	}
 	
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
