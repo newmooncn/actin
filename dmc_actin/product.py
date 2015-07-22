@@ -63,6 +63,6 @@ class product_product(osv.osv):
 		'seller_lead_time': fields.integer('Leadtime'),
 		'quote_validity': fields.integer('Quotation validity')
 	}
-	_defaults = {'type':'service'}
+#	_defaults = {'type':'service'}
 				
 product_product()

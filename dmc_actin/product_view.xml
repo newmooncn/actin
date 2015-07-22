@@ -97,9 +97,9 @@
                      <field name="additional_comments"/>
                 </xpath>
                 <!-- hide the type field, since all products will be 'service' type for actin -->
-                <field name='type' position='attributes'>
+                <!-- <field name='type' position='attributes'>
                 	<attribute name='invisible'>True</attribute>
-                </field>
+                </field> -->
             </data>
             </field>
 		</record>
