@@ -121,5 +121,26 @@
             </data>
            	</field>
         </record>
+<!-- menu to set packing type list -->
+        <record id="action_option_list_pack_type" model="ir.actions.act_window">
+            <field name="name">Packing Type</field>
+            <field name="res_model">option.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('option_name','=','pack_type')]</field>
+            <field name="context">{'default_option_name':'pack_type'}</field>
+        </record>
+        <!-- under purchsase/configuration -->     
+        <menuitem
+            action="action_option_list_pack_type"
+            id="menu_option_list_pack_type_pur"
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="0"/>
+        <!-- under sale/configuration -->    
+        <menuitem
+            action="action_option_list_pack_type"
+            id="menu_option_list_pack_type_sale"
+            parent="base.menu_base_config"
+            sequence="0"/> 
 	</data>		    
 </openerp>	

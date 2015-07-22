@@ -31,7 +31,8 @@ class product_product(osv.osv):
 		'labor': fields.text('Laboratory'),
 		
 		'dimension': fields.char('Dimensions', size=64),
-		'pack_type': fields.selection([('carton','Carton box'), ('blister','Blister'),('others','Others')], string='Packing type'),
+#		'pack_type': fields.selection([('carton','Carton box'), ('blister','Blister'),('others','Others')], string='Packing type'),
+		'pack_type': fields.many2one('option.list','Packing type', ondelete='restrict', domain=[('option_name','=','pack_type')]),
 		#for pack type 'Others' memo
 		'pack_type_memo': fields.char('Packing Type Note', size=64),
 		
