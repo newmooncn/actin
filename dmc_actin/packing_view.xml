@@ -116,7 +116,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field eval="False" name="view_id"/>
-            <field name="domain">[('type','=','out_invoice'),('state','in',('open','done'))]</field>
+            <field name="domain">[('type','=','out_invoice'),('state','in',('open','paid'))]</field>
             <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
             <field name="search_view_id" ref="account.view_account_invoice_filter"/>
         </record>

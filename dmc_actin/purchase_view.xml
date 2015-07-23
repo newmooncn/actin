@@ -55,8 +55,12 @@
             	</button>   
             	<button name='print_quotation' position="attributes">
             		<attribute name="invisible">True</attribute>
-            	</button>      
-            	
+            	</button>    
+            <!-- Add print button -->
+            	<button name='action_cancel' position="before">
+            		<button name="%(purchase.action_report_purchase_order)d" string="Print" type="action" groups="base.group_user"
+            			attrs="{'invisible':[('state','in',['draft','sent','bid','cancel'])]}"/>
+            	</button>
             <!-- 'Convert to Sales Offer' button -->     
 	           	<button name='purchase_confirm' position="before">
 	           		<button name="gen_sale_order" string="Generate Sales Offer" type="object" 

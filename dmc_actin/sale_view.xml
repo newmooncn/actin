@@ -29,7 +29,18 @@
 							<field name="terms_fix"/>    			
             			</group>
             		</page>
-            	</notebook>     
+            	</notebook>
+            	<!-- Print button -->
+            	<xpath expr="//button[@name='print_quotation'][1]" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</xpath>
+            	<xpath expr="//button[@name='print_quotation'][2]" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</xpath>
+            	<button name="action_cancel" position="before">
+            		<button name="%(sale.report_sale_order)d" string="Print" type="action" groups="base.group_user"
+            		attrs="{'invisible':[('state','in',['draft','sent','cancel'])]}"/>
+            	</button>
             </field>
         </record>
     </data>
