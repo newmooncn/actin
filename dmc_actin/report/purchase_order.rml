@@ -67,11 +67,11 @@
       <lineStyle kind="LINEAFTER" colorName="#000000" start="4,0" stop="4,-1"/>
       <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0"/>
       <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
-      <blockBackground colorName="#cccccc" start="0,0" stop="0,-1"/>
-      <blockBackground colorName="#cccccc" start="1,0" stop="1,-1"/>
-      <blockBackground colorName="#cccccc" start="2,0" stop="2,-1"/>
-      <blockBackground colorName="#cccccc" start="3,0" stop="3,-1"/>
-      <blockBackground colorName="#cccccc" start="4,0" stop="4,-1"/>
+      <blockBackground colorName="#280099" start="0,0" stop="0,-1"/>
+      <blockBackground colorName="#280099" start="1,0" stop="1,-1"/>
+      <blockBackground colorName="#280099" start="2,0" stop="2,-1"/>
+      <blockBackground colorName="#280099" start="3,0" stop="3,-1"/>
+      <blockBackground colorName="#280099" start="4,0" stop="4,-1"/>
       <blockTopPadding length="1"/>
       <blockBottomPadding length="1"/>
       <blockLeftPadding length="1"/>
@@ -114,9 +114,16 @@
       <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1"/>
       <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
       <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
-      <blockBackground colorName="#cccccc" start="0,0" stop="0,-1"/>
-      <blockBackground colorName="#cccccc" start="1,0" stop="1,-1"/>
-      <blockBackground colorName="#cccccc" start="2,0" stop="2,-1"/>
+      <blockBackground colorName="#280099" start="1,0" stop="1,-1"/>
+      <blockBackground colorName="#280099" start="2,0" stop="2,-1"/>
+      <blockTopPadding length="1"/>
+      <blockBottomPadding length="1"/>
+      <blockLeftPadding length="1"/>
+      <blockRightPadding length="1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table10">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
       <blockTopPadding length="1"/>
       <blockBottomPadding length="1"/>
       <blockLeftPadding length="1"/>
@@ -188,21 +195,27 @@
     <paraStyle name="P5" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P6" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P7" fontName="Helvetica" fontSize="2.0" leading="3"/>
-    <paraStyle name="P8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
-    <paraStyle name="P9" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
-    <paraStyle name="P10" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
-    <paraStyle name="P11" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="P8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0" textColor="#ffffff"/>
+    <paraStyle name="P9" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0" textColor="#ffffff"/>
+    <paraStyle name="P10" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0" textColor="#ffffff"/>
+    <paraStyle name="P11" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="6.0" spaceAfter="6.0" textColor="#ffffff"/>
     <paraStyle name="P12" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P13" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P14" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P15" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P16" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P17" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P18" fontName="Helvetica" fontSize="12.0" leading="15"/>
-    <paraStyle name="P19" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ff0000"/>
-    <paraStyle name="P20" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P21" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P22" fontName="Helvetica" fontSize="2.0" leading="3" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P15" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P16" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ffffff"/>
+    <paraStyle name="P17" fontName="Helvetica-Bold" fontSize="10.0" leading="13" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ffffff"/>
+    <paraStyle name="P18" fontName="Helvetica" fontSize="6.0" leading="8"/>
+    <paraStyle name="P19" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P20" fontName="Helvetica-Bold" fontSize="14.0" leading="17" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ff0000"/>
+    <paraStyle name="P21" fontName="Helvetica-Bold" fontSize="12.0" leading="15" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P22" fontName="Helvetica" fontSize="12.0" leading="15"/>
+    <paraStyle name="P23" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P24" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ff0000"/>
+    <paraStyle name="P25" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P26" fontName="Helvetica" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" textColor="#ff0000"/>
+    <paraStyle name="P27" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P28" fontName="Helvetica" fontSize="2.0" leading="3" spaceBefore="0.0" spaceAfter="6.0"/>
     <paraStyle name="Standard" fontName="Helvetica"/>
     <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
     <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
@@ -416,39 +429,42 @@
         </tr>
       </blockTable>
     </section>
-    <blockTable colWidths="331.0,93.0,113.0" style="Table5">
+    <blockTable colWidths="331.0,94.0,113.0" style="Table5">
       <tr>
         <td>
-          <para style="P4">
-            <font color="white"> </font>
-          </para>
+          <para style="P15">[['']]</para>
         </td>
         <td>
-          <para style="P15">Total/总货值 :</para>
+          <para style="P16">Total/总货值 :</para>
         </td>
         <td>
-          <para style="P16">[[ o.pricelist_id.currency_id. symbol ]][[ formatLang(o.amount_total, digits=get_digits(dp='Account') ) ]] </para>
+          <para style="P17">[[ o.pricelist_id.currency_id. symbol ]][[ formatLang(o.amount_total, digits=get_digits(dp='Account') ) ]] </para>
+        </td>
+      </tr>
+    </blockTable>
+    <para style="P18">
+      <font color="white"> </font>
+    </para>
+    <blockTable colWidths="260.0,279.0" style="Table10">
+      <tr>
+        <td>
+          <para style="P19">TOTAL AMOUNT IN FIGURES: 数字版总货值</para>
+        </td>
+        <td>
+          <para style="P20">[[ o.pricelist_id.currency_id.name ]] [[ formatLang(o.amount_total, digits=get_digits(dp='Account') ) ]] </para>
         </td>
       </tr>
     </blockTable>
     <para style="P7">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="210.0,329.0" style="Table2">
+    <blockTable colWidths="247.0,291.0" style="Table2">
       <tr>
         <td>
-          <para style="P17">TOTAL AMOUNT IN FIGURES: 数字版总货值</para>
+          <para style="P19">TOTAL AMOUNT IN WORDS: 文字版总货值</para>
         </td>
         <td>
-          <para style="P16">[[ o.pricelist_id.currency_id.name ]] [[ formatLang(o.amount_total, digits=get_digits(dp='Account') ) ]] </para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P17">TOTAL AMOUNT IN WORDS: 文字版总货值</para>
-        </td>
-        <td>
-          <para style="P16">[[ o.pricelist_id.currency_id.name ]] [[number2words_en(o.amount_total)]] ONLY.</para>
+          <para style="P21">[[ o.pricelist_id.currency_id.name ]] [[number2words_en(o.amount_total)]] ONLY.</para>
         </td>
       </tr>
     </blockTable>
@@ -458,149 +474,152 @@
     <blockTable colWidths="539.0" style="Table6">
       <tr>
         <td>
-          <para style="P18">PROCUREMENT CONDITIONS 交易条件</para>
+          <para style="P22">PROCUREMENT CONDITIONS 交易条件</para>
         </td>
       </tr>
     </blockTable>
     <para style="P7">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="194.0,344.0" style="Table4">
+    <blockTable colWidths="153.0,385.0" style="Table4">
       <tr>
         <td>
-          <para style="P4">A. DELIVERY DATES/交货日期:</para>
+          <para style="P23">A. DELIVERY DATES/交货日期:</para>
         </td>
         <td>
-          <para style="P19">[[o.deliver_memo]]</para>
+          <para style="P24">[[o.deliver_memo]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">B. DELIVERY TERMS/交易方式:</para>
+          <para style="P23">B. DELIVERY TERMS/交易方式:</para>
         </td>
         <td>
-          <para style="P4">[[o.incoterm_id.name]]</para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P4">C. PAYMENT TERMS/付款方式:</para>
-        </td>
-        <td>
-          <para style="P4">[[o.payment_term_id.name]]</para>
+          <para style="P23">[[o.incoterm_id.name]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">D. SHIPMENT TYPE/运输方式:</para>
+          <para style="P23">C. PAYMENT TERMS/付款方式:</para>
         </td>
         <td>
-          <para style="P4">[[o.ship_type.name]]</para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P4">E. CERTIFICATIONS/证书:</para>
-        </td>
-        <td>
-          <para style="P4">[[o.certs]]</para>
+          <para style="P23">[[o.payment_term_id.name]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">F. QUALITY CONTROL REQUIREMENTS/验货要求:</para>
+          <para style="P23">D. SHIPMENT TYPE/运输方式:</para>
         </td>
         <td>
-          <para style="P4">[[o.qc_requirement]]</para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P4">G. LOADING CONTROL REQUIREMENTS/装柜要求:</para>
-        </td>
-        <td>
-          <para style="P4">[[o.load_control]]</para>
+          <para style="P23">[[o.ship_type.name]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">H. PENALTIES ON DELAYS/交期延期的惩罚:</para>
+          <para style="P23">E. CERTIFICATIONS/证书:</para>
         </td>
         <td>
-          <para style="P4">[[o.penalties_on_delays]]</para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P4">I. DISCREPANCY/不符:</para>
-        </td>
-        <td>
-          <para style="P4">[[o.discrepancy]]</para>
+          <para style="P23">[[o.certs]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">J. DISPUTE/争议:</para>
+          <para style="P23">F. QUALITY CONTROL REQUIREMENTS/验货要求:</para>
         </td>
         <td>
-          <para style="P4">[[o.disputes]]</para>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <para style="P4">K. DOCUMENTS EXPORT/出口文件:</para>
-        </td>
-        <td>
-          <para style="P4">[[o.doc_export]]</para>
+          <para style="P23">[[o.qc_requirement]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">L. CONFIRMATION/回执:</para>
+          <para style="P23">G. LOADING CONTROL REQUIREMENTS/装柜要求:</para>
         </td>
         <td>
-          <para style="P4">[[o.confirmation]]</para>
+          <para style="P23">[[o.load_control]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P23">H. PENALTIES ON DELAYS/交期延期的惩罚:</para>
+        </td>
+        <td>
+          <para style="P23">[[o.penalties_on_delays]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P23">I. DISCREPANCY/不符:</para>
+        </td>
+        <td>
+          <para style="P23">[[o.discrepancy]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P23">J. DISPUTE/争议:</para>
+        </td>
+        <td>
+          <para style="P23">[[o.disputes]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P23">K. DOCUMENTS EXPORT/出口文件:</para>
+        </td>
+        <td>
+          <para style="P23">[[o.doc_export]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="P23">L. CONFIRMATION/回执:</para>
+        </td>
+        <td>
+          <para style="P23">[[o.confirmation]]</para>
         </td>
       </tr>
     </blockTable>
-    <para style="P20">
+    <para style="P25">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="539.0" repeatRows="1" style="Table9">
+    <blockTable colWidths="66.0,472.0" repeatRows="1" style="Table9">
       <tr>
         <td>
-          <para style="P21">M. Signature is required as order confirmationm, once the order is confirmed, it cannot be canceled under any circunstances. 签字起合同确认，一旦合同达成，任何条件下都不能更改</para>
+          <para style="P26">M. CANCELLATION:</para>
+        </td>
+        <td>
+          <para style="P26">ONCE THE ORDER IS CONFIRMED BY SIGNATURE, IT CANNOT BE CANCELED UNDER ANY CIRCUNSTANCES. 签字起合同确认，一旦合同达成，任何条件下都不能更改</para>
         </td>
       </tr>
     </blockTable>
     <para style="P7">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="195.0,344.0" repeatRows="1" style="Table8">
+    <blockTable colWidths="66.0,473.0" repeatRows="1" style="Table8">
       <tr>
         <td>
-          <para style="P4">N. ARTWORKS/文稿:</para>
+          <para style="P23">N. ARTWORKS/文稿:</para>
         </td>
         <td>
-          <para style="P4">[[o.artworks]]</para>
+          <para style="P23">[[o.artworks]]</para>
         </td>
       </tr>
       <tr>
         <td>
-          <para style="P4">REMARKS/附录:</para>
+          <para style="P23">REMARKS/附录:</para>
         </td>
         <td>
-          <para style="P4">[[o.notes]]</para>
+          <para style="P23">[[o.notes]]</para>
         </td>
       </tr>
     </blockTable>
-    <para style="P20">
+    <para style="P25">
       <font color="white"> </font>
     </para>
     <blockTable colWidths="539.0" repeatRows="1" style="Table3">
       <tr>
         <td>
-          <para style="P21">---------------------------------------------------------------------------------------------------------------------------------------------------------</para>
+          <para style="P27">---------------------------------------------------------------------------------------------------------------------------------------------------------</para>
         </td>
       </tr>
     </blockTable>
@@ -610,7 +629,7 @@
     <blockTable colWidths="83.0,152.0,65.0,129.0,110.0" repeatRows="1" style="Table1">
       <tr>
         <td>
-          <para style="P21">BUYER / 买方:</para>
+          <para style="P27">BUYER / 买方:</para>
         </td>
         <td>
           <para style="P4">[[o.company_id.name]]</para>
@@ -629,8 +648,8 @@
       </tr>
       <tr>
         <td>
-          <para style="P21">Authorized signature</para>
-          <para style="P21">授权签字</para>
+          <para style="P27">Authorized signature</para>
+          <para style="P27">授权签字</para>
         </td>
         <td>
           <para style="P4">
@@ -638,13 +657,13 @@
           </para>
         </td>
         <td>
-          <para style="P21">
+          <para style="P27">
             <font color="white"> </font>
           </para>
         </td>
         <td>
-          <para style="P21">Authorized signature</para>
-          <para style="P21">授权签字</para>
+          <para style="P27">Authorized signature</para>
+          <para style="P27">授权签字</para>
         </td>
         <td>
           <para style="P4">
@@ -653,7 +672,7 @@
         </td>
       </tr>
     </blockTable>
-    <para style="P22">
+    <para style="P28">
       <font color="white"> </font>
     </para>
   </story>
