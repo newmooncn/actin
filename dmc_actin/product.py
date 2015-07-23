@@ -64,6 +64,41 @@ class product_product(osv.osv):
 		'seller_lead_time': fields.integer('Leadtime'),
 		'quote_validity': fields.integer('Quotation validity')
 	}
-#	_defaults = {'type':'service'}
+	#For ACTIN, product code must be entered manually
+	_defaults = {'default_code':''}
+	def create(self, cr, uid, vals, context=None):
+		if context is None:
+			context = {}
+		if not vals.get('default_code') or vals.get('default_code')=='/':
+			raise osv.except_osv('Error!', 'Product code is required for new product!')
+		return super(product_product, self).create(cr, uid, vals, context)
+	
+	def _check_write_vals(self,cr,uid,vals,ids=None,context=None):
+		if vals.get('default_code') and vals['default_code']:
+			vals['default_code'] = vals['default_code'].strip()
+			if ids:
+				product_id = self.search(cr, uid, [('default_code', '=', vals['default_code']),('id','not in',ids)])
+			else:
+				product_id = self.search(cr, uid, [('default_code', '=', vals['default_code'])])
+			if product_id:
+				raise osv.except_osv(_('Error!'), _('Product code must be unique!'))
+		if vals.get('cn_name'):
+			vals['cn_name'] = vals['cn_name'].strip()
+			if ids:
+				product_id = self.search(cr, uid, [('cn_name', '=', vals['cn_name']),('id','not in',ids)])
+			else:
+				product_id = self.search(cr, uid, [('cn_name', '=', vals['cn_name'])])
+			if product_id:
+				raise osv.except_osv(_('Error!'), _('Product Chinese Name must be unique!'))
+		#for ACTIN logic, the product name may be duplicated, the product code unique is enough
+#		if vals.get('name'):
+#			vals['name'] = vals['name'].strip()
+#			if ids:
+#				product_id = self.search(cr, uid, [('name', '=', vals['name']),('id','not in',ids)])
+#			else:
+#				product_id = self.search(cr, uid, [('name', '=', vals['name'])])
+#			if product_id:
+#				raise osv.except_osv(_('Error!'), _('Product Name must be unique!'))		
+		return True
 				
 product_product()
