@@ -1,0 +1,4 @@
+1.search image in TD, and replace by below text
+<image x="20" y="20" height="200" width="230">[[not o.image and removeParentNode('image')]][[ o.image ]]</image>
+
+2.replace all '165.0,373.0' with '166.0,373.0'

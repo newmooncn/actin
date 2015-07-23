@@ -60,5 +60,23 @@
             string="Debit Note"
             file="dmc_actin/report/debit_note.rml" 
         />
+<!-- Product sheet -->        
+        <report 
+            id="action_report_product_sheet"
+            model="product.product"
+            report_type="pdf"
+            name="product.sheet"
+            string="Product Sheet"
+            file="dmc_actin/report/product_sheet.rml" 
+        />
+<!-- Product sale offer -->        
+        <report 
+            id="action_report_sale_offer"
+            model="sale.order.line"
+            report_type="pdf"
+            name="sale.offer"
+            string="Sale Offer"
+            file="dmc_actin/report/sale_offer.rml" 
+        />
     </data>
 </openerp>

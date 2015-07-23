@@ -41,5 +41,16 @@ class sale_order(osv.osv):
 			resu['value'].update({'incoterm':customer.incoterm_id.id})
 		
 		return resu
-	
+	def print_sale_offer(self, cr, uid, ids, context=None):
+		line_ids = []
+		for so in self.browse(cr, uid, ids, context=context):
+			line_ids.extend([line.id for line in so.order_line])
+
+		datas = {
+				 'model': 'sale.order.line',
+				 'ids': line_ids,
+#				 'form': self.pool['sale.order.line'].read(cr, uid, line_ids[0], context=context),
+		}
+		return {'type': 'ir.actions.report.xml', 'report_name': 'sale.offer', 'datas': datas, 'nodestroy': True}
+		
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

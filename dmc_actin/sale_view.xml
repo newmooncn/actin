@@ -38,6 +38,8 @@
             		<attribute name="invisible">1</attribute>
             	</xpath>
             	<button name="action_cancel" position="before">
+            		<button name="print_sale_offer" string="Print" type="object" groups="base.group_user"
+            		attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
             		<button name="%(sale.report_sale_order)d" string="Print" type="action" groups="base.group_user"
             		attrs="{'invisible':[('state','in',['draft','sent','cancel'])]}"/>
             	</button>

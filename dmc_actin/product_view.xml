@@ -31,6 +31,12 @@
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
             <data>
+            	<!-- print button -->
+                <xpath expr="//div[@name='buttons']" position="inside">
+                   <button class="oe_inline oe_stat_button" name="%(action_report_product_sheet)d" type="action"
+                       string="Product Sheet" icon="fa-file-pdf-o"/>
+                </xpath>
+            	
             	<!-- hide suppplier list, list price -->
             	<field name='seller_ids' position="attributes">
             		<attribute name="invisible">1</attribute>
