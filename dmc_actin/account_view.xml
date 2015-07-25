@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>	
+<!-- ACTIN BANK JOURNAL -->    
+    <!-- add separate menu for ACTIN, based on the liquidity menu -->		            	        
+        <menuitem
+            id="menu_actin_bank_journal"
+            action="dmp_account_rpt_account.rpt_account_cn_detail_money_action"
+            groups="account.group_account_user"
+			parent="account.menu_finance_reports" 
+            sequence="1"
+           />
+        
+        <record model="ir.ui.view" id="view_actin_bank_journal">
+            <field name="name">view_actin_bank_journal</field>
+            <field name="model">rpt.account.cn</field>
+            <field name="inherit_id" ref="dmp_account_rpt_account.rpt_account_cn_detail_money_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='rpt_lines']//field[@name='seq']" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</xpath>
+            	<xpath expr="//field[@name='rpt_lines']//field[@name='aml_account_id']" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</xpath>
+            </field>
+		</record>    
+	           
+<!-- 		
+		<menuitem id="menu_actin_finance_report" 
+			name="ACTIN FINANCE REPORT" 
+			parent="account.menu_finance_reports" 
+			groups="account.group_account_user" 
+			sequence="2"/> -->	
+    </data>
+</openerp>

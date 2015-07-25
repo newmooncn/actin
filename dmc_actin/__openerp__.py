@@ -30,10 +30,10 @@ certs, qc_memo, load_memo,
 * Sales Order: PDF  
     """,
     'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'dmp_product',
-                'dmp_prod_supplier', 'dm_options', 'dmp_account_pay_invoice'],
+                'dmp_prod_supplier', 'dm_options', 'dmp_account_pay_invoice', 'dmp_account_rpt_account'],
     'data':['report.xml', 'product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
             'purchase_view.xml', 'sale_view.xml', 'invoice_view.xml',
-            'packing_view.xml','invoice_refund.xml'],
+            'packing_view.xml','invoice_refund.xml','account_view.xml'],
     'auto_install': False,
     'installable': True
 
