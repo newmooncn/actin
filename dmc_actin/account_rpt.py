@@ -54,7 +54,7 @@ class account_rpt(osv.osv):
         'po_inv_date': fields.date('Factory Invoice Date'),        
         'po_inv_amount': fields.float('Factory Invoice Amount', digits_compute= dp.get_precision('Account')),
                 
-        'so_incoterm_id': fields.many2one('stock.incoterm','Incoterm'),
+        'so_incoterm_id': fields.many2one('stock.incoterms','Incoterm'),
 
         'trans_sf_partner_id': fields.many2one('res.partner','TPS Company'),
         'trans_sf_amount': fields.float('TPS Sea Freight amount', digits_compute= dp.get_precision('Account')),  
@@ -116,7 +116,7 @@ qc.partner_id as qc_partner_id,
 qc.amount_total as qc_amount,
 qc.date_invoice as qc_date,
 
-(so_inv.amount_total - po_inv.amount_total - trans_sf.amount_total - trans_dc.amount_total - qc.amount_total) as sale_margin
+(coalesce(so_inv.amount_total,0) - coalesce(po_inv.amount_total,0) - coalesce(trans_sf.amount_total,0) - coalesce(trans_dc.amount_total,0) - coalesce(qc.amount_total,0)) as sale_margin
 
 --so.name,po.name,so_inv.name,trans_sf.name,trans_dc.name,qc.name
 
