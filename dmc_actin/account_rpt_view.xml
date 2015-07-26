@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_account_rpt_tree" model="ir.ui.view">
+        <field eval="1" name="priority"/>
+        <field name="name">account.rpt.tree</field>
+        <field name="model">account.rpt</field>
+        <field name="arch" type="xml">
+            <tree string="Finance Report" create="false" delete="false" edit="false">                       
+                <field name="id" invisible="1"/>
+                <field name="so_id" invisible="1"/>
+                <field name="ci_id" invisible="1"/>
+                <field name="po_id" invisible="1"/>
+                <field name="po_inv_id" invisible="1"/>
+                    
+                <field name="pi_date"/>
+                <field name="pi_name"/>
+                <field name="ci_date"/>
+                <field name="ci_name"/>
+                <field name="customer_id"/>
+                <field name="pi_note"/>
+                <field name="pi_amount"/>
+                <field name="ci_amount"/>
+
+                <field name="supplier_id"/>
+                <field name="po_date"/>
+                <field name="po_name"/>
+                <field name="po_amount"/>
+                <field name="po_inv_date"/>
+                <field name="po_inv_amount"/> 
+                    
+                <field name="so_incoterm_id"/>
+                
+                <field name="trans_sf_partner_id"/>
+                <field name="trans_sf_amount"/>
+                <field name="trans_sf_date"/>
+                <field name="trans_sf_date_pay"/>
+                    
+                <field name="trans_dc_amount"/>
+                <field name="trans_dc_date"/>
+                <field name="trans_dc_date_pay"/>
+                    
+                <field name="qc_partner_id"/>
+                <field name="qc_amount"/>
+                <field name="sale_margin"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_account_rpt_form" model="ir.ui.view">
+        <field eval="1" name="priority"/>
+        <field name="name">account.rpt.form</field>
+        <field name="model">account.rpt</field>
+        <field name="arch" type="xml">
+           <form string="Sales Order Kanban">
+           	    <group col="4">                 
+                <field name="id" invisible="1"/>
+                <field name="so_id"/>
+                <field name="ci_id"/>
+                <field name="po_id"/>
+                <field name="po_inv_id"/>
+                    
+                <field name="pi_date"/>
+                <field name="pi_name"/>
+                <field name="ci_date"/>
+                <field name="ci_name"/>
+                <field name="customer_id"/>
+                <field name="pi_note"/>
+                <field name="pi_amount"/>
+                <field name="ci_amount"/>
+
+                <field name="supplier_id"/>
+                <field name="po_date"/>
+                <field name="po_name"/>
+                <field name="po_amount"/>
+                <field name="po_inv_date"/>
+                <field name="po_inv_amount"/> 
+                    
+                <field name="so_incoterm_id"/>
+                
+                <field name="trans_sf_partner_id"/>
+                <field name="trans_sf_amount"/>
+                <field name="trans_sf_date"/>
+                <field name="trans_sf_date_pay"/>
+                    
+                <field name="trans_dc_amount"/>
+                <field name="trans_dc_date"/>
+                <field name="trans_dc_date_pay"/>
+                    
+                <field name="qc_partner_id"/>
+                <field name="qc_amount"/>
+                <field name="sale_margin"/>
+                </group>
+            </form>
+        </field>
+    </record>    
+    <record id="view_account_rpt_search" model="ir.ui.view">
+        <field name="name">account.rpt.search</field>
+        <field name="model">account.rpt</field>
+	    <field name="arch" type="xml">
+	        <search string="Search Finance Report">
+                <field name="so_id"/>
+	            <field name="ci_id"/>
+                <field name="po_id"/>
+                <field name="po_inv_id"/>
+                <field name="customer_id"/>
+                <field name="supplier_id"/>
+	       </search>
+	    </field>
+	</record>
+
+    <record id="action_account_rpt" model="ir.actions.act_window">
+        <field name="name">ACTIN Finance Report</field>
+        <field name="res_model">account.rpt</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_account_rpt_search"/>
+        <field name="view_id" ref="view_account_rpt_tree"/>
+    </record>
+    
+	<menuitem id="menu_account_rpt" action="action_account_rpt" sequence="1"
+			groups="account.group_account_user"
+			parent="account.menu_finance_reports"/>
+</data>
+</openerp>
