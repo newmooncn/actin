@@ -66,7 +66,7 @@ class purchase_order(osv.osv):
 									   "in exception.",
 								  select=True, copy=False),	
 		#link to sale order
-		'sale_id':fields.many2one('sale.order','Sales Offer')	
+		'sale_id':fields.many2one('sale.order','Sales Offer', copy=False)	
 	}
 	def onchange_partner_id(self, cr, uid, ids, partner_id, context=None):
 		resu = super(purchase_order, self).onchange_partner_id(cr, uid, ids, partner_id, context=context)

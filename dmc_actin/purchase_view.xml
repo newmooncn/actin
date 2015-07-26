@@ -71,6 +71,29 @@
 	           	</field>
             </field>
         </record>
+        
+       <record model="ir.ui.view" id="view_purchase_order_tree_actin">
+            <field name="name">view_purchase_order_tree_actin</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="after">
+            		<field name="sale_id"/>
+            	</field>
+            </field>
+        </record>     
+        
+        <record model="ir.ui.view" id="view_purchase_order_filter_actin">
+            <field name="name">view_purchase_order_filter_actin</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+            	<filter name="not_invoiced" position="after">
+            		<separator/>
+            		<field name="sale_id"/>
+            	</filter>
+            </field>
+        </record>
             	        
 <!-- menu to set ship type list -->
         <record id="action_option_list_ship_type" model="ir.actions.act_window">
