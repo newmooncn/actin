@@ -9,7 +9,9 @@
             <field name="arch" type="xml">
             	<field name='date_invoice' position='after'>
             		<field name='etd'/>
-            		<field name='eta'/>
+            		<field name='etd'/>
+            		<field name='ci_service_type'/>
+            		<field name='parent_id'/>
             	</field>  
             </field>
         </record>
@@ -36,6 +38,7 @@
             	</xpath>
             	<!-- invoice relationship -->
             	<field name="partner_id" position="after">
+            		<field name="ci_service_type"/>
             		<field name="parent_id"/>
             	</field>  
             	<page string='Payments' position="after">
@@ -51,6 +54,33 @@
             	</button>
             </field>
         </record>
-        
+    <!-- supplier invoice -->
+        <record model="ir.ui.view" id="view_invoice_supplier_form_actin">
+            <field name="name">view_invoice_supplier_form_actin</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+            	<!-- invoice relationship -->
+            	<field name="partner_id" position="after">
+            		<field name="ci_service_type"/>
+            		<field name="parent_id"/>
+            	</field>
+            </field>
+        </record>
+	<!-- add ci_service_type,parent_id searching --> 
+        <record model="ir.ui.view" id="view_account_invoice_filter_actin">
+            <field name="name">view_account_invoice_filter_actin</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+            	<!-- invoice relationship -->
+                <field name="period_id" position="after">
+                	<separator/>
+                	<field name="ci_service_type"/>
+                	<field name="parent_id"/>
+				</field>
+            </field>
+        </record>
+               
     </data>
 </openerp>

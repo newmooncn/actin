@@ -37,7 +37,11 @@ class account_invoice(models.Model):
 	etd = fields.Date('ETD')
 	eta = fields.Date('ETA')
 	#used for service invoice, related to the commercial invoice
-	parent_id = fields.Many2one('account.invoice', 'Related Invoice', select=True)	
+	ci_service_type = fields.Selection(selection=(('trans_sea','TPS Sea Freight'),
+												('trans_dc','TPS Destination charge'),
+												('quanlity','Quanlity control')),
+									string='Service type')	
+	parent_id = fields.Many2one('account.invoice', 'Commercial Invoice', select=True)	
 	child_ids = fields.One2many('account.invoice', 'parent_id', 'Service Invoices')
 	
 	@api.multi
