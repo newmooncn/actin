@@ -41,6 +41,7 @@ class invoice_print(rml_parser_ext):
         self.localcontext.update({
             'so': self.sale_order,
             'po': self.purchase_order,
+            'qty_total': self.qty_total,
         })
     def sale_order(self, inv):
         so = inv.sale_ids and inv.sale_ids[0] or False
@@ -57,6 +58,12 @@ class invoice_print(rml_parser_ext):
             #for supplier refund / debit note
             po = self.purchase_order(inv.origin_inv_id)
         return po
+    
+    def qty_total(self, inv):
+        qty = 0
+        for line in inv.invoice_line:
+            qty += line.quantity
+        return qty
 
 report_sxw.report_sxw('report.commercial.invoice.actin',
                       'account.invoice',

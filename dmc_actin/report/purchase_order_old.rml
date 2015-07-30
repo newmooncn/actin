@@ -122,6 +122,7 @@
       <lineStyle kind="LINEAFTER" colorName="#000000" start="2,0" stop="2,-1"/>
       <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
       <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <blockBackground colorName="#99ccff" start="0,0" stop="0,-1"/>
       <blockBackground colorName="#99ccff" start="1,0" stop="1,-1"/>
       <blockBackground colorName="#99ccff" start="2,0" stop="2,-1"/>
       <blockTopPadding length="1"/>
@@ -403,7 +404,7 @@
     <para style="P7">
       <font color="white"> </font>
     </para>
-    <blockTable colWidths="69.0,151.0,111.0,93.0,114.0" repeatRows="1" style="Table_Header_Pur_ord_Line">
+    <blockTable colWidths="104.0,265.0,52.0,54.0,63.0" repeatRows="1" style="Table_Header_Pur_ord_Line">
       <tr>
         <td>
           <para style="P9">ITEM NO. 编码</para>
@@ -424,7 +425,7 @@
     </blockTable>
     <section>
       <para style="P13">[[repeatIn(o.order_line,'line')]]</para>
-      <blockTable colWidths="68.0,151.0,111.0,94.0,113.0" style="Table_Order_Pur_line_Content">
+      <blockTable colWidths="103.0,264.0,52.0,54.0,64.0" style="Table_Order_Pur_line_Content">
         <tr>
           <td>
             <para style="P6">[[line.product_id.default_code]]</para>
@@ -444,7 +445,7 @@
         </tr>
       </blockTable>
     </section>
-    <blockTable colWidths="331.0,94.0,113.0" style="Table5">
+    <blockTable colWidths="421.0,54.0,62.0" style="Table5">
       <tr>
         <td>
           <para style="P16">[['']]</para>

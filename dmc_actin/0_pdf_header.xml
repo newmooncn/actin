@@ -3,11 +3,11 @@
 		<frame id="first" x1="1.3cm" y1="3.0cm" height="24.7cm" width="19.0cm" />
 		<stylesheet>
 			<!-- Set here the default font to use for all <para> tags -->
-			<paraStyle name='Normal' fontName="MicrosoftYaHei" />
+			<paraStyle name='Normal' fontName="MicrosoftYaHei-Bold" />
 			<paraStyle name="main_footer" fontSize="8.0" alignment="CENTER" />
-			
+			<paraStyle name="sub_footer" fontSize="8.0" alignment="CENTER" fontName="Helvetica-Oblique" />			
 			<paraStyle name="main_header" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" />
-			<paraStyle name="main_title" fontSize="18.0" alignment="CENTER"/>
+			<paraStyle name="main_title" fontSize="20.0" alignment="CENTER"/>
 		</stylesheet>
 		<pageGraphics>
 			<!-- Set here the default font to use for all <drawString> tags -->
@@ -20,10 +20,10 @@
 			<stroke color="#333399"/>
 			<lineMode width="2" />
 			<lines>1.3cm 27.7cm 20cm 27.7cm</lines>
-			<place x="2.3cm" y="28.9cm" height="0.5cm" width="17.0cm">				
+			<place x="2.3cm" y="29.0cm" height="0.5cm" width="17.0cm">				
 				<para style="main_title"><font color="#333399">[[ company.name ]]</font></para>
 			</place>
-			<place x="2.3cm" y="27.9cm" height="0.8cm" width="17.0cm">
+			<place x="2.3cm" y="27.8cm" height="0.8cm" width="17.0cm">
 				<para style="main_header">[[ display_address(company.partner_id) or '' ]]</para>
 				<para style="main_header">Email:[[company.email]]. Tel:[[company.phone]]. Fax:[[company.fax]].</para>
 			</place>
@@ -35,6 +35,9 @@
 			<fill color="black" />
 			<rotate degrees="-90" />
 
+			<place x="1.3cm" y="0.6cm" height="1.55cm" width="19.0cm">				
+				<para style="sub_footer">[[not(o and o._name == 'account.invoice') and removeParentNode('para')]]* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any circunstances.</para>
+			</place>
 			<!--page bottom -->
 			<lines>1.2cm 1.65cm 19.9cm 1.65cm</lines>
 			<place x="1.3cm" y="0cm" height="1.55cm" width="19.0cm">
