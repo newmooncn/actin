@@ -372,7 +372,7 @@
           <para style="P6">[[formatLang(o.date_order,date=True) ]]</para>
         </td>
         <td>
-          <para style="P6">Port of discharg/卸货港</para>
+          <para style="P6">Port of discharge/卸货港</para>
         </td>
         <td>
           <para style="P6">[[o.port_discharge_id.name]]</para>

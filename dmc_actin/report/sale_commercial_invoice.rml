@@ -343,7 +343,7 @@
           <para style="P4">[[so(o).client_order_ref]]</para>
         </td>
         <td>
-          <para style="P4">Port of discharg</para>
+          <para style="P4">Port of discharge</para>
         </td>
         <td>
           <para style="P4">[[so(o).port_discharge_id.name]]</para>

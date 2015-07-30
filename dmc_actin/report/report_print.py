@@ -30,10 +30,23 @@ report_sxw.report_sxw('report.purchase.order.actin',
                       'addons/dmc_actin/report/purchase_order.rml',
                       parser=rml_parser_ext)
 
+class pi_print(rml_parser_ext):
+    def __init__(self, cr, uid, name, context):
+        super(pi_print, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({
+            'qty_total': self.qty_total,
+        })
+        
+    def qty_total(self, order):
+        qty = 0
+        for line in order.order_line:
+            qty += line.product_uom_qty
+        return qty
+    
 report_sxw.report_sxw('report.proforma.invoice.actin',
                       'sale.order',
                       'addons/dmc_actin/report/sale_order.rml',
-                      parser=rml_parser_ext)
+                      parser=pi_print)
 
 class invoice_print(rml_parser_ext):
     def __init__(self, cr, uid, name, context):
