@@ -424,7 +424,7 @@
     </blockTable>
     <section>
       <para style="P13">[[repeatIn(o.order_line,'line')]]</para>
-      <blockTable colWidths="69.0,151.0,111.0,93.0,114.0" style="Table_Order_Pur_line_Content">
+      <blockTable colWidths="68.0,151.0,111.0,94.0,113.0" style="Table_Order_Pur_line_Content">
         <tr>
           <td>
             <para style="P6">[[line.product_id.default_code]]</para>
@@ -444,7 +444,7 @@
         </tr>
       </blockTable>
     </section>
-    <blockTable colWidths="331.0,93.0,114.0" style="Table5">
+    <blockTable colWidths="331.0,94.0,113.0" style="Table5">
       <tr>
         <td>
           <para style="P16">[['']]</para>
