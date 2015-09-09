@@ -5,7 +5,8 @@
 			<!-- Set here the default font to use for all <para> tags -->
 			<paraStyle name='Normal' fontName="MicrosoftYaHei-Bold" />
 			<paraStyle name="main_footer" fontSize="8.0" alignment="CENTER" />
-			<paraStyle name="sub_footer" fontSize="8.0" alignment="CENTER" fontName="Helvetica-Oblique" />			
+			<paraStyle name="sub_footer" fontSize="8.0" alignment="RIGHT" fontName="Helvetica-Oblique" />	
+			<paraStyle name="sub_footer_cn" fontSize="6.0" alignment="RIGHT" fontName="Helvetica" />				
 			<paraStyle name="main_header" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0" />
 			<paraStyle name="main_title" fontSize="20.0" alignment="CENTER"/>
 		</stylesheet>
@@ -35,8 +36,9 @@
 			<fill color="black" />
 			<rotate degrees="-90" />
 
-			<place x="1.3cm" y="0.6cm" height="1.55cm" width="19.0cm">				
-				<para style="sub_footer">[[not(o and o._name == 'account.invoice') and removeParentNode('para')]]* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any circunstances.</para>
+			<place x="1.3cm" y="0.6cm" height="1.55cm" width="18.5cm">				
+				<para style="sub_footer">[[not(o and ((o._name == 'account.invoice' and o.type in('out_invoice', 'out_refund')) or o._name == 'sale.order')) and removeParentNode('para')]]* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any circunstances.</para>
+				<para style="sub_footer_cn">[[not(o and (o._name == 'account.invoice' and o.type in('in_invoice', 'in_refund'))) and removeParentNode('para')]]* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any circunstances. 签字起合同确认，一旦合同达成，任何条件下都不能更改</para>
 			</place>
 			<!--page bottom -->
 			<lines>1.2cm 1.65cm 19.9cm 1.65cm</lines>

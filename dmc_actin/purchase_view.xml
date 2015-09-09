@@ -63,7 +63,7 @@
             	</button>
             <!-- 'Convert to Sales Offer' button -->     
 	           	<button name='purchase_confirm' position="before">
-	           		<button name="gen_sale_order" string="Generate Sales Offer" type="object" 
+	           		<button name="gen_sale_order" string="Generate Proforma Invoice" type="object" 
 	           			attrs="{'invisible':['|',('state','not in',('draft','sent','bid','approved')), ('sale_id','!=',False)]}"/>
 	           	</button> 
 	           	<field name='date_order' position='after'>
