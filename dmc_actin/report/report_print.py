@@ -35,13 +35,31 @@ class pi_print(rml_parser_ext):
         super(pi_print, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'qty_total': self.qty_total,
+            'qty_total_uom': self.qty_total_uom,
         })
         
     def qty_total(self, order):
         qty = 0
+        uoms = {}
         for line in order.order_line:
             qty += line.product_uom_qty
+            if line.product_uom.id not in uoms:
+                uoms[line.product_uom.id] = line.product_uom.name
+        
         return qty
+        
+    def qty_total_uom(self, order):
+        uoms = {}
+        for line in order.order_line:
+            if line.product_uom.id not in uoms:
+                uoms[line.product_uom.id] = line.product_uom.name
+        
+#        uom uoms.keys
+#        print len(uoms.keys)
+        if len(uoms) == 1:
+            return uoms.values()[0]
+        else:
+            return ''
     
 report_sxw.report_sxw('report.proforma.invoice.actin',
                       'sale.order',
