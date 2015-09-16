@@ -23,7 +23,25 @@
             	</field> -->
             </field>
         </record>
+
+		<!-- Product on stock  -->
+		<record id="view_stock_product_tree_actin" model="ir.ui.view">
+            <field name="name">view_stock_product_tree_actin</field>
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="stock.view_stock_product_tree"/>
+            <field name="arch" type="xml">
+            	<!-- hide quantity fields -->
+            	<field name='qty_available' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field> 
+            	<field name='virtual_available' position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</field> 
+            </field>
+        </record>
         
+                
 		<record id="product_normal_form_view_actin" model="ir.ui.view">
             <field name="name">product_normal_form_view_actin</field>
             <field name="model">product.product</field>
@@ -64,7 +82,7 @@
                      </group>    
                      <group attrs="{'invisible':[('type','=','service')]}">
                      	<group>                  
-                         <field name="dimension"/>
+                         <field name="dimension" on_change="onchange_dimension(dimension,'volume')"/>
                          <field name="pack_type"/>
                          <field name="pack_type_memo"/>
                         </group>
@@ -74,13 +92,13 @@
                          <field name="weight_net"/>
                         </group>
                      	<group>
-                         <field name="pack_out_dimension"/>
+                         <field name="pack_out_dimension" on_change="onchange_dimension(pack_out_dimension,'pack_out_volume')"/>
                          <field name="pack_out_volume"/>
                          <field name="pack_out_nw"/>
                          <field name="pack_out_gw"/>
                         </group>
                      	<group>                         
-                         <field name="pack_inner_dimension"/>
+                         <field name="pack_inner_dimension" on_change="onchange_dimension(pack_inner_dimension,'pack_inner_volume')"/>
                          <field name="pack_inner_volume"/>
                          <field name="pack_inner_nw"/>
                          <field name="pack_inner_gw"/>
@@ -97,6 +115,7 @@
                         </group>
                      	<group>
                          <field name="hs_code"/>
+                         <field name="hs_code_tax_rate"/>
                         </group>
                      </group>
                      <label for='additional_comments'/>
@@ -106,9 +125,77 @@
                 <!-- <field name='type' position='attributes'>
                 	<attribute name='invisible'>True</attribute>
                 </field> -->
+                <!-- move supplier info to top of procurement page -->
+                <xpath expr="//page[@string='Procurements']//separator[@string='Suppliers']" position="replace">
+                </xpath>
+                <field name="seller_ids" position="replace">
+                </field>
+                <group name="procurement" position="before">
+                	<separator string="Suppliers"/>
+                	<field name="seller_ids" invisible="1"/>
+                </group>
+                
+                <!-- change months to days -->
+                <group name="sale_condition" position="replace">
+	                <group name="sale_condition" string="Sale Conditions" colspan="3">
+	                    <label for="warranty"/>
+	                    <div>
+	                        <field name="warranty" class="oe_inline"/> year(s)
+	                    </div>
+	                </group> 
+                </group>
+                <xpath expr="//group[@name='procurement']/group[@name='general']" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </xpath> 
+                <xpath expr="//group[@name='procurement']/group[@name='procurement_uom']" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </xpath>   
+                <!-- move inventory page to last -->
+                <page string="Inventory" position="replace"></page>
+                <xpath expr="//notebook" position="inside">
+                   <page string="Inventory">
+                       <group name="inventory">
+                            <group name="status" string="Status">
+                               <field name="state"/>
+                               <field name="product_manager"/>
+                           </group>
+                           <group name="weight" string="Weights" attrs="{'invisible':[('type','=','service')]}">
+                               <field digits="(14, 3)" name="volume"/>
+                               <field name="weight"/>
+                               <field name="weight_net"/>
+                           </group>
+                       </group>
+                       <group name="packaging" string="Packaging" attrs="{'invisible':[('type','=','service')]}" groups="product.group_stock_packaging" colspan="4">
+                           <field name="packaging_ids" string="Configurations" context="{'tree_view_ref':'product.product_packaging_tree_view_product', 'form_view_ref': 'product.product_packaging_form_view_without_product'}"/>
+                       </group>
+                   </page>
+                </xpath>
+                <!-- hide account page -->
+                <page string="Accounting" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </page>   
+                
             </data>
             </field>
 		</record>
+		<record id="view_template_property_form_actin" model="ir.ui.view">
+            <field name="name">view_template_property_form_actin</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.view_template_property_form"/>
+            <field name="arch" type="xml">
+            	<group string="Supply Chain Information" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</group> 
+                <!-- hide sale_delay in stock -->
+                <label for="sale_delay" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </label>
+                <field name="sale_delay" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </field>   
+            </field>
+        </record>
+        
 <!-- Add supplier info -->
 		<record id="product_normal_form_view_supplier_actin" model="ir.ui.view">
             <field name="name">product_normal_form_view_supplier_actin</field>
@@ -116,13 +203,49 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="dmp_prod_supplier.product_normal_form_view_supplier"/>
             <field name="arch" type="xml">
-            <data>		
-            	<field name="seller_product_name" position="after">
-            		<field name="moq"/>
-            		<field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}"/>
-            		<field name="seller_sample_lead_time" attrs="{'invisible':[('type','=','service')]}"/>
-            		<field name="seller_lead_time"/>
-            		<field name="quote_validity"/>            		
+            <data>	 
+            	<group name="main_supplier" position="after">
+            		<group>
+	            	<group name="main_supplier">
+	                    <label for="standard_price"/>
+	                    <div>
+	                        <field name="standard_price" class="oe_inline" style="vertical-align:baseline"/>
+	                        <field name="standard_price_curr_id" class="oe_inline" style="vertical-align:baseline"/>
+	                    </div>
+	                    <field name="incoterm_id"/>
+	                    <field name="port_load"/>
+	                    <field name="moq"/>  
+            			<field name="uom_po_id"/>    
+	            		
+	            	</group>
+	            	<group name="main_supplier">
+            			<field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}"/>       		
+	                    <label for="seller_sample_lead_time"/>
+	                    <div>
+	                        <field name="seller_sample_lead_time" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> days
+	                    </div>                    
+	                    <label for="seller_lead_time"/>
+	                    <div>
+	                        <field name="seller_lead_time" class="oe_inline" style="vertical-align:baseline"/> days
+	                    </div>	
+            			<field name="quote_validity"/>           		
+	            	</group>
+	            	</group>            		
+            	</group>
+            </data>
+           	</field>
+        </record>
+        
+<!-- Add customer info -->
+		<record id="product_customerinfo_tree_view_actin" model="ir.ui.view">
+            <field name="name">product_customerinfo_tree_view_actin</field>
+            <field name="model">product.customerinfo</field>
+            <field name="inherit_id" ref="dmp_prod_customer.product_customerinfo_tree_view"/>
+            <field name="arch" type="xml">
+            <data>	 
+            	<field name="price" position="after">
+            		<field name="payment_term_id"/>
+            		<field name="port_discharge"/>
             	</field>
             </data>
            	</field>

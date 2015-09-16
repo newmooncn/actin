@@ -22,3 +22,79 @@ msgstr ""
 #: field:sale.order,client_order_ref:0
 msgid "Reference/Description"
 msgstr "Customer PO REF"
+
+#. module: product
+#: field:product.template,default_code:0
+msgid "Internal Reference"
+msgstr "Internal Product Reference"
+
+#. module: product
+#: field:product.template,name:0
+msgid "Name"
+msgstr "Internal Product Description"
+
+#. module: dmp_prod_supplier
+#: field:product.product,seller_product_name:0
+msgid "Supplier Product Name"
+msgstr "Supplier Product Reference"
+
+#. module: dmp_prod_customer
+#: field:product.product,customer_product_code:0
+msgid "Customer Product Code"
+msgstr "Customer Product Reference"
+
+#. module: dmp_prod_customer
+#: field:product.product,customer_product_name:0
+msgid "Customer Product Name"
+msgstr "Customer Product Description"
+
+#. module: dmp_prod_customer
+#: field:product.customerinfo,product_code:0
+msgid "Customer Product Code"
+msgstr "Customer Product Reference"
+
+#. module: dmp_prod_customer
+#: field:product.customerinfo,delay:0
+msgid "Delivery Lead Time"
+msgstr "Delivery Lead Time (days)"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Information"
+msgstr "Technical Informations"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Procurements"
+msgstr "Purchase informations"
+
+#. module: dmp_prod_supplier
+#: field:product.product,seller_id:0
+msgid "Main Supplier"
+msgstr "Supplier"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Sales"
+msgstr "Sales informations"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Sale Conditions"
+msgstr "Sales Conditions"
+
+#. module: product
+#: model:product.price.type,name:product.standard_price
+#: field:product.template,standard_price:0
+msgid "Cost Price"
+msgstr "Buying Price"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Description for Suppliers"
+msgstr "Supplier Product Description"
+
+#. module: product
+#: view:product.template:product.product_template_form_view
+msgid "Description for Quotations"
+msgstr "Customer Product Description"

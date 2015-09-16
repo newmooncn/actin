@@ -26,7 +26,7 @@ import openerp.addons.decimal_precision as dp
 class product_product(osv.osv):
 	_inherit = "product.product"
 	_columns = {
-		'tech_data':  fields.text('Technical data'),
+		'tech_data':  fields.text('Technical specifications'),
 		'certificate': fields.text('Certifications'),
 		'labor': fields.text('Laboratory'),
 		
@@ -55,14 +55,22 @@ class product_product(osv.osv):
 		'qty_40hq': fields.integer('Quantity per 40''HQ'),
 		
 		'hs_code': fields.char('HS code', size=32),
+		'hs_code_tax_rate': fields.float('Tax rate', size=32),
 		'additional_comments':fields.text('Additional comments'),
 		
 		#for factory/supplier
 		'moq': fields.integer('MOQ'),
-		'seller_sample_price': fields.float('Samle price'),
+		'seller_sample_price': fields.float('Sample price'),
 		'seller_sample_lead_time': fields.integer('Sample lead time'),
 		'seller_lead_time': fields.integer('Leadtime'),
-		'quote_validity': fields.integer('Quotation validity')
+		'quote_validity': fields.integer('Quotation validity'),
+		
+		#currency for cost price
+		'standard_price_curr_id': fields.many2one('res.currency', 'Currency',),
+		
+		#fields for supplier
+		'incoterm_id': fields.many2one('stock.incoterms', 'Incoterm'),
+		'port_load': fields.many2one('option.list','Loading Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),			
 	}
 	#For ACTIN, product code must be entered manually
 	_defaults = {'default_code':''}
@@ -100,5 +108,21 @@ class product_product(osv.osv):
 #			if product_id:
 #				raise osv.except_osv(_('Error!'), _('Product Name must be unique!'))		
 		return True
+	
+	def onchange_dimension(self, cr, uid, ids, dimension, field_volume, context=None):
+		if dimension:
+			try:
+				volume = eval(dimension)
+			except Exception, e:
+				volume = 0.0
+		else:
+			volume = 0.0				
+		return {'value': {field_volume: volume}}	
 				
-product_product()
+
+class product_customerinfo(osv.osv):
+	_inherit = "product.customerinfo"
+	_columns = {
+		'payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),
+		'port_discharge': fields.many2one('option.list','Destination Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),
+    }
