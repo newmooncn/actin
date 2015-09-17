@@ -217,13 +217,6 @@
             	<button name="action_view_routes" position="attributes">
             		<attribute name="invisible">1</attribute>
             	</button> 
-                <!-- hide sale_delay in stock -->
-                <label for="sale_delay" position="attributes">
-            		<attribute name="invisible">1</attribute>                	
-                </label>
-                <field name="sale_delay" position="attributes">
-            		<attribute name="invisible">1</attribute>                	
-                </field>   
             </field>
         </record>     
         
