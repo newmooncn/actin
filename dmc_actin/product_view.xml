@@ -53,6 +53,10 @@
                 <xpath expr="//div[@name='buttons']" position="inside">
                    <button class="oe_inline oe_stat_button" name="%(action_report_product_sheet)d" type="action"
                        string="Product Sheet" icon="fa-file-pdf-o"/>
+                   <button class="oe_inline oe_stat_button" name="%(action_product_sale_offer)d" type="action"
+                       string="Customer Sales Offer" icon="fa-file-pdf-o"/>
+                   <button class="oe_inline oe_stat_button" name="%(action_report_factory_quotation)d" type="action"
+                       string="Factory Product Quotation" icon="fa-file-pdf-o"/>
                 </xpath>
             	
             	<!-- hide suppplier list, list price -->
@@ -195,6 +199,33 @@
                 </field>   
             </field>
         </record>
+        <!-- hide top right inventory buttons -->
+		<record id="product_form_view_procurement_button_actin" model="ir.ui.view">
+            <field name="name">product_form_view_procurement_button_actin</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+            <field name="arch" type="xml">            
+            	<button name="%(stock.product_open_quants)d" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</button> 
+            	<button name="%(stock.act_product_stock_move_open)d" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</button> 
+            	<button name="%(stock.product_open_orderpoint)d" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</button> 
+            	<button name="action_view_routes" position="attributes">
+            		<attribute name="invisible">1</attribute>
+            	</button> 
+                <!-- hide sale_delay in stock -->
+                <label for="sale_delay" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </label>
+                <field name="sale_delay" position="attributes">
+            		<attribute name="invisible">1</attribute>                	
+                </field>   
+            </field>
+        </record>     
         
 <!-- Add supplier info -->
 		<record id="product_normal_form_view_supplier_actin" model="ir.ui.view">
@@ -213,9 +244,9 @@
 	                        <field name="standard_price_curr_id" class="oe_inline" style="vertical-align:baseline"/>
 	                    </div>
 	                    <field name="incoterm_id"/>
+	                    <field name="seller_payment_term_id"/>
 	                    <field name="port_load"/>
-	                    <field name="moq"/>  
-            			<field name="uom_po_id"/>    
+	                    <field name="moq"/>      
 	            		
 	            	</group>
 	            	<group name="main_supplier">
@@ -228,7 +259,8 @@
 	                    <div>
 	                        <field name="seller_lead_time" class="oe_inline" style="vertical-align:baseline"/> days
 	                    </div>	
-            			<field name="quote_validity"/>           		
+            			<field name="quote_validity"/>
+            			<field name="uom_po_id"/>           		
 	            	</group>
 	            	</group>            		
             	</group>

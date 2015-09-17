@@ -69,7 +69,7 @@
             string="Product Sheet"
             file="dmc_actin/report/product_sheet.rml" 
         />
-<!-- Product sale offer -->        
+<!-- sale offer -->        
         <report 
             id="action_report_sale_offer"
             model="sale.order.line"
@@ -78,5 +78,23 @@
             string="Sale Offer"
             file="dmc_actin/report/sale_offer.rml" 
         />
+<!-- Product sale offer -->      
+        <report
+            id="action_report_product_sale_offer"
+            string="Customer Sales Offer"
+            model="product.sale.offer"
+            report_type="pdf"
+            name="product.sale.offer"
+            file="dmc_actin/report/product_sale_offer.rml"
+        /> 
+<!-- Product factory quotation -->      
+        <report 
+            id="action_report_factory_quotation"
+            model="product.product"
+            report_type="pdf"
+            name="product.factory.quotation"
+            string="Factory Product Quotation"
+            file="dmc_actin/report/product_factory_quotation.rml" 
+        />       
     </data>
 </openerp>

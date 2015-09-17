@@ -70,7 +70,8 @@ class product_product(osv.osv):
 		
 		#fields for supplier
 		'incoterm_id': fields.many2one('stock.incoterms', 'Incoterm'),
-		'port_load': fields.many2one('option.list','Loading Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),			
+		'port_load': fields.many2one('option.list','Loading Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),
+		'seller_payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),			
 	}
 	#For ACTIN, product code must be entered manually
 	_defaults = {'default_code':''}
