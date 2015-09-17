@@ -31,10 +31,10 @@ certs, qc_memo, load_memo,
     """,
     'depends': ['base','dm_base', 'product', 'sale', 'purchase', 'sale_stock', 'dmp_product',
                 'dmp_prod_supplier', 'dm_options', 'dmp_account_pay_invoice', 'dmp_account_rpt_account'],
-    'data':['report.xml', 'product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
+    'data':['report/product_sale_offer_view.xml',
+            'report.xml', 'product_view.xml', 'menu.xml', 'partner_view.xml', 'tax_remove_view.xml', 
             'purchase_view.xml', 'sale_view.xml', 'invoice_view.xml',
-            'packing_view.xml','invoice_refund.xml','account_view.xml','account_rpt_view.xml',
-            'report/product_sale_offer_view.xml'],
+            'packing_view.xml','invoice_refund.xml','account_view.xml','account_rpt_view.xml'],
     'auto_install': False,
     'installable': True
 
