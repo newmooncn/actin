@@ -119,7 +119,10 @@
                         </group>
                      	<group>
                          <field name="hs_code"/>
-                         <field name="hs_code_tax_rate"/>
+	                    <label for="hs_code_tax_rate"/>
+	                    <div>
+	                        <field name="hs_code_tax_rate" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/>%
+	                    </div>
                         </group>
                      </group>
                      <label for='additional_comments'/>
@@ -144,7 +147,7 @@
 	                <group name="sale_condition" string="Sale Conditions" colspan="3">
 	                    <label for="warranty"/>
 	                    <div>
-	                        <field name="warranty" class="oe_inline"/> year(s)
+	                        <field name="warranty" class="oe_inline" digits="(14, 0)"/> year(s)
 	                    </div>
 	                </group> 
                 </group>
@@ -163,11 +166,12 @@
                                <field name="state"/>
                                <field name="product_manager"/>
                            </group>
-                           <group name="weight" string="Weights" attrs="{'invisible':[('type','=','service')]}">
+                           <!-- comment them since they are defined in 'Information' page on above -->
+                           <!-- <group name="weight" string="Weights" attrs="{'invisible':[('type','=','service')]}">
                                <field digits="(14, 3)" name="volume"/>
                                <field name="weight"/>
                                <field name="weight_net"/>
-                           </group>
+                           </group> -->
                        </group>
                        <group name="packaging" string="Packaging" attrs="{'invisible':[('type','=','service')]}" groups="product.group_stock_packaging" colspan="4">
                            <field name="packaging_ids" string="Configurations" context="{'tree_view_ref':'product.product_packaging_tree_view_product', 'form_view_ref': 'product.product_packaging_form_view_without_product'}"/>
@@ -228,6 +232,8 @@
             <field name="inherit_id" ref="dmp_prod_supplier.product_normal_form_view_supplier"/>
             <field name="arch" type="xml">
             <data>	 
+            	<field name="standard_price" position="replace"></field>
+            	<field name="uom_po_id" position="replace"></field>
             	<group name="main_supplier" position="after">
             		<group>
 	            	<group name="main_supplier">
@@ -243,6 +249,10 @@
 	            		
 	            	</group>
 	            	<group name="main_supplier">
+	                    <label for="seller_sample_price"/>
+	                    <div>
+	                        <field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> USD
+	                    </div>
             			<field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}"/>       		
 	                    <label for="seller_sample_lead_time"/>
 	                    <div>
@@ -252,7 +262,10 @@
 	                    <div>
 	                        <field name="seller_lead_time" class="oe_inline" style="vertical-align:baseline"/> days
 	                    </div>	
-            			<field name="quote_validity"/>
+	                    <label for="quote_validity"/>
+	                    <div>
+	                        <field name="quote_validity" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> days
+	                    </div>
             			<field name="uom_po_id"/>           		
 	            	</group>
 	            	</group>            		
@@ -269,6 +282,7 @@
             <field name="arch" type="xml">
             <data>	 
             	<field name="price" position="after">
+            		<field name="curr_name"/>
             		<field name="payment_term_id"/>
             		<field name="port_discharge"/>
             	</field>

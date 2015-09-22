@@ -36,15 +36,15 @@ class product_product(osv.osv):
 		#for pack type 'Others' memo
 		'pack_type_memo': fields.char('Packing Type Note', size=64),
 		
-		'pack_out_dimension': fields.char('Outer packing dimensions', size=64),
-		'pack_out_volume': fields.float('Outer packing volume'),
-		'pack_out_nw': fields.float('Outer packing NW'),
-		'pack_out_gw': fields.float('Outer packing GW'),
+		'pack_out_dimension': fields.char('Outer packing dimensions (meters)', size=64),
+		'pack_out_volume': fields.float('Outer packing volume (cbm)'),
+		'pack_out_nw': fields.float('Outer packing NW (kgs)'),
+		'pack_out_gw': fields.float('Outer packing GW (kgs)'),
 		
-		'pack_inner_dimension': fields.char('Inner Carton packing dimensions', size=64),
-		'pack_inner_volume': fields.float('Inner packing volume'),
-		'pack_inner_nw': fields.float('Inner Carton Packing NW'),
-		'pack_inner_gw': fields.float('Inner Carton Packing GW'),
+		'pack_inner_dimension': fields.char('Inner Carton packing dimensions(meters)', size=64),
+		'pack_inner_volume': fields.float('Inner packing volume(cbm)'),
+		'pack_inner_nw': fields.float('Inner Carton Packing NW(kgs)'),
+		'pack_inner_gw': fields.float('Inner Carton Packing GW(kgs)'),
 		
 		'number_inner_outer': fields.integer('Number of Inner per Outer'),
 		
@@ -71,7 +71,7 @@ class product_product(osv.osv):
 		#fields for supplier
 		'incoterm_id': fields.many2one('stock.incoterms', 'Incoterm'),
 		'port_load': fields.many2one('option.list','Loading Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),
-		'seller_payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),			
+		'seller_payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),
 	}
 	#For ACTIN, product code must be entered manually
 	_defaults = {'default_code':''}
@@ -119,6 +119,15 @@ class product_product(osv.osv):
 		else:
 			volume = 0.0				
 		return {'value': {field_volume: volume}}	
+
+class product_template(osv.osv):
+	_inherit = "product.template"
+	_columns = {		
+		#change volume, gross weight, net weight to text fields, user want to input UOM name in them
+		'volume': fields.char('Volume'),
+        'weight': fields.char('Gross Weight'),
+        'weight_net': fields.char('Net Weight'),
+	}
 				
 
 class product_customerinfo(osv.osv):
@@ -126,4 +135,6 @@ class product_customerinfo(osv.osv):
 	_columns = {
 		'payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),
 		'port_discharge': fields.many2one('option.list','Destination Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),
+		'curr_name': fields.char('Currency'),
     }
+	_defaults={'curr_name':'USD'}
