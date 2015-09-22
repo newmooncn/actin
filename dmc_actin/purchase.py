@@ -27,14 +27,14 @@ class purchase_order(osv.osv):
 	_inherit="purchase.order"
 	#'Draft PO'==>'Quotation', 'Purchase Confirmed'==>'Purchase Order'
 	STATE_SELECTION = [
-		('draft', 'Quotation'),
+		('draft', 'Draft'),
 		('sent', 'RFQ'),
 		('bid', 'Bid Received'),
 		('confirmed', 'Waiting Approval'),
-		('approved', 'Purchase Order'),
+		('approved', 'Confirmed'),
 		('except_picking', 'Shipping Exception'),
 		('except_invoice', 'Invoice Exception'),
-		('done', 'Done'),
+		('done', 'Closed'),
 		('cancel', 'Cancelled')
 	]
 	
@@ -42,8 +42,8 @@ class purchase_order(osv.osv):
 		'client_order_ref': fields.char('Customer PO Ref', copy=False),
 		'port_load_id': fields.many2one('option.list','Port of loading', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'port_discharge_id': fields.many2one('option.list','Port of discharge', ondelete='restrict', domain=[('option_name','=','partner_port')]),
-		'deliver_memo': fields.char('DELIVERY DATES'),
-		'ship_type': fields.many2one('option.list','SHIPMENT TYPE', ondelete='restrict', domain=[('option_name','=','ship_type')]),
+		'deliver_memo': fields.char('Exit Factory Date'),
+		'ship_type': fields.many2one('option.list','Shipment Type', ondelete='restrict', domain=[('option_name','=','ship_type')]),
 		#fixed content fields
 		'certs': fields.text('CERTIFICATIONS'),
 		'qc_requirement': fields.text('QUALITY CONTROL REQUIREMENTS'),
@@ -66,7 +66,7 @@ class purchase_order(osv.osv):
 									   "in exception.",
 								  select=True, copy=False),	
 		#link to sale order
-		'sale_id':fields.many2one('sale.order','Proforma Invoice', copy=False)	
+		'sale_id':fields.many2one('sale.order','Proforma Invoice', copy=False, readonly=True)	
 	}
 	def onchange_partner_id(self, cr, uid, ids, partner_id, context=None):
 		resu = super(purchase_order, self).onchange_partner_id(cr, uid, ids, partner_id, context=context)
@@ -119,5 +119,23 @@ class purchase_order(osv.osv):
 			'target': 'current',
 			'res_id': so_id,
 		}
+
+def onchange_product_id_prod_sup_actin(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,
+        partner_id, date_order=False, fiscal_position_id=False, date_planned=False,
+        name=False, price_unit=False, state='draft', context=None):        
+	if not context: context = {}
+	res = {}
+	res = super(purchase_order_line_prod_sup,self).onchange_product_id(cr, uid, ids, pricelist_id, product_id, qty, uom_id,
+                            partner_id, date_order, fiscal_position_id, date_planned,name, price_unit, state, context)
+	#add supplier product name
+	if product_id and partner_id:            
+		supplier_prod_name = self.pool.get('product.product').get_supplier_product(cr, uid, partner_id, product_id, context=context)
+		if not supplier_prod_name:
+			supplier_prod_name = self.pool.get('product.product').read(cr, uid, product_id, ['seller_product_name'])['seller_product_name']
+		res['value']['supplier_prod_name'] = supplier_prod_name
+	return res   	
+
+from openerp.addons.dmp_pur_prod_supplier.purchase import purchase_order_line as purchase_order_line_prod_sup
+purchase_order_line_prod_sup.onchange_product_id = onchange_product_id_prod_sup_actin
 	
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

@@ -492,7 +492,7 @@
     <blockTable colWidths="153.0,385.0" style="Table4">
       <tr>
         <td>
-          <para style="P23">A. DELIVERY DATES/交货日期:</para>
+          <para style="P23">A. Exit Factory Date/交货日期:</para>
         </td>
         <td>
           <para style="P24">[[o.deliver_memo]]</para>

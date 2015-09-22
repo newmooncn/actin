@@ -98,3 +98,41 @@ msgstr "Supplier Product Description"
 #: view:product.template:product.product_template_form_view
 msgid "Description for Quotations"
 msgstr "Customer Product Description"
+
+#. module: purchase
+#: view:purchase.order:purchase.view_purchase_order_filter
+#: view:purchase.order:purchase.view_request_for_quotation_filter
+#: view:purchase.report:purchase.view_purchase_order_search
+msgid "Quotations"
+msgstr "Draft PO"
+
+#. module: purchase
+#: view:purchase.order:purchase.purchase_order_form
+msgid "Confirm Order"
+msgstr "Confirm Purchase Order"
+
+#. module: purchase
+#: model:ir.actions.report.xml,name:purchase.report_purchase_quotation
+#: view:purchase.order:purchase.purchase_order_form
+#: selection:purchase.report,state:0
+#: view:website:purchase.report_purchasequotation_document
+msgid "Request for Quotation"
+msgstr "New Purchase Order"
+
+#. module: purchase
+#: field:purchase.order,partner_ref:0
+msgid "Supplier Reference"
+msgstr "Supplier PI Ref"
+
+#. module: purchase
+#: field:purchase.order,payment_term_id:0
+msgid "Payment Term"
+msgstr "Payment Terms"
+
+#. module: purchase
+#: model:ir.model,name:purchase.model_product_product
+#: field:purchase.order,product_id:0
+#: view:purchase.order.line:purchase.purchase_order_line_search
+#: field:purchase.order.line,product_id:0 field:purchase.report,product_id:0
+msgid "Product"
+msgstr "Internal Product Description"

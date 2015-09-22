@@ -69,6 +69,18 @@
 	           	<field name='date_order' position='after'>
 	           		<field name='sale_id'/>
 	           	</field>
+	           	<!-- hide Deliver To -->
+	           	<field name="picking_type_id" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
+            	<!-- hide line's date_planned -->
+            	<xpath expr="//tree//field[@name='date_planned']" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</xpath>     	     
+            	<!-- hide expected date -->
+            	<field name="minimum_planned_date"  position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>     	     
             </field>
         </record>
         
