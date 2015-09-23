@@ -27,11 +27,11 @@ class account_invoice(models.Model):
 	
 	#new fields on PDF
 	total_shipped = fields.Char('TOTAL SHIPPED', size=64)
-	contract_n = fields.Char('CONTRACT N', size=64)
+	contract_n = fields.Char('CONTRACT NUMBER', size=64)
 	bl_number = fields.Char('BL NUMBER', size=64)
-	container_no = fields.Char('CONTAINER No', size=64)
-	seal_no = fields.Char('SEAL No', size=64)
-	serial_no = fields.Text('SERIAL No')
+	container_no = fields.Char('CONTAINER NUMBER', size=64)
+	seal_no = fields.Char('SEAL NUMBER', size=64)
+	serial_no = fields.Text('SERIAL NUMBER')
 	hs_code = fields.Char('HS CODE', size=64)
 	#new fields for estimated deliver an arrival
 	etd = fields.Date('ETD')
@@ -44,6 +44,31 @@ class account_invoice(models.Model):
 	parent_id = fields.Many2one('account.invoice', 'Commercial Invoice', select=True)	
 	child_ids = fields.One2many('account.invoice', 'parent_id', 'Service Invoices')
 	
+	#fields for loading/discharge ports
+
+#	@api.one
+#	@api.depends('sale_ids')
+#	def _sale_info(self):
+#		so = self.sale_ids and self.sale_ids[0] or False
+#		if so:
+#			self.port_load_id = so.port_load_id.id
+#			self.port_discharge_id = so.port_discharge_id.id
+#		
+#	port_load_id = fields.Many2one('option.list', string='Port of loading', 
+#								domain=[('option_name','=','partner_port')], 
+#								readonly=True,
+#								compute='_sale_info', 
+#								store=True)
+#	port_discharge_id = fields.Many2one('option.list', string='Port of discharge', 
+#								domain=[('option_name','=','partner_port')], 
+#								readonly=True,
+#								compute='_sale_info', 
+#								store=True)
+	
+	#will be set in sale.py._prepare_invoice()
+	port_load_id = fields.Many2one('option.list', string='Port of loading', domain=[('option_name','=','partner_port')])
+	port_discharge_id = fields.Many2one('option.list', string='Port of discharge', domain=[('option_name','=','partner_port')])
+					
 	@api.multi
 	def name_get(self):
 		TYPES = {

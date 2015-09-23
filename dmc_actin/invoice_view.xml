@@ -9,10 +9,13 @@
             <field name="arch" type="xml">
             	<field name='date_invoice' position='after'>
             		<field name='etd'/>
-            		<field name='etd'/>
+            		<field name='eta'/>
             		<field name='ci_service_type'/>
             		<field name='parent_id'/>
             	</field>  
+            	<field name="number" position="replace">
+            		<field name="number" string="Customer Invoice Number"/>
+            	</field>
             </field>
         </record>
     <!-- customer invoice -->
@@ -34,6 +37,8 @@
             			<field name="seal_no"/>
             			<field name="serial_no"/>
                 		<field name="hs_code"/>
+                		<field name="port_load_id"/>
+                		<field name="port_discharge_id"/>
             		</group>
             	</xpath>
             	<!-- invoice relationship -->
@@ -52,6 +57,10 @@
             	</button>
             	<button name="invoice_print"  string="Print Invoice" position="replace">
             	</button>
+            	<!-- Hide fiscal position -->
+            	<field name="fiscal_position" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
             </field>
         </record>
     <!-- supplier invoice -->
