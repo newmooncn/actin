@@ -29,8 +29,19 @@ class account_invoice_line(osv.osv):
     'qty_carton':fields.integer('CTN'),
     'weight_net':fields.float('N.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
     'weight_gross':fields.float('G.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
-    'm3':fields.float('M3', digits_compute = dp.get_precision('Stock Weight')),
-	}
+    'm3':fields.float('CBM', digits_compute = dp.get_precision('Stock Weight')),
+	}	
+	
+class sale_order_line(osv.osv):
+	_inherit = 'sale.order.line'
+
+	def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
+		res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id=account_id, context=context)
+		res['weight_net'] = line.product_id.weight_net*line.product_uom_qty
+		res['weight_gross'] = line.product_id.weight*line.product_uom_qty
+		res['m3'] = line.product_id.volume*line.product_uom_qty
+		return res	
+
 class account_invoice(osv.osv):
 	_inherit="account.invoice"
 	def _amount_packing(self, cr, uid, ids, field_name, arg, context=None):

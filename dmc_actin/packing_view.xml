@@ -136,7 +136,7 @@
             <field name="act_window_id" ref="action_pack"/>
         </record>
 	<!-- packing menu -->
-        <menuitem action="action_pack" id="menu_pack" parent="purchase.menu_procurement_management" sequence="10"/>        
+        <menuitem action="action_pack" id="menu_pack" parent="base.menu_sales" sequence="6"/>        
         
     </data>
 </openerp>
