@@ -96,7 +96,14 @@ class purchase_order(osv.osv):
 		#update partner_invoice_id/partner_shipping_id/payment_term/fiscal_position/pricelist_id/port_discharge_id/incoterm
 		so_val.update(sale_obj.onchange_partner_id(cr, uid, [], customer_id, context=context)['value'])
 		#copy values from purchase order
-		so_val.update({'client_order_ref':po.client_order_ref, 'port_load_id':po.port_discharge_id.id})
+		so_val.update({'client_order_ref':po.client_order_ref, 
+					'port_load_id':po.port_load_id.id,
+					'port_discharge_id':po.port_discharge_id.id,
+					'ship_type':po.ship_type.id,
+					'deliver_memo':po.deliver_memo,
+					'incoterm':po.incoterm_id.id,
+					'payment_term':po.payment_term_id.id,
+					})
 		so_id = sale_obj.create(cr, uid, so_val, context=context)
 		self.write(cr, uid, ids, {'sale_id':so_id}, context=context)
 		#===========prepare sale_order_line===================

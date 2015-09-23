@@ -136,3 +136,38 @@ msgstr "Payment Terms"
 #: field:purchase.order.line,product_id:0 field:purchase.report,product_id:0
 msgid "Product"
 msgstr "Internal Product Description"
+
+#. module: sale
+#: selection:sale.order,state:0 selection:sale.order.line,state:0 selection:sale.report,state:0
+msgid "Done"
+msgstr "Closed"
+
+#. module: sale
+#: selection:sale.order,state:0 selection:sale.order.line,state:0 selection:sale.report,state:0
+msgid "Done"
+msgstr "Closed"
+
+#. module: sale
+#: selection:sale.order,state:0
+msgid "Draft Quotation"
+msgstr "Draft"
+
+#. module: sale
+#: selection:sale.order,state:0
+msgid "Sales Order"
+msgstr "Confirmed"
+
+#. module: sale
+#: view:sale.order:sale.view_order_form
+msgid "Confirm Sale"
+msgstr "Confirm Proforma Invoice"
+
+#. module: sale
+#: view:sale.order:sale.view_order_form
+msgid "Cancel Quotation"
+msgstr "Cancel Proforma Invoice"
+
+#. module: sale
+#: view:sale.order:sale.view_order_form
+msgid "Quotation"
+msgstr "New Proforma Invoice"

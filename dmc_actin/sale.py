@@ -53,4 +53,10 @@ class sale_order(osv.osv):
 		}
 		return {'type': 'ir.actions.report.xml', 'report_name': 'sale.offer', 'datas': datas, 'nodestroy': True}
 		
+	def _prepare_invoice(self, cr, uid, order, lines, context=None):
+		invoice_vals = super(sale_order,self)._prepare_invoice(cr, uid, order, lines, context)
+		#set invoice other values
+		invoice_vals.update({'port_load_id':order.port_load_id and order.port_load_id.id or False,
+							'port_discharge_id':order.port_discharge_id and order.port_discharge_id.id or False})
+		return invoice_vals		
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
