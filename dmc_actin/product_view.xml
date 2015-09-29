@@ -66,6 +66,7 @@
             	<field name='lst_price' position="attributes">
             		<attribute name="invisible">1</attribute>
             	</field>
+            	<!-- clear the original volume/weight/weight_net fields -->
             	<group name="weight" position="replace">
             	</group>
             	<field name="description" position="replace">            	
@@ -91,9 +92,9 @@
                          <field name="pack_type_memo"/>
                         </group>
                      	<group>                  
-                         <field digits="(14, 3)" name="volume"/>
-                         <field name="weight"/>
-                         <field name="weight_net"/>
+                         <field name="volume_char"/>
+                         <field name="weight_char"/>
+                         <field name="weight_net_char"/>
                         </group>
                      	<group>
                          <field name="pack_out_dimension" on_change="onchange_dimension(pack_out_dimension,'pack_out_volume')"/>

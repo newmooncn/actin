@@ -588,7 +588,7 @@
             <para style="P9">Product Net weight</para>
           </td>
           <td>
-            <para style="P10">[[o.product_id.weight_net]]</para>
+            <para style="P10">[[o.product_id.weight_net_char]]</para>
           </td>
         </tr>
       </blockTable>

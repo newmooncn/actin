@@ -124,9 +124,9 @@ class product_template(osv.osv):
 	_inherit = "product.template"
 	_columns = {		
 		#change volume, gross weight, net weight to text fields, user want to input UOM name in them
-		'volume': fields.char('Volume'),
-        'weight': fields.char('Gross Weight'),
-        'weight_net': fields.char('Net Weight'),
+		'volume_char': fields.char('Volume'),
+        'weight_char': fields.char('Gross Weight'),
+        'weight_net_char': fields.char('Net Weight'),
 	}
 				
 
