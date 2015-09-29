@@ -155,6 +155,11 @@ msgstr "Draft"
 #. module: sale
 #: selection:sale.order,state:0
 msgid "Sales Order"
+msgstr "Invoiced"
+
+#. module: sale
+#: selection:sale.order,state:0
+msgid "Sale to Invoice"
 msgstr "Confirmed"
 
 #. module: sale

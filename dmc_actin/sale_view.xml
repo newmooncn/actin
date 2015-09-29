@@ -57,5 +57,26 @@
             	</field>
             </field>
         </record>
+        
+        <record model="ir.ui.view" id="view_sales_order_filter_actin">
+            <field name="name">view_sales_order_filter_actin</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">  
+            	<filter name="draft" position="attributes">
+            		<attribute name="string">Draft</attribute>
+            	</filter>
+            	<!-- remove original sales/done filter -->
+            	<filter name="sales" position="replace"></filter>
+            	<filter string="Done" position="replace"></filter>
+            	<!-- redefine "to invoice / sales / done" filter -->
+            	<filter string="To Invoice" position="replace">
+            		<filter string="Confirmed" name="confirmed" domain="[('state','=','manual')]"/>
+            		<filter string="Invoiced" name="invoiced" domain="[('state','=','progress')]"/>
+            		<filter string="Done" domain="[('state','=','done')]" help="Sales Order done"/>
+            	</filter>
+            	<filter string="Blocked in draft" position="replace"></filter>            	
+            </field>
+       </record>    
     </data>
 </openerp>

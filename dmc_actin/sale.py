@@ -25,6 +25,24 @@ import openerp.addons.decimal_precision as dp
 class sale_order(osv.osv):
 	_inherit="sale.order"
 	_columns = {
+		'state': fields.selection([
+			('draft', 'Draft Quotation'),
+			('sent', 'Quotation Sent'),
+			('cancel', 'Cancelled'),
+			('waiting_date', 'Waiting Schedule'),
+			#johnw, 09/29/2015, reverse the sequence of manual and progress
+#			('progress', 'Sales Order'),
+#			('manual', 'Sale to Invoice'),
+			('manual', 'Sale to Invoice'),
+			('progress', 'Sales Order'),
+			('shipping_except', 'Shipping Exception'),
+			('invoice_except', 'Invoice Exception'),
+			('done', 'Done'),
+			], 'Status', readonly=True, copy=False, help="Gives the status of the quotation or sales order.\
+			  \nThe exception status is automatically set when a cancel operation occurs \
+			  in the invoice validation (Invoice Exception) or in the picking list process (Shipping Exception).\nThe 'Waiting Schedule' status is set when the invoice is confirmed\
+			   but waiting for the scheduler to run on the order date.", select=True),
+						
 		'port_load_id': fields.many2one('option.list','Port of loading', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'port_discharge_id': fields.many2one('option.list','Port of discharge', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'deliver_memo': fields.char('DELIVERY DATES'),
