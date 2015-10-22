@@ -39,8 +39,16 @@ class account_invoice(models.Model):
 	#used for service invoice, related to the commercial invoice
 	ci_service_type = fields.Selection(selection=(('trans_sea','TPS Sea Freight'),
 												('trans_dc','TPS Destination charge'),
-												('quanlity','Quanlity control')),
-									string='Service type')	
+												('logistics','Logistics'),
+												('quanlity','Quanlity control'),
+												('laboratory','Laboratory'),
+												('audit','Audit'),
+												('accounting','Accounting'),
+												('procurement','Procurement'),
+												('sourcing','Sourcing'),
+												('others','Others')),
+									string='Service type')		 
+	 
 	parent_id = fields.Many2one('account.invoice', 'Commercial Invoice', select=True)	
 	child_ids = fields.One2many('account.invoice', 'parent_id', 'Service Invoices')
 	
@@ -68,6 +76,9 @@ class account_invoice(models.Model):
 	#will be set in sale.py._prepare_invoice()
 	port_load_id = fields.Many2one('option.list', string='Port of loading', domain=[('option_name','=','partner_port')])
 	port_discharge_id = fields.Many2one('option.list', string='Port of discharge', domain=[('option_name','=','partner_port')])
+	
+	#fields for the service flag
+	is_service = fields.Boolean('Service')
 					
 	@api.multi
 	def name_get(self):

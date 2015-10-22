@@ -31,3 +31,10 @@ class res_partner(osv.Model):
         'forwarder': fields.char('Forwarder'),
 
     }
+    
+class res_partner_bank(osv.osv):
+    '''Bank Accounts'''
+    _inherit = "res.partner.bank"
+    _columns = {       
+        'bank_swift': fields.char('Bank Swift Code'),
+    }

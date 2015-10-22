@@ -96,5 +96,18 @@
             id="menu_incoterm_sale"
             parent="base.menu_base_config"
             sequence="0"/> 
+            
+<!-- partner bank -->
+        
+        <record model="ir.ui.view" id="view_partner_bank_form_actin">
+            <field name="name">view_partner_bank_form_actin</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+            	<field name="bank" position="after">
+            		<field name="bank_swift"/>
+            	</field>
+            </field>
+        </record>	            
     </data>
 </openerp>

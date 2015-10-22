@@ -46,7 +46,7 @@ class sale_order(osv.osv):
 		'port_load_id': fields.many2one('option.list','Port of loading', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'port_discharge_id': fields.many2one('option.list','Port of discharge', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'deliver_memo': fields.char('DELIVERY DATES'),
-		'ship_type': fields.many2one('option.list','SHIPMENT TYPE', ondelete='restrict', domain=[('option_name','=','ship_type')]),
+		'ship_type': fields.many2one('option.list','Shipment Type', ondelete='restrict', domain=[('option_name','=','ship_type')]),
 		#fixed content fields
 		'terms_fix': fields.text('Fix terms'),	
 	}
@@ -77,4 +77,131 @@ class sale_order(osv.osv):
 		invoice_vals.update({'port_load_id':order.port_load_id and order.port_load_id.id or False,
 							'port_discharge_id':order.port_discharge_id and order.port_discharge_id.id or False})
 		return invoice_vals		
+
+from openerp.addons.sale.sale import sale_order_line as so_line_super	
+
+def product_id_change_so_actin(self, cr, uid, ids, pricelist, product, qty=0,
+		uom=False, qty_uos=0, uos=False, name='', partner_id=False,
+		lang=False, update_tax=True, date_order=False, packaging=False, fiscal_position=False, flag=False, context=None):
+
+    context = context or {}
+    lang = lang or context.get('lang', False)
+    if not partner_id:
+        raise osv.except_osv(_('No Customer Defined!'), _('Before choosing a product,\n select a customer in the sales form.'))
+    warning = False
+    product_uom_obj = self.pool.get('product.uom')
+    partner_obj = self.pool.get('res.partner')
+    product_obj = self.pool.get('product.product')
+    partner = partner_obj.browse(cr, uid, partner_id)
+    lang = partner.lang
+    context_partner = context.copy()
+    context_partner.update({'lang': lang, 'partner_id': partner_id})
+
+    if not product:
+        return {'value': {'th_weight': 0,
+            'product_uos_qty': qty}, 'domain': {'product_uom': [],
+               'product_uos': []}}
+    if not date_order:
+        date_order = time.strftime(DEFAULT_SERVER_DATE_FORMAT)
+
+    result = {}
+    warning_msgs = ''
+    product_obj = product_obj.browse(cr, uid, product, context=context_partner)
+
+    uom2 = False
+    if uom:
+        uom2 = product_uom_obj.browse(cr, uid, uom)
+        if product_obj.uom_id.category_id.id != uom2.category_id.id:
+            uom = False
+    if uos:
+        if product_obj.uos_id:
+            uos2 = product_uom_obj.browse(cr, uid, uos)
+            if product_obj.uos_id.category_id.id != uos2.category_id.id:
+                uos = False
+        else:
+            uos = False
+
+    fpos = False
+    if not fiscal_position:
+        fpos = partner.property_account_position or False
+    else:
+        fpos = self.pool.get('account.fiscal.position').browse(cr, uid, fiscal_position)
+    if update_tax: #The quantity only have changed
+        result['tax_id'] = self.pool.get('account.fiscal.position').map_tax(cr, uid, fpos, product_obj.taxes_id)
+
+    if not flag:
+        result['name'] = self.pool.get('product.product').name_get(cr, uid, [product_obj.id], context=context_partner)[0][1]
+        if product_obj.description_sale:
+            #johnw, 10/21/2015, change the name to be the product.description_sale
+            #result['name'] += '\n'+product_obj.description_sale
+            result['name'] = product_obj.description_sale
+    domain = {}
+    if (not uom) and (not uos):
+        result['product_uom'] = product_obj.uom_id.id
+        if product_obj.uos_id:
+            result['product_uos'] = product_obj.uos_id.id
+            result['product_uos_qty'] = qty * product_obj.uos_coeff
+            uos_category_id = product_obj.uos_id.category_id.id
+        else:
+            result['product_uos'] = False
+            result['product_uos_qty'] = qty
+            uos_category_id = False
+        result['th_weight'] = qty * product_obj.weight
+        domain = {'product_uom':
+                    [('category_id', '=', product_obj.uom_id.category_id.id)],
+                    'product_uos':
+                    [('category_id', '=', uos_category_id)]}
+    elif uos and not uom: # only happens if uom is False
+        result['product_uom'] = product_obj.uom_id and product_obj.uom_id.id
+        result['product_uom_qty'] = qty_uos / product_obj.uos_coeff
+        result['th_weight'] = result['product_uom_qty'] * product_obj.weight
+    elif uom: # whether uos is set or not
+        default_uom = product_obj.uom_id and product_obj.uom_id.id
+        q = product_uom_obj._compute_qty(cr, uid, uom, qty, default_uom)
+        if product_obj.uos_id:
+            result['product_uos'] = product_obj.uos_id.id
+            result['product_uos_qty'] = qty * product_obj.uos_coeff
+        else:
+            result['product_uos'] = False
+            result['product_uos_qty'] = qty
+        result['th_weight'] = q * product_obj.weight        # Round the quantity up
+
+    if not uom2:
+        uom2 = product_obj.uom_id
+    # get unit price
+
+    if not pricelist:
+        warn_msg = _('You have to select a pricelist or a customer in the sales form !\n'
+                'Please set one before choosing a product.')
+        warning_msgs += _("No Pricelist ! : ") + warn_msg +"\n\n"
+    else:
+        ctx = dict(
+            context,
+            uom=uom or result.get('product_uom'),
+            date=date_order,
+        )
+        price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist],
+                product, qty or 1.0, partner_id, ctx)[pricelist]
+        if price is False:
+            warn_msg = _("Cannot find a pricelist line matching this product and quantity.\n"
+                    "You have to change either the product, the quantity or the pricelist.")
+
+            warning_msgs += _("No valid pricelist line found ! :") + warn_msg +"\n\n"
+        else:
+            result.update({'price_unit': price})
+            if context.get('uom_qty_change', False):
+                return {'value': {'price_unit': price}, 'domain': {}, 'warning': False}
+    if warning_msgs:
+        warning = {
+                   'title': _('Configuration Error!'),
+                   'message' : warning_msgs
+                }
+    #add customer product price, johnw, 2015/10/21
+    cust_prod = self.pool['product.product'].get_customer_product_info(cr, uid, partner_id, product, context=context)
+    if cust_prod:
+		result.update({'price_unit':cust_prod['price']})
+    
+    return {'value': result, 'domain': domain, 'warning': warning}
+
+so_line_super.product_id_change = product_id_change_so_actin
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

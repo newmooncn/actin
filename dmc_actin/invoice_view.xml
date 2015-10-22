@@ -10,11 +10,15 @@
             	<field name='date_invoice' position='after'>
             		<field name='etd'/>
             		<field name='eta'/>
-            		<field name='ci_service_type'/>
-            		<field name='parent_id'/>
+            		<!-- <field name='ci_service_type'/>
+            		<field name='parent_id'/> -->
             	</field>  
             	<field name="number" position="replace">
             		<field name="number" string="Customer Invoice Number"/>
+            	</field>
+            	<!-- hide original due date -->
+            	<field name='date_due' position='attributes'>
+            		<attribute name='invisible'>1</attribute>
             	</field>
             </field>
         </record>
@@ -43,11 +47,12 @@
             	</xpath>
             	<!-- invoice relationship -->
             	<field name="partner_id" position="after">
-            		<field name="ci_service_type"/>
-            		<field name="parent_id"/>
+            		<field name="is_service" groups="base.group_no_one"/>
+            		<field name="ci_service_type" attrs="{'invisible':[('is_service','=',False)]}"/>
+            		<field name="parent_id" attrs="{'invisible':[('is_service','=',False)]}" string='Related Customer Product Commercial Invoice Number'/>
             	</field>  
             	<page string='Payments' position="after">
-            		<page string="Service invoices">
+            		<page string="Service invoices"  attrs="{'invisible':[('is_service','!=',False)]}">
             			<field name="child_ids" readonly="1"/>
             		</page>
             	</page>
@@ -60,6 +65,10 @@
             	<!-- Hide fiscal position -->
             	<field name="fiscal_position" position="attributes">
             		<attribute name="invisible">True</attribute>
+            	</field>
+            	<!-- hide original due date -->
+            	<field name='date_due' position='attributes'>
+            		<attribute name='invisible'>1</attribute>
             	</field>
             </field>
         </record>

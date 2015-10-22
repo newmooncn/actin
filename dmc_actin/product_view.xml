@@ -182,11 +182,24 @@
                 <!-- hide account page -->
                 <page string="Accounting" position="attributes">
             		<attribute name="invisible">1</attribute>                	
-                </page>   
-                
+                </page>               
             </data>
             </field>
 		</record>
+
+		<record id="product_normal_form_view_customer_actin" model="ir.ui.view">
+            <field name="name">product_normal_form_view_customer_actin</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="dmp_prod_customer.product_normal_form_view_customer"/>
+            <field name="arch" type="xml"> 
+                <!-- hide customer product name in dmp_prod_customer -->
+                <field name="customer_product_name" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </field>
+            	
+            </field>
+        </record>
+            		
 		<record id="view_template_property_form_actin" model="ir.ui.view">
             <field name="name">view_template_property_form_actin</field>
             <field name="model">product.template</field>

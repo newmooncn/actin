@@ -55,6 +55,13 @@
             	<field name="picking_policy" position="attributes">
             		<attribute name="invisible">1</attribute>
             	</field>
+                <!-- add domain to parter invoice/ship address -->
+                <field name="partner_invoice_id" position="attributes">
+                	<attribute name="domain">['|',('id','=',partner_id),'&amp;',('type','=','invoice'),('parent_id','=',partner_id)]</attribute>
+                </field>
+                <field name="partner_shipping_id" position="attributes">
+                	<attribute name="domain">['|',('id','=',partner_id),'&amp;',('type','=','delivery'),('parent_id','=',partner_id)]</attribute>
+                </field>
             </field>
         </record>
         

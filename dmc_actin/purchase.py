@@ -137,9 +137,11 @@ def onchange_product_id_prod_sup_actin(self, cr, uid, ids, pricelist_id, product
 	#add supplier product name
 	if product_id and partner_id:            
 		supplier_prod_name = self.pool.get('product.product').get_supplier_product(cr, uid, partner_id, product_id, context=context)
+		prod_info = self.pool.get('product.product').read(cr, uid, product_id, ['seller_product_name','description_purchase'])
 		if not supplier_prod_name:
-			supplier_prod_name = self.pool.get('product.product').read(cr, uid, product_id, ['seller_product_name'])['seller_product_name']
+			supplier_prod_name = prod_info['seller_product_name']
 		res['value']['supplier_prod_name'] = supplier_prod_name
+		res['value']['name'] = prod_info['description_purchase']
 	return res   	
 
 from openerp.addons.dmp_pur_prod_supplier.purchase import purchase_order_line as purchase_order_line_prod_sup

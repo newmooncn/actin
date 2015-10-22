@@ -80,7 +80,18 @@
             	<!-- hide expected date -->
             	<field name="minimum_planned_date"  position="attributes">
             		<attribute name="invisible">True</attribute>
-            	</field>     	     
+            	</field>     	  
+            	<!-- hide origin -->
+            	<field name="origin" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>   
+            	<!-- hide 'Destination'/'Fiscal Position' -->
+            	<field name="location_id" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
+            	<field name="fiscal_position" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
             </field>
         </record>
         
@@ -91,6 +102,10 @@
             <field name="arch" type="xml">
             	<field name="name" position="after">
             		<field name="sale_id"/>
+            	</field>     	  
+            	<!-- hide origin -->
+            	<field name="origin" position="attributes">
+            		<attribute name="invisible">True</attribute>
             	</field>
             </field>
         </record>     

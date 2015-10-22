@@ -176,3 +176,62 @@ msgstr "Cancel Proforma Invoice"
 #: view:sale.order:sale.view_order_form
 msgid "Quotation"
 msgstr "New Proforma Invoice"
+
+#. module: sale
+#: view:sale.order:sale.view_order_form
+msgid "Sales Order"
+msgstr "Proforma Invoice"
+
+#. module: base
+#: field:res.partner,date:0
+msgid "Date"
+msgstr "Business Cooperation Starting date"
+
+#. module: base
+#: field:res.partner.bank,partner_id:0
+msgid "Account Owner"
+msgstr "Beneficiary"
+
+#. module: base
+#: view:res.partner.bank:base.view_partner_bank_form
+msgid "Address"
+msgstr "Bank Address"
+
+#. module: base
+#: field:res.partner.bank,bank:0
+msgid "Bank"
+msgstr "Bank Name"
+
+#. module: base
+#: field:res.partner.bank,bank_name:0
+msgid "Bank Name"
+msgstr "Intermediary Bank Name"
+
+#. module: base
+#: field:res.partner.bank,bank_bic:0
+msgid "Bank Identifier Code"
+msgstr "Intermediary Bank Swift Code"
+
+#. module: base
+#: field:sale.order,payment_term:0
+msgid "Payment Term"
+msgstr "Payment Terms"
+
+#. module: dmp_pur_prod_supplier
+#: field:purchase.order.line,supplier_prod_name:0
+msgid "Supplier Product Name"
+msgstr "Supplier Product Reference"
+
+#. module: sale
+#: field:sale.order.line,product_id:0
+msgid "Product"
+msgstr "Internal Product Description"
+
+#. module: sale
+#: field:sale.order.line,name:0
+msgid "Description"
+msgstr "Customer Product Description"
+
+
+
+
