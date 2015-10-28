@@ -22,11 +22,12 @@
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
+import math
 class account_invoice_line(osv.osv):
 	_inherit="account.invoice.line"
 	_columns = {
     'qty_per_carton':fields.float('QTY/CTN', digits_compute = dp.get_precision('Product UoS')),
-    'qty_carton':fields.integer('CTN'),
+    'qty_carton':fields.integer('Number of CTN'),
     'weight_net':fields.float('N.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
     'weight_gross':fields.float('G.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
     'm3':fields.float('CBM', digits_compute = dp.get_precision('Stock Weight')),
@@ -37,9 +38,20 @@ class sale_order_line(osv.osv):
 
 	def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
 		res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id=account_id, context=context)
-		res['weight_net'] = line.product_id.weight_net*line.product_uom_qty
-		res['weight_gross'] = line.product_id.weight*line.product_uom_qty
-		res['m3'] = line.product_id.volume*line.product_uom_qty
+		qty_per_carton = line.product_id.qty_per_outer
+		qty_carton = qty_per_carton>0 and math.ceil(line.product_uom_qty/qty_per_carton) or 0
+		weight_net = line.product_id.weight_net*line.product_uom_qty
+		weight_gross = line.product_id.weight*line.product_uom_qty
+		m3 = line.product_id.volume*line.product_uom_qty
+
+		if qty_carton > 0:
+			weight_net = line.product_id.pack_out_nw * qty_carton
+			weight_gross = line.product_id.pack_out_gw * qty_carton
+			m3 = line.product_id.pack_out_volume * qty_carton
+
+		res.update({'qty_per_carton':qty_per_carton,'qty_carton':qty_carton,
+				'weight_net':weight_net,'weight_gross':weight_gross,'m3':m3})
+		
 		return res	
 
 class account_invoice(osv.osv):

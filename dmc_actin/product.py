@@ -46,7 +46,9 @@ class product_product(osv.osv):
 		'pack_inner_nw': fields.float('Inner Carton Packing NW(kgs)'),
 		'pack_inner_gw': fields.float('Inner Carton Packing GW(kgs)'),
 		
+		'qty_per_inner': fields.integer('Quantity per Inner'),
 		'number_inner_outer': fields.integer('Number of Inner per Outer'),
+		'qty_per_outer': fields.integer('Quantity per Outer'),
 		
 		'qty_pallet_eur': fields.integer('Quantity per pallet EUROPE (0.8 x 1m)'),		
 		'qty_pallet_us': fields.integer('Quantity per pallet AMERICAN (1 x 1.2m)'),

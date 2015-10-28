@@ -109,7 +109,9 @@
                          <field name="pack_inner_gw"/>
                         </group>
                      	<group>
+                         <field name="qty_per_inner"/>
                          <field name="number_inner_outer"/>
+                         <field name="qty_per_outer"/>
                          <field name="qty_pallet_eur"/>
                          <field name="qty_pallet_us"/>
                         </group>
@@ -266,8 +268,7 @@
 	                    <label for="seller_sample_price"/>
 	                    <div>
 	                        <field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> USD
-	                    </div>
-            			<field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}"/>       		
+	                    </div>       		
 	                    <label for="seller_sample_lead_time"/>
 	                    <div>
 	                        <field name="seller_sample_lead_time" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> days

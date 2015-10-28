@@ -62,6 +62,9 @@
                 <field name="partner_shipping_id" position="attributes">
                 	<attribute name="domain">['|',('id','=',partner_id),'&amp;',('type','=','delivery'),('parent_id','=',partner_id)]</attribute>
                 </field>
+                <xpath expr="//field[@name='order_line']//tree/field[@name='name']" position='after'>
+                	<field name='cust_prod_code'/>
+                </xpath>
             </field>
         </record>
         
