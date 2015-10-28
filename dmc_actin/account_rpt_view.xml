@@ -42,6 +42,12 @@
                     
                 <field name="qc_partner_id"/>
                 <field name="qc_amount"/>
+                <field name="qc_date"/>
+                    
+                <field name="lab_partner_id"/>
+                <field name="lab_amount"/>
+                <field name="lab_date"/>
+                
                 <field name="sale_margin"/>
             </tree>
         </field>

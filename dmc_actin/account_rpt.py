@@ -68,7 +68,12 @@ class account_rpt(osv.osv):
 
         'qc_partner_id': fields.many2one('res.partner','QC Company'),
         'qc_amount': fields.float('QC Amount', digits_compute= dp.get_precision('Account')),
-        #'qc_date': fields.date('QC Invoice date'),   
+        'qc_date': fields.date('QC Invoice date'),   
+        
+        'lab_partner_id': fields.many2one('res.partner','Testing Laboratory Name'),
+        'lab_amount': fields.float('Testing cost', digits_compute= dp.get_precision('Account')),
+        'lab_date': fields.date('Testing Laboratory Invoice date'),
+                
         'sale_margin': fields.float('Brut Mergin', digits_compute= dp.get_precision('Account')),        
     }
 
@@ -77,7 +82,7 @@ class account_rpt(osv.osv):
         cr.execute("""
             create or replace view account_rpt_view as (
 select
-((coalesce(so.id,0)::varchar)||coalesce(so_inv.id,0)::varchar||coalesce(po.id,0)::varchar||coalesce(po_inv.id,0)::varchar||coalesce(trans_sf.id,0)::varchar||coalesce(trans_dc.id,0)::varchar||coalesce(qc.id,0)::varchar)::NUMERIC as id,
+((coalesce(so.id,0)::varchar)||coalesce(so_inv.id,0)::varchar||coalesce(po.id,0)::varchar||coalesce(po_inv.id,0)::varchar||coalesce(trans_sf.id,0)::varchar||coalesce(trans_dc.id,0)::varchar||coalesce(qc.id,0)::varchar||coalesce(lab.id,0)::varchar)::NUMERIC  as id,
 so.id as so_id,
 so_inv.id as ci_id,
 po.id as po_id,
@@ -116,7 +121,11 @@ qc.partner_id as qc_partner_id,
 qc.amount_total as qc_amount,
 qc.date_invoice as qc_date,
 
-(coalesce(so_inv.amount_total,0) - coalesce(po_inv.amount_total,0) - coalesce(trans_sf.amount_total,0) - coalesce(trans_dc.amount_total,0) - coalesce(qc.amount_total,0)) as sale_margin
+lab.partner_id as lab_partner_id,
+lab.amount_total as lab_amount,
+lab.date_invoice as lab_date,
+
+(coalesce(so_inv.amount_total,0) - coalesce(po_inv.amount_total,0) - coalesce(trans_sf.amount_total,0) - coalesce(trans_dc.amount_total,0) - coalesce(qc.amount_total,0) - coalesce(lab.amount_total,0)) as sale_margin
 
 --so.name,po.name,so_inv.name,trans_sf.name,trans_dc.name,qc.name
 
@@ -135,6 +144,8 @@ left join account_invoice trans_dc on trans_dc.parent_id = so_inv.id and trans_d
 left join account_voucher trans_dc_pay on trans_dc.id = trans_dc_pay.invoice_id
 
 left join account_invoice qc on qc.parent_id = so_inv.id and qc.ci_service_type = 'quanlity'
+
+left join account_invoice lab on lab.parent_id = so_inv.id and lab.ci_service_type = 'laboratory'
 
 order by so.id desc, so_inv.id, po.id, po_inv.id
             )
