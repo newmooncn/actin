@@ -47,7 +47,7 @@
             	</xpath>
             	<!-- invoice relationship -->
             	<field name="partner_id" position="after">
-            		<field name="is_service" groups="base.group_no_one"/>
+            		<field name="is_service"/>
             		<field name="ci_service_type" attrs="{'invisible':[('is_service','=',False)]}"/>
             		<field name="parent_id" attrs="{'invisible':[('is_service','=',False)]}" string='Related Customer Product Commercial Invoice Number'/>
             	</field>  
@@ -80,8 +80,9 @@
             <field name="arch" type="xml">
             	<!-- invoice relationship -->
             	<field name="partner_id" position="after">
-            		<field name="ci_service_type"/>
-            		<field name="parent_id"/>
+            		<field name="is_service"/>
+            		<field name="ci_service_type" attrs="{'invisible':[('is_service','=',False)]}"/>
+            		<field name="parent_id" attrs="{'invisible':[('is_service','=',False)]}" string='Related Customer Product Commercial Invoice Number'/>
             	</field>
             </field>
         </record>
