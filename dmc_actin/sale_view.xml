@@ -42,6 +42,8 @@
             		attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
             		<button name="%(sale.report_sale_order)d" string="Print" type="action" groups="base.group_user"
             		attrs="{'invisible':[('state','in',['draft','sent','cancel'])]}"/>
+            		<!-- add button to set draft under cancel state, johnw, 11/06/2015 -->
+            		<button name="action_cancel_draft" states="cancel" string="Set to Draft" type="object" />
             	</button>
             	<!-- hide 'Quotation sent' status -->
             	<field name="state" position="attributes">

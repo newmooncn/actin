@@ -184,7 +184,11 @@
                 <!-- hide account page -->
                 <page string="Accounting" position="attributes">
             		<attribute name="invisible">1</attribute>                	
-                </page>               
+                </page>            
+                <!-- hide fields for service -->
+                <field name='ean13' position="attributes">
+                	<attribute name="attrs">{'invisible':[('type','=','service')]}</attribute>
+                </field>   
             </data>
             </field>
 		</record>
@@ -252,37 +256,40 @@
             	<field name="uom_po_id" position="replace"></field>
             	<group name="main_supplier" position="after">
             		<group>
-	            	<group name="main_supplier">
-	                    <label for="standard_price"/>
-	                    <div>
-	                        <field name="standard_price" class="oe_inline" style="vertical-align:baseline"/>
-	                        <field name="standard_price_curr_id" class="oe_inline" style="vertical-align:baseline"/>
-	                    </div>
-	                    <field name="incoterm_id"/>
-	                    <field name="seller_payment_term_id"/>
-	                    <field name="port_load"/>
-	                    <field name="moq"/>      
-	            		
-	            	</group>
-	            	<group name="main_supplier">
-	                    <label for="seller_sample_price"/>
-	                    <div>
-	                        <field name="seller_sample_price" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> USD
-	                    </div>       		
-	                    <label for="seller_sample_lead_time"/>
-	                    <div>
-	                        <field name="seller_sample_lead_time" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> days
-	                    </div>                    
-	                    <label for="seller_lead_time"/>
-	                    <div>
-	                        <field name="seller_lead_time" class="oe_inline" style="vertical-align:baseline"/> days
-	                    </div>	
-	                    <label for="quote_validity"/>
-	                    <div>
-	                        <field name="quote_validity" attrs="{'invisible':[('type','=','service')]}" class="oe_inline" style="vertical-align:baseline"/> days
-	                    </div>
-            			<field name="uom_po_id"/>           		
-	            	</group>
+		            	<group name="main_supplier">
+		                    <label for="standard_price"/>
+		                    <div>
+		                        <field name="standard_price" class="oe_inline" style="vertical-align:baseline"/>
+		                        <field name="standard_price_curr_id" class="oe_inline" style="vertical-align:baseline"/>
+		                    </div>
+		                    <field name="incoterm_id" attrs="{'invisible':[('type','=','service')]}"/>
+		                    <field name="seller_payment_term_id"/>
+		                    <field name="port_load" attrs="{'invisible':[('type','=','service')]}"/>
+		                    <field name="moq" attrs="{'invisible':[('type','=','service')]}"/> 
+		            	</group>
+		            	<group name="main_supplier_2" attrs="{'invisible':[('type','=','service')]}">
+		                    <label for="seller_sample_price"/>
+		                    <div>
+		                        <field name="seller_sample_price" class="oe_inline" style="vertical-align:baseline"/> USD
+		                    </div>       		
+		                    <label for="seller_sample_lead_time"/>
+		                    <div>
+		                        <field name="seller_sample_lead_time" class="oe_inline" style="vertical-align:baseline"/> days
+		                    </div>                    
+		                    <label for="seller_lead_time"/>
+		                    <div>
+		                        <field name="seller_lead_time" class="oe_inline" style="vertical-align:baseline" /> days
+		                    </div>	
+		                    <label for="quote_validity"/>
+		                    <div>
+		                        <field name="quote_validity" class="oe_inline" style="vertical-align:baseline"/> days
+		                    </div>     		
+		            	</group>
+		            	<group>
+		            	</group>
+		            	<group>
+		            		<field name="uom_po_id"/>
+		            	</group>
 	            	</group>            		
             	</group>
             </data>

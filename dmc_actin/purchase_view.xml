@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+    <data>   	
+    
         <record model="ir.ui.view" id="view_purchase_order_form_actin">
             <field name="name">view_purchase_order_form_actin</field>
             <field name="model">purchase.order</field>

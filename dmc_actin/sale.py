@@ -94,8 +94,36 @@ class sale_order(osv.osv):
 		invoice_vals.update({'port_load_id':order.port_load_id and order.port_load_id.id or False,
 							'port_discharge_id':order.port_discharge_id and order.port_discharge_id.id or False})
 		return invoice_vals		
-		
-
+	
+	#add function for 'set to draft' button, 11/06/2015   
+	def action_cancel_draft(self, cr, uid, ids, context=None):
+		if not len(ids):
+			return False
+		self.write(cr, uid, ids, {'state':'draft'})
+		self.set_order_line_status(cr, uid, ids, 'draft', context=context)
+		for p_id in ids:
+			# Deleting the existing instance of workflow for PO
+			self.delete_workflow(cr, uid, [p_id]) # TODO is it necessary to interleave the calls?
+			self.create_workflow(cr, uid, [p_id])
+		return True
+	
+	def set_order_line_status(self, cr, uid, ids, status, context=None):
+		line = self.pool.get('sale.order.line')
+		order_line_ids = []
+		proc_obj = self.pool.get('procurement.order')
+		for order in self.browse(cr, uid, ids, context=context):
+			if status in ('draft', 'cancel'):
+				order_line_ids += [po_line.id for po_line in order.order_line]
+			else: # Do not change the status of already cancelled lines
+				order_line_ids += [po_line.id for po_line in order.order_line if po_line.state != 'cancel']
+		if order_line_ids:
+			line.write(cr, uid, order_line_ids, {'state': status}, context=context)
+		if order_line_ids and status == 'cancel':
+			procs = proc_obj.search(cr, uid, [('sale_line_id', 'in', order_line_ids)], context=context)
+			if procs:
+				proc_obj.write(cr, uid, procs, {'state': 'cancel'}, context=context)
+		return True	
+	
 from openerp.addons.sale.sale import sale_order_line as so_line_super	
 
 def product_id_change_so_actin(self, cr, uid, ids, pricelist, product, qty=0,
@@ -220,6 +248,10 @@ def product_id_change_so_actin(self, cr, uid, ids, pricelist, product, qty=0,
 	if cust_prod:
 		result.update({'price_unit':cust_prod['price']})
 		result.update({'cust_prod_code':cust_prod['product_code']})
+		#add customer product name to SO's description
+		if cust_prod['product_name']:
+			result['name'] = '%s %s'%(cust_prod['product_name'], result.get('name',''))
+			result['name'] = result['name'].strip()
 
 	return {'value': result, 'domain': domain, 'warning': warning}
 
