@@ -187,7 +187,9 @@
                 </page>            
                 <!-- hide fields for service -->
                 <field name='ean13' position="attributes">
-                	<attribute name="attrs">{'invisible':[('type','=','service')]}</attribute>
+                	<!-- johnw, 2015/11/09 add ean13 field to customer list, so hide this one -->
+                	<!-- <attribute name="attrs">{'invisible':[('type','=','service')]}</attribute> -->
+                	<attribute name="invisible">1</attribute>
                 </field>   
             </data>
             </field>
@@ -305,6 +307,7 @@
             <data>	 
             	<field name="price" position="after">
             		<field name="curr_name"/>
+            		<field name="ean13"/>
             		<field name="payment_term_id"/>
             		<field name="port_discharge"/>
             	</field>

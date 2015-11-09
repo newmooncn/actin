@@ -138,5 +138,6 @@ class product_customerinfo(osv.osv):
 		'payment_term_id': fields.many2one('account.payment.term',string ='Payment Terms'),
 		'port_discharge': fields.many2one('option.list','Destination Port', ondelete='restrict', domain=[('option_name','=','partner_port')]),
 		'curr_name': fields.char('Currency'),
+		'ean13': fields.char('EAN13', size=13),
     }
 	_defaults={'curr_name':'USD'}
