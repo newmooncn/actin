@@ -16,6 +16,9 @@
             	<field name="number" position="replace">
             		<field name="number" string="Customer Invoice Number"/>
             	</field>
+            	<field name="state" position="before">
+            		<field name="is_service"/>
+            	</field>
             	<!-- hide original due date -->
             	<field name='date_due' position='attributes'>
             		<attribute name='invisible'>1</attribute>
@@ -30,14 +33,14 @@
             <field name="arch" type="xml">
             	<xpath expr="//sheet/group[1]/group[2]" position="after">
             		<group>
-                		<field name="total_shipped"/>
+                		<field name="total_shipped" attrs="{'invisible':[('is_service','!=',False)]}"/>
                 		<field name="contract_n"/>
-                		<field name="bl_number"/>
-            			<field name="container_no"/>
-                		<field name="etd"/>
-                		<field name="eta"/>
+                		<field name="bl_number" attrs="{'invisible':[('is_service','!=',False)]}"/>
+            			<field name="container_no" attrs="{'invisible':[('is_service','!=',False)]}"/>
+                		<field name="etd" attrs="{'invisible':[('is_service','!=',False)]}"/>
+                		<field name="eta" attrs="{'invisible':[('is_service','!=',False)]}"/>
             		</group>
-            		<group>		
+            		<group attrs="{'invisible':[('is_service','!=',False)]}">		
             			<field name="seal_no"/>
             			<field name="serial_no"/>
                 		<field name="hs_code"/>
