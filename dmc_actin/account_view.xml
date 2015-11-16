@@ -24,12 +24,109 @@
             	</xpath>
             </field>
 		</record>    
+        
+        <!-- adjust account move line: journal items tree view -->
+        <record model="ir.ui.view" id="view_move_line_tree_actin">
+            <field name="name">view_move_line_tree_actin</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="arch" type="xml">
+            	<field name="name" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
+            	<field name="partner_id" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>
+            	<field name="account_id" position="after">
+	            	<field name="partner_id"
+	                        domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]"
+	                        on_change="onchange_partner_id(move_id, partner_id, account_id, debit, credit, date, journal_id)"/>
+            		<field name="name"/>
+            	</field>
+            	<field name='period_id' position='attributes'>
+            		<attribute name="invisible">1</attribute>
+            	</field>
+            </field>
+		</record>    
 	           
-<!-- 		
-		<menuitem id="menu_actin_finance_report" 
-			name="ACTIN FINANCE REPORT" 
-			parent="account.menu_finance_reports" 
-			groups="account.group_account_user" 
-			sequence="2"/> -->	
+		<!-- customer/vendor invoice payment voucher -->
+        <record model="ir.ui.view" id="view_vendor_receipt_dialog_form_actin">
+            <field name="name">view_vendor_receipt_dialog_form_actin</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_dialog_form"/>
+            <field name="arch" type="xml">
+            	<field name="reference" position="attributes">
+            		<attribute name="string">Contract Ref</attribute>
+            	</field>
+            	<field name="name" position="attributes">
+            		<attribute name="string">BQ Journal Description</attribute>
+            	</field>
+            </field>
+		</record>    
+		
+		<!--supplier invoice -->
+        <record model="ir.ui.view" id="invoice_supplier_form_actin">
+            <field name="name">invoice_supplier_form_actin</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <label for="reference_type" position="attributes">
+            		<attribute name="string">Purchase Journal Description</attribute>
+            	</label>
+            	<field name="reference_type" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>             
+            	<field name="reference" position="replace">
+            		<field name="reference"/>
+            	</field>                   	
+            </field>
+		</record>    
+		
+		<!-- account move -->
+        <record model="ir.ui.view" id="view_account_move_tree_source_actin">
+            <field name="name">view_account_move_tree_source_actin</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="dmp_account_move_source.view_account_move_tree_source"/>
+            <field name="arch" type="xml">
+            	<field name="date" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>       
+            	<field name="name" position="before">
+            		<field name="date"/>
+            	</field>   
+            	   
+            	<field name="period_id" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>       
+            	<field name="source_id" position="attributes">
+            		<attribute name="invisible">True</attribute>
+            	</field>  
+            	<field name="partner_id" position="after">
+            		<field name='source_id' readonly="1"/>
+            		<field name="period_id"/>
+            	</field>               	
+            </field>
+		</record>  
+		
+		<!-- Set 'BQ1 HSBC' as default journal on 'Journal Items' journal filter -->
+        <record id="account.action_account_moves_all_a" model="ir.actions.act_window">
+            <field name="context">{'journal_type':'bank','default_empty_period':True}</field>
+            <field name="name">Journal Items</field>
+            <field name="res_model">account.move.line</field>
+        </record>			
+		
+		<!-- add date range filter -->
+        <record model="ir.ui.view" id="view_account_move_line_filter_actin">
+            <field name="name">view_account_move_line_filter_actin</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="arch" type="xml">
+            	<field name='date' position='after'>
+            		<field name='date_search_from'/>
+            		<field name='date_search_to'/>
+            	</field>
+            </field>
+        </record>
+		
     </data>
 </openerp>

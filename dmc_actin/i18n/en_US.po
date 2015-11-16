@@ -248,6 +248,34 @@ msgstr "Internal Product Description"
 msgid "Description"
 msgstr "Customer Product Description"
 
+#. module: account
+#: field:account.move.line,name:0
+msgid "Name"
+msgstr "Description"
 
+#. module: account
+#: field:account.move.line,ref:0
+msgid "Reference"
+msgstr "Contract Reference"
+
+#. module: account
+#: field:account.move.line,date:0
+msgid "Effective date"
+msgstr "Date"
+
+#. module: account
+#: field:account.move.line,date:0
+msgid "Effective date"
+msgstr "Date"
+
+#. module: account
+#: field:account.invoice,supplier_invoice_number:0
+msgid "Supplier Invoice Number"
+msgstr "Supplier Conrtract Reference"
+
+#. module: account
+#: field:account.invoice,ref:0
+msgid "Reference"
+msgstr "Contract Reference"
 
 
