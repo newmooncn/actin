@@ -23,37 +23,59 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 import math
-class account_invoice_line(osv.osv):
-	_inherit="account.invoice.line"
-	_columns = {
-    'qty_per_carton':fields.float('QTY/CTN', digits_compute = dp.get_precision('Product UoS')),
-    'qty_carton':fields.integer('Number of CTN'),
-    'weight_net':fields.float('N.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
-    'weight_gross':fields.float('G.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
-    'm3':fields.float('CBM', digits_compute = dp.get_precision('Stock Weight')),
-	}	
-	
-class sale_order_line(osv.osv):
-	_inherit = 'sale.order.line'
 
-	def _prepare_order_line_invoice_line(self, cr, uid, line, account_id=False, context=None):
-		res = super(sale_order_line, self)._prepare_order_line_invoice_line(cr, uid, line, account_id=account_id, context=context)
-		qty_per_carton = line.product_id.qty_per_outer
-		qty_carton = qty_per_carton>0 and math.ceil(line.product_uom_qty/qty_per_carton) or 0
-		weight_net = line.product_id.weight_net*line.product_uom_qty
-		weight_gross = line.product_id.weight*line.product_uom_qty
-		m3 = line.product_id.volume*line.product_uom_qty
+class sale_order(osv.osv):
+	_inherit = 'sale.order'	
+	def action_invoice_create(self, cr, uid, ids, grouped=False, states=None, date_invoice = False, context=None):
+		inv_id = super(sale_order, self).action_invoice_create(cr, uid, ids, grouped, states, date_invoice, context)
+		pack_obj = self.pool['account.invoice.pack']
+		for line in self.pool['account.invoice'].browse(cr, uid, inv_id, context=context).invoice_line:			
+			qty_per_carton = line.product_id.qty_per_outer
+			qty_carton = qty_per_carton>0 and math.floor(line.quantity/qty_per_carton) or 0
+			quantity = qty_carton * qty_per_carton
+						
+			weight_net = line.product_id.weight_net*quantity
+			weight_gross = line.product_id.weight*quantity
+			m3 = line.product_id.volume*quantity
+					
+			pack_val = {
+				'invoice_id': inv_id,
+				'sequence': line.sequence,
+				'product_id': line.product_id.id or False,				
+				'name': line.name,				
+				'qty_per_carton': qty_per_carton,
+				'qty_carton': qty_carton,
+				'quantity': quantity,
+				'uos_id': line.uos_id.id,
+				'weight_net': weight_net,
+				'weight_gross': weight_gross,
+				'm3': m3,
+			}			
+			pack_obj.create(cr, uid, pack_val, context=context)
+			
+			if line.quantity - quantity > 0:
+				qty_carton = 1
+				quantity = line.quantity - quantity							
+				weight_net = line.product_id.weight_net*quantity
+				weight_gross = line.product_id.weight*quantity
+				m3 = line.product_id.volume*quantity
+						
+				pack_val = {
+					'invoice_id': inv_id,
+					'sequence': line.sequence,
+					'product_id': line.product_id.id or False,				
+					'name': line.name,				
+					'qty_per_carton': qty_per_carton,
+					'qty_carton': qty_carton,
+					'quantity': quantity,
+					'uos_id': line.uos_id.id,
+					'weight_net': weight_net,
+					'weight_gross': weight_gross,
+					'm3': m3,
+				}			
+				pack_obj.create(cr, uid, pack_val, context=context)
 
-		if qty_carton > 0:
-			weight_net = line.product_id.pack_out_nw * qty_carton
-			weight_gross = line.product_id.pack_out_gw * qty_carton
-			m3 = line.product_id.pack_out_volume * qty_carton
-
-		res.update({'qty_per_carton':qty_per_carton,'qty_carton':qty_carton,
-				'weight_net':weight_net,'weight_gross':weight_gross,'m3':m3})
-		
-		return res	
-
+			
 class account_invoice(osv.osv):
 	_inherit="account.invoice"
 	def _amount_packing(self, cr, uid, ids, field_name, arg, context=None):
@@ -65,7 +87,7 @@ class account_invoice(osv.osv):
 				'weight_gross_total': 0.0,
 				'm3_total': 0.0,
 			}
-			for line in order.invoice_line:
+			for line in order.pack_line:
 				res[order.id]['qty_carton_total'] += line.qty_carton
 				res[order.id]['weight_net_total'] += line.weight_net
 				res[order.id]['weight_gross_total'] += line.weight_gross
@@ -99,7 +121,54 @@ class account_invoice(osv.osv):
             store={
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line'], 10),
                 'account.invoice.line': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
-            },multi='sums'),    			
+            },multi='sums'),    
+	'pack_line': fields.one2many('account.invoice.pack', 'invoice_id', 'Packing Lines', readonly=True, states={'draft':[('readonly',False)]}),			
 	}
+								
 	
+class account_invoice_pack(osv.osv):
+	_name="account.invoice.pack"
+	_columns = {
+		'invoice_id': fields.many2one('account.invoice', 'Invoice Reference', ondelete='cascade', select=True),
+		'sequence': fields.integer('Sequence', help="Gives the sequence of this line when displaying the invoice."),
+		'product_id': fields.many2one('product.product', 'Product', ondelete='set null', select=True),
+		'name': fields.text('Description', required=True),
+		'qty_per_carton':fields.float('QTY/CTN', digits_compute = dp.get_precision('Product UoS')),
+		'qty_carton':fields.integer('Number of CTN'),
+		'quantity': fields.float('Quantity', digits_compute= dp.get_precision('Product Unit of Measure'), required=True),
+		'uos_id': fields.many2one('product.uom', 'Unit of Measure', ondelete='set null', select=True),
+		'weight_net':fields.float('N.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
+		'weight_gross':fields.float('G.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
+		'm3':fields.float('CBM', digits_compute = dp.get_precision('Stock Weight')),
+		'company_id': fields.related('invoice_id','company_id',type='many2one',relation='res.company',string='Company', store=True, readonly=True),
+	}		
+
+	def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice',
+			partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
+			company_id=None, context=None):
+		company_id = company_id if company_id is not None else context.get('company_id', False)
+		if not partner_id:
+			raise osv.except_osv(_('No Partner Defined!'), _("You must first select a partner!"))
+		if not product:
+			return {'value': {}, 'domain': {'uos_id': []}}
+
+		values = {}
+		product = self.pool['product.product'].browse(product)
+		values['name'] = product.partner_ref
+		if type in ('out_invoice', 'out_refund'):
+			if product.description_sale:
+				values['name'] += '\n' + product.description_sale
+		else:
+			if product.description_purchase:
+				values['name'] += '\n' + product.description_purchase
+
+		values['uos_id'] = product.uom_id.id
+		if uom_id:
+			uom = self.env['product.uom'].browse(uom_id)
+			if product.uom_id.category_id.id == uom.category_id.id:
+				values['uos_id'] = uom_id
+
+		domain = {'uos_id': [('category_id', '=', product.uom_id.category_id.id)]}
+
+		return {'value': values, 'domain': domain}	
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

@@ -64,8 +64,8 @@
                     </group>
                     <field name="sent" invisible="1"/>
                     <separator string="Packing Lines"/>
-                    <field name="invoice_line" nolabel="1" widget="one2many_list" context="{'type': type}" attrs="{'readonly':[('state','!=','open')]}">
-                        <tree string="Invoice Lines" editable="bottom" create="0" delete="0">
+                    <field name="pack_line" nolabel="1" widget="one2many_list" context="{'type': type}" attrs="{'readonly':[('state','!=','open')]}">
+                        <tree string="Packing Lines" editable="bottom" create="0" delete="0">
                             <field name="sequence" widget="handle"/>
                             <field name="product_id"
                                 on_change="product_id_change(product_id, uos_id, quantity, name, parent.type, parent.partner_id, parent.fiscal_position, price_unit, parent.currency_id, parent.company_id, context)"/>

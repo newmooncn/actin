@@ -431,7 +431,7 @@
       </tr>
     </blockTable>
     <section>
-      <para style="P11">[[repeatIn(o.invoice_line,'line')]]</para>
+      <para style="P11">[[repeatIn(o.pack_line,'line')]]</para>
       <blockTable colWidths="69.0,151.0,43.0,55.0,51.0,56.0,60.0,53.0" style="Table_Order_Pur_line_Content">
         <tr>
           <td>
