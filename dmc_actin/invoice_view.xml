@@ -86,7 +86,12 @@
             		<field name="is_service"/>
             		<field name="ci_service_type" attrs="{'invisible':[('is_service','=',False)]}"/>
             		<field name="parent_id" attrs="{'invisible':[('is_service','=',False)]}" string='Related Customer Product Commercial Invoice Number'/>
+            		<field name="cust_inv_id" attrs="{'invisible':[('cust_inv_id','=',False)]}"/>
             	</field>
+            	<!-- generate customer invoice button -->
+            	<button name="invoice_cancel" position="after">
+            		<button name="invoice_sup2cust" string="Generate Customer Invoice" type="object" groups="account.group_account_invoice"/>
+            	</button>
             </field>
         </record>
 	<!-- add ci_service_type,parent_id searching --> 

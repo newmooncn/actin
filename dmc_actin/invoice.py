@@ -20,6 +20,7 @@
 ##############################################################################
 
 from openerp import models, fields, api, _
+from openerp.exceptions import except_orm, Warning, RedirectWarning
 class account_invoice(models.Model):
 	_inherit="account.invoice"
 	name = fields.Char(string='Reference/Description', index=True,
@@ -48,32 +49,11 @@ class account_invoice(models.Model):
 												('sourcing','Sourcing'),
 												('others','Others')),
 									string='Service type')		 
-	 
+
 	parent_id = fields.Many2one('account.invoice', 'Commercial Invoice', select=True, domain="[('is_service','=',False),('type','=','out_invoice')]")	
 	child_ids = fields.One2many('account.invoice', 'parent_id', 'Service Invoices')
 	
-	#fields for loading/discharge ports
-
-#	@api.one
-#	@api.depends('sale_ids')
-#	def _sale_info(self):
-#		so = self.sale_ids and self.sale_ids[0] or False
-#		if so:
-#			self.port_load_id = so.port_load_id.id
-#			self.port_discharge_id = so.port_discharge_id.id
-#		
-#	port_load_id = fields.Many2one('option.list', string='Port of loading', 
-#								domain=[('option_name','=','partner_port')], 
-#								readonly=True,
-#								compute='_sale_info', 
-#								store=True)
-#	port_discharge_id = fields.Many2one('option.list', string='Port of discharge', 
-#								domain=[('option_name','=','partner_port')], 
-#								readonly=True,
-#								compute='_sale_info', 
-#								store=True)
-	
-	#will be set in sale.py._prepare_invoice()
+	#fields for loading/discharge ports, #will be set in sale.py._prepare_invoice()
 	port_load_id = fields.Many2one('option.list', string='Port of loading', domain=[('option_name','=','partner_port')])
 	port_discharge_id = fields.Many2one('option.list', string='Port of discharge', domain=[('option_name','=','partner_port')])
 	
@@ -114,4 +94,58 @@ class account_invoice(models.Model):
 			#recs = self.search([('name', operator, name)] + args, limit=limit)
 			recs = self.search(['|',('name', operator, name),('number', operator , name)] + args, limit=limit)
 		return recs.name_get()	
+	
+	#field link to generated customer invoice
+	cust_inv_id = fields.Many2one('account.invoice', string='Customer Invoice', readonly=True)
+	
+	@api.multi
+	def invoice_sup2cust(self):
+		assert len(self) == 1, 'This option should only be used for a single id at a time.'
+		'''
+			Customer: first product's customer
+			Journal: Sales Journal
+			Invoice Date: current date
+			Account: AP/AR
+			Line's account		
+		'''
+		#invoice type
+		inv_type = self.type=='in_invoice' and 'out_invoice' or 'out_refund'
+		#customer id:
+		customer = None
+		if self.invoice_line:
+			for inv_line in self.invoice_line:
+				if inv_line.product_id.customer_id:
+					customer = inv_line.product_id.customer_id
+		if not customer:
+			raise except_orm(_('Error!'),
+		        _('Please define add invoice line and set the customer to the products.'))
+		#journal: sales journal
+		sale_journal = self.env['account.journal'].search([('type', '=', 'sale'), ('company_id', '=', self.company_id.id)],limit=1)
+		if not sale_journal:
+			raise except_orm(_('Error!'),
+		        _('Please define sales journal for this company: "%s" (id:%d).') % (self.company_id.name, self.company_id.id))
+		#invoie date
+		date_invoice = fields.Date.context_today(self)
+		#account
+		account_id = customer.property_account_receivable.id
+		#generate customer invoice
+		cust_inv = self.copy({'type':inv_type, 
+								'partner_id': customer.id, 
+								'journal_id': sale_journal.id, 
+								'date_invoice':date_invoice,
+								'account_id':account_id})
+		#update customer invoice line's account
+		for inv_line in cust_inv.invoice_line:
+			account_id = inv_line.product_id.property_account_income.id
+			if not account_id:
+				account_id = inv_line.product_id.categ_id.property_account_income_categ.id
+			if not account_id:
+				raise except_orm(_('Error!'),
+						_('Please define income account for this product: "%s" (id:%d).') % \
+							(inv_line.product_id.name, inv_line.product_id.id,))
+			inv_line.write({'account_id':account_id})
+		#update supplier invoice's customer invoice id
+		self.write({'cust_inv_id':cust_inv.id})
+		return True
+		
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
