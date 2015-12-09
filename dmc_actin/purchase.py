@@ -126,7 +126,11 @@ class purchase_order(osv.osv):
 			'target': 'current',
 			'res_id': so_id,
 		}
-
+	def _prepare_invoice(self, cr, uid, order, line_ids, context=None):
+		resu = super(purchase_order, self)._prepare_invoice(cr, uid, order, line_ids, context=context)
+		if not resu.get('date_invoice'):
+			resu['date_invoice'] = fields.date.context_today(self, cr, uid, context=context)
+		return resu 
 def onchange_product_id_prod_sup_actin(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,
         partner_id, date_order=False, fiscal_position_id=False, date_planned=False,
         name=False, price_unit=False, state='draft', context=None):        
