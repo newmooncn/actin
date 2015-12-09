@@ -152,6 +152,18 @@ class account_invoice(models.Model):
 		#update supplier invoice's customer invoice id
 		self.write({'cust_inv_id':cust_inv.id})
 		return True
+
+	def invoice_pay_customer(self, cr, uid, ids, context=None):
+		resu = super(account_invoice,self).invoice_pay_customer(cr, uid, ids, context=context)
+		ref = None
+		inv = self.browse(cr, uid, ids[0], context=context)
+		if inv.type in('out_invoice','out_refund'):
+			ref = inv.contract_n
+		if inv.type in('in_invoice','in_refund'):
+			ref = inv.origin
+		if ref:  
+			resu['context']['default_reference'] = ref
+		return resu
 	
 from openerp.osv import fields, osv		
 class account_invoice_refund(osv.osv_memory):
