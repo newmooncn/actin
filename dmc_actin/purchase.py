@@ -86,9 +86,14 @@ class purchase_order(osv.osv):
 		sale_obj = self.pool['sale.order']
 		#update customer
 		customer_id = None
+		incoterm_id = None
 		for po_line in po.order_line:
 			if po_line.product_id.customer_id:
 				customer_id = po_line.product_id.customer_id.id
+				for prod_cust in po_line.product_id.customer_ids:
+					if prod_cust.name.id == customer_id:
+						incoterm_id = prod_cust.incoterm.id	
+						break					
 				break
 		if not customer_id:
 			raise osv.except_osv(_('Error'),'Please define customer for the products!')
@@ -101,8 +106,8 @@ class purchase_order(osv.osv):
 					'port_discharge_id':po.port_discharge_id.id,
 					'ship_type':po.ship_type.id,
 					'deliver_memo':po.deliver_memo,
-					'incoterm':po.incoterm_id.id,
-					'payment_term':po.payment_term_id.id,
+					'incoterm':incoterm_id or po.incoterm_id.id,
+					'payment_term': po.payment_term_id.id,
 					})
 		so_id = sale_obj.create(cr, uid, so_val, context=context)
 		self.write(cr, uid, ids, {'sale_id':so_id}, context=context)
