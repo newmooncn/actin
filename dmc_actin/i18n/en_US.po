@@ -278,4 +278,9 @@ msgstr "Supplier Invoice Number"
 msgid "Reference"
 msgstr "Contract Reference"
 
+#. module: account
+#: field:account.invoice.refund,description:0
+msgid "Reason"
+msgstr "Description"
+
 

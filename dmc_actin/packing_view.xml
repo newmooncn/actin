@@ -72,8 +72,8 @@
                             <field name="name"/>
                             <field name="qty_per_carton"/>
                             <field name="qty_carton" sum="Total"/>    
-                            <field name="quantity" readonly="1"/>
-                            <field name="uos_id" groups="product.group_uom" readonly="1"/>
+                            <field name="quantity"/>
+                            <field name="uos_id"/>
                             <field name="weight_net" sum="Total"/>
                             <field name="weight_gross" sum="Total"/>
                             <field name="m3" sum="Total"/>

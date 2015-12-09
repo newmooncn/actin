@@ -32,7 +32,8 @@ class account_invoice(models.Model):
 		resu = super(account_invoice, self)._prepare_refund(invoice, date=date, period_id=period_id,description=description,journal_id=journal_id)
 		resu.update({'origin_inv_id':invoice.id})
 		return resu
-	
+
+from openerp.osv import osv
 class account_invoice_refund(osv.osv_memory):
 	_inherit = "account.invoice.refund"	
 	def _get_journal(self, cr, uid, context=None):

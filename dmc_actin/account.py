@@ -31,6 +31,7 @@ class account_move(osv.osv):
     
 class account_move_line(osv.osv):
     _inherit = "account.move.line"
+    _order = "id desc"
     _columns={
         #the fields only for search usage
         'date_search_from':fields.function(lambda *a,**k:{}, type='date',string="From Date",),
@@ -112,7 +113,7 @@ class account_invoice(osv.osv):
         #get the move ids, and update resource_id
         move_obj = self.pool.get('account.move')
         for inv in self.browse(cr, uid, ids, context=context):
-            move_vals = {}
+            move_vals = {'ref':inv.name}
             if inv.type in('out_invoice','out_refund'):
                 move_vals.update({'inv_name':inv.number})
             if inv.type in('in_invoice','in_refund'):

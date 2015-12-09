@@ -133,6 +133,7 @@ class purchase_order(osv.osv):
 		}
 	def _prepare_invoice(self, cr, uid, order, line_ids, context=None):
 		resu = super(purchase_order, self)._prepare_invoice(cr, uid, order, line_ids, context=context)
+		resu.update({'name':order.name})
 		if not resu.get('date_invoice'):
 			resu['date_invoice'] = fields.date.context_today(self, cr, uid, context=context)
 		return resu 

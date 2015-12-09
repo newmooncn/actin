@@ -97,7 +97,8 @@ class sale_order(osv.osv):
 		invoice_vals = super(sale_order,self)._prepare_invoice(cr, uid, order, lines, context)
 		#set invoice other values
 		invoice_vals.update({'port_load_id':order.port_load_id and order.port_load_id.id or False,
-							'port_discharge_id':order.port_discharge_id and order.port_discharge_id.id or False})
+							'port_discharge_id':order.port_discharge_id and order.port_discharge_id.id or False,
+							'name':order.name})
 		return invoice_vals		
 	
 	#add function for 'set to draft' button, 11/06/2015   

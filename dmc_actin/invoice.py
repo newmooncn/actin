@@ -103,7 +103,7 @@ class account_invoice(models.Model):
 		return recs.name_get()	
 	
 	#field link to generated customer invoice
-	cust_inv_id = fields.Many2one('account.invoice', string='Customer Invoice', readonly=True)
+	cust_inv_id = fields.Many2one('account.invoice', string='Customer Invoice', readonly=True, copy=False)
 	
 	@api.multi
 	def invoice_sup2cust(self):
@@ -153,17 +153,35 @@ class account_invoice(models.Model):
 			inv_line.write({'account_id':account_id})
 		#update supplier invoice's customer invoice id
 		self.write({'cust_inv_id':cust_inv.id})
-		return True
+		#goto customer invoice
+		res = self.env['ir.model.data'].get_object_reference('account', 'invoice_form')
+		res_id = res and res[1] or False
+		return {
+			'name': _('Customer Invoice'),
+			'view_type': 'form',
+			'view_mode': 'form',
+			'view_id': [res_id],
+			'res_model': 'account.invoice',
+			'context': "{'type':'out_invoice', 'journal_type': 'sale'}",
+			'type': 'ir.actions.act_window',
+			'nodestroy': True,
+			'target': 'current',
+			'res_id': cust_inv.id,
+		}
 
 	def invoice_pay_customer(self, cr, uid, ids, context=None):
 		resu = super(account_invoice,self).invoice_pay_customer(cr, uid, ids, context=context)
 		ref = None
 		inv = self.browse(cr, uid, ids[0], context=context)
-		if inv.type in('out_invoice','out_refund'):
-			ref = inv.contract_n
-		if inv.type in('in_invoice','in_refund'):
-			ref = inv.origin
-		if ref:  
+		#inv.name is the po/so name
+		ref = inv.name
+#		if inv.type in('out_invoice','out_refund'):
+#			ref = inv.contract_n
+#		if inv.type == 'in_invoice':
+#			ref = inv.origin
+#		if inv.type == 'in_refund':
+#			ref = inv.name
+		if ref:
 			resu['context']['default_reference'] = ref
 		return resu
 	
