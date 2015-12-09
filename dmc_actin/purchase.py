@@ -53,7 +53,7 @@ class purchase_order(osv.osv):
 		'disputes': fields.text('DISPUTES'),
 		'doc_export': fields.text('DOCUMENTS EXPORT'),
 		'confirmation': fields.text('CONFIRMATION'),
-		'artworks': fields.text('ARTWORKS'),
+		'artworks': fields.text('ADDITIONAL COMMENTS'),
 		#redefine since the status name changed
 		'state': fields.selection(STATE_SELECTION, 'Status', readonly=True,
 								  help="The status of the purchase order or the quotation request. "
