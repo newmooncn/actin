@@ -106,7 +106,7 @@
                 <field name="period_id" position="after">
                 	<separator/>
                 	<field name="ci_service_type"/>
-                	<field name="parent_id"/>
+                	<field name="parent_id" context="{'show_cust_pi':True}"/>
 				</field>
             </field>
         </record>

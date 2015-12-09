@@ -65,20 +65,22 @@ class account_invoice(models.Model):
 	#fields for the service flag
 	is_service = fields.Boolean('Service')
 					
-#	@api.multi
-#	def name_get(self):
-#		TYPES = {
-#			'out_invoice': _('Invoice'),
-#			'in_invoice': _('Supplier Invoice'),
-#			'out_refund': _('Refund'),
-#			'in_refund': _('Supplier Refund'),
-#		}
-#		result = []
-#		for inv in self:
-#			#only use invoice.number as the name
-#			#result.append((inv.id, "%s %s" % (inv.number or TYPES[inv.type], inv.name or '')))
-#			result.append((inv.id, inv.number or TYPES[inv.type]))
-#		return result	
+	@api.multi
+	def name_get(self):
+		TYPES = {
+			'out_invoice': _('Invoice'),
+			'in_invoice': _('Supplier Invoice'),
+			'out_refund': _('Refund'),
+			'in_refund': _('Supplier Refund'),
+		}
+		result = []
+		for inv in self:
+			#only use invoice.number as the name
+			if self._context.get('show_cust_pi'):				
+				result.append((inv.id, "%s %s" % (inv.number or TYPES[inv.type], inv.contact_n or '')))
+			else:
+				result.append((inv.id, inv.number or TYPES[inv.type]))
+		return result	
 	
 	@api.multi
 	def onchange_payment_term_date_invoice(self, payment_term_id, date_invoice):
@@ -97,7 +99,7 @@ class account_invoice(models.Model):
 		if not recs:
 			#johnw, 2015/11/10, for the number, use 'operator'
 			#recs = self.search([('name', operator, name)] + args, limit=limit)
-			recs = self.search(['|',('name', operator, name),('number', operator , name)] + args, limit=limit)
+			recs = self.search(['|','|','|',('name', operator, name),('number', operator , name),('contract_n', operator , name),('origin', operator , name)] + args, limit=limit)
 		return recs.name_get()	
 	
 	#field link to generated customer invoice
