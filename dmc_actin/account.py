@@ -123,5 +123,11 @@ class account_invoice(osv.osv):
             move_obj.write(cr, uid, [inv.move_id.id],move_vals,context=context)
             #the related fields can not be updated sometime, update again
             self.pool['account.move.line'].write(cr, uid, [line.id for line in inv.move_id.line_id],move_vals,context=context)
+            #update inv comments to AP/AR move line's comment
+            ap_ar_lnids = []
+            for line in inv.move_id.line_id:
+                if line.account_id.id == inv.account_id.id:
+                    ap_ar_lnids.append(line.id)
+            self.pool['account.move.line'].write(cr, uid, ap_ar_lnids, {'name':inv.comment or ' '},context=context)
         return resu        
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
