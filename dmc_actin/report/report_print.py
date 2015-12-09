@@ -25,10 +25,23 @@ import time
 from openerp.report import report_sxw
 from openerp.addons.dm_base.rml import rml_parser_ext
 
+class po_print(rml_parser_ext):
+    def __init__(self, cr, uid, name, context):
+        super(po_print, self).__init__(cr, uid, name, context=context)
+        self.localcontext.update({
+            'qty_total': self.qty_total,
+        })
+        
+    def qty_total(self, order):
+        qty = 0
+        for line in order.order_line:
+            qty += line.product_qty
+        return qty
+
 report_sxw.report_sxw('report.purchase.order.actin',
                       'purchase.order',
                       'addons/dmc_actin/report/purchase_order.rml',
-                      parser=rml_parser_ext)
+                      parser=po_print)
 
 class pi_print(rml_parser_ext):
     def __init__(self, cr, uid, name, context):

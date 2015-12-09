@@ -61,10 +61,15 @@ class sale_order(osv.osv):
 			prod_obj = self.pool['product.product']
 			soln_obj = self.pool['sale.order.line']
 			for order in self.browse(cr, uid, ids, context=context):
+				incoterm_new_id = None
 				for line in order.order_line:
-					cust_prod = prod_obj.get_customer_product_info(cr, uid, vals['partner_id'], line.product_id.id, context=context)
+					cust_prod = prod_obj.get_customer_product(cr, uid, vals['partner_id'], line.product_id.id, context=context)
 					if cust_prod:
-						soln_obj.write(cr, uid, [line.id],{'price_unit':cust_prod['price'], 'cust_prod_code':cust_prod['product_code'], 'name':cust_prod['product_name'] or ' '}, context=context)											
+						soln_obj.write(cr, uid, [line.id],{'price_unit':cust_prod.price, 'cust_prod_code':cust_prod.product_code, 'name':cust_prod.product_name or ' '}, context=context)
+						if cust_prod.incoterm and not incoterm_new_id:
+							incoterm_new_id = cust_prod.incoterm.id		
+				if incoterm_new_id:
+					self.write(cr, uid, [order.id],{'incoterm':incoterm_new_id},context=context)								
 		return resu
 	
 	def onchange_partner_id(self, cr, uid, ids, part, context=None):
