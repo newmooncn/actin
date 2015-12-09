@@ -271,7 +271,7 @@ msgstr "Date"
 #. module: account
 #: field:account.invoice,supplier_invoice_number:0
 msgid "Supplier Invoice Number"
-msgstr "Supplier Conrtract Reference"
+msgstr "Supplier Invoice Number"
 
 #. module: account
 #: field:account.invoice,ref:0

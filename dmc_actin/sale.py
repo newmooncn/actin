@@ -64,7 +64,7 @@ class sale_order(osv.osv):
 				for line in order.order_line:
 					cust_prod = prod_obj.get_customer_product_info(cr, uid, vals['partner_id'], line.product_id.id, context=context)
 					if cust_prod:
-						soln_obj.write(cr, uid, [line.id],{'price_unit':cust_prod['price'], 'cust_prod_code':cust_prod['product_code']}, context=context)											
+						soln_obj.write(cr, uid, [line.id],{'price_unit':cust_prod['price'], 'cust_prod_code':cust_prod['product_code'], 'name':cust_prod['product_name'] or ' '}, context=context)											
 		return resu
 	
 	def onchange_partner_id(self, cr, uid, ids, part, context=None):
@@ -175,12 +175,15 @@ def product_id_change_so_actin(self, cr, uid, ids, pricelist, product, qty=0,
 	if update_tax: #The quantity only have changed
 		result['tax_id'] = self.pool.get('account.fiscal.position').map_tax(cr, uid, fpos, product_obj.taxes_id)
 
+	'''
+	johnw,2015/12/08, comment the name's getting logic, use product customer name as name
 	if not flag:
 		result['name'] = self.pool.get('product.product').name_get(cr, uid, [product_obj.id], context=context_partner)[0][1]
 		if product_obj.description_sale:
 			#johnw, 10/21/2015, change the name to be the product.description_sale
 			#result['name'] += '\n'+product_obj.description_sale
 			result['name'] = product_obj.description_sale
+	'''
 	domain = {}
 	if (not uom) and (not uos):
 		result['product_uom'] = product_obj.uom_id.id
@@ -250,9 +253,12 @@ def product_id_change_so_actin(self, cr, uid, ids, pricelist, product, qty=0,
 		result.update({'cust_prod_code':cust_prod['product_code']})
 		#add customer product name to SO's description
 		if cust_prod['product_name']:
-			result['name'] = '%s %s'%(cust_prod['product_name'], result.get('name',''))
-			result['name'] = result['name'].strip()
-
+			#johnw, 2015/12/08, use product customer name as name
+			#result['name'] = '%s %s'%(cust_prod['product_name'], result.get('name',''))
+			#result['name'] = result['name'].strip()
+			result['name'] = cust_prod['product_name']
+	if not result.get('name'):
+		result['name'] = ' '
 	return {'value': result, 'domain': domain, 'warning': warning}
 
 so_line_super.product_id_change = product_id_change_so_actin

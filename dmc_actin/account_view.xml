@@ -46,6 +46,9 @@
             	<field name='period_id' position='attributes'>
             		<attribute name="invisible">1</attribute>
             	</field>
+            	<field name="ref" position="after">
+            		<field name="inv_name"/>
+            	</field>
             </field>
 		</record>    
 	           

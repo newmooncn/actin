@@ -23,6 +23,11 @@ from openerp import models, fields, api, _
 from openerp.exceptions import except_orm, Warning, RedirectWarning
 class account_invoice(models.Model):
 	_inherit="account.invoice"
+	# set readonly only to false when paid
+	supplier_invoice_number = fields.Char(string='Supplier Invoice Number',
+		help="The reference of this invoice as provided by the supplier.",
+		readonly=False, states={'paid': [('readonly', True)]})
+		
 	name = fields.Char(string='Reference/Description', index=True,
 	        readonly=True, states={'draft': [('readonly', False)]})
 	
@@ -60,20 +65,20 @@ class account_invoice(models.Model):
 	#fields for the service flag
 	is_service = fields.Boolean('Service')
 					
-	@api.multi
-	def name_get(self):
-		TYPES = {
-			'out_invoice': _('Invoice'),
-			'in_invoice': _('Supplier Invoice'),
-			'out_refund': _('Refund'),
-			'in_refund': _('Supplier Refund'),
-		}
-		result = []
-		for inv in self:
-			#only use invoice.number as the name
-			#result.append((inv.id, "%s %s" % (inv.number or TYPES[inv.type], inv.name or '')))
-			result.append((inv.id, inv.number or TYPES[inv.type]))
-		return result	
+#	@api.multi
+#	def name_get(self):
+#		TYPES = {
+#			'out_invoice': _('Invoice'),
+#			'in_invoice': _('Supplier Invoice'),
+#			'out_refund': _('Refund'),
+#			'in_refund': _('Supplier Refund'),
+#		}
+#		result = []
+#		for inv in self:
+#			#only use invoice.number as the name
+#			#result.append((inv.id, "%s %s" % (inv.number or TYPES[inv.type], inv.name or '')))
+#			result.append((inv.id, inv.number or TYPES[inv.type]))
+#		return result	
 	
 	@api.multi
 	def onchange_payment_term_date_invoice(self, payment_term_id, date_invoice):

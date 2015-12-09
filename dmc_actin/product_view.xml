@@ -309,6 +309,7 @@
             		<field name="curr_name"/>
             		<field name="ean13"/>
             		<field name="payment_term_id"/>
+            		<field name="incoterm"/>
             		<field name="port_discharge"/>
             	</field>
             </data>

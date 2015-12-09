@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_actin_invoice_pack,access_actin_invoice_pack,model_account_invoice_pack,base.group_user,1,1,1,1
+access_account_rpt,access_account_rpt,model_account_rpt,base.group_user,1,1,1,1
