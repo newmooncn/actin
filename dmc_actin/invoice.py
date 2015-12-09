@@ -167,31 +167,6 @@ class account_invoice(models.Model):
 			resu['context']['default_reference'] = ref
 		return resu
 	
-from openerp.osv import osv		
-class account_invoice_refund(osv.osv_memory):
-	_inherit = "account.invoice.refund"	
-	def _get_journal(self, cr, uid, context=None):
-		obj_journal = self.pool.get('account.journal')
-		user_obj = self.pool.get('res.users')
-		if context is None:
-			context = {}
-		inv_type = context.get('type', 'out_invoice')
-		company_id = user_obj.browse(cr, uid, uid, context=context).company_id.id
-		#johnw, 2015/12/09
-		'''
-		type = (inv_type == 'out_invoice') and 'sale_refund' or \
-			   (inv_type == 'out_refund') and 'sale' or \
-			   (inv_type == 'in_invoice') and 'purchase_refund' or \
-			   (inv_type == 'in_refund') and 'purchase'
-		'''
-		type = inv_type in ('out_invoice','out_refund') and 'sale' or  inv_type in ('in_invoice','in_refund') and 'purchase'
-		journal = obj_journal.search(cr, uid, [('type', '=', type), ('company_id','=',company_id)], limit=1, context=context)
-		return journal and journal[0] or False	
-	
-	_defaults = {
-		'journal_id': _get_journal,
-	}		
-	
 #Credit/Debit note numer generation
 class account_move(models.Model):
 	_inherit="account.move"
