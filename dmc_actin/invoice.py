@@ -152,5 +152,85 @@ class account_invoice(models.Model):
 		#update supplier invoice's customer invoice id
 		self.write({'cust_inv_id':cust_inv.id})
 		return True
-		
+	
+from openerp.osv import fields, osv		
+class account_invoice_refund(osv.osv_memory):
+	_inherit = "account.invoice.refund"	
+	def _get_journal(self, cr, uid, context=None):
+		obj_journal = self.pool.get('account.journal')
+		user_obj = self.pool.get('res.users')
+		if context is None:
+			context = {}
+		inv_type = context.get('type', 'out_invoice')
+		company_id = user_obj.browse(cr, uid, uid, context=context).company_id.id
+		#johnw, 2015/12/09
+		'''
+		type = (inv_type == 'out_invoice') and 'sale_refund' or \
+			   (inv_type == 'out_refund') and 'sale' or \
+			   (inv_type == 'in_invoice') and 'purchase_refund' or \
+			   (inv_type == 'in_refund') and 'purchase'
+		'''
+		type = inv_type in ('out_invoice','out_refund') and 'sale' or  inv_type in ('in_invoice','in_refund') and 'purchase'
+		journal = obj_journal.search(cr, uid, [('type', '=', type), ('company_id','=',company_id)], limit=1, context=context)
+		return journal and journal[0] or False	
+	
+	_defaults = {
+		'journal_id': _get_journal,
+	}		
+	
+#Credit/Debit note numer generation
+class account_move(models.Model):
+	_inherit="account.move"
+	def post(self, cr, uid, ids, context=None):
+		if context is None:
+			context = {}
+		invoice = context.get('invoice', False)
+		valid_moves = self.validate(cr, uid, ids, context)
+
+		if not valid_moves:
+			raise osv.except_osv(_('Error!'), _('You cannot validate a non-balanced entry.\nMake sure you have configured payment terms properly.\nThe latest payment term line should be of the "Balance" type.'))
+		obj_sequence = self.pool.get('ir.sequence')
+		for move in self.browse(cr, uid, valid_moves, context=context):
+			if move.name =='/':
+				new_name = False
+				journal = move.journal_id
+
+				if invoice and invoice.internal_number:
+					new_name = invoice.internal_number
+				else:
+					if journal.sequence_id:
+						c = {'fiscalyear_id': move.period_id.fiscalyear_id.id}
+						#johnw, change to use the refund journal to get the name
+						#new_name = obj_sequence.next_by_id(cr, uid, journal.sequence_id.id, c)
+						inv = None
+						inv_ids = self.pool['account.invoice'].search(cr, uid, [('move_id', '=', move.id)], context=context)
+						if inv_ids:
+							inv = self.pool['account.invoice'].browse(cr, uid, inv_ids, context=context)[0]
+						ctx_inv = context.copy()
+						ctx_inv['active_test'] = False
+						journal_obj = self.pool['account.journal']
+						if inv and inv.type == 'out_refund':
+							journal_seq_ids = journal_obj.search(cr, uid, [('type','=','sale_refund')], context=ctx_inv)
+							if journal_seq_ids:
+								journal_seq = journal_obj.browse(cr, uid, journal_seq_ids[0], context=ctx_inv)
+								new_name = obj_sequence.next_by_id(cr, uid, journal_seq.sequence_id.id, c)
+						elif inv and inv.type == 'in_refund':
+							journal_seq_ids = journal_obj.search(cr, uid, [('type','=','purchase_refund')], context=ctx_inv)
+							if journal_seq_ids:
+								journal_seq = journal_obj.browse(cr, uid, journal_seq_ids[0], context=ctx_inv)
+								new_name = obj_sequence.next_by_id(cr, uid, journal_seq.sequence_id.id, c)
+						else:
+							new_name = obj_sequence.next_by_id(cr, uid, journal.sequence_id.id, c)							
+					else:
+						raise osv.except_osv(_('Error!'), _('Please define a sequence on the journal.'))
+
+				if new_name:
+					self.write(cr, uid, [move.id], {'name':new_name})
+
+		cr.execute('UPDATE account_move '\
+				   'SET state=%s '\
+				   'WHERE id IN %s',
+				   ('posted', tuple(valid_moves),))
+		self.invalidate_cache(cr, uid, context=context)
+		return True	
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
