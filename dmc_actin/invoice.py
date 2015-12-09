@@ -165,7 +165,7 @@ class account_invoice(models.Model):
 			resu['context']['default_reference'] = ref
 		return resu
 	
-from openerp.osv import fields, osv		
+from openerp.osv import osv		
 class account_invoice_refund(osv.osv_memory):
 	_inherit = "account.invoice.refund"	
 	def _get_journal(self, cr, uid, context=None):

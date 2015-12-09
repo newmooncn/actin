@@ -74,7 +74,7 @@
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
                 <label for="reference_type" position="attributes">
-            		<attribute name="string">Purchase Journal Description</attribute>
+            		<attribute name="string">Supplier PI Number</attribute>
             	</label>
             	<field name="reference_type" position="attributes">
             		<attribute name="invisible">True</attribute>

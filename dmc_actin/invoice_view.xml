@@ -90,7 +90,9 @@
             	</field>
             	<!-- generate customer invoice button -->
             	<button name="invoice_cancel" position="after">
-            		<button name="invoice_sup2cust" string="Generate Customer Invoice" type="object" groups="account.group_account_invoice"/>
+            		<button name="invoice_sup2cust" string="Generate Customer Invoice" 
+            		type="object" groups="account.group_account_invoice"
+            		attrs="{'invisible':[('cust_inv_id','!=',False)]}"/>
             	</button>
             </field>
         </record>
