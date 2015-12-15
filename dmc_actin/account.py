@@ -104,7 +104,17 @@ class account_voucher(osv.osv):
                     
                 resu['inv_name'] = inv.supplier_invoice_number
         return resu
-    
+    def voucher_move_line_create(self, cr, uid, voucher_id, line_total, move_id, company_currency, current_currency, context=None):
+        resu = super(account_voucher,self).voucher_move_line_create(cr, uid, voucher_id, line_total, move_id, company_currency, current_currency, context=context)
+        if resu[1]:           
+            voucher = self.read(cr, uid, voucher_id, ['name','type'], context=context)
+            if voucher['type'] in ('payment','receipt'):
+                mvln_ids = []
+                for item in resu[1]:
+                    mvln_ids.append(item[0])
+                voucher = self.read(cr, uid, voucher_id, ['name','type'], context=context)
+                self.pool.get('account.move.line').write(cr, uid, mvln_ids,{'name':voucher['name'] or ''},context=context)
+        return resu
 #invoice Validate for purchase and sale   
 class account_invoice(osv.osv):
     _inherit = "account.invoice"
@@ -123,11 +133,16 @@ class account_invoice(osv.osv):
             move_obj.write(cr, uid, [inv.move_id.id],move_vals,context=context)
             #the related fields can not be updated sometime, update again
             self.pool['account.move.line'].write(cr, uid, [line.id for line in inv.move_id.line_id],move_vals,context=context)
+            '''
             #update inv comments to AP/AR move line's comment
             ap_ar_lnids = []
             for line in inv.move_id.line_id:
                 if line.account_id.id == inv.account_id.id:
                     ap_ar_lnids.append(line.id)
             self.pool['account.move.line'].write(cr, uid, ap_ar_lnids, {'name':inv.comment or ' '},context=context)
+            '''
+            #update inv comments to all move line's comment, johnw, 12/15/2015
+            mvln_ids = [line.id for line in inv.move_id.line_id]
+            self.pool['account.move.line'].write(cr, uid, mvln_ids, {'name':inv.comment or ' '},context=context)
         return resu        
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	

@@ -73,6 +73,13 @@
             	<field name='date_due' position='attributes'>
             		<attribute name='invisible'>1</attribute>
             	</field>
+            	<!-- set the 'comment' title for invoice and credit note -->
+            	<label for="comment" position='after'>
+            		<label string='Additional Information' attrs="{'invisible':[('type','=','out_refund')]}"/>
+            		<label string='Sales Journal Descripion' attrs="{'invisible':[('type','!=','out_refund')]}"/>
+            	</label>
+            	<label for="comment" position='replace'>
+            	</label>
             </field>
         </record>
     <!-- supplier invoice -->
@@ -94,6 +101,13 @@
             		type="object" groups="account.group_account_invoice"
             		attrs="{'invisible':[('cust_inv_id','!=',False)]}"/>
             	</button>
+            	<!-- set the 'comment' title for invoice and credit note -->
+            	<label for="comment" position='after'>
+            		<label string='Additional Information' attrs="{'invisible':[('type','=','in_refund')]}"/>
+            		<label string='Purchase Journal Descripion' attrs="{'invisible':[('type','!=','in_refund')]}"/>
+            	</label>
+            	<label for="comment" position='replace'>
+            	</label>
             </field>
         </record>
 	<!-- add ci_service_type,parent_id searching --> 
