@@ -1,0 +1,83 @@
+<xml>
+	<header>
+		<order_id>38</order_id>
+		<company_id_name>ACTIN PACIFIC LIMITED</company_id_name>
+		<company_id_street>C1-7/F., Kin On Commercial Building, 49-51 Jervois
+			Street</company_id_street>
+		<company_id_street2>49-51 Jervois Street</company_id_street2>
+		<company_id_city>Sheung Wan</company_id_city>
+		<company_id_country_id_name>Hong Kong</company_id_country_id_name>
+		<company_id_contact>Yannick</company_id_contact>
+		<company_id_phone>+86 21 3368 8337</company_id_phone>
+		<company_id_fax>+86 21 3368 8340</company_id_fax>
+		<company_id_email>info@actinpacific.com</company_id_email>
+		<partner_id_name>Jinhua Jindong Liqin Glass Graft Factory
+		</partner_id_name>
+		<partner_id_street>Jindong Developing Area,Xietang,Xiaoshun, Jinhua
+			City, Zhejiang, China</partner_id_street>
+		<partner_id_street2>False</partner_id_street2>
+		<partner_id_city>False</partner_id_city>
+		<partner_id_country_id_name>False</partner_id_country_id_name>
+		<partner_id_phone>86-579-82912081</partner_id_phone>
+		<partner_id_contact>Mr. Wang</partner_id_contact>
+		<partner_id_email>wangruibinf@foxmail.com</partner_id_email>
+		<name>AP15PO00038</name>
+		<date_order>2015-12-29 15:23:40</date_order>
+		<client_order_ref>False</client_order_ref>
+		<port_load_id_name>NING BO</port_load_id_name>
+		<port_discharge_id_name>False</port_discharge_id_name>
+		<amount_total>64638.04</amount_total>
+		<amount_total_en>SIXTY-FOUR THOUSAND, SIX HUNDRED AND THIRTY-EIGHT
+			POINT ZERO FOUR</amount_total_en>
+		<deliver_memo>False</deliver_memo>
+		<incoterm_id_name>FOB</incoterm_id_name>
+		<payment_term_id_name>TT 30% DOWN PAYMENT/70% BALANCE AGAINST
+			DOCUMENTS (CI,PL,BL)</payment_term_id_name>
+		<ship_type_name>False</ship_type_name>
+		<certs>ALL PRODUCT MUST CONFORM TO THE DESTINATION MARKET LEGAL
+			REGULATIONS 证书：所有的产品需要有符合目的港法规的证书</certs>
+		<qc_requirement>IT WILL BE ARRANGED BY THIRD PARTY AND/OR COMPANY
+			STAFF. 验货要求：买方将派验货人员或者第三方做发货前验货</qc_requirement>
+		<load_control>CARTON OR PALLET / FILM / CTN SHIPPING MARK / PALLET
+			SHIPPING MARK 装柜要求：纸箱或者托盘/塑封/外箱唛头/托盘唛头</load_control>
+		<penalties_on_delays>1 WEEK DELAY ACCORDING TO PROFORMA DELIVER TIME =
+			0.5% OF PROFORMA'S AMOUNT PENALTY 交期延期的惩罚：1个礼拜延期， 罚金=0.5%合同金额
+			2 WEEKS DELAY ACCORDING TO PROFORMA DELIVERY TIME = 1% OF PROFORMA'S
+			AMOUNT PENALTY 2个礼拜延期， 罚金=1%合同金额
+			3 WEEKS DELAY ACCORDING TO PROFORMA DELIVERY TIME = 2% OF PROFORMA'S
+			AMOUNT PENALTY 3个礼拜延期， 罚金=2%合同金额</penalties_on_delays>
+		<discrepancy>IN CASE OF QUANTITY DISCREPANCY CLAIM SHOULD BE FILED BY
+			THE BUYER NOT LATER THAN 2 MONTHS AFTER BL DATE, IN CASE OF QUALITY
+			不符：如果有数量不符，买方需要在提单后两个月内申明；如果有质量不符，买方需要在ETA之后三个月内申明； Credit Note将由买方撰写
+			DISCREPANCY CLAIM SHOULD BE FILLED BY BUYER WITHIN 3 MONTHS AFTER THE
+			ETA NOTIFICATION. CREDIT NOTE WILL BE ISSUED BY SELLER.
+		</discrepancy>
+		<disputes>ALL DISPUTES ARISING FROM THE EXECUTION OF THIS CONTRACT
+			WILL BE SETTLED AMICABLY THROUGH
+			争议：合同双方提出的异议应该友好的协商解决，如果不能达成一致，那么参照合同文本来执行
+			FRIENDLY NEGOTIATION. IN CASE NO SETTLEMENT CAN BE REACHED, THE CASE SHOULD
+			BE DISPUTED ACCORDING
+			TO THE TERMS OF BASIC CONTRACT.
+		</disputes>
+		<doc_export>THE SELLER IS RESPONSIBLE OF THE EXPORTATION BY PREPARING
+			ALL THE SHIPPING DOCUMENTS. THE SELLER MUST SEND
+			出口文件：卖方负责提供所有的出口需要的文件及复印件，包括CI,PL,Bl和CO；如果是信用证交易，卖方需要遵守交易要求
+			BY EMAIL THE BATCH OF DOCUMENTS INCLUDING CI, PL AND BL TELEX RELEASE.
+			IN CASE THE BL TELEX RELEASE IS NOT REQUESTED
+			THE SELLER MUST BE SENT A BATCH OF 3 ORIGINAL COPY OF CI, PL, BL AND CO
+			IF REQUESTED. IN CASE OF LC SELLER MUST FOLLOW LC TERMS.
+		</doc_export>
+		<confirmation>THE SELLER IS REQUESTED TO SIGN AND RETURN ONE COPY OF
+			SALES CONFIRMATION IMMEDIATELY AFTER RECEIVING THE PRESENT.
+			回执：卖方收到此合同需马上签字确认，如果5日内没有收到反馈，将默认卖方接受此协议
+			IN CASE THE PRESENT CONTRACT IS NOT RETURN BY THE SELLER WITHIN 5
+			WORKING DAYS AFTER RECEIVING DATE, IT IS UNDERSTOOD,
+			THAT THE SELLER HAS ACCEPTED THE TEMRS AND CONDITIONS OF THE PRESENT
+			CONTRACT.
+		</confirmation>
+		<artworks>False</artworks>
+		<notes>False</notes>
+		<currency_symbol>$</currency_symbol>
+		<currency_name>USD</currency_name>
+	</header>
+</xml>

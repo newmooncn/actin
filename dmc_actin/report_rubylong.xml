@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	<!-- Purchase order print-->
+        <report 
+            id="purchase.action_report_purchase_order" 
+            string="Purchase Order" 
+            model="purchase.order" 
+            report_type="qweb-html"
+            name="purchase.report_purchaseorder" 
+            file="purchase.report_purchaseorder" 
+        />
+        
+		<template id="purchase.report_purchaseorder">
+		    <t t-call="dm_rubylong.layout">
+		    	<t t-set="to_design" t-value="'false'"/>
+		    	<t t-set="url_data_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    </t>
+		</template>
+        
+	<!-- Purchase order design-->
+        <report 
+            id="purchase.action_report_purchase_order_design" 
+            string="Purchase Order Design" 
+            model="purchase.order" 
+            report_type="qweb-html"
+            name="purchase.report_purchaseorder_design" 
+            file="purchase.report_purchaseorder_design" 
+            groups="dm_rubylong.group_rubylong_designer"
+        />
+		<template id="purchase.report_purchaseorder_design">
+		    <t t-call="dm_rubylong.layout">
+		    	<t t-set="to_design" t-value="'true'"/>
+		    	<t t-set="url_data_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    	<t t-set="url_data_write" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    	<t t-set="url_data_load" t-value="'/dmc_actin/static/dm_rubylong_po.xml'"/>
+		    </t>
+		</template>	
+            
+<!-- Proforma Invoice -->
+        <report 
+            id="sale.report_sale_order"
+            string="Proforma Invoice"
+            model="sale.order" 
+            report_type="qweb-html"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+        />
+<!--         <report 
+            id="sale.report_sale_order"
+            model="sale.order" 
+            report_type="pdf"
+            name="proforma.invoice.actin" 
+            file="dmc_actin/report/sale_order.rml" 
+            string="Proforma Invoice"
+        /> -->
+        
+<!-- Commercial Invoice-->
+        <report 
+            id="account.account_invoices"
+            model="account.invoice"
+            report_type="pdf"
+            name="commercial.invoice.actin"
+            string="Commercial Invoice"
+            file="dmc_actin/report/sale_commercial_invoice.rml"
+            attachment_use=""
+            attachment=""
+            groups="account.group_account_invoice"
+        />
+<!-- Credit Note, only change name for the downloading file name, but use same 'string' and rml 'file' -->        
+        <report 
+            id="credit_note"
+            model="account.invoice"
+            report_type="pdf"
+            name="commercial.invoice.actin"
+            string="Credit Note"
+            file="dmc_actin/report/sale_commercial_invoice.rml"
+            groups="account.group_account_invoice"
+        />
+<!-- Packing List -->
+        <report 
+            id="packing_list"
+            model="account.invoice"
+            report_type="pdf"
+            name="packing.list"
+            string="Packing List"
+            file="dmc_actin/report/packing_list.rml"
+        />
+
+<!-- Debit note -->        
+        <report 
+            id="debit_note"
+            model="account.invoice"
+            report_type="pdf"
+            name="debit.note"
+            string="Debit Note"
+            file="dmc_actin/report/debit_note.rml" 
+        />
+<!-- Product sheet -->        
+        <report 
+            id="action_report_product_sheet"
+            model="product.product"
+            report_type="pdf"
+            name="product.sheet"
+            string="Product Sheet"
+            file="dmc_actin/report/product_sheet.rml" 
+        />
+<!-- sale offer -->        
+        <report 
+            id="action_report_sale_offer"
+            model="sale.order.line"
+            report_type="pdf"
+            name="sale.offer"
+            string="Sale Offer"
+            file="dmc_actin/report/sale_offer.rml" 
+        />
+<!-- Product sale offer -->      
+        <report
+            id="action_report_product_sale_offer"
+            string="Customer Sales Offer"
+            model="product.sale.offer"
+            report_type="pdf"
+            name="product.sale.offer"
+            file="dmc_actin/report/product_sale_offer.rml"
+        /> 
+<!-- Product factory quotation -->      
+        <report 
+            id="action_report_factory_quotation"
+            model="product.product"
+            report_type="pdf"
+            name="product.factory.quotation"
+            string="Factory Product Quotation"
+            file="dmc_actin/report/product_factory_quotation.rml" 
+        />       
+    </data>
+</openerp>

@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+<!-- Purchase order -->
+        <report 
+            id="purchase.action_report_purchase_order" 
+            string="Purchase Order" 
+            model="purchase.order" 
+            report_type="qweb-html"
+            name="purchase.report_purchaseorder" 
+            file="purchase.report_purchaseorder" 
+        />
+        
+		<template id="purchase.report_purchaseorder">
+		    <t t-call="dm_rubylong.layout">
+		    	<t t-set="rublong_url_format" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    </t>
+		</template>        
+<!--         <report 
+            id="purchase.action_report_purchase_order" 
+            model="purchase.order" 
+            report_type="pdf"
+            name="purchase.order.actin" 
+            string="Purchase Order" 
+            file="dmc_actin/report/purchase_order.rml" 
+        /> -->
+            
 <!-- Proforma Invoice -->
         <report 
+            id="sale.report_sale_order"
+            string="Proforma Invoice"
+            model="sale.order" 
+            report_type="qweb-html"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+        />
+<!--         <report 
             id="sale.report_sale_order"
             model="sale.order" 
             report_type="pdf"
             name="proforma.invoice.actin" 
             file="dmc_actin/report/sale_order.rml" 
             string="Proforma Invoice"
-        />
+        /> -->
         
 <!-- Commercial Invoice-->
         <report 
@@ -42,15 +74,7 @@
             string="Packing List"
             file="dmc_actin/report/packing_list.rml"
         />
-<!-- Purchase order -->
-        <report 
-            id="purchase.action_report_purchase_order" 
-            model="purchase.order" 
-            report_type="pdf"
-            name="purchase.order.actin" 
-            string="Purchase Order" 
-            file="dmc_actin/report/purchase_order.rml" 
-        />
+
 <!-- Debit note -->        
         <report 
             id="debit_note"
