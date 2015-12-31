@@ -8,9 +8,9 @@
 	Object Printer
 		Height=29.7
 		LeftMargin=1
-		TopMargin=3.75708
+		TopMargin=3.7571
 		RightMargin=1
-		BottomMargin=1.98438
+		BottomMargin=3.7571
 	End
 	Object DetailGrid
 		ShowColLine=F
@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='C:/0-code/customer/actin/dmc_actin/static/dm_rubylong_po.xml'
+			QuerySQL='C:\\Users\\test2\\Desktop\\ACTIN\\dm_rubylong_po.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -61,15 +61,12 @@
 				End
 				Item
 					Name='partner_id_street2'
-					Type=Boolean
 				End
 				Item
 					Name='partner_id_city'
-					Type=Boolean
 				End
 				Item
 					Name='partner_id_country_id_name'
-					Type=Boolean
 				End
 				Item
 					Name='partner_id_phone'
@@ -89,14 +86,12 @@
 				End
 				Item
 					Name='client_order_ref'
-					Type=Boolean
 				End
 				Item
 					Name='port_load_id_name'
 				End
 				Item
 					Name='port_discharge_id_name'
-					Type=Boolean
 				End
 				Item
 					Name='amount_total'
@@ -107,7 +102,6 @@
 				End
 				Item
 					Name='deliver_memo'
-					Type=Boolean
 				End
 				Item
 					Name='incoterm_id_name'
@@ -117,7 +111,6 @@
 				End
 				Item
 					Name='ship_type_name'
-					Type=Boolean
 				End
 				Item
 					Name='certs'
@@ -145,17 +138,18 @@
 				End
 				Item
 					Name='artworks'
-					Type=Boolean
 				End
 				Item
 					Name='notes'
-					Type=Boolean
 				End
 				Item
 					Name='currency_symbol'
 				End
 				Item
 					Name='currency_name'
+				End
+				Item
+					Name='partner_id_name_upper'
 				End
 			End
 		End
@@ -186,17 +180,23 @@ Object Report
 		Charset=134
 	End
 	Object Printer
+		Height=29.7
 		LeftMargin=0.3175
-		RightMargin=0.423333
+		RightMargin=0.4233
 	End
 	Object DetailGrid
+		ShowColLine=F
+		ShowRowLine=F
+		Object Border
+			Object Pen
+				Width=2
+				Color=00FFCC00
+			End
+		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='C:\\0-code\\customer\\actin\\dmc_actin\\static\\dm_rubylong_po_sub.xml'
+			QuerySQL='C:\\Users\\test2\\Desktop\\ACTIN\\dm_rubylong_po_detail.xml'
 			Items Field
-				Item
-					Name='order_id'
-				End
 				Item
 					Name='supplier_item_no'
 				End
@@ -218,32 +218,42 @@ Object Report
 					Name='price_subtotal'
 					Type=Float
 				End
+				Item
+					Name='order_line_id'
+				End
+				Item
+					Name='order_id_id'
+					Type=Integer
+				End
+				Item
+					Name='currency_symbol'
+				End
 			End
 		End
 		Items Column
 			Item
 				Name='supplier_item_no'
-				Width=3.78354
+				Width=3.54542
 			End
 			Item
 				Name='supplier_item_name'
-				Width=3.88938
+				Width=3.99521
 			End
 			Item
 				Name='product_qty'
-				Width=1.69333
+				Width=3.41313
 			End
 			Item
 				Name='product_uom_name'
-				Width=1.69333
+				Width=2.59292
 			End
 			Item
 				Name='price_unit'
-				Width=1.69333
+				Width=3.59833
 			End
 			Item
-				Name='price_subtotal'
-				Width=3.70417
+				Name='Column1'
+				Width=2.98979
 			End
 		End
 		Object ColumnContent
@@ -252,77 +262,239 @@ Object Report
 				Item
 					Column='supplier_item_no'
 					DataField='supplier_item_no'
+					BorderCustom=T
+					Object Border
+						Styles=[]
+						Object Pen
+							Width=0.5
+							Color=00CC3300
+						End
+						Object InnerPen
+							Color=White
+						End
+					End
 				End
 				Item
 					Column='supplier_item_name'
-					DataField='supplier_item_name'
+					DataField='supplier_item_no'
+					BorderCustom=T
+					Object Border
+						Styles=[]
+						Object Pen
+							Width=0.5
+							Color=00CC3300
+						End
+						Object InnerPen
+							Color=White
+						End
+					End
 				End
 				Item
 					Column='product_qty'
 					TextAlign=MiddleRight
 					DataField='product_qty'
+					BorderCustom=T
+					Object Border
+						Styles=[]
+						Object Pen
+							Width=0.5
+							Color=00CC3300
+						End
+						Object InnerPen
+							Color=White
+						End
+					End
 				End
 				Item
 					Column='product_uom_name'
+					TextAlign=MiddleCenter
 					DataField='product_uom_name'
+					BorderCustom=T
+					Object Border
+						Styles=[]
+						Object Pen
+							Width=0.5
+							Color=00CC3300
+						End
+						Object InnerPen
+							Color=White
+						End
+					End
 				End
 				Item
 					Column='price_unit'
 					TextAlign=MiddleRight
 					DataField='price_unit'
+					BorderCustom=T
+					Object Border
+						Styles=[]
+						Object Pen
+							Width=0.5
+							Color=00CC3300
+						End
+						Object InnerPen
+							Color=White
+						End
+					End
 				End
 				Item
-					Column='price_subtotal'
+					Column='Column1'
 					FreeCell=T
 					Items Control
 						Item
 							Type=MemoBox
-							Name='MemoBox1'
-							Dock=Fill
-							Text='[#price_subtotal#][#:$#,##0.00#]'
+							Name='MemoBox3'
+							Left=0.211667
+							Width=2.59292
+							Height=0.608542
+							TextAlign=MiddleRight
+							Text='[#currency_symbol#][#price_subtotal#]'
 						End
+					End
+					BorderCustom=T
+					Object Border
+						Styles=[]
 					End
 				End
 			End
 		End
 		Object ColumnTitle
-			Height=1.40229
+			Height=0.79375
 			Items ColumnTitleCell
 				Item
 					GroupTitle=F
 					Column='supplier_item_no'
-					TextAlign=MiddleCenter
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
 					Text='ITEM NO. 编码'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
 				End
 				Item
 					GroupTitle=F
 					Column='supplier_item_name'
-					TextAlign=MiddleCenter
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
 					Text='DESCRIPTION 描述'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
 				End
 				Item
 					GroupTitle=F
 					Column='product_qty'
-					TextAlign=MiddleCenter
-					Text='product_qty'
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='QUANTITY 数量'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
 				End
 				Item
 					GroupTitle=F
 					Column='product_uom_name'
-					TextAlign=MiddleCenter
-					Text='product_uom_name'
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='UNIT 单位'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
 				End
 				Item
 					GroupTitle=F
 					Column='price_unit'
-					TextAlign=MiddleCenter
-					Text='price_unit'
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='UNIT PRICE 单价'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
 				End
 				Item
 					GroupTitle=F
-					Column='price_subtotal'
-					TextAlign=MiddleCenter
-					Text='price_subtotal'
+					Column='Column1'
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='AMOUNT 货值'
+					BorderCustom=T
+					Object Border
+						Styles=[DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC00
+						End
+					End
+				End
+			End
+		End
+		Items Group
+			Item
+				Name='Group1'
+				ByFields='order_line_id'
+				Object GroupHeader
+					Height=0.608542
+					Items Control
+						Item
+							Type=MemoBox
+							Name='MemoBox1'
+							BackColor=Silver
+							BackStyle=Normal
+							Dock=Fill
+							Object Border
+								Object Pen
+									Width=2
+									Color=00CC3333
+								End
+							End
+						End
+					End
+				End
+				Object GroupFooter
+					Height=0
 				End
 			End
 		End
@@ -349,14 +521,14 @@ End
 		End
 	End
 	Object PageHeader
-		Height=3.20146
+		Height=3.99521
 		Items Control
 			Item
 				Type=PictureBox
 				Name='PictureBox1'
-				Left=0.211667
+				Left=-0.185208
 				Top=0.396875
-				Width=3.78354
+				Width=3.59833
 				Height=2.80458
 				Picture=-61799
 /9j/4AAQSkZJRgABAgEAyADIAAD/7gAOQWRvYmUAZAAAAAAB/+IMWElDQ19QUk9GSUxFAAEBAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYAMQAAYWNzcE1T
@@ -1007,31 +1179,34 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 			Item
 				Type=MemoBox
 				Name='MemoBox3'
-				Left=6.19125
-				Top=1.82563
-				Width=9.81604
+				Left=3.41313
+				Top=2.06375
+				Width=7.48771
 				Height=0.608542
+				WordWrap=T
 				Text='[#company_id_street2#][#company_id_city#][#company_id_country_id_name#]'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox4'
-				Left=6.19125
-				Top=2.43417
-				Width=11.0067
-				Height=0.608542
-				Text='Email:[#company_id_email#], Tel:[#company_id_phone#], Fax:[#company_id_fax#]'
+				Left=3.41313
+				Top=2.51354
+				Width=7.48771
+				Height=0.661458
+				WordWrap=T
+				Text='Email:[#company_id_email#]'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox5'
-				Left=6.19125
-				Top=0.211667
-				Width=10.8215
-				Height=1.21708
+				ForeColor=Navy
+				Left=3.41313
+				Top=0.396875
+				Width=7.77875
+				Height=1.19063
 				Object Font
 					Name='微软雅黑'
-					Size=217500,0
+					Size=180000,0
 					Weight=400
 					Charset=134
 				End
@@ -1040,27 +1215,516 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 			Item
 				Type=MemoBox
 				Name='MemoBox6'
-				Left=6.19125
-				Top=1.27
-				Width=4.81542
-				Height=0.555625
+				Left=3.41313
+				Top=1.61396
+				Width=7.59354
+				Height=0.608542
+				WordWrap=T
 				Text='[#company_id_street#]'
 			End
+			Item
+				Type=StaticBox
+				Name='StaticBox2'
+				ForeColor=Navy
+				Left=11.4035
+				Top=0.608542
+				Width=7.59354
+				Height=0.978958
+				Object Border
+					ShadowColor=Navy
+					Object InnerPen
+						Color=Navy
+					End
+				End
+				Object Font
+					Name='微软雅黑'
+					Size=142500,0
+					Bold=T
+					Charset=134
+				End
+				Text='PURCHASE ORDER / 采购合同'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox1'
+				Left=11.4035
+				Top=1.5875
+				Width=3.20146
+				Height=0.608542
+				Text='PO Number/编码:'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox2'
+				Left=11.4035
+				Top=2.19604
+				Width=3.20146
+				Height=0.608542
+				Text='Date/日期:'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox38'
+				Left=3.41313
+				Top=3.01625
+				Width=7.43479
+				Height=0.608542
+				Text='Tel:[#company_id_phone#], Fax:[#company_id_fax#]'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox23'
+				Left=11.4035
+				Top=2.80458
+				Width=3.20146
+				Height=0.608542
+				Text='Page:'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox39'
+				Left=14.605
+				Top=1.5875
+				Width=4.02167
+				Height=0.608542
+				Text='[#name#]'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox40'
+				Left=14.605
+				Top=2.19604
+				Width=4.02167
+				Height=0.608542
+				Text='[#date_order:yyyy/MM/dd#]'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox41'
+				Left=14.605
+				Top=2.80458
+				Width=4.02167
+				Height=0.608542
+				Text='[#SystemVar(PageNumber)#]/[#SystemVar(PageCount)#]'
+			End
+		End
+	End
+	Object PageFooter
+		Height=4.20688
+		Items Control
+			Item
+				Type=PictureBox
+				Name='PictureBox2'
+				Left=1.5875
+				Top=0.582083
+				Width=5.42396
+				Height=2.19604
+				Picture=-28635
+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
+AKKKKACiiigAooooAKKKKACiiigAooooA//Z
+			End
+			Item
+				Type=StaticBox
+				Name='StaticBox11'
+				ShiftMode=Never
+				Top=0.185208
+				Width=2.59292
+				Height=0.608542
+				Object Font
+					Name='微软雅黑'
+					Size=112500,0
+					Weight=400
+					Charset=134
+				End
+				Text='BUYER/买方:'
+			End
+			Item
+				Type=StaticBox
+				Name='StaticBox12'
+				ShiftMode=Never
+				Left=9.60438
+				Top=0.185208
+				Width=2.59292
+				Height=0.608542
+				Object Font
+					Name='微软雅黑'
+					Size=112500,0
+					Weight=400
+					Charset=134
+				End
+				Text='SELLER/卖方:'
+			End
+			Item
+				Type=StaticBox
+				Name='StaticBox41'
+				Top=0.79375
+				Width=4.39208
+				Height=0.978958
+				Object Font
+					Name='微软雅黑'
+					Size=112500,0
+					Weight=400
+					Charset=134
+				End
+				Text='Authorized signature\r\n授权签字'
+			End
+			Item
+				Type=StaticBox
+				Name='StaticBox42'
+				Left=9.60438
+				Top=0.79375
+				Width=4.39208
+				Height=0.978958
+				Object Font
+					Name='微软雅黑'
+					Size=112500,0
+					Weight=400
+					Charset=134
+				End
+				Text='Authorized signature\r\n授权签字'
+			End
+			Item
+				Type=StaticBox
+				Name='StaticBox43'
+				Top=2.40771
+				Width=18.9971
+				Height=1.19063
+				Object Font
+					Name='微软雅黑'
+					Size=82500,0
+					Bold=T
+					Italic=T
+					Charset=134
+				End
+				WordWrap=T
+				TextAlign=MiddleJustiy
+				Text='* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any   circunstances. \r\n签字起合同确认，一旦合同达成，任何条件下都不能更改'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox42'
+				Left=2.40771
+				Top=0.185208
+				Width=4.60375
+				Height=0.608542
+				Text='[#company_id_name#]'
+			End
+		End
+	End
+	Items Parameter
+		Item
+			Name='Parameter1'
 		End
 	End
 	Items ReportHeader
 		Item
 			Name='ReportHeader1'
 			CanGrow=T
-			Height=9.39271
+			Height=7.59354
 			Items Control
 				Item
 					Type=StaticBox
 					Name='StaticBox1'
-					Left=0.3175
-					Top=0.370417
+					Top=0.238125
 					Width=2.59292
-					Height=0.687917
+					Height=0.608542
 					Object Font
 						Name='微软雅黑'
 						Bold=T
@@ -1070,73 +1734,34 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				End
 				Item
 					Type=StaticBox
-					Name='StaticBox2'
-					Left=8.30792
-					Width=7.40833
-					Height=0.79375
-					Object Font
-						Name='微软雅黑'
-						Size=157500,0
-						Bold=T
-						Charset=134
-					End
-					Text='Purchase Order / 采购合同'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox1'
-					Left=8.30792
-					Top=1.37583
-					Width=6.00604
-					Height=0.687917
-					Text='PO Number/编码:[#name#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox2'
-					Left=8.30792
-					Top=2.16958
-					Width=4.39208
-					Height=0.687917
-					Text='Date/日期:[#date_order#]'
-				End
-				Item
-					Type=StaticBox
 					Name='StaticBox3'
 					Anchor=[Right]
-					Left=0.449792
-					Top=5.82083
-					Width=5.60917
+					Top=4.23333
+					Width=5.79438
 					Height=0.608542
-					TextAlign=MiddleRight
 					Text='CUSTOMER PO REF/销售合同编码:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox4'
-					Left=1.13771
-					Top=6.48229
-					Width=4.84188
-					Height=0.608542
-					TextAlign=MiddleRight
+					Top=4.84188
+					Width=5.79438
+					Height=0.582083
 					Text='PORT OF LOADING/装船港:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox5'
 					Anchor=[Right]
-					Left=0.502708
-					Top=7.17021
-					Width=5.52979
+					Top=5.42396
+					Width=5.79438
 					Height=0.608542
-					TextAlign=MiddleRight
 					Text='PORT OF DISCHARGE/卸货港:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox7'
-					Left=0.3175
-					Top=1.05833
+					Top=0.846667
 					Width=3.99521
 					Height=0.608542
 					Text='[#partner_id_name#]'
@@ -1144,26 +1769,24 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Item
 					Type=MemoBox
 					Name='MemoBox8'
-					Left=0.3175
-					Top=1.69333
-					Width=5.18583
-					Height=0.608542
+					Top=1.45521
+					Width=7.40833
+					Height=0.582083
+					WordWrap=T
 					Text='[#partner_id_street#],[#partner_id_street2#],[#partner_id_city#],[#partner_id_country_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox9'
-					Left=0.3175
-					Top=2.35479
+					Top=2.03729
 					Width=5.00063
-					Height=0.582083
+					Height=0.608542
 					Text='[#partner_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=0.3175
-					Top=2.98979
+					Top=2.64583
 					Width=4.39208
 					Height=0.608542
 					Text='[#partner_id_contact#]'
@@ -1171,108 +1794,96 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=0.3175
-					Top=3.65125
+					Top=3.25438
 					Width=4.39208
-					Height=0.608542
+					Height=0.582083
 					Text='[#partner_id_email#]'
 				End
 				Item
 					Type=MemoBox
-					Name='MemoBox12'
-					Left=15.6104
-					Top=1.37583
-					Width=2.98979
-					Height=0.820208
-					Text='Page:[#SystemVar(PageNumber)#]/[#SystemVar(PageCount)#]'
-				End
-				Item
-					Type=MemoBox
 					Name='MemoBox13'
-					Left=8.38729
-					Top=3.20146
-					Width=9.2075
-					Height=2.01083
+					AlignColumnSide=Left
+					Left=7.59354
+					Top=0.238125
+					Width=11.4035
+					Height=3.57188
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
 							Width=3
-							Color=00FF9900
+							Color=00FFCC00
 						End
 					End
 					Object Font
-						Name='MS Shell Dlg'
+						Name='@微软雅黑'
 						Size=180000,0
-						Weight=400
-						Charset=134
+						Bold=T
 					End
-					Text='[#partner_id_name#]'
+					WordWrap=T
+					TextAlign=TopLeft
+					Text='[#partner_id_name_upper#]'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox6'
 					Anchor=[Right]
-					Left=0.635
-					Top=7.83167
-					Width=5.3975
-					Height=0.582083
-					TextAlign=MiddleRight
+					Top=6.0325
+					Width=5.79438
+					Height=0.608542
 					Text='CONTACT/联系人:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox7'
 					Anchor=[Right]
-					Left=0.635
-					Top=8.49313
-					Width=5.3975
-					Height=0.608542
-					TextAlign=MiddleRight
+					Top=6.64104
+					Width=5.79438
+					Height=0.582083
 					Text='EMAIL:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox14'
-					Left=6.13833
-					Top=5.82083
-					Width=3.99521
-					Height=0.687917
+					Left=5.84729
+					Top=4.23333
+					Width=6.40292
+					Height=0.608542
 					Text='[#client_order_ref#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox15'
-					Left=6.13833
-					Top=6.53521
-					Width=5.18583
-					Height=0.608542
+					Left=5.82083
+					Top=4.86833
+					Width=6.40292
+					Height=0.582083
 					Text='[#port_load_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox16'
-					Left=6.13833
-					Top=7.19667
-					Width=5.00063
-					Height=0.582083
+					Left=5.82083
+					Top=5.45042
+					Width=6.40292
+					Height=0.608542
 					Text='[#port_discharge_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox17'
-					Left=6.13833
-					Top=7.80521
-					Width=4.39208
-					Height=0.582083
+					Left=5.82083
+					Top=6.05896
+					Width=6.40292
+					Height=0.608542
 					Text='[#company_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox18'
-					Left=6.13833
-					Top=8.49313
-					Width=4.39208
-					Height=0.608542
+					Left=5.82083
+					Top=6.6675
+					Width=6.40292
+					Height=0.582083
 					Text='[#company_id_email#]'
 				End
 			End
@@ -1281,39 +1892,517 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 	Items ReportFooter
 		Item
 			Name='ReportFooter1'
-			Height=2.59292
+			KeepTogether=F
+			CanGrow=T
+			Height=13.3879
 			Items Control
 				Item
 					Type=MemoBox
+					Name='MemoBox21'
+					ShiftMode=WhenOverLapped
+					Top=7.85813
+					Width=18.9971
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#penalties_on_delays#]'
+				End
+				Item
+					Type=MemoBox
 					Name='MemoBox19'
-					Dock=Top
-					Height=0.79375
+					ShiftMode=WhenOverLapped
+					Top=11.1654
+					Width=19.0235
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
 					Text='[#confirmation#]'
 				End
 				Item
+					Type=StaticBox
+					Name='StaticBox8'
+					Top=4.39208
+					Width=9.60438
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Bold=T
+						Charset=134
+					End
+					Text='PROCUREMENT CONDITIONS 交易条件'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox13'
+					Top=0.396875
+					Width=8.59896
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=112500,0
+						Bold=T
+						Charset=134
+					End
+					Text='TOTAL AMOUNT IN FIGURES/数字版总货值:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox14'
+					Top=1.19063
+					Width=8.38729
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=112500,0
+						Bold=T
+						Charset=134
+					End
+					Text='TOTAL AMOUNT IN WORDS/文字版总货值:'
+				End
+				Item
 					Type=MemoBox
-					Name='MemoBox20'
-					Dock=Top
-					Top=0.79375
-					Height=0.79375
+					Name='MemoBox24'
+					Left=8.38729
+					Top=1.19063
+					Width=10.6098
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Bold=T
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#amount_total_en#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox16'
+					Top=2.01083
+					Width=10.795
+					Height=0.582083
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Bold=T
+						Charset=134
+					End
+					Text='MAIN PROCUREMENT CONDITIONS 主要交易条件'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox17'
+					Top=2.59292
+					Width=5.21229
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='A. EXIT FACTORY DATE/交货日期:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox18'
+					Top=2.98979
+					Width=4.78896
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='B. DELIVERY TERMS/交易方式:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox19'
+					Top=3.38667
+					Width=4.78896
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='C. PAYMENT TERMS/付款方式:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox20'
+					Top=3.78354
+					Width=4.78896
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='D. SHIPMENT TYPE/运输方式:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox21'
+					Top=5.00063
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='E. CERTIFICATIONS/证书:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox23'
+					Top=5.82083
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='F. QUALITY CONTROL REQUIREMENTS/验货要求:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox25'
+					Top=6.64104
+					Width=9.39271
+					Height=0.423333
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Bold=T
+						Charset=134
+					End
+					Text='G. LOADING CONTROL REQUIREMENTS/装柜要求:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox27'
+					Top=7.48771
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='H. PENALTIES ON DELAYS/交期延期的惩罚:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox29'
+					Top=8.30792
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='I. DISCREPANCY/不符:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox30'
+					Top=9.10167
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='J. DISPUTES/争议:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox33'
+					Left=-0.0264583
+					Top=9.92188
+					Width=9.36625
+					Height=0.423333
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='K. DOCUMENTS EXPORT/出口文件: '
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox35'
+					Top=10.7685
+					Width=9.41917
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='L. CONFIRMATION/回执:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox36'
+					Top=11.5888
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='M. CANCELLATION: '
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox37'
+					Top=12.3825
+					Width=9.39271
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='N. ARTWORKS/文稿: '
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox25'
+					Left=5.21229
+					Top=2.64583
+					Width=5.3975
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#deliver_memo#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox26'
+					Left=5.23875
+					Top=3.04271
+					Width=6.40292
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#incoterm_id_name#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox27'
+					Left=5.23875
+					Top=3.43958
+					Width=5.3975
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#payment_term_id_name#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox28'
+					Left=5.23875
+					Top=3.78354
+					Width=5.3975
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#ship_type_name#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox29'
+					Top=6.19125
+					Width=19.0235
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#qc_requirement#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox30'
+					Top=7.01146
+					Width=18.9971
+					Height=0.423333
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#load_control#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox31'
+					Top=8.67833
+					Width=18.9971
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#discrepancy#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox32'
+					Top=9.49854
+					Width=18.9971
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#disputes#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox33'
+					Top=10.3188
+					Width=18.9706
+					Height=0.423333
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#doc_export#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox40'
+					Top=11.9856
+					Width=18.9442
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='ONCE THE ORDER IS CONFIRMED BY SIGNATURE, IT CANNOT BE CANCELED UNDER ANY CIRCUNSTANCES.\r\n签字起合同确认，一旦合同达成，任何条件下都不能更改'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox35'
+					Top=5.3975
+					Width=18.9971
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
 					Text='[#certs#]'
+					FlowTo='MemoBox34'
 				End
 				Item
 					Type=MemoBox
-					Name='MemoBox21'
-					Dock=Top
-					Top=1.5875
-					Height=0.79375
+					Name='MemoBox36'
+					Top=12.8058
+					Width=18.9971
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#penalties_on_delays#]'
+					Text='[#artworks#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox37'
+					Left=16.0073
+					Top=0.396875
+					Width=2.98979
+					Height=0.608542
+					Object Border
+						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
+						Object Pen
+							Width=2
+							Color=00FFCC33
+						End
+					End
+					Object Font
+						Name='微软雅黑'
+						Size=112500,0
+						Bold=T
+						Charset=134
+					End
+					TextAlign=MiddleCenter
+					Text='[#currency_symbol#][#amount_total#]'
 				End
 			End
 		End

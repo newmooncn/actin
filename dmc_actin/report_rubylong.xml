@@ -14,7 +14,7 @@
 		<template id="purchase.report_purchaseorder">
 		    <t t-call="dm_rubylong.layout">
 		    	<t t-set="to_design" t-value="'false'"/>
-		    	<t t-set="url_data_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    	<t t-set="url_report_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
 		    </t>
 		</template>
         
@@ -31,9 +31,8 @@
 		<template id="purchase.report_purchaseorder_design">
 		    <t t-call="dm_rubylong.layout">
 		    	<t t-set="to_design" t-value="'true'"/>
-		    	<t t-set="url_data_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
-		    	<t t-set="url_data_write" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
-		    	<t t-set="url_data_load" t-value="'/dmc_actin/static/dm_rubylong_po.xml'"/>
+		    	<t t-set="url_report_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
+		    	<t t-set="url_report_write" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
 		    </t>
 		</template>	
             

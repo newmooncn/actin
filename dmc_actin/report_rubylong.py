@@ -23,45 +23,68 @@ from openerp.osv import fields, osv
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 from openerp.addons.purchase.purchase import purchase_order as po_super
-from openerp.tools import resolve_attr
+from openerp.tools import resolve_attr, config
 from openerp.addons.dm_base.utils import number2words_en_upper
-from xml.sax.saxutils import escape  
 
-def obj_fields_xml(obj, tag_name, field_list):
+from xml.sax.saxutils import escape
+import os
+from string import upper
+
+def rubylong_fields_xml(obj, tag_name, field_list):
 	data_xml = "<%s>"%(tag_name, )
 	for field_name in field_list:
 		field_value = None
 		if isinstance(field_name, tuple):
 			#use another xml field name
-			xml_name = field_name[1]
+			xml_name = field_name[1] or field_name[0].replace('.', '_')
 			new_field_name = field_name[0]
 			field_value = resolve_attr(obj, new_field_name)
-			if len(field_name) == 3 and callable(field_name[2]):
+			if field_value and len(field_name) == 3 and callable(field_name[2]):
 				#need transfer field value
 				field_value = field_name[2](field_value)
 		else:
 			xml_name = field_name.replace('.', '_')
 			field_value = resolve_attr(obj, field_name)
+		#change the false field to '', otherwise the 'false' string will be generated to xml
+		field_value = field_value or ''
 		#xml escape
 		if isinstance(field_value,(type(u' '),type(' '))):
 			field_value = escape(field_value)		
 		data_xml += '<%s>%s</%s>'%(xml_name, field_value, xml_name)
 			
 	data_xml += "</%s>"%(tag_name, )
-	#data_xml = data_xml.replace('\n','\\n\\')
 	return data_xml
+
+def rublong_file_get(obj, data_xml, dbname='db_none'):
+	#cur_path = os.path.split(os.path.realpath(__file__))[0] + "/wizard"
+	file_path = os.path.join(config['root_path'], 'addons/web/static/rubylong', dbname)
+	if not os.path.exists(file_path):
+		os.makedirs(file_path)
+	file_name = '%s_%s.xml'%(obj._name.replace('.','_'),obj.id)
+	file_name_full = os.sep.join([file_path, file_name])
+	file = open(file_name_full,'w')
+	file.write('<xml>'+data_xml+'</xml>')
+	file.close()
+	return file_name, file_name_full
+
+def rublong_data_url(obj, data_xml, dbname='db_none'):
+	file_name = rublong_file_get(obj, data_xml, dbname)[0]
+	return '%s/%s/%s'%('/web/static/rubylong', dbname, file_name)
 
 class purchase_order(osv.osv):
 	_inherit="purchase.order"
 	def _get_rubylong_xml(self, cr, uid, ids, field_names, args, context=None):
+		if isinstance(ids, (int, long)):
+			ids = [ids]
 		res = {}
 		for po_id in ids:
 			res[po_id] = ''
 		data_xml = ''
-		fileHandle = open ( 'C:/0-code/customer/actin/dmc_actin/static/dm_rubylong_po.xml', 'w' )
-		fileHandle.write('<xml>')
-		for order in self.browse(cr, uid, ids, context=context):
-			data_xml = ''
+		order_main = None
+		orders = self.browse(cr, uid, ids, context=context)
+		for order in orders:
+			if not order_main:
+				order_main = order
 			#header data
 			order_fields = [
 						('id','order_id'),
@@ -70,12 +93,13 @@ class purchase_order(osv.osv):
 						'company_id.street2',
 						'company_id.city',
 						'company_id.country_id.name',
-						'company_id.contact',
+						('company_id.contact','', upper),
 						'company_id.phone',
 						'company_id.fax',
 						'company_id.email',
 						
 						'partner_id.name',
+						('partner_id.name', 'partner_id_name_upper', upper),
 						'partner_id.street',
 						'partner_id.street2',
 						'partner_id.city',
@@ -87,14 +111,12 @@ class purchase_order(osv.osv):
 						'name',
 						'date_order',
 						
-						'client_order_ref',
-						'port_load_id.name',
-						'port_discharge_id.name',
+						('client_order_ref','', upper),
+						('port_load_id.name','', upper),
+						('port_discharge_id.name','', upper),
 						
 						'amount_total',
 						('amount_total', 'amount_total_en', number2words_en_upper),
-						
-						
 						
 						'deliver_memo',
 						'incoterm_id.name',
@@ -116,11 +138,13 @@ class purchase_order(osv.osv):
 						('pricelist_id.currency_id.name','currency_name')
 						
 						]
-			data_xml += obj_fields_xml(order, 'header', order_fields)
+			data_xml += rubylong_fields_xml(order, 'header', order_fields)
 			
+		for order in orders:
 			#detail data
 			line_fields = [
 						'order_id.id',
+						('id','order_line_id'),
 						('supplier_prod_name','supplier_item_no'),
 						('name','supplier_item_name'),
 						'product_qty',
@@ -131,18 +155,15 @@ class purchase_order(osv.osv):
 						]
 			
 			for line in order.order_line:
-				data_xml += obj_fields_xml(line, 'detail', line_fields)
-			
-			#write data
-			#data_xml.replace("\n", "\n\\")
-			res[order.id] = data_xml
-			fileHandle.write(data_xml)
-		fileHandle.write('</xml>')
-		fileHandle.close()
+				data_xml += rubylong_fields_xml(line, 'detail', line_fields)
+		
+		#write data
+		if order_main:
+			res[order_main.id] = rublong_data_url(order_main,data_xml,cr.dbname)
 		return res
 			
 	_columns = {
-			'rubylong_xml':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml')
+			'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml')
 			}
 	
 	
