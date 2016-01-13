@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
-	<!-- Purchase order print-->
+    <data>    
+	<!-- Purchase order-->
+		<!-- reset the report type, name and donwload file name 
+		change list:
+		report_type="qweb-html"
+		name="dm_rubylong.layout"
+		file="%file_name_to_save%"
+		 -->
         <report 
             id="purchase.action_report_purchase_order" 
             string="Purchase Order" 
             model="purchase.order" 
             report_type="qweb-html"
-            name="purchase.report_purchaseorder" 
-            file="purchase.report_purchaseorder" 
+            name="dm_rubylong.layout" 
+            file="aaaaaaa" 
         />
+		<!-- set rubylong data: is_rubylong, default_rubylong_file_path, default_rubylong_data_file_path
+		default_rubylong_data_file_path is optional -->        
+        <record id="purchase.action_report_purchase_order" model="ir.actions.report.xml">
+            <field name="name">Purchase Order</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_po.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_po.xml</field>
+        </record>
         
-		<template id="purchase.report_purchaseorder">
+		<!-- <template id="purchase.report_purchaseorder">
 		    <t t-call="dm_rubylong.layout">
 		    	<t t-set="to_design" t-value="'false'"/>
-		    	<t t-set="url_report_read" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
 		    </t>
-		</template>
+		</template> -->
         
 	<!-- Purchase order design-->
+	<!-- Since the rubylong saving can not be done now, so comment this report 
         <report 
             id="purchase.action_report_purchase_order_design" 
             string="Purchase Order Design" 
@@ -35,25 +49,27 @@
 		    	<t t-set="url_report_write" t-value="'/dmc_actin/static/dm_rubylong_po.grf'"/>
 		    </t>
 		</template>	
-            
-<!-- Proforma Invoice -->
-        <report 
+     -->
+     
+	<!-- Proforma Invoice -->
+        <report
             id="sale.report_sale_order"
             string="Proforma Invoice"
             model="sale.order" 
             report_type="qweb-html"
-            file="sale.report_saleorder" 
             name="sale.report_saleorder" 
+            file="sale.report_saleorder" 
         />
-<!--         <report 
-            id="sale.report_sale_order"
-            model="sale.order" 
-            report_type="pdf"
-            name="proforma.invoice.actin" 
-            file="dmc_actin/report/sale_order.rml" 
-            string="Proforma Invoice"
-        /> -->
-        
+        <record id="sale.report_sale_order" model="ir.actions.report.xml">
+            <field name="name">Proforma Invoice</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_pi.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_pi.xml</field>
+        </record>
+     
+<!-- Rubylong report end -->
+    
+       
 <!-- Commercial Invoice-->
         <report 
             id="account.account_invoices"

@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='C:\\Users\\test2\\Desktop\\ACTIN\\dm_rubylong_po.xml'
+			QuerySQL='\\\\dm_server1\\projects\\actin\\dm_rubylong_po.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -96,6 +96,7 @@
 				Item
 					Name='amount_total'
 					Type=Float
+					Format='#,##0.00'
 				End
 				Item
 					Name='amount_total_en'
@@ -195,7 +196,7 @@ Object Report
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='C:\\Users\\test2\\Desktop\\ACTIN\\dm_rubylong_po_detail.xml'
+			QuerySQL='\\\\dm_server1\\projects\\actin\\dm_rubylong_po.xml'
 			Items Field
 				Item
 					Name='supplier_item_no'
@@ -206,6 +207,7 @@ Object Report
 				Item
 					Name='product_qty'
 					Type=Float
+					Format='#,##0'
 				End
 				Item
 					Name='product_uom_name'
@@ -217,6 +219,7 @@ Object Report
 				Item
 					Name='price_subtotal'
 					Type=Float
+					Format='#,##0.00'
 				End
 				Item
 					Name='order_line_id'
@@ -261,6 +264,7 @@ Object Report
 			Items ColumnContentCell
 				Item
 					Column='supplier_item_no'
+					TextAlign=MiddleCenter
 					DataField='supplier_item_no'
 					BorderCustom=T
 					Object Border
@@ -276,6 +280,7 @@ Object Report
 				End
 				Item
 					Column='supplier_item_name'
+					TextAlign=MiddleCenter
 					DataField='supplier_item_no'
 					BorderCustom=T
 					Object Border
@@ -291,7 +296,7 @@ Object Report
 				End
 				Item
 					Column='product_qty'
-					TextAlign=MiddleRight
+					TextAlign=MiddleCenter
 					DataField='product_qty'
 					BorderCustom=T
 					Object Border
@@ -323,7 +328,7 @@ Object Report
 				End
 				Item
 					Column='price_unit'
-					TextAlign=MiddleRight
+					TextAlign=MiddleCenter
 					DataField='price_unit'
 					BorderCustom=T
 					Object Border
@@ -347,7 +352,7 @@ Object Report
 							Left=0.211667
 							Width=2.59292
 							Height=0.608542
-							TextAlign=MiddleRight
+							TextAlign=MiddleCenter
 							Text='[#currency_symbol#][#price_subtotal#]'
 						End
 					End
@@ -1639,7 +1644,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Type=StaticBox
 				Name='StaticBox12'
 				ShiftMode=Never
-				Left=9.60438
+				Left=12.3825
 				Top=0.185208
 				Width=2.59292
 				Height=0.608542
@@ -1668,7 +1673,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 			Item
 				Type=StaticBox
 				Name='StaticBox42'
-				Left=9.60438
+				Left=12.3825
 				Top=0.79375
 				Width=4.39208
 				Height=0.978958
@@ -1730,7 +1735,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Bold=T
 						Charset=134
 					End
-					Text='Seller/供应商:'
+					Text='SELLER/供应商:'
 				End
 				Item
 					Type=StaticBox
@@ -1762,8 +1767,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox7'
 					Top=0.846667
-					Width=3.99521
+					Width=7.40833
 					Height=0.608542
+					WordWrap=T
 					Text='[#partner_id_name#]'
 				End
 				Item
@@ -1781,12 +1787,14 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Top=2.03729
 					Width=5.00063
 					Height=0.608542
+					WordWrap=T
 					Text='[#partner_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Top=2.64583
+					Left=2.01083
+					Top=2.59292
 					Width=4.39208
 					Height=0.608542
 					Text='[#partner_id_contact#]'
@@ -1794,9 +1802,10 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Top=3.25438
-					Width=4.39208
-					Height=0.582083
+					Left=1.40229
+					Top=3.20146
+					Width=6.00604
+					Height=0.608542
 					Text='[#partner_id_email#]'
 				End
 				Item
@@ -1806,7 +1815,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Left=7.59354
 					Top=0.238125
 					Width=11.4035
-					Height=3.57188
+					Height=2.56646
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
@@ -1819,8 +1828,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Size=180000,0
 						Bold=T
 					End
+					CanGrow=T
 					WordWrap=T
-					TextAlign=TopLeft
+					TextAlign=MiddleCenter
 					Text='[#partner_id_name_upper#]'
 				End
 				Item
@@ -1886,6 +1896,22 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Height=0.582083
 					Text='[#company_id_email#]'
 				End
+				Item
+					Type=StaticBox
+					Name='StaticBox44'
+					Top=2.59292
+					Width=1.79917
+					Height=0.608542
+					Text='CONTACT:'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox45'
+					Top=3.20146
+					Width=1.19063
+					Height=0.608542
+					Text='EMAIL:'
+				End
 			End
 		End
 	End
@@ -1894,13 +1920,13 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=13.3879
+			Height=15.1871
 			Items Control
 				Item
 					Type=MemoBox
 					Name='MemoBox21'
 					ShiftMode=WhenOverLapped
-					Top=7.85813
+					Top=8.41375
 					Width=18.9971
 					Height=0.396875
 					Object Font
@@ -1918,7 +1944,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox19'
 					ShiftMode=WhenOverLapped
-					Top=11.1654
+					Top=11.721
 					Width=19.0235
 					Height=0.396875
 					Object Font
@@ -1935,7 +1961,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox8'
-					Top=4.39208
+					Top=4.94771
 					Width=9.60438
 					Height=0.608542
 					Object Font
@@ -1977,25 +2003,24 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox24'
-					Left=8.38729
-					Top=1.19063
-					Width=10.6098
+					Top=1.79917
+					Width=18.3885
 					Height=0.608542
 					Object Font
 						Name='微软雅黑'
-						Size=90000,0
+						Size=112500,0
 						Bold=T
 						Charset=134
 					End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#amount_total_en#]'
+					Text='[#currency_name#] [#amount_total_en#] ONLY'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox16'
-					Top=2.01083
+					Top=2.56646
 					Width=10.795
 					Height=0.582083
 					Object Font
@@ -2009,7 +2034,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox17'
-					Top=2.59292
+					Top=3.14854
 					Width=5.21229
 					Height=0.396875
 					Object Font
@@ -2022,7 +2047,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox18'
-					Top=2.98979
+					Top=3.54542
 					Width=4.78896
 					Height=0.396875
 					Object Font
@@ -2035,7 +2060,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox19'
-					Top=3.38667
+					Top=3.94229
 					Width=4.78896
 					Height=0.396875
 					Object Font
@@ -2048,7 +2073,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox20'
-					Top=3.78354
+					Top=4.33917
 					Width=4.78896
 					Height=0.396875
 					Object Font
@@ -2061,7 +2086,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox21'
-					Top=5.00063
+					Top=5.55625
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2074,7 +2099,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox23'
-					Top=5.82083
+					Top=6.37646
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2087,7 +2112,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox25'
-					Top=6.64104
+					Top=7.19667
 					Width=9.39271
 					Height=0.423333
 					Object Font
@@ -2101,7 +2126,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox27'
-					Top=7.48771
+					Top=8.04333
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2114,7 +2139,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox29'
-					Top=8.30792
+					Top=8.86354
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2127,7 +2152,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox30'
-					Top=9.10167
+					Top=9.65729
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2141,8 +2166,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=StaticBox
 					Name='StaticBox33'
 					Left=-0.0264583
-					Top=9.92188
-					Width=9.36625
+					Top=10.4775
+					Width=9.28688
 					Height=0.423333
 					Object Font
 						Name='微软雅黑'
@@ -2154,7 +2179,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox35'
-					Top=10.7685
+					Top=11.3242
 					Width=9.41917
 					Height=0.396875
 					Object Font
@@ -2167,7 +2192,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox36'
-					Top=11.5888
+					Top=12.1444
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2180,7 +2205,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox37'
-					Top=12.3825
+					Top=12.9381
 					Width=9.39271
 					Height=0.396875
 					Object Font
@@ -2194,8 +2219,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox25'
 					Left=5.21229
-					Top=2.64583
-					Width=5.3975
+					Top=3.20146
+					Width=12.991
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2209,8 +2234,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox26'
 					Left=5.23875
-					Top=3.04271
-					Width=6.40292
+					Top=3.59833
+					Width=12.991
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2224,8 +2249,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox27'
 					Left=5.23875
-					Top=3.43958
-					Width=5.3975
+					Top=3.99521
+					Width=12.991
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2239,8 +2264,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=MemoBox
 					Name='MemoBox28'
 					Left=5.23875
-					Top=3.78354
-					Width=5.3975
+					Top=4.33917
+					Width=12.991
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2253,7 +2278,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox29'
-					Top=6.19125
+					Top=6.74688
 					Width=19.0235
 					Height=0.396875
 					Object Font
@@ -2270,7 +2295,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox30'
-					Top=7.01146
+					Top=7.56708
 					Width=18.9971
 					Height=0.423333
 					CanGrow=T
@@ -2281,7 +2306,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox31'
-					Top=8.67833
+					Top=9.23396
 					Width=18.9971
 					Height=0.396875
 					Object Font
@@ -2298,7 +2323,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox32'
-					Top=9.49854
+					Top=10.0542
 					Width=18.9971
 					Height=0.396875
 					Object Font
@@ -2315,7 +2340,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox33'
-					Top=10.3188
+					Top=10.8744
 					Width=18.9706
 					Height=0.423333
 					Object Font
@@ -2332,7 +2357,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=StaticBox
 					Name='StaticBox40'
-					Top=11.9856
+					Top=12.5413
 					Width=18.9442
 					Height=0.396875
 					Object Font
@@ -2349,7 +2374,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox35'
-					Top=5.3975
+					Top=5.95313
 					Width=18.9971
 					Height=0.396875
 					Object Font
@@ -2367,7 +2392,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox36'
-					Top=12.8058
+					Top=13.3615
 					Width=18.9971
 					Height=0.396875
 					Object Font
@@ -2384,9 +2409,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox37'
-					Left=16.0073
+					Left=16.1925
 					Top=0.396875
-					Width=2.98979
+					Width=2.80458
 					Height=0.608542
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
