@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='rubylong_ci.xml'
+			QuerySQL='rubylong_cn.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -235,7 +235,7 @@ Object Report
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='rubylong_ci.xml'
+			QuerySQL='rubylong_cn.xml'
 			Items Field
 				Item
 					Name='item_no'
@@ -453,6 +453,7 @@ Object Report
 						Bold=T
 						Charset=134
 					End
+					TextAlign=MiddleCenter
 					Text='QUANTITY '
 					BorderCustom=T
 					Object Border
@@ -471,6 +472,7 @@ Object Report
 						Bold=T
 						Charset=134
 					End
+					TextAlign=MiddleCenter
 					Text='UNIT '
 					BorderCustom=T
 					Object Border
@@ -489,6 +491,7 @@ Object Report
 						Bold=T
 						Charset=134
 					End
+					TextAlign=MiddleCenter
 					Text='UNIT PRICE '
 					BorderCustom=T
 					Object Border
@@ -507,6 +510,7 @@ Object Report
 						Bold=T
 						Charset=134
 					End
+					TextAlign=MiddleCenter
 					Text='AMOUNT '
 					BorderCustom=T
 					Object Border
@@ -1290,23 +1294,23 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 					Bold=T
 					Charset=134
 				End
-				Text='COMMERCIAL INVOICE'
+				Text='CREDIT NOTE'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox1'
 				Left=11.9856
 				Top=1.5875
-				Width=2.06375
+				Width=2.2225
 				Height=0.608542
-				Text='CI Number:'
+				Text='CN Number:'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox2'
 				Left=11.9856
 				Top=2.19604
-				Width=2.06375
+				Width=2.2225
 				Height=0.608542
 				Text='Date:'
 			End
@@ -1324,14 +1328,14 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Name='MemoBox23'
 				Left=11.9856
 				Top=2.80458
-				Width=2.06375
+				Width=2.2225
 				Height=0.608542
 				Text='Page:'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox39'
-				Left=14.0494
+				Left=14.2346
 				Top=1.5875
 				Width=4.57729
 				Height=0.608542
@@ -1340,7 +1344,7 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 			Item
 				Type=MemoBox
 				Name='MemoBox40'
-				Left=14.0494
+				Left=14.2346
 				Top=2.19604
 				Width=4.57729
 				Height=0.608542
@@ -1349,7 +1353,7 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 			Item
 				Type=MemoBox
 				Name='MemoBox41'
-				Left=14.0494
+				Left=14.2346
 				Top=2.80458
 				Width=4.57729
 				Height=0.608542
@@ -2048,7 +2052,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=5.3975
+			Height=3.41313
 			Items Control
 				Item
 					Type=StaticBox
@@ -2147,76 +2151,6 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Text='CONTRACT NO:'
 				End
 				Item
-					Type=StaticBox
-					Name='StaticBox51'
-					Top=3.20146
-					Width=2.80458
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='BL NO: '
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox52'
-					Top=3.59833
-					Width=2.80458
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='CONTAINER NO:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox53'
-					Top=3.99521
-					Width=2.80458
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='SEAL NO:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox54'
-					Top=4.39208
-					Width=2.80458
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='SERIAL NO:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox55'
-					Top=4.78896
-					Width=2.80458
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='HS CODE:'
-				End
-				Item
 					Type=MemoBox
 					Name='MemoBox49'
 					Left=2.80458
@@ -2245,81 +2179,6 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Charset=134
 					End
 					Text='[#contract_n#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox51'
-					Left=2.80458
-					Top=3.20146
-					Width=9.92188
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='[#bl_number#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox52'
-					Left=2.80458
-					Top=3.59833
-					Width=9.92188
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='[#container_no#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox53'
-					Left=2.80458
-					Top=3.99521
-					Width=9.92188
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='[#seal_no#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox54'
-					Left=2.80458
-					Top=4.39208
-					Width=9.92188
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='[#serial_no#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox55'
-					Left=2.80458
-					Top=4.78896
-					Width=9.92188
-					Height=0.423333
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='[#hs_code#]'
 				End
 			End
 		End

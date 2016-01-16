@@ -12,9 +12,13 @@
             string="Purchase Order" 
             model="purchase.order" 
             report_type="qweb-html"
-            name="dm_rubylong.layout" 
-            file="dm_rubylong.layout" 
+            name="purchase.report_po" 
+            file="purchase.report_po" 
         />
+		<template id="purchase.report_po">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
 		<!-- set rubylong data: is_rubylong, default_rubylong_file_path, default_rubylong_data_file_path
 		default_rubylong_data_file_path is optional 
 		download_file_name: you can set your file name that you want to download, the default download file name is 'name'-->        
@@ -58,9 +62,13 @@
             string="Proforma Invoice"
             model="sale.order" 
             report_type="qweb-html"
-            name="dm_rubylong.layout" 
-            file="dm_rubylong.layout" 
+            name="sale.report_so" 
+            file="sale.report_so" 
         />
+		<template id="sale.report_so">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
         <record id="sale.report_sale_order" model="ir.actions.report.xml">
             <field name="name">Proforma Invoice</field>
 			<field name="is_rubylong" eval="True"/>
@@ -69,65 +77,95 @@
         </record>
         
 	<!-- Commercial Invoice-->
-        <report
-            id="sale.report_sale_order"
-            string="Proforma Invoice"
-            model="sale.order" 
-            report_type="qweb-html"
-            name="sale.report_saleorder" 
-            file="sale.report_saleorder" 
-        />
         <report 
             id="account.account_invoices"
             string="Commercial Invoice"
             model="account.invoice"
             report_type="qweb-html"
-            name="dm_rubylong.layout" 
-            file="dm_rubylong.layout"
             attachment_use=""
             attachment=""
             groups="account.group_account_invoice"
+            name="account.report_ci" 
+            file="account.report_ci" 
         />
+		<template id="account.report_ci">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
         <record id="account.account_invoices" model="ir.actions.report.xml">
             <field name="name">Commercial Invoice</field>
 			<field name="is_rubylong" eval="True"/>
 			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_ci.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_ci.xml</field>
-        </record>        
-     
-<!-- Rubylong report end -->
-    
-       
-<!-- Commercial Invoice-->
-<!-- Credit Note, only change name for the downloading file name, but use same 'string' and rml 'file' -->        
+        </record>   
+        
+	<!-- Credit Note -->
         <report 
             id="credit_note"
-            model="account.invoice"
-            report_type="pdf"
-            name="commercial.invoice.actin"
             string="Credit Note"
-            file="dmc_actin/report/sale_commercial_invoice.rml"
+            model="account.invoice"
+            report_type="qweb-html"
             groups="account.group_account_invoice"
+            name="account.report_cn" 
+            file="account.report_cn" 
         />
-<!-- Packing List -->
+		<template id="account.report_cn">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
+        <record id="credit_note" model="ir.actions.report.xml">
+            <field name="name">Credit Note</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_cn.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_cn.xml</field>
+        </record>    
+        
+	<!-- Packing List -->
         <report 
             id="packing_list"
-            model="account.invoice"
-            report_type="pdf"
-            name="packing.list"
             string="Packing List"
-            file="dmc_actin/report/packing_list.rml"
+            model="account.invoice"
+            report_type="qweb-html"
+            name="account.packing_list" 
+            file="account.packing_list"
+            groups="account.group_account_invoice"
         />
-
-<!-- Debit note -->        
+		<template id="account.packing_list">
+		    <t t-call="dm_rubylong.layout_base">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_packing'/>?dt=' + cur_time;
+		    </t>
+		</template>	
+        <record id="packing_list" model="ir.actions.report.xml">
+            <field name="name">Packing List</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_pl.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_pl.xml</field>
+        </record>    
+        
+	<!-- Debit note -->
         <report 
             id="debit_note"
-            model="account.invoice"
-            report_type="pdf"
-            name="debit.note"
             string="Debit Note"
-            file="dmc_actin/report/debit_note.rml" 
+            model="account.invoice"
+            report_type="qweb-html"
+            name="account.debit_note" 
+            file="account.debit_note"
+            groups="account.group_account_invoice"
         />
+		<template id="account.debit_note">
+		    <t t-call="dm_rubylong.layout_base">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_dn'/>?dt=' + cur_time;
+		    </t>
+		</template>	
+        <record id="debit_note" model="ir.actions.report.xml">
+            <field name="name">Debit Note</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_dn.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_dn.xml</field>
+        </record>    
+     
+<!-- Rubylong report end -->
+
 <!-- Product sheet -->        
         <report 
             id="action_report_product_sheet"

@@ -50,6 +50,7 @@ class sale_order(osv.osv):
 				'weight_net': weight_net,
 				'weight_gross': weight_gross,
 				'm3': m3,
+				'inv_line_id':line.id
 			}			
 			pack_obj.create(cr, uid, pack_val, context=context)
 			
@@ -72,6 +73,7 @@ class sale_order(osv.osv):
 					'weight_net': weight_net,
 					'weight_gross': weight_gross,
 					'm3': m3,
+					'inv_line_id':line.id
 				}			
 				pack_obj.create(cr, uid, pack_val, context=context)
 
@@ -104,23 +106,23 @@ class account_invoice(osv.osv):
     'pack_comment':fields.text('Remarks'),
     'qty_carton_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
             store={
-                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line'], 10),
-                'account.invoice.line': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
+                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
+                'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
     'weight_net_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
             store={
-                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line'], 10),
-                'account.invoice.line': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
+                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
+                'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
     'weight_gross_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
             store={
-                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line'], 10),
-                'account.invoice.line': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
+                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
+                'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
     'm3_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
             store={
-                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line'], 10),
-                'account.invoice.line': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
+                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
+                'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),    
 	'pack_line': fields.one2many('account.invoice.pack', 'invoice_id', 'Packing Lines', readonly=True, states={'draft':[('readonly',False)]}),			
 	}
@@ -141,6 +143,7 @@ class account_invoice_pack(osv.osv):
 		'weight_gross':fields.float('G.W. (KGS)', digits_compute = dp.get_precision('Stock Weight')),
 		'm3':fields.float('CBM', digits_compute = dp.get_precision('Stock Weight')),
 		'company_id': fields.related('invoice_id','company_id',type='many2one',relation='res.company',string='Company', store=True, readonly=True),
+		'inv_line_id': fields.many2one('account.invoice.line', 'Invoice line', ondelete='cascade')
 	}		
 
 	def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice',

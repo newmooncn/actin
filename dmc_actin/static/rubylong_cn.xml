@@ -1,0 +1,140 @@
+<xml>
+	<header>
+		<order_id>53</order_id>
+		<company_id_name>ACTIN PACIFIC LIMITED</company_id_name>
+		<company_id_street>C1-7/F., Kin On Commercial Building, 49-51 Jervois
+			Street</company_id_street>
+		<company_id_street2>49-51 Jervois Street</company_id_street2>
+		<company_id_city>Sheung Wan</company_id_city>
+		<company_id_country_id_name>Hong Kong</company_id_country_id_name>
+		<company_id_contact>Yannick</company_id_contact>
+		<company_id_phone>+86 21 3368 8337</company_id_phone>
+		<company_id_fax>+86 21 3368 8340</company_id_fax>
+		<company_id_email>info@actinpacific.com</company_id_email>
+		<partner_invoice_id_name>DIRECT AMPOULES</partner_invoice_id_name>
+		<partner_invoice_id_name_upper>DIRECT AMPOULES
+		</partner_invoice_id_name_upper>
+		<partner_invoice_id_street> Societe SARL DIRECT AMPOULES G2, ZAC de La
+			Nau, 103 route d'Ussac,19240 SAINT-VIANCE – France
+		</partner_invoice_id_street>
+		<partner_invoice_id_street2></partner_invoice_id_street2>
+		<partner_invoice_id_city></partner_invoice_id_city>
+		<partner_invoice_id_country_id_name></partner_invoice_id_country_id_name>
+		<partner_invoice_id_phone>09.67.02.87.18</partner_invoice_id_phone>
+		<partner_invoice_id_contact>Mr Christophe GUILLEBON
+		</partner_invoice_id_contact>
+		<partner_invoice_id_email>christophe.guillebon@eluzia.com
+		</partner_invoice_id_email>
+		<partner_shipping_id_name>DIRECT AMPOULES</partner_shipping_id_name>
+		<partner_invoice_id_name_upper>DIRECT AMPOULES
+		</partner_invoice_id_name_upper>
+		<partner_shipping_id_street> Societe SARL DIRECT AMPOULES G2, ZAC de
+			La Nau, 103 route d'Ussac,19240 SAINT-VIANCE – France
+		</partner_shipping_id_street>
+		<partner_shipping_id_street2></partner_shipping_id_street2>
+		<partner_shipping_id_city></partner_shipping_id_city>
+		<partner_shipping_id_country_id_name></partner_shipping_id_country_id_name>
+		<partner_shipping_id_phone>09.67.02.87.18</partner_shipping_id_phone>
+		<partner_shipping_id_contact>Mr Christophe GUILLEBON
+		</partner_shipping_id_contact>
+		<partner_shipping_id_email>christophe.guillebon@eluzia.com
+		</partner_shipping_id_email>
+		<name>AP15PR00056</name>
+		<date_order>2015-12-09 21:18:44</date_order>
+		<client_order_ref></client_order_ref>
+		<port_load_id_name>NING BO</port_load_id_name>
+		<port_discharge_id_name>LE HAVRE</port_discharge_id_name>
+		<amount_total>417300.0</amount_total>
+		<amount_total_en>FOUR HUNDRED AND SEVENTEEN THOUSAND THREE HUNDRED
+		</amount_total_en>
+		<deliver_memo>30 days after deposit received</deliver_memo>
+		<incoterm_id_name>stock.incoterms(1,)</incoterm_id_name>
+		<payment_term_id_name>account.payment.term(3,)</payment_term_id_name>
+		<ship_type_name>BY SEA 20'GP CONTAINER</ship_type_name>
+		<terms_fix>E. LATEST SHIPMENT DATE IS BASED ON THE FINAL CLIENT'S
+			APPROVAL OF ARTWORKS AND/OR SAMPLES
+			F. LATEST SHIPMENT DATE IS ALSO BASED ON DATE OF L/C OPENING AND/OR
+			DEPOSIT RECEIPT. IF DELAY ETD MUST BE RECONFIRMED
+			G. IN CASE OF L/C AP MUST RECEIVED L/C DRAFT FOR CONFIRMATION BEFORE
+			L/C OPENING
+			WILL NOT SUPPORT AMENDMENT CHARGE OF ISSUING BANK AND ALL OTHER ISSUING
+			BANK CHARGES
+			PRESENTATION OF DOCUMENTS IS 21 DAYS AFTER SHIPMENT DATE
+			H. IN CASE OF T/T, D/A, D/P ALL BANK CHARGES ARE BORNE BY BUYER
+			I. MORE OR LESS 5% ON QUANTITY AND AMOUNT ARE ALLOWED
+			J. WE RESERVE THE RIGHT TO ADJUST OUR PRICES IN CASE OF MATERIAL COST
+			VARIATION
+		</terms_fix>
+		<note></note>
+		<company_id_bank_id_bank_name>HSBC HONG KONG
+		</company_id_bank_id_bank_name>
+		<company_id_bank_id_street>1 QUEEN'S ROAD CENTRAL, HONG KONG
+		</company_id_bank_id_street>
+		<company_id_bank_id_owner_name>ACTIN PACIFIC LTD
+		</company_id_bank_id_owner_name>
+		<company_id_bank_id_bank_bic>H S B C H K H H
+		</company_id_bank_id_bank_bic>
+		<company_id_bank_id_acc_number>4 0 0 - 5 7 5 1 5 5 - 8 3 8
+		</company_id_bank_id_acc_number>
+		<currency_symbol>$</currency_symbol>
+		<currency_name>USD</currency_name>
+	</header>
+	<detail>
+		<order_id_id>53</order_id_id>
+		<order_line_id>49</order_line_id>
+		<item_no>AP-506</item_no>
+		<item_name>AP-506 Actiflexi NF 5 years Smoke Alarm</item_name>
+		<product_qty>5000.0</product_qty>
+		<product_uom_name>PCS</product_uom_name>
+		<price_unit>5.9</price_unit>
+		<price_subtotal>29500.0</price_subtotal>
+		<currency_symbol>$</currency_symbol>
+	</detail>
+	<detail>
+		<order_id_id>53</order_id_id>
+		<order_line_id>50</order_line_id>
+		<item_no>56798</item_no>
+		<item_name>DESHU 20L</item_name>
+		<product_qty>2000.0</product_qty>
+		<product_uom_name>PCS</product_uom_name>
+		<price_unit>160.0</price_unit>
+		<price_subtotal>320000.0</price_subtotal>
+		<currency_symbol>$</currency_symbol>
+	</detail>
+	<detail>
+		<order_id_id>53</order_id_id>
+		<order_line_id>51</order_line_id>
+		<item_no>SYHM08-01529-6000K</item_no>
+		<item_name>
+		</item_name>
+		<product_qty>1500.0</product_qty>
+		<product_uom_name>Set</product_uom_name>
+		<price_unit>12.0</price_unit>
+		<price_subtotal>18000.0</price_subtotal>
+		<currency_symbol>$</currency_symbol>
+	</detail>
+	<detail>
+		<order_id_id>53</order_id_id>
+		<order_line_id>52</order_line_id>
+		<item_no> SYHM08-01522-4000K</item_no>
+		<item_name>
+		</item_name>
+		<product_qty>1200.0</product_qty>
+		<product_uom_name>Set</product_uom_name>
+		<price_unit>16.0</price_unit>
+		<price_subtotal>19200.0</price_subtotal>
+		<currency_symbol>$</currency_symbol>
+	</detail>
+	<detail>
+		<order_id_id>53</order_id_id>
+		<order_line_id>53</order_line_id>
+		<item_no>SLO-T85X30-192-X-6000K</item_no>
+		<item_name>
+		</item_name>
+		<product_qty>1700.0</product_qty>
+		<product_uom_name>Set</product_uom_name>
+		<price_unit>18.0</price_unit>
+		<price_subtotal>30600.0</price_subtotal>
+		<currency_symbol>$</currency_symbol>
+	</detail>
+</xml>

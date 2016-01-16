@@ -129,10 +129,220 @@ class account_invoice(osv.osv):
 		#write data
 		if order_main:
 			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
-		return res
+		return res			
+
+	def _rubylong_xml_file_packing(self, cr, uid, ids, field_names, args, context=None):
+		if isinstance(ids, (int, long)):
+			ids = [ids]
+		res = {}
+		for po_id in ids:
+			res[po_id] = ''
+		data_xml = ''
+		order_main = None
+		orders = self.browse(cr, uid, ids, context=context)
+		for order in orders:
+			if not order_main:
+				order_main = order
+			#header data
+			order_fields = [
+						('id','order_id'),
+						'company_id.name',
+						'company_id.street',
+						'company_id.street2',
+						'company_id.city',
+						'company_id.country_id.name',
+						'company_id.contact',
+						'company_id.phone',
+						'company_id.fax',
+						'company_id.email',
+						
+						('partner_id.name','partner_invoice_id_name'),
+						('partner_id.name', 'partner_invoice_id_name_upper', upper),
+						('partner_id.street','partner_invoice_id_street'),
+						('partner_id.street2','partner_invoice_id_street2'),
+						('partner_id.city','partner_invoice_id_city'),
+						('partner_id.country_id.name','partner_invoice_id_country_id_name'),
+						('partner_id.phone','partner_invoice_id_phone'),
+						('partner_id.contact','partner_invoice_id_contact'),
+						('partner_id.email','partner_invoice_id_email'),						
+						
+						('number','name'),
+						('date_invoice','date_order'),						
+						
+						('port_load_id.name','', upper),
+						('port_discharge_id.name','', upper),
+						
+						'amount_total',
+						('amount_total', 'amount_total_en', number2words_en_upper2),
+
+						'total_shipped',
+						'contract_n',
+						'bl_number',
+						'container_no',
+						'seal_no',
+						'serial_no',
+						'hs_code',
+						
+						('currency_id.symbol','currency_symbol'),						
+						('currency_id.name','currency_name'),	
+						
+						#user added
+						'qty_carton_total',
+						'weight_net_total',
+						'weight_gross_total',
+						('m3_total','volume_total'),
+						]
 			
+			order_xml = get_rubylong_fields_xml_body(order, order_fields)
+			
+			#partner shipping address			
+			sale_order = self.sale_order(cr, uid, order.id, context=context)
+			if sale_order:
+				order_fields = [
+							('partner_id.name','partner_shipping_id_name'),
+							('partner_id.name', 'partner_shipping_id_name_upper', upper),
+							('partner_id.street','partner_shipping_id_street'),
+							('partner_id.street2','partner_shipping_id_street2'),
+							('partner_id.city','partner_shipping_id_city'),
+							('partner_id.country_id.name','partner_shipping_id_country_id_name'),
+							('partner_id.phone','partner_shipping_id_phone'),
+							('partner_id.contact','partner_shipping_id_contact'),
+							('partner_id.email','partner_shipping_id_email'),	
+							('client_order_ref','', upper),
+							]
+				order_xml += get_rubylong_fields_xml_body(sale_order, order_fields)
+			
+			#add this order's xml
+			data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')			
+			
+		for order in orders:
+			#detail data
+			line_fields = [
+						('invoice_id.id','order_id'),
+						('id','order_line_id'),
+						('inv_line_id.sale_line_id.cust_prod_code','item_no'),
+						('name','item_name'),
+						'qty_per_carton',
+						'qty_carton',
+						('quantity','product_qty'),
+						('uos_id.name','product_uom_name'),
+						'weight_net',
+						'weight_gross',
+						('m3','volume'),
+						]
+			
+			for line in order.pack_line:
+				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
+		
+		#write data
+		if order_main:
+			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
+		return res
+
+	def _rubylong_xml_file_dn(self, cr, uid, ids, field_names, args, context=None):
+		if isinstance(ids, (int, long)):
+			ids = [ids]
+		res = {}
+		for po_id in ids:
+			res[po_id] = ''
+		data_xml = ''
+		order_main = None
+		orders = self.browse(cr, uid, ids, context=context)
+		for order in orders:
+			if not order_main:
+				order_main = order
+			#header data
+			order_fields = [
+						('id','order_id'),
+						'company_id.name',
+						'company_id.street',
+						'company_id.street2',
+						'company_id.city',
+						'company_id.country_id.name',
+						'company_id.contact',
+						'company_id.phone',
+						'company_id.fax',
+						'company_id.email',
+						
+						'partner_id.name',
+						('partner_id.name', 'partner_id_name_upper', upper),
+						'partner_id.street',
+						'partner_id.street2',
+						'partner_id.city',
+						'partner_id.country_id.name',
+						'partner_id.phone',
+						'partner_id.contact',
+						'partner_id.email',						
+						
+						('number','name'),
+						('date_invoice','date_order'),						
+						
+						('port_load_id.name','', upper),
+						('port_discharge_id.name','', upper),
+						
+						'amount_total',
+						('amount_total', 'amount_total_en', number2words_en_upper2),
+
+						'total_shipped',
+						'contract_n',
+						'bl_number',
+						'container_no',
+						'seal_no',
+						'serial_no',
+						'hs_code',
+						
+						('currency_id.symbol','currency_symbol'),						
+						('currency_id.name','currency_name'),	
+						
+						#user added
+						'qty_carton_total',
+						'weight_net_total',
+						'weight_gross_total',
+						('m3_total','volume_total'),
+						]
+			
+			order_xml = get_rubylong_fields_xml_body(order, order_fields)
+			
+			#partner shipping address			
+			purchase_order = self.purchase_order(cr, uid, order.id, context=context)
+			if purchase_order:
+				order_fields = [
+							('name','po_name'),
+							('client_order_ref','', upper),
+							('port_load_id.name','', upper),
+							('port_discharge_id.name','', upper),
+							]
+				order_xml += get_rubylong_fields_xml_body(purchase_order, order_fields)
+			
+			#add this order's xml
+			data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')			
+			
+		for order in orders:
+			#detail data
+			line_fields = [
+						('invoice_id.id','order_id'),
+						('id','order_line_id'),
+						('sale_line_id.cust_prod_code','item_no'),
+						('name','item_name'),
+						('quantity','product_qty'),
+						('uos_id.name','product_uom_name'),
+						'price_unit',
+						'price_subtotal',
+						('invoice_id.currency_id.symbol','currency_symbol')
+						]
+			
+			for line in order.invoice_line:
+				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
+		
+		#write data
+		if order_main:
+			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
+		return res
+				
 	_columns = {
-			'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml')
+			'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml'),
+			'rubylong_xml_file_packing':fields.function(_rubylong_xml_file_packing, type='text', string='Rubylong xml packing'),
+			'rubylong_xml_file_dn':fields.function(_rubylong_xml_file_dn, type='text', string='Rubylong xml debit note')
 			}
 	
 	def sale_order(self, cr, uid, inv_id, context=None):
@@ -141,8 +351,17 @@ class account_invoice(osv.osv):
 		#origin_inv_id is from invoice_refund.py
 		if not so and inv.origin_inv_id:
 			#for customer refund / credit note
-			so = self.sale_order(cr, uid, inv.origin_inv_id, context=context)
+			so = self.sale_order(cr, uid, inv.origin_inv_id.id, context=context)
 		return so	
+	
+	def purchase_order(self, cr, uid, inv_id, context=None):
+		inv = self.browse(cr, uid, inv_id, context=context)
+		po = inv.purchase_ids and inv.purchase_ids[0] or False
+		#origin_inv_id is from invoice_refund.py
+		if not po and inv.origin_inv_id:
+			#for supplier refund / debit note
+			po = self.purchase_order(cr, uid, inv.origin_inv_id.id, context=context)
+		return po	
 	
 class account_invoice_line(osv.Model):
 	_inherit = 'account.invoice.line'
