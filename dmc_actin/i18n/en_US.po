@@ -205,12 +205,12 @@ msgstr "Bank Name"
 #. module: base
 #: field:res.partner.bank,bank_name:0
 msgid "Bank Name"
-msgstr "Intermediary Bank Name"
+msgstr "Bank Name"
 
 #. module: base
 #: field:res.partner.bank,bank_bic:0
 msgid "Bank Identifier Code"
-msgstr "Intermediary Bank Swift Code"
+msgstr "Bank Swift Code"
 
 #. module: base
 #: field:sale.order,payment_term:0

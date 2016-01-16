@@ -82,8 +82,9 @@
             <field name="name">view_partner_bank_form_actin</field>
             <field name="model">res.partner.bank</field>
             <field name="inherit_id" ref="base.view_partner_bank_form"/>
-            <field name="arch" type="xml">
-            	<field name="bank" position="after">
+            <field name="arch" type="xml">    
+            	<!-- add  bank_swift as bank code-->
+            	<field name="bank_bic" position="after">
             		<field name="bank_swift"/>
             	</field>
             </field>

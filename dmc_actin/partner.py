@@ -36,5 +36,5 @@ class res_partner_bank(osv.osv):
     '''Bank Accounts'''
     _inherit = "res.partner.bank"
     _columns = {       
-        'bank_swift': fields.char('Bank Swift Code'),
+        'bank_swift': fields.char('Bank Code'),
     }
