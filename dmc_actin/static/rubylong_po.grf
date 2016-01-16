@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='\\\\dm_server1\\projects\\actin\\dm_rubylong_po.xml'
+			QuerySQL='rubylong_po.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -191,12 +191,12 @@ Object Report
 		Object Border
 			Object Pen
 				Width=2
-				Color=00FFCC00
+				Color=Navy
 			End
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='\\\\dm_server1\\projects\\actin\\dm_rubylong_po.xml'
+			QuerySQL='rubylong_po.xml'
 			Items Field
 				Item
 					Name='supplier_item_no'
@@ -380,7 +380,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -398,7 +398,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -416,7 +416,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -434,7 +434,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -452,7 +452,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -470,7 +470,7 @@ Object Report
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -1301,7 +1301,7 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Top=2.19604
 				Width=4.02167
 				Height=0.608542
-				Text='[#date_order:yyyy/MM/dd#]'
+				Text='[#date_order:MM/dd/yyyy#]'
 			End
 			Item
 				Type=MemoBox
@@ -1820,7 +1820,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
 							Width=3
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 					Object Font
@@ -2417,7 +2417,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC33
+							Color=Navy
 						End
 					End
 					Object Font

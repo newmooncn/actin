@@ -59,6 +59,7 @@
 				Item
 					Name='date_order'
 					Type=DateTime
+					Format='MM/dd/yyyy'
 				End
 				Item
 					Name='client_order_ref'
@@ -167,6 +168,12 @@
 				Item
 					Name='company_id_bank_id_acc_number'
 				End
+				Item
+					Name='remark'
+				End
+				Item
+					Name='company_id_bank_id_bank_code'
+				End
 			End
 		End
 		Items Column
@@ -206,7 +213,7 @@ Object Report
 		Object Border
 			Object Pen
 				Width=2
-				Color=00FFCC00
+				Color=Navy
 			End
 		End
 		Object Recordset
@@ -214,10 +221,10 @@ Object Report
 			QuerySQL='rubylong_pi.xml'
 			Items Field
 				Item
-					Name='supplier_item_no'
+					Name='item_no'
 				End
 				Item
-					Name='supplier_item_name'
+					Name='item_name'
 				End
 				Item
 					Name='product_qty'
@@ -225,15 +232,16 @@ Object Report
 					Format='#,##0'
 				End
 				Item
-					Name='product_uom_name'
+					Name='product_uom_name upper'
 				End
 				Item
 					Name='price_unit'
-					Type=Float
+					Type=Currency
+					Format='#,##0.00'
 				End
 				Item
 					Name='price_subtotal'
-					Type=Float
+					Type=Currency
 					Format='#,##0.00'
 				End
 				Item
@@ -251,23 +259,23 @@ Object Report
 		Items Column
 			Item
 				Name='supplier_item_no'
-				Width=3.54542
+				Width=3.94229
 			End
 			Item
 				Name='supplier_item_name'
-				Width=3.99521
+				Width=6.40292
 			End
 			Item
 				Name='product_qty'
-				Width=3.41313
+				Width=2.19604
 			End
 			Item
 				Name='product_uom_name'
-				Width=2.59292
+				Width=1.5875
 			End
 			Item
 				Name='price_unit'
-				Width=3.59833
+				Width=2.59292
 			End
 			Item
 				Name='Column1'
@@ -276,11 +284,12 @@ Object Report
 		End
 		Object ColumnContent
 			Height=0.608542
+			GrowToNextRow=T
 			Items ColumnContentCell
 				Item
 					Column='supplier_item_no'
-					TextAlign=MiddleCenter
-					DataField='supplier_item_no'
+					WordWrap=T
+					DataField='item_no'
 					BorderCustom=T
 					Object Border
 						Styles=[]
@@ -295,8 +304,8 @@ Object Report
 				End
 				Item
 					Column='supplier_item_name'
-					TextAlign=MiddleCenter
-					DataField='supplier_item_no'
+					WordWrap=T
+					DataField='item_name'
 					BorderCustom=T
 					Object Border
 						Styles=[]
@@ -311,6 +320,7 @@ Object Report
 				End
 				Item
 					Column='product_qty'
+					WordWrap=T
 					TextAlign=MiddleCenter
 					DataField='product_qty'
 					BorderCustom=T
@@ -327,8 +337,9 @@ Object Report
 				End
 				Item
 					Column='product_uom_name'
+					WordWrap=T
 					TextAlign=MiddleCenter
-					DataField='product_uom_name'
+					DataField='product_uom_name upper'
 					BorderCustom=T
 					Object Border
 						Styles=[]
@@ -343,6 +354,7 @@ Object Report
 				End
 				Item
 					Column='price_unit'
+					WordWrap=T
 					TextAlign=MiddleCenter
 					DataField='price_unit'
 					BorderCustom=T
@@ -364,9 +376,8 @@ Object Report
 						Item
 							Type=MemoBox
 							Name='MemoBox3'
-							Left=0.211667
-							Width=2.59292
-							Height=0.608542
+							Dock=Fill
+							WordWrap=T
 							TextAlign=MiddleCenter
 							Text='[#currency_symbol#][#price_subtotal#]'
 						End
@@ -389,13 +400,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='ITEM NO. 编码'
+					Text='ITEM NO. '
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -407,13 +418,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='DESCRIPTION 描述'
+					Text='DESCRIPTION '
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -425,13 +436,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='QUANTITY 数量'
+					Text='QUANTITY '
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -443,13 +454,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='UNIT 单位'
+					Text='UNIT '
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -461,13 +472,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='UNIT PRICE 单价'
+					Text='UNIT PRICE'
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -479,13 +490,13 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					Text='AMOUNT 货值'
+					Text='AMOUNT '
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 				End
@@ -1200,9 +1211,9 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Type=MemoBox
 				Name='MemoBox3'
 				Left=3.41313
-				Top=2.06375
+				Top=2.09021
 				Width=7.48771
-				Height=0.608542
+				Height=0.47625
 				WordWrap=T
 				Text='[#company_id_street2#][#company_id_city#][#company_id_country_id_name#]'
 			End
@@ -1210,9 +1221,9 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Type=MemoBox
 				Name='MemoBox4'
 				Left=3.41313
-				Top=2.51354
+				Top=2.56646
 				Width=7.48771
-				Height=0.661458
+				Height=0.47625
 				WordWrap=T
 				Text='Email:[#company_id_email#]'
 			End
@@ -1238,7 +1249,7 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Left=3.41313
 				Top=1.61396
 				Width=7.59354
-				Height=0.608542
+				Height=0.47625
 				WordWrap=T
 				Text='[#company_id_street#]'
 			End
@@ -1246,9 +1257,9 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 				Type=StaticBox
 				Name='StaticBox2'
 				ForeColor=Navy
-				Left=11.4035
+				Left=12.0121
 				Top=0.608542
-				Width=7.59354
+				Width=6.985
 				Height=0.978958
 				Object Border
 					ShadowColor=Navy
@@ -1262,82 +1273,82 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 					Bold=T
 					Charset=134
 				End
-				Text='PURCHASE ORDER / 采购合同'
+				Text='PROFORMA INVOICE'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox1'
-				Left=11.4035
+				Left=11.9856
 				Top=1.5875
-				Width=3.20146
+				Width=2.01083
 				Height=0.608542
-				Text='PO Number/编码:'
+				Text='PI Number:'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox2'
-				Left=11.4035
+				Left=11.9856
 				Top=2.19604
-				Width=3.20146
+				Width=2.01083
 				Height=0.608542
-				Text='Date/日期:'
+				Text='Date:'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox38'
 				Left=3.41313
-				Top=3.01625
+				Top=3.04271
 				Width=7.43479
-				Height=0.608542
+				Height=0.47625
 				Text='Tel:[#company_id_phone#], Fax:[#company_id_fax#]'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox23'
-				Left=11.4035
+				Left=11.9856
 				Top=2.80458
-				Width=3.20146
+				Width=2.01083
 				Height=0.608542
 				Text='Page:'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox39'
-				Left=14.605
+				Left=14.0229
 				Top=1.5875
-				Width=4.02167
+				Width=4.60375
 				Height=0.608542
 				Text='[#name#]'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox40'
-				Left=14.605
+				Left=14.0229
 				Top=2.19604
-				Width=4.02167
+				Width=4.60375
 				Height=0.608542
-				Text='[#date_order:yyyy/MM/dd#]'
+				Text='[#date_order#]'
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox41'
-				Left=14.605
+				Left=14.0229
 				Top=2.80458
-				Width=4.02167
+				Width=4.60375
 				Height=0.608542
 				Text='[#SystemVar(PageNumber)#]/[#SystemVar(PageCount)#]'
 			End
 		End
 	End
 	Object PageFooter
-		Height=4.20688
+		Height=3.99521
 		Items Control
 			Item
 				Type=PictureBox
 				Name='PictureBox2'
-				Left=1.5875
-				Top=0.582083
-				Width=5.42396
+				Left=12.409
+				Top=0.608542
+				Width=5.3975
 				Height=2.19604
 				Picture=-28635
 /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQIC
@@ -1645,7 +1656,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Name='StaticBox11'
 				ShiftMode=Never
 				Top=0.185208
-				Width=2.59292
+				Width=1.5875
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -1653,15 +1664,15 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Weight=400
 					Charset=134
 				End
-				Text='BUYER/买方:'
+				Text='BUYER:'
 			End
 			Item
 				Type=StaticBox
 				Name='StaticBox12'
 				ShiftMode=Never
-				Left=12.3825
+				Left=11.774
 				Top=0.185208
-				Width=2.59292
+				Width=1.61396
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -1669,36 +1680,36 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Weight=400
 					Charset=134
 				End
-				Text='SELLER/卖方:'
+				Text='SELLER:'
 			End
 			Item
 				Type=StaticBox
 				Name='StaticBox41'
 				Top=0.79375
 				Width=4.39208
-				Height=0.978958
+				Height=0.79375
 				Object Font
 					Name='微软雅黑'
 					Size=112500,0
 					Weight=400
 					Charset=134
 				End
-				Text='Authorized signature\r\n授权签字'
+				Text='Authorized signature'
 			End
 			Item
 				Type=StaticBox
 				Name='StaticBox42'
-				Left=12.3825
+				Left=11.774
 				Top=0.79375
-				Width=4.39208
-				Height=0.978958
+				Width=4.20688
+				Height=0.79375
 				Object Font
 					Name='微软雅黑'
 					Size=112500,0
 					Weight=400
 					Charset=134
 				End
-				Text='Authorized signature\r\n授权签字'
+				Text='Authorized signature'
 			End
 			Item
 				Type=StaticBox
@@ -1715,16 +1726,25 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				End
 				WordWrap=T
 				TextAlign=MiddleJustiy
-				Text='* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any   circunstances. \r\n签字起合同确认，一旦合同达成，任何条件下都不能更改'
+				Text='* Signature is required as order confirmation, once the order is confirmed, it cannot be canceled under any   circunstances. '
 			End
 			Item
 				Type=MemoBox
 				Name='MemoBox42'
-				Left=2.40771
-				Top=0.185208
+				Left=13.3879
+				Top=0.211667
 				Width=4.60375
-				Height=0.608542
+				Height=0.582083
 				Text='[#company_id_name#]'
+			End
+			Item
+				Type=MemoBox
+				Name='MemoBox48'
+				Left=1.5875
+				Top=0.211667
+				Width=4.02167
+				Height=0.582083
+				Text='[#partner_invoice_id_name#]'
 			End
 		End
 	End
@@ -1737,46 +1757,49 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 		Item
 			Name='ReportHeader1'
 			CanGrow=T
-			Height=7.59354
+			Height=8.38729
 			Items Control
 				Item
 					Type=StaticBox
 					Name='StaticBox1'
 					Top=0.238125
-					Width=2.59292
+					Width=1.5875
 					Height=0.608542
 					Object Font
 						Name='微软雅黑'
 						Bold=T
 						Charset=134
 					End
-					Text='SELLER/供应商:'
+					Text='BILL TO:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox3'
 					Anchor=[Right]
-					Top=4.23333
-					Width=5.79438
+					Left=9.8425
+					Top=5.00063
+					Width=3.94229
 					Height=0.608542
-					Text='CUSTOMER PO REF/销售合同编码:'
+					Text='CUSTOMER PO REF:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox4'
-					Top=4.84188
-					Width=5.79438
+					Left=9.8425
+					Top=5.60917
+					Width=3.94229
 					Height=0.582083
-					Text='PORT OF LOADING/装船港:'
+					Text='PORT OF LOADING:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox5'
 					Anchor=[Right]
-					Top=5.42396
-					Width=5.79438
+					Left=9.8425
+					Top=6.19125
+					Width=3.94229
 					Height=0.608542
-					Text='PORT OF DISCHARGE/卸货港:'
+					Text='PORT OF DISCHARGE:'
 				End
 				Item
 					Type=MemoBox
@@ -1785,7 +1808,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Width=7.40833
 					Height=0.608542
 					WordWrap=T
-					Text='[#partner_id_name#]'
+					Text='[#partner_invoice_id_name#]'
 				End
 				Item
 					Type=MemoBox
@@ -1794,48 +1817,50 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Width=7.40833
 					Height=0.582083
 					WordWrap=T
-					Text='[#partner_id_street#],[#partner_id_street2#],[#partner_id_city#],[#partner_id_country_id_name#]'
+					Text='[#partner_invoice_id_street#],[#partner_invoice_id_street2#],[#partner_invoice_id_city#],[#partner_invoice_id_country_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox9'
 					Top=2.03729
-					Width=5.00063
+					Width=7.40833
 					Height=0.608542
 					WordWrap=T
-					Text='[#partner_id_phone#]'
+					Text='[#partner_invoice_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=2.01083
+					Left=1.79917
 					Top=2.59292
-					Width=4.39208
+					Width=5.60917
 					Height=0.608542
-					Text='[#partner_id_contact#]'
+					TextAlign=BottomLeft
+					Text='[#partner_invoice_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=1.40229
+					Left=1.19063
 					Top=3.20146
-					Width=6.00604
+					Width=6.21771
 					Height=0.608542
-					Text='[#partner_id_email#]'
+					TextAlign=BottomLeft
+					Text='[#partner_invoice_id_email#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox13'
 					AlignColumnSide=Left
-					Left=7.59354
+					Left=7.40833
 					Top=0.238125
-					Width=11.4035
+					Width=11.5888
 					Height=2.56646
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
 							Width=3
-							Color=00FFCC00
+							Color=Navy
 						End
 					End
 					Object Font
@@ -1846,68 +1871,70 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					CanGrow=T
 					WordWrap=T
 					TextAlign=MiddleCenter
-					Text='[#partner_id_name_upper#]'
+					Text='[#partner_invoice_id_name_upper#]'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox6'
 					Anchor=[Right]
-					Top=6.0325
-					Width=5.79438
+					Left=9.8425
+					Top=6.79979
+					Width=3.94229
 					Height=0.608542
-					Text='CONTACT/联系人:'
+					Text='CONTACT:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox7'
 					Anchor=[Right]
-					Top=6.64104
-					Width=5.79438
+					Left=9.8425
+					Top=7.40833
+					Width=3.94229
 					Height=0.582083
 					Text='EMAIL:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox14'
-					Left=5.84729
-					Top=4.23333
-					Width=6.40292
+					Left=13.679
+					Top=5.00063
+					Width=5.31813
 					Height=0.608542
 					Text='[#client_order_ref#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox15'
-					Left=5.82083
-					Top=4.86833
-					Width=6.40292
+					Left=13.679
+					Top=5.60917
+					Width=5.31813
 					Height=0.582083
 					Text='[#port_load_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox16'
-					Left=5.82083
-					Top=5.45042
-					Width=6.40292
+					Left=13.679
+					Top=6.19125
+					Width=5.31813
 					Height=0.608542
 					Text='[#port_discharge_id_name#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox17'
-					Left=5.82083
-					Top=6.05896
-					Width=6.40292
+					Left=13.679
+					Top=6.79979
+					Width=5.31813
 					Height=0.608542
 					Text='[#company_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox18'
-					Left=5.82083
-					Top=6.6675
-					Width=6.40292
+					Left=13.679
+					Top=7.40833
+					Width=5.31813
 					Height=0.582083
 					Text='[#company_id_email#]'
 				End
@@ -1915,7 +1942,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=StaticBox
 					Name='StaticBox44'
 					Top=2.59292
-					Width=1.79917
+					Width=1.82563
 					Height=0.608542
 					Text='CONTACT:'
 				End
@@ -1927,6 +1954,86 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Height=0.608542
 					Text='EMAIL:'
 				End
+				Item
+					Type=StaticBox
+					Name='StaticBox46'
+					Top=4.39208
+					Width=2.19604
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Bold=T
+						Charset=134
+					End
+					Text='DELIVER TO:'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox43'
+					Left=0.0264583
+					Top=5.00063
+					Width=7.56708
+					Height=0.608542
+					WordWrap=T
+					Text='[#partner_shipping_id_name#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox44'
+					Left=0.0264583
+					Top=5.60917
+					Width=7.56708
+					Height=0.608542
+					CanShrink=T
+					WordWrap=T
+					Text='[#partner_shipping_id_street#],[#partner_shipping_id_street2#],[#partner_shipping_id_city#],[#partner_shipping_id_country_id_name#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox45'
+					Left=0.0264583
+					Top=6.21771
+					Width=7.56708
+					Height=0.608542
+					WordWrap=T
+					Text='[#partner_shipping_id_phone#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox47'
+					Top=6.82625
+					Width=1.79917
+					Height=0.608542
+					Text='CONTACT:'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox46'
+					Left=1.27
+					Top=7.38188
+					Width=6.21771
+					Height=0.608542
+					TextAlign=BottomLeft
+					Text='[#partner_shipping_id_email#]'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox47'
+					Left=1.79917
+					Top=6.82625
+					Width=5.79438
+					Height=0.608542
+					TextAlign=BottomLeft
+					Text='[#partner_shipping_id_contact#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox48'
+					Top=7.38188
+					Width=1.27
+					Height=0.608542
+					Text='EMAIL:'
+				End
 			End
 		End
 	End
@@ -1935,58 +2042,8 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=15.1871
+			Height=10.6098
 			Items Control
-				Item
-					Type=MemoBox
-					Name='MemoBox21'
-					ShiftMode=WhenOverLapped
-					Top=8.41375
-					Width=18.9971
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#penalties_on_delays#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox19'
-					ShiftMode=WhenOverLapped
-					Top=11.721
-					Width=19.0235
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#confirmation#]'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox8'
-					Top=4.94771
-					Width=9.60438
-					Height=0.608542
-					Object Font
-						Name='微软雅黑'
-						Size=120000,0
-						Bold=T
-						Charset=134
-					End
-					Text='PROCUREMENT CONDITIONS 交易条件'
-				End
 				Item
 					Type=StaticBox
 					Name='StaticBox13'
@@ -1999,7 +2056,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Bold=T
 						Charset=134
 					End
-					Text='TOTAL AMOUNT IN FIGURES/数字版总货值:'
+					Text='TOTAL AMOUNT IN FIGURES:'
 				End
 				Item
 					Type=StaticBox
@@ -2013,13 +2070,13 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Bold=T
 						Charset=134
 					End
-					Text='TOTAL AMOUNT IN WORDS/文字版总货值:'
+					Text='TOTAL AMOUNT IN WORDS:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox24'
 					Top=1.79917
-					Width=18.3885
+					Width=18.9971
 					Height=0.608542
 					Object Font
 						Name='微软雅黑'
@@ -2036,7 +2093,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					Type=StaticBox
 					Name='StaticBox16'
 					Top=2.56646
-					Width=10.795
+					Width=6.58813
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -2044,198 +2101,55 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Bold=T
 						Charset=134
 					End
-					Text='MAIN PROCUREMENT CONDITIONS 主要交易条件'
+					Text='PROCUREMENT CONDITIONS'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox17'
 					Top=3.14854
-					Width=5.21229
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='A. EXIT FACTORY DATE/交货日期:'
+					Width=4.23333
+					Height=0.343958
+					Text='A. EXIT FACTORY DATE:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox18'
 					Top=3.54542
-					Width=4.78896
+					Width=4.23333
 					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='B. DELIVERY TERMS/交易方式:'
+					Text='B. DELIVERY  TERMS:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox19'
 					Top=3.94229
-					Width=4.78896
+					Width=4.23333
 					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='C. PAYMENT TERMS/付款方式:'
+					Text='C. PAYMENT TERMS:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox20'
 					Top=4.33917
-					Width=4.78896
+					Width=4.23333
 					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='D. SHIPMENT TYPE/运输方式:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox21'
-					Top=5.55625
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='E. CERTIFICATIONS/证书:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox23'
-					Top=6.37646
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='F. QUALITY CONTROL REQUIREMENTS/验货要求:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox25'
-					Top=7.19667
-					Width=9.39271
-					Height=0.423333
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Bold=T
-						Charset=134
-					End
-					Text='G. LOADING CONTROL REQUIREMENTS/装柜要求:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox27'
-					Top=8.04333
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='H. PENALTIES ON DELAYS/交期延期的惩罚:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox29'
-					Top=8.86354
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='I. DISCREPANCY/不符:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox30'
-					Top=9.65729
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='J. DISPUTES/争议:'
+					Text='D. SHIPMENT TYPE:'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox33'
 					Left=-0.0264583
-					Top=10.4775
-					Width=9.28688
-					Height=0.423333
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='K. DOCUMENTS EXPORT/出口文件: '
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox35'
-					Top=11.3242
-					Width=9.41917
+					Top=5.21229
+					Width=2.32833
 					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='L. CONFIRMATION/回执:'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox36'
-					Top=12.1444
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='M. CANCELLATION: '
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox37'
-					Top=12.9381
-					Width=9.39271
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Bold=T
-						Charset=134
-					End
-					Text='N. ARTWORKS/文稿: '
+					Text='K. REMARKS:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox25'
-					Left=5.21229
-					Top=3.20146
-					Width=12.991
+					Left=4.20688
+					Top=3.14854
+					Width=13.9965
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2248,9 +2162,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox26'
-					Left=5.23875
-					Top=3.59833
-					Width=12.991
+					Left=4.20688
+					Top=3.54542
+					Width=14.0229
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2263,9 +2177,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox27'
-					Left=5.23875
-					Top=3.99521
-					Width=12.991
+					Left=4.20688
+					Top=3.94229
+					Width=14.0229
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2278,9 +2192,9 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 				Item
 					Type=MemoBox
 					Name='MemoBox28'
-					Left=5.23875
+					Left=4.20688
 					Top=4.33917
-					Width=12.991
+					Width=14.0229
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2288,92 +2202,15 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Weight=400
 						Charset=134
 					End
+					TextAlign=BottomLeft
 					Text='[#ship_type_name#]'
 				End
 				Item
 					Type=MemoBox
-					Name='MemoBox29'
-					Top=6.74688
-					Width=19.0235
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#qc_requirement#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox30'
-					Top=7.56708
-					Width=18.9971
-					Height=0.423333
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#load_control#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox31'
-					Top=9.23396
-					Width=18.9971
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#discrepancy#]'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox32'
-					Top=10.0542
-					Width=18.9971
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#disputes#]'
-				End
-				Item
-					Type=MemoBox
 					Name='MemoBox33'
-					Top=10.8744
-					Width=18.9706
-					Height=0.423333
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#doc_export#]'
-				End
-				Item
-					Type=StaticBox
-					Name='StaticBox40'
-					Top=12.5413
-					Width=18.9442
+					Left=2.40771
+					Top=5.21229
+					Width=16.5629
 					Height=0.396875
 					Object Font
 						Name='微软雅黑'
@@ -2384,42 +2221,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='ONCE THE ORDER IS CONFIRMED BY SIGNATURE, IT CANNOT BE CANCELED UNDER ANY CIRCUNSTANCES.\r\n签字起合同确认，一旦合同达成，任何条件下都不能更改'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox35'
-					Top=5.95313
-					Width=18.9971
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#certs#]'
-					FlowTo='MemoBox34'
-				End
-				Item
-					Type=MemoBox
-					Name='MemoBox36'
-					Top=13.3615
-					Width=18.9971
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#artworks#]'
+					Text='[#remark#]'
 				End
 				Item
 					Type=MemoBox
@@ -2432,7 +2234,7 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
 							Width=2
-							Color=00FFCC33
+							Color=Navy
 						End
 					End
 					Object Font
@@ -2443,6 +2245,154 @@ AKKKKACiiigAooooAKKKKACiiigAooooA//Z
 					End
 					TextAlign=MiddleCenter
 					Text='[#currency_symbol#][#amount_total#]'
+				End
+				Item
+					Type=FreeGrid
+					Name='FreeGrid1'
+					Left=1.85208
+					Top=5.95313
+					Object Border
+						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
+						Object Pen
+							Width=3
+							Color=Navy
+						End
+					End
+					ColumnCount=2
+					RowCount=7
+					Items FreeGridColumn
+						Item[1]
+							Width=7.51417
+						End
+						Item[2]
+							Width=7.38188
+						End
+					End
+					Items FreeGridRow
+					End
+					Items FreeGridCell
+						Item[1,1]
+							Object Font
+								Name='微软雅黑'
+								Size=112500,0
+								Bold=T
+								Charset=134
+							End
+							Text='BANK DETAILS'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawBottom]
+								Object Pen
+									Width=3
+									Color=Navy
+								End
+							End
+							ColSpan=2
+						End
+						Item[2,1]
+							Text='Beneficiary Bank Name'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[2,2]
+							Text='[#company_id_bank_id_bank_name#]'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawRight]
+							End
+						End
+						Item[3,1]
+							BackColor=Silver
+							Text='Beneficiary Bank Address'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[3,2]
+							BackColor=Silver
+							Text='[#company_id_bank_id_street#]'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawRight]
+							End
+						End
+						Item[4,1]
+							Text='Beneficiary'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[4,2]
+							Text='[#company_id_bank_id_owner_name#]'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawRight]
+							End
+						End
+						Item[5,1]
+							BackColor=Silver
+							Text='SWIFT/BIC'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[5,2]
+							BackColor=Silver
+							Text='[#company_id_bank_id_bank_bic#]'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawRight]
+							End
+						End
+						Item[6,1]
+							Text='BANK ACCOUNT'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[6,2]
+							Text='[#company_id_bank_id_acc_number#]'
+							BorderCustom=T
+							Object Border
+								Styles=[DrawRight]
+							End
+						End
+						Item[7,1]
+							BackColor=Silver
+							Text='BANK CODE'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[7,2]
+							BackColor=Silver
+							Text='[#company_id_bank_id_bank_code#]'
+						End
+					End
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox49'
+					Top=4.78896
+					Width=18.8119
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#terms_fix#]'
 				End
 			End
 		End

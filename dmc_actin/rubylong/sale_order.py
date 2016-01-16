@@ -86,8 +86,8 @@ class sale_order(osv.osv):
 						('amount_total', 'amount_total_en', number2words_en_upper2),
 						
 						'deliver_memo',
-						('incoterm', 'incoterm_id_name'),
-						('payment_term','payment_term_id_name'),
+						('incoterm.name', 'incoterm_id_name'),
+						('payment_term.name','payment_term_id_name'),
 						'ship_type.name',
 						
 						'terms_fix',
@@ -100,7 +100,10 @@ class sale_order(osv.osv):
 						'company_id.bank_id.acc_number',
 						
 						('pricelist_id.currency_id.symbol','currency_symbol'),						
-						('pricelist_id.currency_id.name','currency_name')
+						('pricelist_id.currency_id.name','currency_name'),
+						
+						#user added
+						('company_id.bank_id.bank_swift','company_id_bank_id_bank_code')				
 						
 						]
 			data_xml += get_rubylong_fields_xml(order, 'header', order_fields)
