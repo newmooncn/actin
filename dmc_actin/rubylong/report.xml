@@ -6,7 +6,6 @@
 		change list:
 		report_type="qweb-html"
 		name="dm_rubylong.layout"
-		file="%file_name_to_save%"
 		 -->
         <report 
             id="purchase.action_report_purchase_order" 
@@ -14,15 +13,17 @@
             model="purchase.order" 
             report_type="qweb-html"
             name="dm_rubylong.layout" 
-            file="aaaaaaa" 
+            file="dm_rubylong.layout" 
         />
 		<!-- set rubylong data: is_rubylong, default_rubylong_file_path, default_rubylong_data_file_path
-		default_rubylong_data_file_path is optional -->        
+		default_rubylong_data_file_path is optional 
+		download_file_name: you can set your file name that you want to download, the default download file name is 'name'-->        
         <record id="purchase.action_report_purchase_order" model="ir.actions.report.xml">
             <field name="name">Purchase Order</field>
 			<field name="is_rubylong" eval="True"/>
 			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_po.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_po.xml</field>
+			<!-- <field name="download_file_name">MyFileName</field> -->
         </record>
         
 		<!-- <template id="purchase.report_purchaseorder">
@@ -57,8 +58,8 @@
             string="Proforma Invoice"
             model="sale.order" 
             report_type="qweb-html"
-            name="sale.report_saleorder" 
-            file="sale.report_saleorder" 
+            name="dm_rubylong.layout" 
+            file="dm_rubylong.layout" 
         />
         <record id="sale.report_sale_order" model="ir.actions.report.xml">
             <field name="name">Proforma Invoice</field>
@@ -66,22 +67,38 @@
 			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_pi.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_pi.xml</field>
         </record>
+        
+	<!-- Commercial Invoice-->
+        <report
+            id="sale.report_sale_order"
+            string="Proforma Invoice"
+            model="sale.order" 
+            report_type="qweb-html"
+            name="sale.report_saleorder" 
+            file="sale.report_saleorder" 
+        />
+        <report 
+            id="account.account_invoices"
+            string="Commercial Invoice"
+            model="account.invoice"
+            report_type="qweb-html"
+            name="dm_rubylong.layout" 
+            file="dm_rubylong.layout"
+            attachment_use=""
+            attachment=""
+            groups="account.group_account_invoice"
+        />
+        <record id="account.account_invoices" model="ir.actions.report.xml">
+            <field name="name">Commercial Invoice</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_ci.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_ci.xml</field>
+        </record>        
      
 <!-- Rubylong report end -->
     
        
 <!-- Commercial Invoice-->
-        <report 
-            id="account.account_invoices"
-            model="account.invoice"
-            report_type="pdf"
-            name="commercial.invoice.actin"
-            string="Commercial Invoice"
-            file="dmc_actin/report/sale_commercial_invoice.rml"
-            attachment_use=""
-            attachment=""
-            groups="account.group_account_invoice"
-        />
 <!-- Credit Note, only change name for the downloading file name, but use same 'string' and rml 'file' -->        
         <report 
             id="credit_note"

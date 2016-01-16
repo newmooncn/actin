@@ -100,7 +100,7 @@ class purchase_order(osv.osv):
 		for order in orders:
 			#detail data
 			line_fields = [
-						'order_id.id',
+						('order_id.id','order_id'),
 						('id','order_line_id'),
 						('supplier_prod_name','supplier_item_no'),
 						('name','supplier_item_name'),
