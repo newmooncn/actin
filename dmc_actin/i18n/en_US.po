@@ -200,7 +200,7 @@ msgstr "Bank Address"
 #. module: base
 #: field:res.partner.bank,bank:0
 msgid "Bank"
-msgstr "Bank Name"
+msgstr "Bank"
 
 #. module: base
 #: field:res.partner.bank,bank_name:0
