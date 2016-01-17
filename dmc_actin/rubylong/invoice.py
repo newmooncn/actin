@@ -54,6 +54,7 @@ class account_invoice(osv.osv):
 						'company_id.phone',
 						'company_id.fax',
 						'company_id.email',
+						('company_id.logo','company_logo'),
 						
 						('partner_id.name','partner_invoice_id_name'),
 						('partner_id.name', 'partner_invoice_id_name_upper', upper),
@@ -83,7 +84,10 @@ class account_invoice(osv.osv):
 						'hs_code',
 						
 						('currency_id.symbol','currency_symbol'),						
-						('currency_id.name','currency_name'),		
+						('currency_id.name','currency_name'),	
+						
+						#dm added
+						('company_id.img_stamp','company_stamp'),
 						
 						]
 			
@@ -155,6 +159,7 @@ class account_invoice(osv.osv):
 						'company_id.phone',
 						'company_id.fax',
 						'company_id.email',
+						('company_id.logo','company_logo'),
 						
 						('partner_id.name','partner_invoice_id_name'),
 						('partner_id.name', 'partner_invoice_id_name_upper', upper),
@@ -185,6 +190,9 @@ class account_invoice(osv.osv):
 						
 						('currency_id.symbol','currency_symbol'),						
 						('currency_id.name','currency_name'),	
+						
+						#dm added
+						('company_id.img_stamp','company_stamp'),
 						
 						#user added
 						'qty_carton_total',
@@ -263,6 +271,7 @@ class account_invoice(osv.osv):
 						'company_id.phone',
 						'company_id.fax',
 						'company_id.email',
+						('company_id.logo','company_logo'),
 						
 						'partner_id.name',
 						('partner_id.name', 'partner_id_name_upper', upper),
@@ -292,7 +301,10 @@ class account_invoice(osv.osv):
 						'hs_code',
 						
 						('currency_id.symbol','currency_symbol'),						
-						('currency_id.name','currency_name'),	
+						('currency_id.name','currency_name'),
+						
+						#dm added
+						('company_id.img_stamp','company_stamp'),
 						
 						#user added
 						'qty_carton_total',

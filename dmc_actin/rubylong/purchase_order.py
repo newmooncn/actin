@@ -40,6 +40,7 @@ class purchase_order(osv.osv):
 		order_main = None
 		orders = self.browse(cr, uid, ids, context=context)
 		for order in orders:
+#			test = order.company_id.img_stamp.encode('base64')
 			if not order_main:
 				order_main = order
 			#header data
@@ -53,7 +54,7 @@ class purchase_order(osv.osv):
 						'company_id.contact',
 						'company_id.phone',
 						'company_id.fax',
-						'company_id.email',
+						('company_id.logo','company_logo'),
 						
 						'partner_id.name',
 						('partner_id.name', 'partner_id_name_upper', upper),
@@ -92,7 +93,10 @@ class purchase_order(osv.osv):
 						'notes',
 						
 						('pricelist_id.currency_id.symbol','currency_symbol'),						
-						('pricelist_id.currency_id.name','currency_name')
+						('pricelist_id.currency_id.name','currency_name'),
+						
+						#dm added
+						('company_id.img_stamp','company_stamp')
 						
 						]
 			data_xml += get_rubylong_fields_xml(order, 'header', order_fields)

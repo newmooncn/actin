@@ -2,3 +2,4 @@
 import purchase_order
 import sale_order
 import invoice
+import product

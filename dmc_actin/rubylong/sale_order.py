@@ -20,9 +20,6 @@
 ##############################################################################
 
 from openerp.osv import fields, osv
-from openerp.tools.translate import _
-import openerp.addons.decimal_precision as dp
-from openerp.addons.purchase.purchase import purchase_order as po_super
 
 from openerp.addons.dm_base.utils import number2words_en_upper, number2words_en_upper2
 from string import upper
@@ -54,6 +51,7 @@ class sale_order(osv.osv):
 						'company_id.phone',
 						'company_id.fax',
 						'company_id.email',
+						('company_id.logo','company_logo'),
 						
 						'partner_invoice_id.name',
 						('partner_invoice_id.name', 'partner_invoice_id_name_upper', upper),
@@ -101,6 +99,9 @@ class sale_order(osv.osv):
 						
 						('pricelist_id.currency_id.symbol','currency_symbol'),						
 						('pricelist_id.currency_id.name','currency_name'),
+						
+						#dm added
+						('company_id.img_stamp','company_stamp'),
 						
 						#user added
 						('company_id.bank_id.bank_swift','company_id_bank_id_bank_code')				
