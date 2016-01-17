@@ -163,18 +163,28 @@
 			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_dn.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_dn.xml</field>
         </record>    
-     
-<!-- Rubylong report end -->
 
-<!-- Product sheet -->        
+	<!-- Product sheet -->        
         <report 
             id="action_report_product_sheet"
-            model="product.product"
-            report_type="pdf"
-            name="product.sheet"
             string="Product Sheet"
-            file="dmc_actin/report/product_sheet.rml" 
+            model="product.product"
+            report_type="qweb-html"
+            name="product.sheet" 
+            file="product.sheet"
         />
+		<template id="product.sheet">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
+        <record id="action_report_product_sheet" model="ir.actions.report.xml">
+            <field name="name">Product Sheet</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_produt_sheet.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_produt_sheet.xml</field>
+        </record>
+     
+<!-- Rubylong report end -->
 <!-- sale offer -->        
         <report 
             id="action_report_sale_offer"
