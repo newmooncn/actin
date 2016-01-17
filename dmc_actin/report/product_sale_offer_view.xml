@@ -10,6 +10,7 @@
                     <group>
                     	<field name="product_id" invisible="1"/>
                         <field name="prod_cust_id"/>
+                        <field name="pr_number"/>
                     </group>
                     <footer>
                         <button name="print_report" string="Print"  type="object" class="oe_highlight"  />
