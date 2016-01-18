@@ -2,7 +2,7 @@
 import product
 import partner
 import purchase
-import report
+import wizard
 import sale
 import invoice
 import invoice_sale

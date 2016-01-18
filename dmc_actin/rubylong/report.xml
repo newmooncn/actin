@@ -180,8 +180,8 @@
         <record id="action_report_product_sheet" model="ir.actions.report.xml">
             <field name="name">Product Sheet</field>
 			<field name="is_rubylong" eval="True"/>
-			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_produt_sheet.grf</field>
-			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_produt_sheet.xml</field>
+			<field name="default_rubylong_file_path">/dmc_actin/static/product_sheet.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/product_sheet.xml</field>
         </record>
         
 	<!-- Product sale offer -->      
@@ -203,16 +203,68 @@
 			<field name="default_rubylong_file_path">/dmc_actin/static/product_sale_offer.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/product_sale_offer.xml</field>
         </record>
-     
-<!-- Rubylong report end -->
-<!-- Product factory quotation -->      
+        
+	<!-- Product factory quotation -->        
         <report 
             id="action_report_factory_quotation"
-            model="product.product"
-            report_type="pdf"
-            name="product.factory.quotation"
             string="Factory Product Quotation"
-            file="dmc_actin/report/product_factory_quotation.rml" 
-        />       
+            model="product.product"
+            report_type="qweb-html"
+            name="product.factory_quotation" 
+            file="product.factory_quotation"
+        />  
+		<template id="product.factory_quotation">
+		    <t t-call="dm_rubylong.layout_base">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_factory_quotation'/>?dt=' + cur_time;
+		    </t>
+		</template>	
+        <record id="action_report_factory_quotation" model="ir.actions.report.xml">
+            <field name="name">Factory Product Quotation</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/product_factory_quotation.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/product_factory_quotation.xml</field>
+        </record> 
+
+	<!-- Service sheet -->        
+        <report 
+            id="action_product_service_sheet"
+            string="Service Sheet"
+            model="product.product"
+            report_type="qweb-html"
+            name="product.sheet_service" 
+            file="product.sheet_service"
+        />
+		<template id="product.sheet_service">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
+        <record id="action_product_service_sheet" model="ir.actions.report.xml">
+            <field name="name">Service Sheet</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/product_service_sheet.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/product_service_sheet.xml</field>
+        </record>
+        
+	<!-- Product service offer -->      
+        <report
+            id="action_product_service_offer"
+            string="Service Offer"
+            model="product.sale.offer"
+            report_type="qweb-html"
+            name="product.service_offer"
+            file="product.service_offer"
+        />
+		<template id="product.service_offer">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>
+        <record id="action_product_service_offer" model="ir.actions.report.xml">
+            <field name="name">Service Offer</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/product_service_offer.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/product_service_offer.xml</field>
+        </record>
+     
+<!-- Rubylong report end -->    
     </data>
 </openerp>

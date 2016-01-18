@@ -700,7 +700,7 @@ End
 				Width=2.98979
 				Height=3.01625
 				CustomDraw=T
-				CustomDrawScript='var pic = Report.Utility.CreatePicture(); //创建图像对象\r\nvar Binary = Report.Utility.CreateBinaryObject();\r\n\r\nvar x = Graphics.Left;\r\nvar y = Graphics.Top;\r\nvar width = Graphics.Width;\r\nvar height = Graphics.Height;\r\n\r\nBinary.LoadFromBase64Text(Report.FieldByName("company_logo").AsString)\r\npic.LoadFromBinary(Binary); \r\nReport.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);'
+				CustomDrawScript='img_base64 = Report.FieldByName("company_logo").AsString\r\nif (img_base64 != ''){\r\n    var pic = Report.Utility.CreatePicture(); //创建图像对象\r\n    var Binary = Report.Utility.CreateBinaryObject();\r\n    \r\n    var x = Graphics.Left;\r\n    var y = Graphics.Top;\r\n    var width = Graphics.Width;\r\n    var height = Graphics.Height;\r\n    \r\n    Binary.LoadFromBase64Text(img_base64)\r\n    pic.LoadFromBinary(Binary); \r\n    Report.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);\r\n}'
 				Object Font
 					Name='微软雅黑'
 					Bold=T
@@ -722,7 +722,7 @@ End
 				Width=5.21229
 				Height=2.80458
 				CustomDraw=T
-				CustomDrawScript='var pic = Report.Utility.CreatePicture(); //创建图像对象\r\nvar Binary = Report.Utility.CreateBinaryObject();\r\n\r\nvar x = Graphics.Left;\r\nvar y = Graphics.Top;\r\nvar width = Graphics.Width;\r\nvar height = Graphics.Height;\r\n\r\nBinary.LoadFromBase64Text(Report.FieldByName("company_stamp").AsString)\r\npic.LoadFromBinary(Binary); \r\nReport.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);'
+				CustomDrawScript='img_base64 = Report.FieldByName("company_stamp").AsString\r\nif (img_base64 != ''){\r\n    var pic = Report.Utility.CreatePicture(); //创建图像对象\r\n    var Binary = Report.Utility.CreateBinaryObject();\r\n    \r\n    var x = Graphics.Left;\r\n    var y = Graphics.Top;\r\n    var width = Graphics.Width;\r\n    var height = Graphics.Height;\r\n    \r\n    Binary.LoadFromBase64Text(img_base64)\r\n    pic.LoadFromBinary(Binary); \r\n    Report.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);\r\n}'
 				Object Font
 					Name='微软雅黑'
 					Bold=T
