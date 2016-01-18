@@ -55,6 +55,7 @@ class product_product(osv.osv):
 						('company_id.logo','company_logo'),
 						
 						'name',
+						('default_code','code'),
 						'image',
 						'description',
 						

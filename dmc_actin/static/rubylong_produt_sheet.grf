@@ -15,7 +15,7 @@
 	Object DetailGrid
 		Object Recordset
 			ConnectionString='xml'
-			QuerySQL='C:\\0-code\\oe80-dm\\openerp\\addons\\web\\static\\rubylong\\actin_1209\\data\\product_product_80.xml'
+			QuerySQL='rubylong_produt_sheet.xml'
 			Items Field
 				Item
 					Name='product_id'
@@ -105,6 +105,9 @@
 				End
 				Item
 					Name='qty_pallet_us'
+				End
+				Item
+					Name='code'
 				End
 			End
 		End
@@ -1250,6 +1253,15 @@ BRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFA
 					End
 					TextAlign=MiddleCenter
 					Text='Product Image'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox51'
+					Left=10.6098
+					Top=2.19604
+					Width=7.19667
+					Height=0.608542
+					Text='[#code#]'
 				End
 			End
 		End
