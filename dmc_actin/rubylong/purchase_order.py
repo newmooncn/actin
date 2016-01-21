@@ -54,6 +54,7 @@ class purchase_order(osv.osv):
 						'company_id.contact',
 						'company_id.phone',
 						'company_id.fax',
+						'company_id.email',
 						('company_id.logo','company_logo'),
 						
 						'partner_id.name',
