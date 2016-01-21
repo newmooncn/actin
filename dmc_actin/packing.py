@@ -32,9 +32,11 @@ class sale_order(osv.osv):
 		for line in self.pool['account.invoice'].browse(cr, uid, inv_id, context=context).invoice_line:		
 			prod_weight_net = 0
 			prod_weight_net = 0
+			prod_volume = 0
 			try:
 				prod_weight = float(line.product_id.weight_char)
 				prod_weight_net = float(line.product_id.weight_net_char)
+				prod_volume = float(line.product_id.volume_char)
 			except Exception, e:
 				pass
 				
@@ -48,7 +50,7 @@ class sale_order(osv.osv):
 							
 				weight_net = prod_weight*quantity
 				weight_gross = prod_weight_net*quantity
-				m3 = line.product_id.volume*quantity
+				m3 = prod_volume*quantity
 						
 				pack_val = {
 					'invoice_id': inv_id,
@@ -72,7 +74,7 @@ class sale_order(osv.osv):
 				quantity = line.quantity - quantity							
 				weight_net = prod_weight_net*quantity
 				weight_gross = prod_weight*quantity
-				m3 = line.product_id.volume*quantity
+				m3 = prod_volume*quantity
 						
 				pack_val = {
 					'invoice_id': inv_id,
