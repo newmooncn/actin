@@ -29,36 +29,49 @@ class sale_order(osv.osv):
 	def action_invoice_create(self, cr, uid, ids, grouped=False, states=None, date_invoice = False, context=None):
 		inv_id = super(sale_order, self).action_invoice_create(cr, uid, ids, grouped, states, date_invoice, context)
 		pack_obj = self.pool['account.invoice.pack']
-		for line in self.pool['account.invoice'].browse(cr, uid, inv_id, context=context).invoice_line:			
+		for line in self.pool['account.invoice'].browse(cr, uid, inv_id, context=context).invoice_line:		
+			prod_weight_net = 0
+			prod_weight_net = 0
+			try:
+				prod_weight = float(line.product_id.weight_char)
+				prod_weight_net = float(line.product_id.weight_net_char)
+			except Exception, e:
+				pass
+				
 			qty_per_carton = line.product_id.qty_per_outer
 			qty_carton = qty_per_carton>0 and math.floor(line.quantity/qty_per_carton) or 0
-			quantity = qty_carton * qty_per_carton
-						
-			weight_net = line.product_id.weight_net*quantity
-			weight_gross = line.product_id.weight*quantity
-			m3 = line.product_id.volume*quantity
-					
-			pack_val = {
-				'invoice_id': inv_id,
-				'sequence': line.sequence,
-				'product_id': line.product_id.id or False,				
-				'name': line.name,				
-				'qty_per_carton': qty_per_carton,
-				'qty_carton': qty_carton,
-				'quantity': quantity,
-				'uos_id': line.uos_id.id,
-				'weight_net': weight_net,
-				'weight_gross': weight_gross,
-				'm3': m3,
-				'inv_line_id':line.id
-			}			
-			pack_obj.create(cr, uid, pack_val, context=context)
 			
+			quantity = 0
+			if qty_carton > 0:
+				#only when the quantity can fill at least 1 carton then execute following code
+				quantity = qty_carton * qty_per_carton
+							
+				weight_net = prod_weight*quantity
+				weight_gross = prod_weight_net*quantity
+				m3 = line.product_id.volume*quantity
+						
+				pack_val = {
+					'invoice_id': inv_id,
+					'sequence': line.sequence,
+					'product_id': line.product_id.id or False,				
+					'name': line.name,				
+					'qty_per_carton': qty_per_carton,
+					'qty_carton': qty_carton,
+					'quantity': quantity,
+					'uos_id': line.uos_id.id,
+					'weight_net': weight_net,
+					'weight_gross': weight_gross,
+					'm3': m3,
+					'inv_line_id':line.id
+				}			
+				pack_obj.create(cr, uid, pack_val, context=context)
+			else:
+				quantity = 0
 			if line.quantity - quantity > 0:
 				qty_carton = 1
 				quantity = line.quantity - quantity							
-				weight_net = line.product_id.weight_net*quantity
-				weight_gross = line.product_id.weight*quantity
+				weight_net = prod_weight_net*quantity
+				weight_gross = prod_weight*quantity
 				m3 = line.product_id.volume*quantity
 						
 				pack_val = {
