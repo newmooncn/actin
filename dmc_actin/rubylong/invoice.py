@@ -97,15 +97,15 @@ class account_invoice(osv.osv):
 			sale_order = self.sale_order(cr, uid, order.id, context=context)
 			if sale_order:
 				order_fields = [
-							('partner_id.name','partner_shipping_id_name'),
-							('partner_id.name', 'partner_shipping_id_name_upper', upper),
-							('partner_id.street','partner_shipping_id_street'),
-							('partner_id.street2','partner_shipping_id_street2'),
-							('partner_id.city','partner_shipping_id_city'),
-							('partner_id.country_id.name','partner_shipping_id_country_id_name'),
-							('partner_id.phone','partner_shipping_id_phone'),
-							('partner_id.contact','partner_shipping_id_contact'),
-							('partner_id.email','partner_shipping_id_email'),	
+							('partner_shipping_id.name','partner_shipping_id_name'),
+							('partner_shipping_id.name', 'partner_shipping_id_name_upper', upper),
+							('partner_shipping_id.street','partner_shipping_id_street'),
+							('partner_shipping_id.street2','partner_shipping_id_street2'),
+							('partner_shipping_id.city','partner_shipping_id_city'),
+							('partner_shipping_id.country_id.name','partner_shipping_id_country_id_name'),
+							('partner_shipping_id.phone','partner_shipping_id_phone'),
+							('partner_shipping_id.contact','partner_shipping_id_contact'),
+							('partner_shipping_id.email','partner_shipping_id_email'),	
 							('client_order_ref','', upper),
 							]
 				order_xml += get_rubylong_fields_xml_body(sale_order, order_fields)
@@ -207,15 +207,15 @@ class account_invoice(osv.osv):
 			sale_order = self.sale_order(cr, uid, order.id, context=context)
 			if sale_order:
 				order_fields = [
-							('partner_id.name','partner_shipping_id_name'),
-							('partner_id.name', 'partner_shipping_id_name_upper', upper),
-							('partner_id.street','partner_shipping_id_street'),
-							('partner_id.street2','partner_shipping_id_street2'),
-							('partner_id.city','partner_shipping_id_city'),
-							('partner_id.country_id.name','partner_shipping_id_country_id_name'),
-							('partner_id.phone','partner_shipping_id_phone'),
-							('partner_id.contact','partner_shipping_id_contact'),
-							('partner_id.email','partner_shipping_id_email'),	
+							('partner_shipping_id.name','partner_shipping_id_name'),
+							('partner_shipping_id.name', 'partner_shipping_id_name_upper', upper),
+							('partner_shipping_id.street','partner_shipping_id_street'),
+							('partner_shipping_id.street2','partner_shipping_id_street2'),
+							('partner_shipping_id.city','partner_shipping_id_city'),
+							('partner_shipping_id.country_id.name','partner_shipping_id_country_id_name'),
+							('partner_shipping_id.phone','partner_shipping_id_phone'),
+							('partner_shipping_id.contact','partner_shipping_id_contact'),
+							('partner_shipping_id.email','partner_shipping_id_email'),	
 							('client_order_ref','', upper),
 							]
 				order_xml += get_rubylong_fields_xml_body(sale_order, order_fields)
