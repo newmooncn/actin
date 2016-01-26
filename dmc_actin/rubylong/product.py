@@ -34,6 +34,7 @@ class product_product(osv.osv):
 						'company_id.street',
 						'company_id.street2',
 						'company_id.city',
+						'company_id.zip',
 						'company_id.country_id.name',
 						'company_id.contact',
 						'company_id.phone',
