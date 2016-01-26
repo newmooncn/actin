@@ -90,40 +90,7 @@ class product_product(osv.osv):
 		if order_main:
 			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
 		return res
-
-	def _get_rubylong_xml_factory_quotation(self, cr, uid, ids, field_names, args, context=None):
-		if isinstance(ids, (int, long)):
-			ids = [ids]
-		res = {}
-		for po_id in ids:
-			res[po_id] = ''
-		data_xml = ''
-		order_main = None
-		orders = self.browse(cr, uid, ids, context=context)
-		for order in orders:
-			if not order_main:
-				order_main = order
-			#base data
-			vendor_fields = [
-							('seller_id.name','partner_name'),
-							('seller_id.contact','partner_contact'),
-						
-							('standard_price','price_unit'),
-													
-							#added by customer
-							('standard_price_curr_id.name','currency_name'),
-							('incoterm_id.name','incoterm'),
-							('seller_payment_term_id.name','payment_term',)
-							]
-			order_fields = self.rbfields_base + vendor_fields
-			data_xml += get_rubylong_fields_xml(order, 'header', order_fields)
-		
-		#write data
-		if order_main:
-			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
-		return res
 			
 	_columns = {
 			'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml'),
-			'rubylong_xml_file_factory_quotation':fields.function(_get_rubylong_xml_factory_quotation, type='text', string='Rubylong xml'),
 			}	

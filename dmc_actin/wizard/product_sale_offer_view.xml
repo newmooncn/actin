@@ -11,6 +11,7 @@
                     	<field name="product_id" invisible="1"/>
                         <field name="prod_cust_id"/>
                         <field name="pr_number"/>
+                        <field name="date_order"/>
                         <field name="is_service"/>
                     </group>
                     <footer>

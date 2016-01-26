@@ -25,8 +25,8 @@ from openerp.addons.dm_rubylong import get_rubylong_fields_xml, get_rublong_data
 from string import upper
 
 class product_sale_offer(osv.osv_memory):
-    _name = 'product.sale.offer'
-    _description = 'Product sale offer'
+    _name = 'product.purchase.quotation'
+    _description = 'Product purchase quotation'
 
     def _get_rubylong_xml(self, cr, uid, ids, field_names, args, context=None):
         if isinstance(ids, (int, long)):
@@ -38,10 +38,9 @@ class product_sale_offer(osv.osv_memory):
         order_main = None
         orders = self.browse(cr, uid, ids, context=context)
         for order in orders:
+            order_xml = ''
             if not order_main:
                 order_main = order
-            order_xml = ''
-            #product data
             order_fields = [
                         ('id','product_id'),
                         'company_id.name',
@@ -55,7 +54,7 @@ class product_sale_offer(osv.osv_memory):
                         'company_id.email',
                         ('company_id.logo','company_logo'),
                         
-                        ('name','',upper),
+                        'name',
                         ('default_code','code'),
                         'image',
                         'description',
@@ -80,39 +79,42 @@ class product_sale_offer(osv.osv_memory):
                         
                         'quote_validity',
                         'additional_comments',
+                        
+                        #vendor data
+                        ('seller_id.name','partner_name'),
+                        ('seller_id.contact','partner_contact'),
+                    
+                        ('standard_price','price_unit'),
+                                                
+                        #added by customer
+                        ('standard_price_curr_id.name','currency_name'),
+                        ('incoterm_id.name','incoterm'),
+                        ('seller_payment_term_id.name','payment_term',)
                         ]
             order_xml += get_rubylong_fields_xml_body(order.product_id, order_fields)
-            
-            #customer data
+
+            #vendor data
             order_fields = [
-                        ('prod_cust_id.name.name','partner_name'),
                         ('pr_number','order_name'),
                         'date_order',
-                        ('prod_cust_id.name.contact','partner_contact'),
-                        
-                        ('prod_cust_id.price', 'price_unit'),
-                        ('prod_cust_id.curr_name', 'currency_name'),
-                        ('prod_cust_id.incoterm.name', 'incoterm'),
-                        ('prod_cust_id.payment_term_id.name', 'payment_term'),
                         ]
-            order_xml += get_rubylong_fields_xml_body(order, order_fields)
+            order_xml += get_rubylong_fields_xml_body(order, order_fields)            
             
             #final xml for this order
-            data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')            
+            data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')  
         
         #write data
         if order_main:
             res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
         return res
-        
+            
     _columns = {
         'product_id': fields.many2one('product.product', 'Product'),
         'is_service': fields.boolean('Is Service'),
         'name': fields.related('product_id', 'name', type='char', size=128, string = 'Product Name'),
-        'prod_cust_id': fields.many2one('product.customerinfo', 'Customer', required=True, domain="[('product_id','=',product_id)]"),
         'pr_number': fields.char('PR NUMBER'),
         'date_order':fields.date('Date'),
-        'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml'),        
+        'rubylong_xml_file':fields.function(_get_rubylong_xml, type='text', string='Rubylong xml')
     }
     
     def default_get(self, cr, uid, fields_list, context=None):
@@ -121,7 +123,7 @@ class product_sale_offer(osv.osv_memory):
             vals.update({'product_id':context.get('active_id')})
         vals['date_order'] = fields.date.context_today(self,cr,uid,context=context)
         return vals    
-                
+            
 product_sale_offer()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

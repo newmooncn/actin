@@ -97,7 +97,30 @@
 			<field name="is_rubylong" eval="True"/>
 			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_ci.grf</field>
 			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_ci.xml</field>
-        </record>   
+        </record>  
+        
+	<!-- Commercial Invoice Service-->
+        <report 
+            id="account.account_invoices_service"
+            string="Service Commercial Invoice"
+            model="account.invoice"
+            report_type="qweb-html"
+            attachment_use=""
+            attachment=""
+            groups="account.group_account_invoice"
+            name="account.report_ci_service" 
+            file="account.report_ci_service" 
+        />
+		<template id="account.report_ci_service">
+		    <t t-call="dm_rubylong.layout">
+		    </t>
+		</template>	
+        <record id="account.account_invoices_service" model="ir.actions.report.xml">
+            <field name="name">Service Commercial Invoice</field>
+			<field name="is_rubylong" eval="True"/>
+			<field name="default_rubylong_file_path">/dmc_actin/static/rubylong_ci_service.grf</field>
+			<field name="default_rubylong_data_file_path">/dmc_actin/static/rubylong_ci_service.xml</field>
+        </record> 
         
 	<!-- Credit Note -->
         <report 
@@ -208,14 +231,13 @@
         <report 
             id="action_report_factory_quotation"
             string="Factory Product Quotation"
-            model="product.product"
+            model="product.purchase.quotation"
             report_type="qweb-html"
             name="product.factory_quotation" 
             file="product.factory_quotation"
         />  
 		<template id="product.factory_quotation">
-		    <t t-call="dm_rubylong.layout_base">
-		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_factory_quotation'/>?dt=' + cur_time;
+		    <t t-call="dm_rubylong.layout">
 		    </t>
 		</template>	
         <record id="action_report_factory_quotation" model="ir.actions.report.xml">

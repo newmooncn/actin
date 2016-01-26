@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <!--   Product purchase quotation -->
+        <record id="view_product_purchase_quotation" model="ir.ui.view">
+              <field name="name">view_product_purchase_quotation</field>
+              <field name="model">product.purchase.quotation</field>
+              <field name="arch" type="xml">
+                <form string="Purchase quotation" version="7.0">
+                    <group>
+                    	<field name="product_id" invisible="1"/>
+                        <field name="pr_number"/>
+                        <field name="date_order"/>
+                        <field name="is_service" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="%(action_report_factory_quotation)d" string="Print factory quotation"  type="action" class="oe_highlight"  attrs="{'invisible':[('is_service','!=',False)]}"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+              </field>
+        </record>
+
+        <act_window id="action_product_purchase_quotation"
+            key2="client_print_multi"
+            name="Factory Product Quotation"
+            res_model="product.purchase.quotation"
+            src_model="product.product"
+            view_mode="form" target="new" view_type="form" />
+
+</data>
+</openerp>

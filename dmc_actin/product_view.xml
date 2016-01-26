@@ -55,7 +55,7 @@
                        string="Product Sheet" icon="fa-file-pdf-o"/>
                    <button class="oe_inline oe_stat_button" name="%(action_product_sale_offer)d" type="action"
                        string="Customer Sales Offer" icon="fa-file-pdf-o"/>
-                   <button class="oe_inline oe_stat_button" name="%(action_report_factory_quotation)d" type="action"
+                   <button class="oe_inline oe_stat_button" name="%(action_product_purchase_quotation)d" type="action"
                        string="Factory Product Quotation" icon="fa-file-pdf-o"/>
                    <button class="oe_inline oe_stat_button" name="%(action_product_service_sheet)d" type="action"
                        string="Service Sheet" icon="fa-file-pdf-o"/>
