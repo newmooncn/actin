@@ -54,7 +54,7 @@ class product_sale_offer(osv.osv_memory):
                         'company_id.email',
                         ('company_id.logo','company_logo'),
                         
-                        'name',
+                        ('name','',upper),
                         ('default_code','code'),
                         'image',
                         'description',
