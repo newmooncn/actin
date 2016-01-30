@@ -648,9 +648,9 @@ End
 				Type=MemoBox
 				Name='MemoBox3'
 				Left=3.09563
-				Top=2.06375
+				Top=2.01083
 				Width=7.91104
-				Height=0.47625
+				Height=0.423333
 				Object Font
 					Name='微软雅黑'
 					Size=67500,0
@@ -682,7 +682,7 @@ End
 				Left=3.09563
 				Top=1.5875
 				Width=7.88458
-				Height=0.47625
+				Height=0.423333
 				Object Font
 					Name='微软雅黑'
 					Size=67500,0
@@ -748,9 +748,9 @@ End
 				Type=MemoBox
 				Name='MemoBox38'
 				Left=3.09563
-				Top=2.54
+				Top=2.43417
 				Width=7.91104
-				Height=0.396875
+				Height=0.423333
 				Object Font
 					Name='微软雅黑'
 					Size=67500,0
@@ -1234,8 +1234,8 @@ End
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen
-							Width=3
-							Color=00CC6633
+							Width=2
+							Color=Navy
 						End
 					End
 					Object Font
