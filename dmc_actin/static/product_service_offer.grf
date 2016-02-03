@@ -649,6 +649,7 @@
 						Charset=134
 					End
 					CanGrow=T
+					ShrinkFontToFit=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End

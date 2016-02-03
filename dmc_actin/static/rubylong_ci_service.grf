@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='rubylong_ci.xml'
+			QuerySQL='rubylong_ci_service.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -983,7 +983,7 @@ End
 					ShiftMode=Never
 					Left=8.99583
 					Top=2.93688
-					Width=4.25979
+					Width=3.91583
 					Height=0.555625
 					Object Font
 						Name='微软雅黑'
@@ -1017,9 +1017,9 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=1.79917
+					Left=2.19604
 					Top=2.01083
-					Width=6.69396
+					Width=6.29708
 					Height=0.608542
 					TextAlign=BottomLeft
 					Text='[#partner_invoice_id_contact#]'
@@ -1057,7 +1057,7 @@ End
 					ShiftMode=Never
 					Left=8.99583
 					Top=3.46604
-					Width=4.25979
+					Width=3.91583
 					Height=0.529167
 					Object Font
 						Name='微软雅黑'
@@ -1074,7 +1074,7 @@ End
 					ShiftMode=Never
 					Left=8.99583
 					Top=3.99521
-					Width=4.25979
+					Width=3.91583
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1088,9 +1088,9 @@ End
 					Type=MemoBox
 					Name='MemoBox14'
 					ShiftMode=Never
-					Left=13.2821
+					Left=12.8588
 					Top=2.93688
-					Width=5.66208
+					Width=6.08542
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1104,9 +1104,9 @@ End
 					Type=MemoBox
 					Name='MemoBox17'
 					ShiftMode=Never
-					Left=13.2821
+					Left=12.8588
 					Top=3.46604
-					Width=5.66208
+					Width=6.08542
 					Height=0.529167
 					Object Font
 						Name='微软雅黑'
@@ -1120,9 +1120,9 @@ End
 					Type=MemoBox
 					Name='MemoBox18'
 					ShiftMode=Never
-					Left=13.2821
+					Left=12.8588
 					Top=3.99521
-					Width=5.66208
+					Width=6.08542
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1137,7 +1137,7 @@ End
 					Name='StaticBox44'
 					Left=0.0264583
 					Top=2.01083
-					Width=1.82563
+					Width=2.19604
 					Height=0.608542
 					Text='CONTACT:'
 				End
@@ -1146,7 +1146,7 @@ End
 					Name='StaticBox45'
 					Left=0.0264583
 					Top=2.61938
-					Width=1.19063
+					Width=2.19604
 					Height=0.608542
 					Text='EMAIL:'
 				End
@@ -1161,9 +1161,9 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox58'
-					Left=1.19063
+					Left=2.19604
 					Top=2.61938
-					Width=7.27604
+					Width=6.27063
 					Height=0.608542
 					Text='[#company_id_email#]'
 				End

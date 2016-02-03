@@ -636,7 +636,7 @@ End
 		End
 	End
 	Object PageHeader
-		Height=3.99521
+		Height=3.59833
 		Items Control
 			Item
 				Type=MemoBox
@@ -1005,23 +1005,23 @@ End
 					Width=8.78417
 					Height=0.608542
 					WordWrap=T
-					Text='TELEPHONE:[#partner_invoice_id_phone#]'
+					Text='TELEPHONE: [#partner_invoice_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=1.79917
+					Left=2.16958
 					Top=2.01083
-					Width=6.985
+					Width=6.61458
 					Height=0.608542
 					Text='[#partner_invoice_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=1.19063
+					Left=2.16958
 					Top=2.61938
-					Width=7.59354
+					Width=6.61458
 					Height=0.608542
 					Text='[#partner_invoice_id_email#]'
 				End
@@ -1132,7 +1132,7 @@ End
 					Type=StaticBox
 					Name='StaticBox44'
 					Top=2.01083
-					Width=1.82563
+					Width=2.14313
 					Height=0.608542
 					Text='CONTACT:'
 				End
@@ -1140,7 +1140,7 @@ End
 					Type=StaticBox
 					Name='StaticBox45'
 					Top=2.61938
-					Width=1.19063
+					Width=2.14313
 					Height=0.608542
 					Text='EMAIL:'
 				End

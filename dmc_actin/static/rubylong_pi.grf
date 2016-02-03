@@ -1028,7 +1028,7 @@ End
 					Type=MemoBox
 					Name='MemoBox7'
 					Top=0.846667
-					Width=8.62542
+					Width=7.51417
 					Height=0.608542
 					WordWrap=T
 					Text='[#partner_invoice_id_name#]'
@@ -1037,7 +1037,7 @@ End
 					Type=MemoBox
 					Name='MemoBox8'
 					Top=1.45521
-					Width=8.62542
+					Width=7.51417
 					Height=0.608542
 					CanGrow=T
 					WordWrap=T
@@ -1047,26 +1047,26 @@ End
 					Type=MemoBox
 					Name='MemoBox9'
 					Top=2.06375
-					Width=8.62542
+					Width=7.51417
 					Height=0.608542
 					WordWrap=T
-					Text='TELEPHONE:[#partner_invoice_id_phone#]'
+					Text='TELEPHONE: [#partner_invoice_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=1.79917
+					Left=2.2225
 					Top=2.67229
-					Width=6.82625
+					Width=5.29167
 					Height=0.608542
 					Text='[#partner_invoice_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=1.19063
+					Left=2.2225
 					Top=3.28083
-					Width=7.43479
+					Width=5.29167
 					Height=0.608542
 					Text='[#partner_invoice_id_email#]'
 				End
@@ -1214,7 +1214,7 @@ End
 					Type=StaticBox
 					Name='StaticBox44'
 					Top=2.67229
-					Width=1.82563
+					Width=2.19604
 					Height=0.608542
 					Text='CONTACT:'
 				End
@@ -1222,7 +1222,7 @@ End
 					Type=StaticBox
 					Name='StaticBox45'
 					Top=3.28083
-					Width=1.19063
+					Width=2.19604
 					Height=0.608542
 					Text='EMAIL:'
 				End
@@ -1245,7 +1245,7 @@ End
 					Name='MemoBox43'
 					Left=0.0264583
 					Top=5.00063
-					Width=8.5725
+					Width=7.51417
 					Height=0.608542
 					WordWrap=T
 					Text='[#partner_shipping_id_name#]'
@@ -1255,7 +1255,7 @@ End
 					Name='MemoBox44'
 					Left=0.0264583
 					Top=5.60917
-					Width=8.5725
+					Width=7.51417
 					Height=0.608542
 					CanGrow=T
 					CanShrink=T
@@ -1267,34 +1267,34 @@ End
 					Name='MemoBox45'
 					Left=0.0264583
 					Top=6.21771
-					Width=8.5725
+					Width=7.51417
 					Height=0.608542
 					WordWrap=T
-					Text='TELEPHONE:[#partner_shipping_id_phone#]'
+					Text='TELEPHONE: [#partner_shipping_id_phone#]'
 				End
 				Item
 					Type=StaticBox
 					Name='StaticBox47'
 					Top=6.82625
-					Width=1.79917
+					Width=2.16958
 					Height=0.608542
 					Text='CONTACT:'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox46'
-					Left=1.27
+					Left=2.19604
 					Top=7.38188
-					Width=7.32896
+					Width=5.34458
 					Height=0.608542
 					Text='[#partner_shipping_id_email#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox47'
-					Left=1.79917
+					Left=2.19604
 					Top=6.82625
-					Width=6.79979
+					Width=5.34458
 					Height=0.608542
 					Text='[#partner_shipping_id_contact#]'
 				End
@@ -1302,7 +1302,7 @@ End
 					Type=StaticBox
 					Name='StaticBox48'
 					Top=7.38188
-					Width=1.27
+					Width=2.16958
 					Height=0.608542
 					Text='EMAIL:'
 				End

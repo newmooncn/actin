@@ -958,23 +958,23 @@ End
 					Width=8.65188
 					Height=0.608542
 					WordWrap=T
-					Text='TELEPHONE:[#partner_id_phone#]'
+					Text='TELEPHONE: [#partner_id_phone#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=1.79917
+					Left=2.19604
 					Top=2.59292
-					Width=6.85271
+					Width=6.45583
 					Height=0.608542
 					Text='[#partner_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=1.19063
+					Left=2.19604
 					Top=3.20146
-					Width=7.46125
+					Width=6.45583
 					Height=0.608542
 					Text='[#partner_id_email#]'
 				End
@@ -1085,7 +1085,7 @@ End
 					Type=StaticBox
 					Name='StaticBox44'
 					Top=2.59292
-					Width=1.79917
+					Width=2.2225
 					Height=0.608542
 					Text='CONTACT:'
 				End
@@ -1093,7 +1093,7 @@ End
 					Type=StaticBox
 					Name='StaticBox45'
 					Top=3.20146
-					Width=1.19063
+					Width=2.2225
 					Height=0.608542
 					Text='EMAIL:'
 				End

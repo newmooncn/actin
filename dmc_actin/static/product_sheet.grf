@@ -119,7 +119,7 @@
 		End
 	End
 	Object PageHeader
-		Height=3.41313
+		Height=2.98979
 		Items Control
 			Item
 				Type=MemoBox
@@ -290,6 +290,7 @@
 						Charset=134
 					End
 					CanGrow=T
+					ShrinkFontToFit=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End
