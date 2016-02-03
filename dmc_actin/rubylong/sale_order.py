@@ -86,7 +86,7 @@ class sale_order(osv.osv):
 						'amount_total',
 						('amount_total', 'amount_total_en', number2words_en_upper2),
 						
-						'deliver_memo',
+						('deliver_memo','',upper),
 						('incoterm.name', 'incoterm_id_name'),
 						('payment_term.name','payment_term_id_name'),
 						'ship_type.name',

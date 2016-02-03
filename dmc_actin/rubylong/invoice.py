@@ -29,7 +29,8 @@ from string import upper
 from openerp.addons.dm_rubylong import get_rubylong_fields_xml, get_rublong_data_url, get_rubylong_fields_xml_body
 
 class account_invoice(osv.osv):
-	_inherit="account.invoice"
+	_inherit="account.invoice"	
+	
 	def _get_rubylong_xml(self, cr, uid, ids, field_names, args, context=None):
 		if isinstance(ids, (int, long)):
 			ids = [ids]
@@ -121,8 +122,6 @@ class account_invoice(osv.osv):
 			line_fields = [
 						('invoice_id.id','order_id'),
 						('id','order_line_id'),
-						('sale_line_id.cust_prod_code','item_no'),
-						('name','item_name'),
 						('quantity','product_qty'),
 						('uos_id.name','product_uom_name'),
 						'price_unit',
@@ -131,7 +130,14 @@ class account_invoice(osv.osv):
 						]
 			
 			for line in order.invoice_line:
-				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
+				line_xml = get_rubylong_fields_xml_body(line, line_fields)
+				#add item_no, item_name
+				customer = order.partner_id.parent_id and order.partner_id.parent_id or order.partner_id
+				prod_customer = self.pool.get('product.product').get_customer_product(cr, uid, customer.id, line.product_id.id, context=context)
+				if prod_customer:
+					line_xml += get_rubylong_fields_xml_body(prod_customer, [('product_code','item_no'), ('product_name','item_name')])
+				#add full xml
+				data_xml += "<%s>%s</%s>"%('detail', line_xml, 'detail')
 		
 		#write data
 		if order_main:
@@ -234,8 +240,6 @@ class account_invoice(osv.osv):
 			line_fields = [
 						('invoice_id.id','order_id'),
 						('id','order_line_id'),
-						('inv_line_id.sale_line_id.cust_prod_code','item_no'),
-						('name','item_name'),
 						'qty_per_carton',
 						'qty_carton',
 						('quantity','product_qty'),
@@ -246,7 +250,14 @@ class account_invoice(osv.osv):
 						]
 			
 			for line in order.pack_line:
-				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
+				line_xml = get_rubylong_fields_xml_body(line, line_fields)
+				#add item_no, item_name
+				customer = order.partner_id.parent_id and order.partner_id.parent_id or order.partner_id
+				prod_customer = self.pool.get('product.product').get_customer_product(cr, uid, customer.id, line.product_id.id, context=context)
+				if prod_customer:
+					line_xml += get_rubylong_fields_xml_body(prod_customer, [('product_code','item_no'), ('product_name','item_name')])
+				#add full xml
+				data_xml += "<%s>%s</%s>"%('detail', line_xml, 'detail')
 		
 		#write data
 		if order_main:
@@ -342,8 +353,8 @@ class account_invoice(osv.osv):
 			line_fields = [
 						('invoice_id.id','order_id'),
 						('id','order_line_id'),
-						('sale_line_id.cust_prod_code','item_no'),
-						('name','item_name'),
+						('product_id.seller_product_name','supplier_item_no'),
+						('product_id.description_purchase','supplier_item_name'),
 						('quantity','product_qty'),
 						('uos_id.name','product_uom_name'),
 						'price_unit',
@@ -351,11 +362,11 @@ class account_invoice(osv.osv):
 						('invoice_id.currency_id.symbol','currency_symbol')
 						]
 			
-			for line in order.invoice_line:
+			for line in order.invoice_line:				
 				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
 		
 		#write data
-		if order_main:
+		if order_main:			
 			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
 		return res
 				
