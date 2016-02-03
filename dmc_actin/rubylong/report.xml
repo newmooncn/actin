@@ -89,7 +89,9 @@
             file="account.report_ci" 
         />
 		<template id="account.report_ci">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].number"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>	
         <record id="account.account_invoices" model="ir.actions.report.xml">
@@ -112,7 +114,9 @@
             file="account.report_ci_service" 
         />
 		<template id="account.report_ci_service">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].number"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>	
         <record id="account.account_invoices_service" model="ir.actions.report.xml">
@@ -133,7 +137,9 @@
             file="account.report_cn" 
         />
 		<template id="account.report_cn">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].number"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>	
         <record id="credit_note" model="ir.actions.report.xml">
@@ -154,7 +160,8 @@
             groups="account.group_account_invoice"
         />
 		<template id="account.packing_list">
-		    <t t-call="dm_rubylong.layout_base">
+        	<t t-set="object_title" t-value="docs[0].number"></t>
+		    <t t-call="dm_rubylong.layout_core">
 		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_packing'/>?dt=' + cur_time;
 		    </t>
 		</template>	
@@ -176,7 +183,8 @@
             groups="account.group_account_invoice"
         />
 		<template id="account.debit_note">
-		    <t t-call="dm_rubylong.layout_base">
+        	<t t-set="object_title" t-value="docs[0].number"></t>
+		    <t t-call="dm_rubylong.layout_core">
 		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file_dn'/>?dt=' + cur_time;
 		    </t>
 		</template>	
@@ -217,7 +225,9 @@
             file="product.sale_offer"
         />
 		<template id="product.sale_offer">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].product_id.name + (docs[0].pr_number and ('_' + docs[0].pr_number) or '')"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>	
         <record id="action_report_product_sale_offer" model="ir.actions.report.xml">
@@ -237,7 +247,9 @@
             file="product.factory_quotation"
         />  
 		<template id="product.factory_quotation">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].product_id.name + (docs[0].pr_number and ('_' + docs[0].pr_number) or '')"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>	
         <record id="action_report_factory_quotation" model="ir.actions.report.xml">
@@ -277,7 +289,9 @@
             file="product.service_offer"
         />
 		<template id="product.service_offer">
-		    <t t-call="dm_rubylong.layout">
+        	<t t-set="object_title" t-value="docs[0].product_id.name + (docs[0].pr_number and ('_' + docs[0].pr_number) or '')"></t>
+		    <t t-call="dm_rubylong.layout_core">
+		    	var url_data_load = 'GET::<t t-raw='docs[0].rubylong_xml_file'/>?dt=' + cur_time;
 		    </t>
 		</template>
         <record id="action_product_service_offer" model="ir.actions.report.xml">
