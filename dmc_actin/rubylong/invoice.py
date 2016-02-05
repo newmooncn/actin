@@ -38,11 +38,9 @@ class account_invoice(osv.osv):
 		for po_id in ids:
 			res[po_id] = ''
 		data_xml = ''
-		order_main = None
 		orders = self.browse(cr, uid, ids, context=context)
 		for order in orders:
-			if not order_main:
-				order_main = order
+			data_xml = ''
 			#header data
 			order_fields = [
 						('id','order_id'),
@@ -117,7 +115,6 @@ class account_invoice(osv.osv):
 			#add this order's xml
 			data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')			
 			
-		for order in orders:
 			#detail data
 			line_fields = [
 						('invoice_id.id','order_id'),
@@ -138,10 +135,10 @@ class account_invoice(osv.osv):
 					line_xml += get_rubylong_fields_xml_body(prod_customer, [('product_code','item_no'), ('product_name','item_name')])
 				#add full xml
 				data_xml += "<%s>%s</%s>"%('detail', line_xml, 'detail')
-		
-		#write data
-		if order_main:
-			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
+
+			#write data to file			
+			res[order.id] = get_rublong_data_url(order,data_xml,cr.dbname)
+
 		return res			
 
 	def _rubylong_xml_file_packing(self, cr, uid, ids, field_names, args, context=None):
@@ -271,11 +268,9 @@ class account_invoice(osv.osv):
 		for po_id in ids:
 			res[po_id] = ''
 		data_xml = ''
-		order_main = None
 		orders = self.browse(cr, uid, ids, context=context)
 		for order in orders:
-			if not order_main:
-				order_main = order
+			data_xml = ''
 			#header data
 			order_fields = [
 						('id','order_id'),
@@ -348,7 +343,6 @@ class account_invoice(osv.osv):
 			#add this order's xml
 			data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')			
 			
-		for order in orders:
 			#detail data
 			line_fields = [
 						('invoice_id.id','order_id'),
@@ -365,9 +359,9 @@ class account_invoice(osv.osv):
 			for line in order.invoice_line:				
 				data_xml += get_rubylong_fields_xml(line, 'detail', line_fields)
 		
-		#write data
-		if order_main:			
-			res[order_main.id] = get_rublong_data_url(order_main,data_xml,cr.dbname)
+			#write data to file			
+			res[order.id] = get_rublong_data_url(order,data_xml,cr.dbname)
+			
 		return res
 				
 	_columns = {
