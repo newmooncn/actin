@@ -124,6 +124,8 @@
 				End
 				Item
 					Name='price_unit'
+					Type=Currency
+					Format='#,##0.00'
 				End
 				Item
 					Name='currency_name'
@@ -141,6 +143,21 @@
 					Name='date_order'
 					Type=DateTime
 					Format='dd-MM-yy'
+				End
+				Item
+					Name='moq'
+				End
+				Item
+					Name='lead_time'
+				End
+				Item
+					Name='currency_symbol'
+				End
+				Item
+					Name='port'
+				End
+				Item
+					Name='uom_name'
 				End
 			End
 		End
@@ -206,9 +223,9 @@
 				Type=StaticBox
 				Name='StaticBox2'
 				ForeColor=Navy
-				Left=11.5888
+				Left=11.4035
 				Top=0.608542
-				Width=7.43479
+				Width=7.54063
 				Height=0.978958
 				Object Border
 					ShadowColor=Navy
@@ -258,7 +275,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox48'
-				Left=11.5888
+				Left=11.4035
 				Top=1.5875
 				Width=3.81
 				Height=0.608542
@@ -273,9 +290,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox57'
-				Left=15.3723
+				Left=15.1871
 				Top=1.5875
-				Width=3.62479
+				Width=3.73063
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -288,7 +305,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox49'
-				Left=11.5888
+				Left=11.4035
 				Top=2.19604
 				Width=3.81
 				Height=0.608542
@@ -303,9 +320,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox58'
-				Left=15.3723
+				Left=15.1871
 				Top=2.19604
-				Width=3.65125
+				Width=3.75708
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -318,7 +335,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox50'
-				Left=11.5888
+				Left=11.4035
 				Top=2.80458
 				Width=3.81
 				Height=0.608542
@@ -333,9 +350,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox59'
-				Left=15.3723
+				Left=15.1871
 				Top=2.80458
-				Width=3.65125
+				Width=3.75708
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -356,7 +373,7 @@
 		Item
 			Name='ReportHeader1'
 			CanGrow=T
-			Height=22.5954
+			Height=22.8071
 			Items Control
 				Item
 					Type=FreeGrid
@@ -371,18 +388,18 @@
 						End
 					End
 					ColumnCount=2
-					RowCount=25
+					RowCount=26
 					Items FreeGridColumn
 						Item[1]
-							Width=5.79438
+							Width=6.11188
 						End
 						Item[2]
-							Width=13.044
+							Width=12.7265
 						End
 					End
 					Items FreeGridRow
 						Item[2]
-							Height=0.687917
+							Height=0.529167
 						End
 					End
 					Items FreeGridCell
@@ -636,7 +653,7 @@
 						Item[14,1]
 							BackColor=Silver
 							PaddingTop=3
-							Text='Quantity per 20'GP'
+							Text='Quantity per 20'GP(Units)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -646,7 +663,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#qty_20gp#]'
+							Text='[#qty_20gp#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -654,7 +671,7 @@
 						End
 						Item[15,1]
 							PaddingTop=3
-							Text='Quantity per 40'GP'
+							Text='Quantity per 40'GP(Units)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -663,7 +680,7 @@
 						Item[15,2]
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#qty_40gp#]'
+							Text='[#qty_40gp#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -672,7 +689,7 @@
 						Item[16,1]
 							BackColor=Silver
 							PaddingTop=3
-							Text='Quantity per 40'HQ'
+							Text='Quantity per 40'HQ(Units)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -682,7 +699,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#qty_40hq#]'
+							Text='[#qty_40hq#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -690,7 +707,7 @@
 						End
 						Item[17,1]
 							PaddingTop=3
-							Text='Quantity per pallet (1 x 0.8 m)'
+							Text='Quantity per pallet (1 x 0.8 m)(Units)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -699,7 +716,7 @@
 						Item[17,2]
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#qty_pallet_eur#]'
+							Text='[#qty_pallet_eur#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -708,7 +725,7 @@
 						Item[18,1]
 							BackColor=Silver
 							PaddingTop=3
-							Text='Quantity per pallet (1.2 x 1 m)'
+							Text='Quantity per pallet (1.2 x 1 m)(Units)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -718,7 +735,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#qty_pallet_us#]'
+							Text='[#qty_pallet_us#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[DrawRight]
@@ -754,9 +771,15 @@
 						End
 						Item[20,2]
 							BackColor=Silver
+							Object Font
+								Name='微软雅黑'
+								Bold=T
+								Charset=134
+							End
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#price_unit#]'
+							ForeColor=Navy
+							Text='[#price_unit#] [#currency_symbol#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -764,7 +787,7 @@
 						End
 						Item[21,1]
 							PaddingTop=3
-							Text='Currency'
+							Text='Incoterms'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -773,7 +796,7 @@
 						Item[21,2]
 							TextAlign=MiddleCenter
 							PaddingTop=3
-							Text='[#currency_name#]'
+							Text='[#incoterm#] [#port#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -781,8 +804,8 @@
 						End
 						Item[22,1]
 							BackColor=Silver
-							PaddingTop=3
-							Text='Incoterms'
+							PaddingTop=4
+							Text='MOQ'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -791,16 +814,16 @@
 						Item[22,2]
 							BackColor=Silver
 							TextAlign=MiddleCenter
-							PaddingTop=3
-							Text='[#incoterm#]'
+							PaddingTop=4
+							Text='[#moq#] [#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
 							End
 						End
 						Item[23,1]
-							PaddingTop=3
-							Text='Payment terms'
+							PaddingTop=4
+							Text='Lead time'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -808,8 +831,8 @@
 						End
 						Item[23,2]
 							TextAlign=MiddleCenter
-							PaddingTop=3
-							Text='[#payment_term#]'
+							PaddingTop=4
+							Text='[#lead_time#] DAYS'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -817,7 +840,7 @@
 						End
 						Item[24,1]
 							BackColor=Silver
-							PaddingTop=3
+							PaddingTop=4
 							Text='Quotation validity'
 							BorderCustom=T
 							Object Border
@@ -827,8 +850,8 @@
 						Item[24,2]
 							BackColor=Silver
 							TextAlign=MiddleCenter
-							PaddingTop=3
-							Text='[#quote_validity#]'
+							PaddingTop=4
+							Text='[#quote_validity#] DAYS'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -836,13 +859,32 @@
 						End
 						Item[25,1]
 							PaddingTop=3
-							Text='Additional comments'
+							Text='Payment terms'
 							BorderCustom=T
 							Object Border
 								Styles=[]
 							End
 						End
 						Item[25,2]
+							TextAlign=MiddleCenter
+							PaddingTop=3
+							Text='[#payment_term#]'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[26,1]
+							BackColor=Silver
+							PaddingTop=3
+							Text='Additional comments'
+							BorderCustom=T
+							Object Border
+								Styles=[]
+							End
+						End
+						Item[26,2]
+							BackColor=Silver
 							WordWrap=T
 							TextAlign=MiddleCenter
 							PaddingTop=3
@@ -919,6 +961,7 @@
 					End
 					CanGrow=T
 					ShrinkFontToFit=T
+					WordWrap=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End

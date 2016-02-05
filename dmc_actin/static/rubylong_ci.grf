@@ -474,7 +474,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='ITEM NO. '
 					BorderCustom=T
 					Object Border
@@ -495,7 +495,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='DESCRIPTION '
 					BorderCustom=T
 					Object Border
@@ -516,7 +516,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='QUANTITY '
 					BorderCustom=T
 					Object Border
@@ -537,7 +537,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='UNIT '
 					BorderCustom=T
 					Object Border
@@ -558,7 +558,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='UNIT PRICE '
 					BorderCustom=T
 					Object Border
@@ -579,7 +579,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='AMOUNT '
 					BorderCustom=T
 					Object Border
@@ -1296,7 +1296,7 @@ End
 				Item
 					Type=StaticBox
 					Name='StaticBox57'
-					Top=5.00063
+					Top=4.97417
 					Width=2.19604
 					Height=0.608542
 					Text='TELEPHONE:'

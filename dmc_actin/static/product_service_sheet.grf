@@ -236,7 +236,7 @@
 		Item
 			Name='ReportHeader1'
 			CanGrow=T
-			Height=11.1919
+			Height=9.78958
 			Items Control
 				Item
 					Type=MemoBox
@@ -294,6 +294,7 @@
 					End
 					CanGrow=T
 					ShrinkFontToFit=T
+					WordWrap=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End
@@ -321,10 +322,10 @@
 					End
 					Items FreeGridRow
 						Item[2]
-							Height=1.13771
+							Height=0.555625
 						End
 						Item[4]
-							Height=1.21708
+							Height=0.555625
 						End
 					End
 					Items FreeGridCell

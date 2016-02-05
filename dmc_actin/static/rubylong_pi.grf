@@ -455,7 +455,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='ITEM NO. '
 					BorderCustom=T
 					Object Border
@@ -476,7 +476,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='DESCRIPTION '
 					BorderCustom=T
 					Object Border
@@ -497,7 +497,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='QUANTITY '
 					BorderCustom=T
 					Object Border
@@ -518,7 +518,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='UNIT '
 					BorderCustom=T
 					Object Border
@@ -539,7 +539,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='UNIT PRICE'
 					BorderCustom=T
 					Object Border
@@ -560,7 +560,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='AMOUNT '
 					BorderCustom=T
 					Object Border
@@ -623,7 +623,7 @@ End
 		End
 	End
 	Object PageHeader
-		Height=3.99521
+		Height=3.81
 		Items Control
 			Item
 				Type=MemoBox
@@ -1055,18 +1055,18 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=2.2225
+					Left=2.16958
 					Top=2.67229
-					Width=5.29167
+					Width=5.34458
 					Height=0.608542
 					Text='[#partner_invoice_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=2.2225
+					Left=2.16958
 					Top=3.28083
-					Width=5.29167
+					Width=5.34458
 					Height=0.608542
 					Text='[#partner_invoice_id_email#]'
 				End
@@ -1314,13 +1314,13 @@ End
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=11.8004
+			Height=10.6098
 			Items Control
 				Item
 					Type=StaticBox
 					Name='StaticBox13'
 					Top=0.396875
-					Width=8.59896
+					Width=6.19125
 					Height=0.608542
 					Object Font
 						Name='微软雅黑'
@@ -1553,7 +1553,7 @@ End
 					Type=FreeGrid
 					Name='FreeGrid1'
 					Left=1.85208
-					Top=7.01146
+					Top=6.00604
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen

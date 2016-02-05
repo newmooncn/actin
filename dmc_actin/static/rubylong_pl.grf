@@ -334,7 +334,7 @@ Object Report
 			End
 			Item
 				Name='supplier_item_name'
-				Width=4.41854
+				Width=3.62479
 			End
 			Item
 				Name='product_qty'
@@ -350,15 +350,15 @@ Object Report
 			End
 			Item
 				Name='Column2'
-				Width=2.01083
+				Width=2.19604
 			End
 			Item
 				Name='Column3'
-				Width=1.98438
+				Width=2.2225
 			End
 			Item
 				Name='Column4'
-				Width=1.5875
+				Width=1.79917
 			End
 		End
 		Object ColumnContent
@@ -534,7 +534,7 @@ Object Report
 						Bold=T
 						Charset=134
 					End
-					PaddingTop=4
+					PaddingTop=5
 					PrintType=Form
 					Text='ITEM NO.'
 					BorderCustom=T
@@ -556,7 +556,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='DESCRIPTION'
 					BorderCustom=T
 					Object Border
@@ -577,7 +577,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='QTY/CTNS'
 					BorderCustom=T
 					Object Border
@@ -598,7 +598,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='NO OF CNTS'
 					BorderCustom=T
 					Object Border
@@ -619,7 +619,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='QTY'
 					BorderCustom=T
 					Object Border
@@ -640,7 +640,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='N.W (KG)'
 					BorderCustom=T
 					Object Border
@@ -661,7 +661,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='G.W (KG)'
 					BorderCustom=T
 					Object Border
@@ -682,7 +682,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=4
+					PaddingTop=5
 					Text='CBM'
 					BorderCustom=T
 					Object Border
@@ -1084,6 +1084,23 @@ End
 		Height=3.99521
 		Items Control
 			Item
+				Type=MemoBox
+				Name='MemoBox64'
+				Left=12.991
+				Top=0.79375
+				Width=5.21229
+				Height=2.80458
+				CustomDraw=T
+				CustomDrawScript='img_base64 = Report.FieldByName("company_stamp").AsString\r\nif (img_base64 != ''){\r\n    var pic = Report.Utility.CreatePicture(); //创建图像对象\r\n    var Binary = Report.Utility.CreateBinaryObject();\r\n    \r\n    var x = Graphics.Left;\r\n    var y = Graphics.Top;\r\n    var width = Graphics.Width;\r\n    var height = Graphics.Height;\r\n    \r\n    Binary.LoadFromBase64Text(img_base64)\r\n    pic.LoadFromBinary(Binary); \r\n    Report.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);\r\n}'
+				Object Font
+					Name='微软雅黑'
+					Bold=T
+					Charset=134
+				End
+				TextAlign=MiddleCenter
+				Text='Company Stamp'
+			End
+			Item
 				Type=StaticBox
 				Name='StaticBox11'
 				ShiftMode=Never
@@ -1174,23 +1191,6 @@ End
 					Charset=134
 				End
 				Text='[#partner_invoice_id_name#]'
-			End
-			Item
-				Type=MemoBox
-				Name='MemoBox64'
-				Left=12.991
-				Top=0.79375
-				Width=5.21229
-				Height=2.80458
-				CustomDraw=T
-				CustomDrawScript='img_base64 = Report.FieldByName("company_stamp").AsString\r\nif (img_base64 != ''){\r\n    var pic = Report.Utility.CreatePicture(); //创建图像对象\r\n    var Binary = Report.Utility.CreateBinaryObject();\r\n    \r\n    var x = Graphics.Left;\r\n    var y = Graphics.Top;\r\n    var width = Graphics.Width;\r\n    var height = Graphics.Height;\r\n    \r\n    Binary.LoadFromBase64Text(img_base64)\r\n    pic.LoadFromBinary(Binary); \r\n    Report.Graphics.DrawPicture(pic, x, y, width, height, 3, 2, 1);\r\n}'
-				Object Font
-					Name='微软雅黑'
-					Bold=T
-					Charset=134
-				End
-				TextAlign=MiddleCenter
-				Text='Company Stamp'
 			End
 		End
 	End
@@ -1778,7 +1778,7 @@ End
 					Type=MemoBox
 					Name='MemoBox63'
 					Left=2.40771
-					Width=7.59354
+					Width=6.985
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1798,8 +1798,8 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox62'
-					Left=9.78958
-					Width=2.01083
+					Left=9.39271
+					Width=2.19604
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1821,8 +1821,8 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox57'
-					Left=11.8004
-					Width=1.905
+					Left=11.4035
+					Width=1.40229
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1843,8 +1843,8 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox61'
-					Left=13.3879
-					Width=2.01083
+					Left=12.8058
+					Width=2.19604
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1866,8 +1866,8 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox58'
-					Left=15.3988
-					Width=1.905
+					Left=15.0019
+					Width=2.19604
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1889,8 +1889,8 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox59'
-					Left=17.3038
-					Width=1.69333
+					Left=17.1979
+					Width=1.79917
 					Height=0.582083
 					PaddingTop=6
 					Object Border

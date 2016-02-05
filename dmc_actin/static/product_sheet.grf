@@ -291,6 +291,7 @@
 					End
 					CanGrow=T
 					ShrinkFontToFit=T
+					WordWrap=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End

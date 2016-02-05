@@ -24,7 +24,7 @@ from openerp.tools.translate import _
 from openerp.addons.dm_rubylong import get_rubylong_fields_xml, get_rublong_data_url, get_rubylong_fields_xml_body
 from string import upper
 
-class product_sale_offer(osv.osv_memory):
+class product_purchase_quotation(osv.osv_memory):
     _name = 'product.purchase.quotation'
     _description = 'Product purchase quotation'
 
@@ -89,7 +89,11 @@ class product_sale_offer(osv.osv_memory):
                         #added by customer
                         ('standard_price_curr_id.name','currency_name'),
                         ('incoterm_id.name','incoterm'),
-                        ('seller_payment_term_id.name','payment_term',)
+                        ('seller_payment_term_id.name','payment_term',),
+                        
+                        'moq',
+                        ('seller_lead_time','lead_time'),
+                        ('uom_po_id.name','uom_name')
                         ]
             order_xml += get_rubylong_fields_xml_body(order.product_id, order_fields)
 
@@ -98,7 +102,19 @@ class product_sale_offer(osv.osv_memory):
                         ('pr_number','order_name'),
                         'date_order',
                         ]
-            order_xml += get_rubylong_fields_xml_body(order, order_fields)            
+            order_xml += get_rubylong_fields_xml_body(order, order_fields)
+                 
+            #currency       
+            order_fields = [
+                        ('name','currency_symbol'),
+                        ('name','currency_name'),
+                        ]
+            currency = order.product_id.seller_id.property_product_pricelist_purchase.currency_id
+            order_xml += get_rubylong_fields_xml_body(currency, order_fields)        
+            
+            #port       
+            order_fields = [('port.name','port')]
+            order_xml += get_rubylong_fields_xml_body(order.product_id.seller_id, order_fields)        
             
             #final xml for this order
             data_xml = "<%s>%s</%s>"%('header', order_xml, 'header')  
@@ -118,12 +134,12 @@ class product_sale_offer(osv.osv_memory):
     }
     
     def default_get(self, cr, uid, fields_list, context=None):
-        vals = super(product_sale_offer,self).default_get(cr, uid, fields_list, context)
+        vals = super(product_purchase_quotation,self).default_get(cr, uid, fields_list, context)
         if context.get('active_model') == 'product.product':
             vals.update({'product_id':context.get('active_id')})
         vals['date_order'] = fields.date.context_today(self,cr,uid,context=context)
         return vals    
             
-product_sale_offer()
+product_purchase_quotation()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

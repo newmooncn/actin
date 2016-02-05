@@ -474,7 +474,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='ITEM NO. '
 					BorderCustom=T
 					Object Border
@@ -495,7 +495,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='DESCRIPTION '
 					BorderCustom=T
 					Object Border
@@ -516,7 +516,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='QUANTITY '
 					BorderCustom=T
 					Object Border
@@ -537,7 +537,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='UNIT '
 					BorderCustom=T
 					Object Border
@@ -558,7 +558,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='UNIT PRICE '
 					BorderCustom=T
 					Object Border
@@ -579,7 +579,7 @@ Object Report
 						Charset=134
 					End
 					TextAlign=MiddleCenter
-					PaddingTop=3
+					PaddingTop=5
 					Text='AMOUNT '
 					BorderCustom=T
 					Object Border
@@ -642,7 +642,7 @@ End
 		End
 	End
 	Object PageHeader
-		Height=3.81
+		Height=3.59833
 		Items Control
 			Item
 				Type=MemoBox
@@ -981,7 +981,7 @@ End
 					Name='StaticBox3'
 					Anchor=[Right]
 					ShiftMode=Never
-					Left=8.99583
+					Left=9.18104
 					Top=2.93688
 					Width=3.91583
 					Height=0.555625
@@ -997,7 +997,7 @@ End
 					Type=MemoBox
 					Name='MemoBox8'
 					Top=0.79375
-					Width=8.49313
+					Width=7.56708
 					Height=0.608542
 					CanGrow=T
 					CanShrink=T
@@ -1009,7 +1009,7 @@ End
 					Name='MemoBox9'
 					Left=2.19604
 					Top=1.40229
-					Width=6.27063
+					Width=5.34458
 					Height=0.608542
 					WordWrap=T
 					Text='[#partner_invoice_id_phone#]'
@@ -1019,7 +1019,7 @@ End
 					Name='MemoBox10'
 					Left=2.19604
 					Top=2.01083
-					Width=6.29708
+					Width=5.37104
 					Height=0.608542
 					TextAlign=BottomLeft
 					Text='[#partner_invoice_id_contact#]'
@@ -1028,9 +1028,9 @@ End
 					Type=MemoBox
 					Name='MemoBox13'
 					AlignColumnSide=Left
-					Left=8.99583
+					Left=9.2075
 					Top=0.238125
-					Width=10.0013
+					Width=9.78958
 					Height=2.35479
 					PaddingTop=20
 					Object Border
@@ -1055,7 +1055,7 @@ End
 					Name='StaticBox6'
 					Anchor=[Right]
 					ShiftMode=Never
-					Left=8.99583
+					Left=9.18104
 					Top=3.46604
 					Width=3.91583
 					Height=0.529167
@@ -1072,7 +1072,7 @@ End
 					Name='StaticBox7'
 					Anchor=[Right]
 					ShiftMode=Never
-					Left=8.99583
+					Left=9.18104
 					Top=3.99521
 					Width=3.91583
 					Height=0.582083
@@ -1088,9 +1088,9 @@ End
 					Type=MemoBox
 					Name='MemoBox14'
 					ShiftMode=Never
-					Left=12.8588
+					Left=13.044
 					Top=2.93688
-					Width=6.08542
+					Width=5.90021
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1104,9 +1104,9 @@ End
 					Type=MemoBox
 					Name='MemoBox17'
 					ShiftMode=Never
-					Left=12.8588
+					Left=13.044
 					Top=3.46604
-					Width=6.08542
+					Width=5.90021
 					Height=0.529167
 					Object Font
 						Name='微软雅黑'
@@ -1120,9 +1120,9 @@ End
 					Type=MemoBox
 					Name='MemoBox18'
 					ShiftMode=Never
-					Left=12.8588
+					Left=13.044
 					Top=3.99521
-					Width=6.08542
+					Width=5.90021
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1163,7 +1163,7 @@ End
 					Name='MemoBox58'
 					Left=2.19604
 					Top=2.61938
-					Width=6.27063
+					Width=5.34458
 					Height=0.608542
 					Text='[#company_id_email#]'
 				End

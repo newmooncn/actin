@@ -124,6 +124,8 @@
 				End
 				Item
 					Name='price_unit'
+					Type=Currency
+					Format='#,##0.00'
 				End
 				Item
 					Name='currency_name'
@@ -145,6 +147,9 @@
 					Type=DateTime
 					Format='dd-MM-yy'
 				End
+				Item
+					Name='currency_symbol'
+				End
 			End
 		End
 		Object ColumnContent
@@ -155,7 +160,7 @@
 		End
 	End
 	Object PageHeader
-		Height=3.99521
+		Height=3.59833
 		Items Control
 			Item
 				Type=MemoBox
@@ -209,7 +214,7 @@
 				Type=StaticBox
 				Name='StaticBox2'
 				ForeColor=Navy
-				Left=11.5888
+				Left=11.4035
 				Top=0.608542
 				Width=7.40833
 				Height=0.978958
@@ -261,7 +266,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox45'
-				Left=11.5623
+				Left=11.3771
 				Top=1.56104
 				Width=3.83646
 				Height=0.608542
@@ -276,9 +281,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox51'
-				Left=15.3988
+				Left=15.2135
 				Top=1.56104
-				Width=3.59833
+				Width=3.75708
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -291,9 +296,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox52'
-				Left=15.3988
+				Left=15.2135
 				Top=2.16958
-				Width=3.59833
+				Width=3.75708
 				Height=0.635
 				Object Font
 					Name='微软雅黑'
@@ -306,7 +311,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox46'
-				Left=11.5623
+				Left=11.3771
 				Top=2.16958
 				Width=3.83646
 				Height=0.635
@@ -321,7 +326,7 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox48'
-				Left=11.5623
+				Left=11.3771
 				Top=2.80458
 				Width=3.83646
 				Height=0.608542
@@ -336,9 +341,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox55'
-				Left=15.3988
+				Left=15.2135
 				Top=2.80458
-				Width=3.59833
+				Width=3.75708
 				Height=0.635
 				Object Font
 					Name='微软雅黑'
@@ -359,7 +364,7 @@
 		Item
 			Name='ReportHeader1'
 			CanGrow=T
-			Height=15.0019
+			Height=13.5996
 			Items Control
 				Item
 					Type=FreeGrid
@@ -374,7 +379,7 @@
 						End
 					End
 					ColumnCount=2
-					RowCount=11
+					RowCount=9
 					Items FreeGridColumn
 						Item[1]
 							Width=4.1275
@@ -385,7 +390,16 @@
 					End
 					Items FreeGridRow
 						Item[2]
-							Height=0.687917
+							Height=0.529167
+						End
+						Item[3]
+							Height=0.661458
+						End
+						Item[4]
+							Height=0.555625
+						End
+						Item[5]
+							Height=0.608542
 						End
 					End
 					Items FreeGridCell
@@ -485,9 +499,15 @@
 						End
 						Item[6,2]
 							BackColor=Silver
+							Object Font
+								Name='微软雅黑'
+								Bold=T
+								Charset=134
+							End
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#price_unit#]'
+							ForeColor=Navy
+							Text='[#price_unit#] [#currency_symbol#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -495,7 +515,7 @@
 						End
 						Item[7,1]
 							PaddingTop=4
-							Text='Currency'
+							Text='Unit'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -504,7 +524,7 @@
 						Item[7,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#currency_name#]'
+							Text='[#uom_name#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -513,7 +533,7 @@
 						Item[8,1]
 							BackColor=Silver
 							PaddingTop=4
-							Text='Unit'
+							Text='Payment terms'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -523,7 +543,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#uom_name#]'
+							Text='[#payment_term#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -531,49 +551,13 @@
 						End
 						Item[9,1]
 							PaddingTop=4
-							Text='Payment terms'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[9,2]
-							TextAlign=MiddleCenter
-							PaddingTop=4
-							Text='[#payment_term#]'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[10,1]
-							BackColor=Silver
-							PaddingTop=4
-							Text='Quotation validity'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[10,2]
-							BackColor=Silver
-							TextAlign=MiddleCenter
-							PaddingTop=4
-							Text='[#quote_validity#]'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[11,1]
-							PaddingTop=4
 							Text='Additional comments'
 							BorderCustom=T
 							Object Border
 								Styles=[]
 							End
 						End
-						Item[11,2]
+						Item[9,2]
 							WordWrap=T
 							TextAlign=MiddleCenter
 							PaddingTop=4
@@ -650,6 +634,7 @@
 					End
 					CanGrow=T
 					ShrinkFontToFit=T
+					WordWrap=T
 					TextAlign=TopLeft
 					Text='[#description#]'
 				End

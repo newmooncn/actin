@@ -80,6 +80,10 @@ class product_sale_offer(osv.osv_memory):
                         
                         'quote_validity',
                         'additional_comments',
+                        
+                        'moq',
+                        ('uom_id.name','uom_name')
+                        
                         ]
             order_xml += get_rubylong_fields_xml_body(order.product_id, order_fields)
             
@@ -92,8 +96,11 @@ class product_sale_offer(osv.osv_memory):
                         
                         ('prod_cust_id.price', 'price_unit'),
                         ('prod_cust_id.curr_name', 'currency_name'),
+                        ('prod_cust_id.curr_name', 'currency_symbol'),
                         ('prod_cust_id.incoterm.name', 'incoterm'),
                         ('prod_cust_id.payment_term_id.name', 'payment_term'),
+                        ('prod_cust_id.port_discharge.name', 'port'),
+                        ('prod_cust_id.delay', 'lead_time'),                        
                         ]
             order_xml += get_rubylong_fields_xml_body(order, order_fields)
             
