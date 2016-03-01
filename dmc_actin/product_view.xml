@@ -195,6 +195,9 @@
                 	<!-- <attribute name="attrs">{'invisible':[('type','=','service')]}</attribute> -->
                 	<attribute name="invisible">1</attribute>
                 </field>   
+                <page name='sales' position="attributes">
+                	<attribute name="groups">base.group_sale_salesman</attribute>
+                </page>
             </data>
             </field>
 		</record>

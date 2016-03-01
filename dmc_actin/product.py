@@ -62,7 +62,7 @@ class product_product(osv.osv):
 		
 		#for factory/supplier
 		'moq': fields.integer('MOQ'),
-		'seller_sample_price': fields.float('Sample price'),
+		'seller_sample_price': fields.float('Sample price', digits_compute= dp.get_precision('Product Price')),
 		'seller_sample_lead_time': fields.integer('Sample lead time'),
 		'seller_lead_time': fields.integer('Leadtime'),
 		'quote_validity': fields.integer('Quotation validity'),
