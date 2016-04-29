@@ -46,7 +46,7 @@ class account_invoice(models.Model):
 	ci_service_type = fields.Selection(selection=(('trans_sea','TPS Sea Freight'),
 												('trans_dc','TPS Destination charge'),
 												('logistics','Logistics'),
-												('quanlity','Quanlity control'),
+												('quanlity','Quality control'),
 												('laboratory','Laboratory'),
 												('audit','Audit'),
 												('accounting','Accounting'),
