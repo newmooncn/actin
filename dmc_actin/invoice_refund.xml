@@ -23,6 +23,12 @@
             	<button name="action_invoice_sent"  position="after">
             		<button name="%(credit_note)d" string="Print" type="action"  attrs="{'invisible':[('type','!=','out_refund')]}"/>	
             	</button>
+            	<!-- fields for Credit/Debit notes -->
+            	<field name='account_id' position="before">
+            		<field name='origin_inv_id' 
+	            		attrs="{'invisible':[('type','not in',('out_refund','in_refund'))]}" 
+	            		domain="[('type','in',('in_invoice','out_invoice'))]"/>
+            	</field>
             </field>
         </record>
         <record id="account.action_invoice_tree3" model="ir.actions.act_window">
@@ -54,6 +60,12 @@
             		<!-- print debit note -->
             		<button name="%(debit_note)d" string="Print" type="action" attrs="{'invisible':[('type','!=','in_refund')]}"/>
             	</button>
+            	<!-- fields for Credit/Debit notes -->
+            	<field name='account_id' position="before">
+            		<field name='origin_inv_id' 
+	            		attrs="{'invisible':[('type','not in',('out_refund','in_refund'))]}" 
+	            		domain="[('type','in',('in_invoice','out_invoice'))]"/>
+            	</field>
             </field>
         </record>
         <record id="account.action_invoice_tree4" model="ir.actions.act_window">
