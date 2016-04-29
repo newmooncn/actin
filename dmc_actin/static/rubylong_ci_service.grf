@@ -204,6 +204,12 @@
 				Item
 					Name='partner_shipping_id_zip'
 				End
+				Item
+					Name='prod_inv_name'
+				End
+				Item
+					Name='comment'
+				End
 			End
 		End
 		Items Column
@@ -267,7 +273,7 @@ Object Report
 				Item
 					Name='price_unit'
 					Type=Currency
-					Format='#,##0.00'
+					Format='#,##0.000'
 				End
 				Item
 					Name='price_subtotal'
@@ -1072,8 +1078,8 @@ End
 					Name='StaticBox7'
 					Anchor=[Right]
 					ShiftMode=Never
-					Left=9.18104
-					Top=3.99521
+					Left=9.12813
+					Top=3.96875
 					Width=3.91583
 					Height=0.582083
 					Object Font
@@ -1167,6 +1173,36 @@ End
 					Height=0.608542
 					Text='[#company_id_email#]'
 				End
+				Item
+					Type=MemoBox
+					Name='MemoBox54'
+					Left=-0.0264583
+					Top=4.07458
+					Width=5.60917
+					Height=0.47625
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Weight=400
+						Charset=134
+					End
+					Text='Customer Product Invoice:'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox53'
+					Left=5.60917
+					Top=4.02167
+					Width=3.38667
+					Height=0.529167
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#prod_inv_name#]'
+				End
 			End
 		End
 	End
@@ -1175,7 +1211,7 @@ End
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=2.19604
+			Height=3.20146
 			Items Control
 				Item
 					Type=StaticBox
@@ -1246,6 +1282,37 @@ End
 					End
 					TextAlign=MiddleCenter
 					Text='[#currency_symbol#][#amount_total#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox37'
+					Top=2.06375
+					Width=4.78896
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Bold=T
+						Charset=134
+					End
+					Text='ADDITIONAL COMMENTS: '
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox36'
+					Top=2.56646
+					Width=18.2033
+					Height=0.396875
+					Object Font
+						Name='微软雅黑'
+						Size=90000,0
+						Weight=400
+						Charset=134
+					End
+					CanGrow=T
+					CanShrink=T
+					WordWrap=T
+					Text='[#comment#]'
 				End
 			End
 		End

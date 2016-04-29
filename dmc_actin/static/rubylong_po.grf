@@ -226,6 +226,7 @@ Object Report
 				Item
 					Name='price_unit'
 					Type=Float
+					Format='#,##0.000'
 				End
 				Item
 					Name='price_subtotal'
@@ -981,7 +982,7 @@ End
 					Height=0.582083
 					CanGrow=T
 					WordWrap=T
-					Text='[#partner_id_street#],[#partner_id_street2#],[#partner_id_city#] [#partner_id_zip#],[#partner_id_country_id_name#]'
+					Text='[#partner_id_street#]'
 				End
 				Item
 					Type=MemoBox
@@ -1430,7 +1431,7 @@ End
 						Bold=T
 						Charset=134
 					End
-					Text='N. ARTWORKS/文稿: '
+					Text='N.ADDITIONAL COMMENTS/文稿: '
 				End
 				Item
 					Type=MemoBox

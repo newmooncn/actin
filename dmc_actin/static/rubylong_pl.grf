@@ -599,7 +599,7 @@ Object Report
 					End
 					TextAlign=MiddleCenter
 					PaddingTop=5
-					Text='NO OF CNTS'
+					Text='NO OF CTNS'
 					BorderCustom=T
 					Object Border
 						Styles=[DrawBottom]
@@ -1275,7 +1275,7 @@ End
 					Height=0.608542
 					CanGrow=T
 					WordWrap=T
-					Text='[#partner_invoice_id_street#],[#partner_invoice_id_street2#],[#partner_invoice_id_city#] [#partner_invoice_id_zip#],[#partner_invoice_id_country_id_name#]'
+					Text='[#partner_invoice_id_street#]'
 				End
 				Item
 					Type=MemoBox
@@ -1486,7 +1486,7 @@ End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#partner_shipping_id_street#],[#partner_shipping_id_street2#],[#partner_shipping_id_city#] [#partner_shipping_id_zip#],[#partner_shipping_id_country_id_name#]'
+					Text='[#partner_shipping_id_street#]'
 				End
 				Item
 					Type=MemoBox

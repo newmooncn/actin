@@ -249,7 +249,7 @@ Object Report
 				Item
 					Name='price_unit'
 					Type=Currency
-					Format='#,##0.00'
+					Format='#,##0.000'
 				End
 				Item
 					Name='price_subtotal'
@@ -1041,7 +1041,7 @@ End
 					Height=0.608542
 					CanGrow=T
 					WordWrap=T
-					Text='[#partner_invoice_id_street#],[#partner_invoice_id_street2#],[#partner_invoice_id_city#] [#partner_invoice_id_zip#],[#partner_invoice_id_country_id_name#]'
+					Text='[#partner_invoice_id_street#]'
 				End
 				Item
 					Type=MemoBox
@@ -1260,7 +1260,7 @@ End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#partner_shipping_id_street#],[#partner_shipping_id_street2#],[#partner_shipping_id_city#] [#partner_shipping_id_zip#],[#partner_shipping_id_country_id_name#]'
+					Text='[#partner_shipping_id_street#]'
 				End
 				Item
 					Type=MemoBox
@@ -1314,7 +1314,7 @@ End
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=10.6098
+			Height=10.0013
 			Items Control
 				Item
 					Type=StaticBox
@@ -1433,21 +1433,6 @@ End
 					Text='D. SHIPMENT TYPE:'
 				End
 				Item
-					Type=StaticBox
-					Name='StaticBox33'
-					Left=-0.0264583
-					Top=4.57729
-					Width=2.24896
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					Text='K. REMARKS:'
-				End
-				Item
 					Type=MemoBox
 					Name='MemoBox25'
 					Left=3.73063
@@ -1509,24 +1494,6 @@ End
 				End
 				Item
 					Type=MemoBox
-					Name='MemoBox33'
-					Left=2.19604
-					Top=4.57729
-					Width=16.7746
-					Height=0.396875
-					Object Font
-						Name='微软雅黑'
-						Size=90000,0
-						Weight=400
-						Charset=134
-					End
-					CanGrow=T
-					CanShrink=T
-					WordWrap=T
-					Text='[#remark#]'
-				End
-				Item
-					Type=MemoBox
 					Name='MemoBox37'
 					Left=15.7956
 					Top=0.396875
@@ -1553,7 +1520,7 @@ End
 					Type=FreeGrid
 					Name='FreeGrid1'
 					Left=1.85208
-					Top=6.00604
+					Top=5.3975
 					Object Border
 						Styles=[DrawLeft|DrawTop|DrawRight|DrawBottom]
 						Object Pen

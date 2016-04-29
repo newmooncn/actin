@@ -87,8 +87,12 @@ class account_invoice(osv.osv):
 						('currency_id.symbol','currency_symbol'),						
 						('currency_id.name','currency_name'),	
 						
+						'comment',
+						#for service invoice
+						('parent_id.number','prod_inv_name'),
 						#dm added
 						('company_id.img_stamp','company_stamp'),
+						('origin_inv_id.number','origin_inv_name')
 						
 						]
 			
@@ -198,6 +202,8 @@ class account_invoice(osv.osv):
 						
 						('currency_id.symbol','currency_symbol'),						
 						('currency_id.name','currency_name'),	
+						
+						'comment',
 						
 						#dm added
 						('company_id.img_stamp','company_stamp'),
@@ -316,6 +322,7 @@ class account_invoice(osv.osv):
 						
 						('currency_id.symbol','currency_symbol'),						
 						('currency_id.name','currency_name'),
+						'comment',
 						
 						#dm added
 						('company_id.img_stamp','company_stamp'),
@@ -325,6 +332,7 @@ class account_invoice(osv.osv):
 						'weight_net_total',
 						'weight_gross_total',
 						('m3_total','volume_total'),
+						('origin_inv_id.number','origin_inv_name')
 						]
 			
 			order_xml = get_rubylong_fields_xml_body(order, order_fields)

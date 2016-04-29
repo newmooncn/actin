@@ -285,7 +285,7 @@
 					Weight=400
 					Charset=134
 				End
-				Text='FACTOEY NAME:'
+				Text='FACTORY NAME:'
 			End
 			Item
 				Type=MemoBox
