@@ -308,7 +308,7 @@
 						End
 					End
 					ColumnCount=2
-					RowCount=18
+					RowCount=17
 					Items FreeGridColumn
 						Item[1]
 							Width=6.19125
@@ -481,7 +481,7 @@
 						Item[9,1]
 							BackColor=Silver
 							PaddingTop=4
-							Text='Product Gross Weight (KG)'
+							Text='Outer packing dimension (Meters)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -491,7 +491,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#weight_gross#]'
+							Text='[#pack_out_dimension#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -499,7 +499,7 @@
 						End
 						Item[10,1]
 							PaddingTop=4
-							Text='Outer packing dimension (Meters)'
+							Text='Outer packing volume (CBM)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -508,7 +508,7 @@
 						Item[10,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#pack_out_dimension#]'
+							Text='[#pack_out_volume#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -517,7 +517,7 @@
 						Item[11,1]
 							BackColor=Silver
 							PaddingTop=4
-							Text='Outer packing volume (CBM)'
+							Text='Outer packing Gross Weight (KG)'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -527,30 +527,13 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#pack_out_volume#]'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[12,1]
-							PaddingTop=4
-							Text='Outer packing Gross Weight (KG)'
-							BorderCustom=T
-							Object Border
-								Styles=[]
-							End
-						End
-						Item[12,2]
-							TextAlign=MiddleCenter
-							PaddingTop=4
 							Text='[#pack_out_weight_gross#]'
 							BorderCustom=T
 							Object Border
 								Styles=[DrawRight]
 							End
 						End
-						Item[13,1]
+						Item[12,1]
 							Object Font
 								Name='微软雅黑'
 								Size=112500,0
@@ -569,7 +552,7 @@
 							End
 							ColSpan=2
 						End
-						Item[14,1]
+						Item[13,1]
 							BackColor=Silver
 							PaddingTop=4
 							Text='Quantity per 20'GP'
@@ -578,7 +561,7 @@
 								Styles=[]
 							End
 						End
-						Item[14,2]
+						Item[13,2]
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
@@ -588,7 +571,7 @@
 								Styles=[]
 							End
 						End
-						Item[15,1]
+						Item[14,1]
 							PaddingTop=4
 							Text='Quantity per 40'GP'
 							BorderCustom=T
@@ -596,7 +579,7 @@
 								Styles=[]
 							End
 						End
-						Item[15,2]
+						Item[14,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
 							Text='[#qty_40gp#]'
@@ -605,7 +588,7 @@
 								Styles=[]
 							End
 						End
-						Item[16,1]
+						Item[15,1]
 							BackColor=Silver
 							PaddingTop=4
 							Text='Quantity per 40'HQ'
@@ -614,7 +597,7 @@
 								Styles=[]
 							End
 						End
-						Item[16,2]
+						Item[15,2]
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
@@ -624,7 +607,7 @@
 								Styles=[]
 							End
 						End
-						Item[17,1]
+						Item[16,1]
 							PaddingTop=4
 							Text='Quantity per pallet (1 x 0.8 m)'
 							BorderCustom=T
@@ -632,7 +615,7 @@
 								Styles=[]
 							End
 						End
-						Item[17,2]
+						Item[16,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
 							Text='[#qty_pallet_eur#]'
@@ -641,7 +624,7 @@
 								Styles=[]
 							End
 						End
-						Item[18,1]
+						Item[17,1]
 							BackColor=Silver
 							PaddingTop=4
 							Text='Quantity per pallet (1.2 x 1 m)'
@@ -650,7 +633,7 @@
 								Styles=[]
 							End
 						End
-						Item[18,2]
+						Item[17,2]
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4

@@ -10,7 +10,8 @@
                 	<group>
                 		<field name="incoterm_id"/>
                 		<field name="port"
-							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"/>
+							context="{'default_option_name':'partner_port','form_view_ref':'dm_options.view_option_list_form_o2m','tree_view_ref':'dm_options.view_option_list_tree_o2m'}"
+							widget="selection"/>
 					</group>
 					<group>
                 		<field name="exp_company"/>

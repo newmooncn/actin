@@ -62,7 +62,7 @@
             		<attribute name="string">Contract Ref</attribute>
             	</field>
             	<field name="name" position="attributes">
-            		<attribute name="string">BQ Journal Description</attribute>
+            		<attribute name="string">Journal Description</attribute>
             	</field>
             </field>
 		</record>    
