@@ -64,6 +64,12 @@
             	<field name="name" position="attributes">
             		<attribute name="string">Journal Description</attribute>
             	</field>
+            	<!-- johnw, 2016/06/12, make the lines to be visible, and user select the amount, 
+            	then the different amount can be shown, like the bank charge, user can deal them on this screen -->
+            	<xpath expr="//notebook" position="attributes">
+            		<attribute name="invisible">0</attribute>
+            	</xpath>
+            	
             </field>
 		</record>    
 		

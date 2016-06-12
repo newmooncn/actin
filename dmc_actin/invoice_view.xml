@@ -81,6 +81,11 @@
             	</label>
             	<label for="comment" position='replace'>
             	</label>
+            	<field name='comment' position='replace'>
+            		<field name="comment"/> <!-- remove the class -->
+            		<label for='addion_comment' attrs="{'invisible':[('type','!=','out_refund')]}"/>
+            		<field name='addion_comment' attrs="{'invisible':[('type','!=','out_refund')]}"/>
+            	</field>
             </field>
         </record>
     <!-- supplier invoice -->
@@ -109,6 +114,10 @@
             	</label>
             	<label for="comment" position='replace'>
             	</label>
+            	<field name='comment' position='after'>
+            		<label for='addion_comment' attrs="{'invisible':[('type','!=','in_refund')]}"/>
+            		<field name='addion_comment' attrs="{'invisible':[('type','!=','in_refund')]}"/>
+            	</field>
             </field>
         </record>
 	<!-- add ci_service_type,parent_id searching --> 

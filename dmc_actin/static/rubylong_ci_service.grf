@@ -1008,7 +1008,7 @@ End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#partner_invoice_id_street#],[#partner_invoice_id_street2#],[#partner_invoice_id_city#] [#partner_invoice_id_zip#],[#partner_invoice_id_country_id_name#]'
+					Text='[#partner_invoice_id_street#]'
 				End
 				Item
 					Type=MemoBox

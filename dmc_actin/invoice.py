@@ -64,6 +64,9 @@ class account_invoice(models.Model):
 	
 	#fields for the service flag
 	is_service = fields.Boolean('Service')
+	
+	#addiontional for CN/DN, johnw, 2016/06/12, the original 'comment' field is used for "sales/purchase journal description"
+	addion_comment = fields.Char('Additional Information')
 					
 	@api.multi
 	def name_get(self):

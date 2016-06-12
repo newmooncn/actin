@@ -206,6 +206,9 @@
 				Item
 					Name='comment'
 				End
+				Item
+					Name='addion_comment'
+				End
 			End
 		End
 		Items Column
@@ -1289,7 +1292,7 @@ End
 					CanGrow=T
 					CanShrink=T
 					WordWrap=T
-					Text='[#comment#]'
+					Text='[#addion_comment#]'
 				End
 			End
 		End

@@ -88,6 +88,8 @@ class account_invoice(osv.osv):
 						('currency_id.name','currency_name'),	
 						
 						'comment',
+						'addion_comment',
+						
 						#for service invoice
 						('parent_id.number','prod_inv_name'),
 						#dm added
@@ -323,6 +325,7 @@ class account_invoice(osv.osv):
 						('currency_id.symbol','currency_symbol'),						
 						('currency_id.name','currency_name'),
 						'comment',
+						'addion_comment',
 						
 						#dm added
 						('company_id.img_stamp','company_stamp'),
