@@ -31,7 +31,7 @@ class account_rpt(osv.osv):
     _auto = False   
     _rec_name = 'pi_name'
     _columns = {                
-        'id': fields.float('ID'),
+        'id': fields.char('ID'),
         'so_id': fields.many2one('sale.order',u'Proforma Invoice'),
         'ci_id': fields.many2one('account.invoice',u'Commercial Invoice'),
         'po_id': fields.many2one('purchase.order',u'Puchase Order'),
@@ -82,7 +82,7 @@ class account_rpt(osv.osv):
         cr.execute("""
             create or replace view account_rpt_view as (
 select
-((coalesce(so.id,0)::varchar)||coalesce(so_inv.id,0)::varchar||coalesce(po.id,0)::varchar||coalesce(po_inv.id,0)::varchar||coalesce(trans_sf.id,0)::varchar||coalesce(trans_dc.id,0)::varchar||coalesce(qc.id,0)::varchar||coalesce(lab.id,0)::varchar)::NUMERIC  as id,
+((coalesce(so.id,0)::varchar)||coalesce(so_inv.id,0)::varchar||coalesce(po.id,0)::varchar||coalesce(po_inv.id,0)::varchar||coalesce(trans_sf.id,0)::varchar||coalesce(trans_dc.id,0)::varchar||coalesce(qc.id,0)::varchar||coalesce(lab.id,0)::varchar)  as id,
 so.id as so_id,
 so_inv.id as ci_id,
 po.id as po_id,
