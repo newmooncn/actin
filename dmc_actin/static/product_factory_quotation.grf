@@ -290,8 +290,8 @@
 			Item
 				Type=StaticBox
 				Name='StaticBox45'
-				Left=11.5888
-				Top=1.5875
+				Left=3.04271
+				Top=2.80458
 				Width=3.59833
 				Height=0.608542
 				Object Font
@@ -305,9 +305,9 @@
 			Item
 				Type=MemoBox
 				Name='MemoBox51'
-				Left=15.1871
-				Top=1.5875
-				Width=3.78354
+				Left=6.64104
+				Top=2.80458
+				Width=12.1708
 				Height=0.608542
 				Object Font
 					Name='微软雅黑'
@@ -321,7 +321,7 @@
 				Type=StaticBox
 				Name='StaticBox46'
 				Left=11.5888
-				Top=2.19604
+				Top=1.64042
 				Width=3.59833
 				Height=0.608542
 				Object Font
@@ -336,7 +336,7 @@
 				Type=MemoBox
 				Name='MemoBox52'
 				Left=15.1871
-				Top=2.19604
+				Top=1.64042
 				Width=3.78354
 				Height=0.608542
 				Object Font
@@ -351,7 +351,7 @@
 				Type=StaticBox
 				Name='StaticBox48'
 				Left=11.5888
-				Top=2.80458
+				Top=2.24896
 				Width=3.59833
 				Height=0.608542
 				Object Font
@@ -366,7 +366,7 @@
 				Type=MemoBox
 				Name='MemoBox57'
 				Left=15.1871
-				Top=2.80458
+				Top=2.24896
 				Width=3.78354
 				Height=0.608542
 				Object Font
