@@ -30,13 +30,14 @@ class sale_order(osv.osv):
 		inv_id = super(sale_order, self).action_invoice_create(cr, uid, ids, grouped, states, date_invoice, context)
 		pack_obj = self.pool['account.invoice.pack']
 		for line in self.pool['account.invoice'].browse(cr, uid, inv_id, context=context).invoice_line:		
-			prod_weight_net = 0
-			prod_weight_net = 0
-			prod_volume = 0
+			carton_weight_net = 0
+			carton_weight = 0
+			carton_volume = 0
 			try:
-				prod_weight = float(line.product_id.weight_char)
-				prod_weight_net = float(line.product_id.weight_net_char)
-				prod_volume = float(line.product_id.volume_char)
+				carton_weight = float(line.product_id.pack_out_gw)
+				carton_weight_net = float(line.product_id.pack_out_nw)
+				carton_volume = float(line.product_id.pack_out_volume)
+				
 			except Exception, e:
 				pass
 				
@@ -48,9 +49,9 @@ class sale_order(osv.osv):
 				#only when the quantity can fill at least 1 carton then execute following code
 				quantity = qty_carton * qty_per_carton
 							
-				weight_net = prod_weight*quantity
-				weight_gross = prod_weight_net*quantity
-				m3 = prod_volume*quantity
+				weight_gross = carton_weight*qty_carton
+				weight_net = carton_weight_net*qty_carton
+				m3 = carton_volume*qty_carton
 						
 				pack_val = {
 					'invoice_id': inv_id,
@@ -72,10 +73,9 @@ class sale_order(osv.osv):
 			if line.quantity - quantity > 0:
 				qty_carton = 1
 				quantity = line.quantity - quantity							
-				weight_net = prod_weight_net*quantity
-				weight_gross = prod_weight*quantity
-				m3 = prod_volume*quantity
-						
+#				weight_net = carton_weight_net*quantity
+#				weight_gross = carton_weight*quantity
+#				m3 = carton_volume*quantity
 				pack_val = {
 					'invoice_id': inv_id,
 					'sequence': line.sequence,
@@ -85,9 +85,12 @@ class sale_order(osv.osv):
 					'qty_carton': qty_carton,
 					'quantity': quantity,
 					'uos_id': line.uos_id.id,
-					'weight_net': weight_net,
-					'weight_gross': weight_gross,
-					'm3': m3,
+#					'weight_net': weight_net,
+#					'weight_gross': weight_gross,
+#					'm3': m3,
+					'weight_net': 0,
+					'weight_gross': 0,
+					'm3': 0,
 					'inv_line_id':line.id
 				}			
 				pack_obj.create(cr, uid, pack_val, context=context)
@@ -139,7 +142,8 @@ class account_invoice(osv.osv):
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
                 'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),    
-	'pack_line': fields.one2many('account.invoice.pack', 'invoice_id', 'Packing Lines', readonly=True, states={'draft':[('readonly',False)]}),			
+	'pack_line': fields.one2many('account.invoice.pack', 'invoice_id', 'Packing Lines', readonly=False)
+	#, states={'paid':[('readonly',True)],'cancel':[('readonly',True)]}),			
 	}
 								
 	

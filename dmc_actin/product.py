@@ -37,14 +37,14 @@ class product_product(osv.osv):
 		'pack_type_memo': fields.char('Packing Type Note', size=64),
 		
 		'pack_out_dimension': fields.char('Outer packing dimensions (meters)', size=64),
-		'pack_out_volume': fields.float('Outer packing volume (cbm)'),
-		'pack_out_nw': fields.float('Outer packing NW (kgs)'),
-		'pack_out_gw': fields.float('Outer packing GW (kgs)'),
+		'pack_out_volume': fields.float('Outer packing volume (cbm)', digits_compute= dp.get_precision('Account')),
+		'pack_out_nw': fields.float('Outer packing NW (kgs)', digits_compute= dp.get_precision('Account')),
+		'pack_out_gw': fields.float('Outer packing GW (kgs)', digits_compute= dp.get_precision('Account')),
 		
 		'pack_inner_dimension': fields.char('Inner Carton packing dimensions(meters)', size=64),
-		'pack_inner_volume': fields.float('Inner packing volume(cbm)'),
-		'pack_inner_nw': fields.float('Inner Carton Packing NW(kgs)'),
-		'pack_inner_gw': fields.float('Inner Carton Packing GW(kgs)'),
+		'pack_inner_volume': fields.float('Inner packing volume(cbm)', digits_compute= dp.get_precision('Account')),
+		'pack_inner_nw': fields.float('Inner Carton Packing NW(kgs)', digits_compute= dp.get_precision('Account')),
+		'pack_inner_gw': fields.float('Inner Carton Packing GW(kgs)', digits_compute= dp.get_precision('Account')),
 		
 		'qty_per_inner': fields.integer('Quantity per Inner'),
 		'number_inner_outer': fields.integer('Number of Inner per Outer'),
