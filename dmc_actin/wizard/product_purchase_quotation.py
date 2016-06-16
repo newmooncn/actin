@@ -93,7 +93,14 @@ class product_purchase_quotation(osv.osv_memory):
                         
                         'moq',
                         ('seller_lead_time','lead_time'),
-                        ('uom_po_id.name','uom_name')
+                        ('uom_po_id.name','uom_name'),
+                        
+                        {'qty_20gp_print': order.product_id.qty_20gp > 0 and '%s %s'%(order.product_id.qty_20gp, order.product_id.uom_id.name) or ''},
+                        {'qty_40gp_print': order.product_id.qty_40gp > 0 and '%s %s'%(order.product_id.qty_40gp, order.product_id.uom_id.name) or ''},
+                        {'qty_40hq_print': order.product_id.qty_40hq > 0 and '%s %s'%(order.product_id.qty_40hq, order.product_id.uom_id.name) or ''},
+                        {'qty_pallet_eur_print': order.product_id.qty_pallet_eur > 0 and '%s %s'%(order.product_id.qty_pallet_eur, order.product_id.uom_id.name) or ''},
+                        {'qty_pallet_us_print': order.product_id.qty_pallet_us > 0 and '%s %s'%(order.product_id.qty_pallet_us, order.product_id.uom_id.name) or ''}                        
+                                                
                         ]
             order_xml += get_rubylong_fields_xml_body(order.product_id, order_fields)
 

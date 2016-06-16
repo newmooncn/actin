@@ -159,6 +159,21 @@
 				Item
 					Name='uom_name'
 				End
+				Item
+					Name='qty_20gp_print'
+				End
+				Item
+					Name='qty_40gp_print'
+				End
+				Item
+					Name='qty_40hq_print'
+				End
+				Item
+					Name='qty_pallet_eur_print'
+				End
+				Item
+					Name='qty_pallet_us_print'
+				End
 			End
 		End
 		Object ColumnContent
@@ -664,7 +679,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#qty_20gp#] [#uom_name#]'
+							Text='[#qty_20gp_print#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -681,7 +696,7 @@
 						Item[15,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#qty_40gp#] [#uom_name#]'
+							Text='[#qty_40gp_print#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -700,7 +715,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#qty_40hq#] [#uom_name#]'
+							Text='[#qty_40hq_print#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -717,7 +732,7 @@
 						Item[17,2]
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#qty_pallet_eur#] [#uom_name#]'
+							Text='[#qty_pallet_eur_print#]'
 							BorderCustom=T
 							Object Border
 								Styles=[]
@@ -736,7 +751,7 @@
 							BackColor=Silver
 							TextAlign=MiddleCenter
 							PaddingTop=4
-							Text='[#qty_pallet_us#] [#uom_name#]'
+							Text='[#qty_pallet_us_print#]'
 							BorderCustom=T
 							Object Border
 								Styles=[DrawRight]
