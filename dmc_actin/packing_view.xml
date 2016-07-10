@@ -64,7 +64,7 @@
                     </group>
                     <field name="sent" invisible="1"/>
                     <separator string="Packing Lines"/>
-                    <field name="pack_line" nolabel="1" widget="one2many_list" context="{'type': type}" attrs="{'readonly':[('state','!=','open')]}">
+                    <field name="pack_line" nolabel="1" widget="one2many_list" context="{'type': type}">
                         <tree string="Packing Lines" editable="bottom" create="0" delete="0">
                             <field name="sequence" widget="handle"/>
                             <field name="product_id"
