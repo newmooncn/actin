@@ -75,6 +75,8 @@ class account_invoice(osv.osv):
 						
 						'amount_total',
 						('amount_total', 'amount_total_en', number2words_en_upper2),
+						
+						'incoterm.name',
 
 						'total_shipped',
 						'contract_n',
@@ -195,6 +197,8 @@ class account_invoice(osv.osv):
 						
 						'amount_total',
 						('amount_total', 'amount_total_en', number2words_en_upper2),
+						
+						'incoterm.name',
 
 						'total_shipped',
 						'contract_n',
@@ -317,6 +321,8 @@ class account_invoice(osv.osv):
 						
 						'amount_total',
 						('amount_total', 'amount_total_en', number2words_en_upper2),
+						
+						'incoterm.name',
 
 						'total_shipped',
 						'contract_n',

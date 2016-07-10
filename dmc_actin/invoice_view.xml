@@ -39,6 +39,7 @@
             			<field name="container_no" attrs="{'invisible':[('is_service','!=',False)]}"/>
                 		<field name="etd" attrs="{'invisible':[('is_service','!=',False)]}"/>
                 		<field name="eta" attrs="{'invisible':[('is_service','!=',False)]}"/>
+                		<field name='incoterm' attrs="{'invisible':[('is_service','!=',False)]}"/>
             		</group>
             		<group attrs="{'invisible':['|',('is_service','!=',False),('type','!=','out_invoice')]}">		
             			<field name="seal_no"/>

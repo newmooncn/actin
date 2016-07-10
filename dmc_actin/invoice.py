@@ -67,6 +67,9 @@ class account_invoice(models.Model):
 	
 	#addiontional for CN/DN, johnw, 2016/06/12, the original 'comment' field is used for "sales/purchase journal description"
 	addion_comment = fields.Char('Additional Information')
+	
+	#add incoterm, johnw, 2016/07/10
+	incoterm = fields.Many2one('stock.incoterms', string='INCOTERM', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
 					
 	@api.multi
 	def name_get(self):
@@ -243,4 +246,12 @@ class account_move(models.Model):
 				   ('posted', tuple(valid_moves),))
 		self.invalidate_cache(cr, uid, context=context)
 		return True	
+	
+from openerp.osv import osv
+class sale_order(osv.osv):
+	_inherit = 'sale.order'
+	def _prepare_invoice(self, cr, uid, order, lines, context=None):
+		vals = super(sale_order, self)._prepare_invoice(cr, uid, order, lines, context=context)
+		vals.update({'incoterm':order.incoterm and order.incoterm.id or None})	
+		return vals
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
