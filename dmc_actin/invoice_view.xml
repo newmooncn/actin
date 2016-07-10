@@ -105,15 +105,12 @@
             		attrs="{'invisible':['|',('cust_inv_id','!=',False),('is_service','=',False)]}"/>
             	</button>
             	<!-- set the 'comment' title for invoice and credit note -->
-            	<label for="comment" position='after'>
-            		<label string='Additional Information' attrs="{'invisible':[('type','=','in_refund')]}"/>
-            		<label string='Purchase Journal Descripion' attrs="{'invisible':[('type','!=','in_refund')]}"/>
-            	</label>
-            	<label for="comment" position='replace'>
+            	<label for="comment" position='attributes'>
+            		<attribute name='string'>Purchase Journal Descripion</attribute>
             	</label>
             	<field name='comment' position='after'>
-            		<label for='addion_comment' attrs="{'invisible':[('type','!=','in_refund')]}"/>
-            		<field name='addion_comment' attrs="{'invisible':[('type','!=','in_refund')]}"/>
+            		<label for='addion_comment'/>
+            		<field name='addion_comment'/>
             	</field>
             </field>
         </record>
