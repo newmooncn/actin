@@ -184,7 +184,7 @@
 		End
 	End
 	Object PageHeader
-		Height=3.81
+		Height=3.59833
 		Items Control
 			Item
 				Type=MemoBox
@@ -286,36 +286,6 @@
 				End
 				TextAlign=MiddleCenter
 				Text='Company Logo'
-			End
-			Item
-				Type=StaticBox
-				Name='StaticBox48'
-				Left=3.09563
-				Top=2.88396
-				Width=3.81
-				Height=0.608542
-				Object Font
-					Name='微软雅黑'
-					Size=112500,0
-					Weight=400
-					Charset=134
-				End
-				Text='CUSTOMER NAME:'
-			End
-			Item
-				Type=MemoBox
-				Name='MemoBox57'
-				Left=6.87917
-				Top=2.88396
-				Width=11.9327
-				Height=0.608542
-				Object Font
-					Name='微软雅黑'
-					Size=112500,0
-					Weight=400
-					Charset=134
-				End
-				Text='[#partner_name#]'
 			End
 			Item
 				Type=StaticBox
@@ -950,7 +920,7 @@
 					Type=StaticBox
 					Name='StaticBox44'
 					Left=8.73125
-					Top=3.59833
+					Top=4.70958
 					Width=4.86833
 					Height=0.582083
 					Object Font
@@ -965,9 +935,9 @@
 					Type=MemoBox
 					Name='MemoBox49'
 					Left=8.75771
-					Top=4.18042
+					Top=5.29167
 					Width=10.2394
-					Height=3.01625
+					Height=2.01083
 					Object Font
 						Name='微软雅黑'
 						Size=112500,0
@@ -1025,9 +995,9 @@
 					Type=MemoBox
 					Name='MemoBox54'
 					Left=13.5467
-					Top=3.59833
+					Top=4.70958
 					Width=5.45042
-					Height=0.582083
+					Height=0.767292
 					Object Font
 						Name='微软雅黑'
 						Size=120000,0
@@ -1035,6 +1005,36 @@
 						Charset=134
 					End
 					Text='[#code#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox51'
+					Left=8.73125
+					Top=3.59833
+					Width=3.75708
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=112500,0
+						Weight=400
+						Charset=134
+					End
+					Text='CUSTOMER NAME:'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox60'
+					Left=8.73125
+					Top=4.20688
+					Width=12.065
+					Height=0.582083
+					Object Font
+						Name='微软雅黑'
+						Size=112500,0
+						Weight=400
+						Charset=134
+					End
+					Text='[#partner_name#]'
 				End
 			End
 		End

@@ -184,7 +184,7 @@
 		End
 	End
 	Object PageHeader
-		Height=3.59833
+		Height=2.98979
 		Items Control
 			Item
 				Type=MemoBox
@@ -286,36 +286,6 @@
 				End
 				TextAlign=MiddleCenter
 				Text='Company Logo'
-			End
-			Item
-				Type=StaticBox
-				Name='StaticBox45'
-				Left=3.04271
-				Top=2.80458
-				Width=3.59833
-				Height=0.608542
-				Object Font
-					Name='微软雅黑'
-					Size=120000,0
-					Weight=400
-					Charset=134
-				End
-				Text='FACTORY NAME:'
-			End
-			Item
-				Type=MemoBox
-				Name='MemoBox51'
-				Left=6.64104
-				Top=2.80458
-				Width=12.1708
-				Height=0.608542
-				Object Font
-					Name='微软雅黑'
-					Size=120000,0
-					Weight=400
-					Charset=134
-				End
-				Text='[#partner_name#]'
 			End
 			Item
 				Type=StaticBox
@@ -951,7 +921,7 @@
 					Type=StaticBox
 					Name='StaticBox44'
 					Left=8.59896
-					Top=3.59833
+					Top=4.89479
 					Width=4.78896
 					Height=0.555625
 					Object Font
@@ -966,9 +936,9 @@
 					Type=MemoBox
 					Name='MemoBox49'
 					Left=8.59896
-					Top=4.15396
+					Top=5.45042
 					Width=10.3981
-					Height=3.04271
+					Height=2.14313
 					Object Font
 						Name='微软雅黑'
 						Size=112500,0
@@ -1011,7 +981,7 @@
 					Type=MemoBox
 					Name='MemoBox54'
 					Left=13.3879
-					Top=3.59833
+					Top=4.89479
 					Width=5.52979
 					Height=0.555625
 					Object Font
@@ -1036,6 +1006,37 @@
 						Charset=134
 					End
 					Text='[#order_name#]'
+				End
+				Item
+					Type=StaticBox
+					Name='StaticBox49'
+					Left=8.59896
+					Top=3.54542
+					Width=3.75708
+					Height=0.608542
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Weight=400
+						Charset=134
+					End
+					Text='FACTORY NAME:'
+				End
+				Item
+					Type=MemoBox
+					Name='MemoBox59'
+					Left=8.59896
+					Top=4.20688
+					Width=10.3981
+					Height=0.582083
+					Object Font
+						Name='微软雅黑'
+						Size=120000,0
+						Weight=400
+						Charset=134
+					End
+					WordWrap=T
+					Text='[#partner_name#]'
 				End
 			End
 		End
