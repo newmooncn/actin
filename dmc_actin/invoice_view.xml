@@ -75,17 +75,13 @@
             	<field name='date_due' position='attributes'>
             		<attribute name='invisible'>1</attribute>
             	</field>
-            	<!-- set the 'comment' title for invoice and credit note -->
-            	<label for="comment" position='after'>
-            		<label string='Additional Information' attrs="{'invisible':[('type','=','out_refund')]}"/>
-            		<label string='Sales Journal Descripion' attrs="{'invisible':[('type','!=','out_refund')]}"/>
-            	</label>
-            	<label for="comment" position='replace'>
+            	<label for="comment" position='attributes'>
+            		<attribute name='string'>Sales Journal Descripion</attribute>
             	</label>
             	<field name='comment' position='replace'>
             		<field name="comment"/> <!-- remove the class -->
-            		<label for='addion_comment' attrs="{'invisible':[('type','!=','out_refund')]}"/>
-            		<field name='addion_comment' attrs="{'invisible':[('type','!=','out_refund')]}"/>
+            		<label for='addion_comment'/>
+            		<field name='addion_comment'/>
             	</field>
             </field>
         </record>
