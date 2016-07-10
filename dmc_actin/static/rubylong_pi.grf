@@ -186,6 +186,9 @@
 				Item
 					Name='partner_shipping_id_zip'
 				End
+				Item
+					Name='partner_name_upper'
+				End
 			End
 		End
 		Items Column
@@ -1094,7 +1097,7 @@ End
 					CanGrow=T
 					WordWrap=T
 					TextAlign=MiddleCenter
-					Text='[#partner_invoice_id_name_upper#]'
+					Text='[#partner_name_upper#]'
 				End
 				Item
 					Type=StaticBox

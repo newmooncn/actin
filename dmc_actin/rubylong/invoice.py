@@ -57,7 +57,7 @@ class account_invoice(osv.osv):
 						('company_id.logo','company_logo'),
 						
 						('partner_id.name','partner_invoice_id_name'),
-						('partner_id.name', 'partner_invoice_id_name_upper', upper),
+						#('partner_id.name', 'partner_invoice_id_name_upper', upper),
 						('partner_id.street','partner_invoice_id_street'),
 						('partner_id.street2','partner_invoice_id_street2'),
 						('partner_id.city','partner_invoice_id_city'),
@@ -98,7 +98,9 @@ class account_invoice(osv.osv):
 						
 						]
 			
-			order_xml = get_rubylong_fields_xml_body(order, order_fields)
+			partner_invoice_id_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
+			order_fields_new = order_fields + [{'partner_invoice_id_name_upper':partner_invoice_id_name_upper}]
+			order_xml = get_rubylong_fields_xml_body(order, order_fields_new)
 			
 			#partner shipping address			
 			sale_order = self.sale_order(cr, uid, order.id, context=context)
@@ -175,7 +177,7 @@ class account_invoice(osv.osv):
 						('company_id.logo','company_logo'),
 						
 						('partner_id.name','partner_invoice_id_name'),
-						('partner_id.name', 'partner_invoice_id_name_upper', upper),
+#						('partner_id.name', 'partner_invoice_id_name_upper', upper),
 						('partner_id.street','partner_invoice_id_street'),
 						('partner_id.street2','partner_invoice_id_street2'),
 						('partner_id.city','partner_invoice_id_city'),
@@ -217,7 +219,9 @@ class account_invoice(osv.osv):
 						('m3_total','volume_total'),
 						]
 			
-			order_xml = get_rubylong_fields_xml_body(order, order_fields)
+			partner_invoice_id_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
+			order_fields_new = order_fields + [{'partner_invoice_id_name_upper':partner_invoice_id_name_upper}]
+			order_xml = get_rubylong_fields_xml_body(order, order_fields_new)
 			
 			#partner shipping address			
 			sale_order = self.sale_order(cr, uid, order.id, context=context)
@@ -295,7 +299,7 @@ class account_invoice(osv.osv):
 						('company_id.logo','company_logo'),
 						
 						'partner_id.name',
-						('partner_id.name', 'partner_id_name_upper', upper),
+#						('partner_id.name', 'partner_id_name_upper', upper),
 						'partner_id.street',
 						'partner_id.street2',
 						'partner_id.city',
@@ -338,7 +342,9 @@ class account_invoice(osv.osv):
 						('origin_inv_id.number','origin_inv_name')
 						]
 			
-			order_xml = get_rubylong_fields_xml_body(order, order_fields)
+			partner_id_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
+			order_fields_new = order_fields + [{'partner_id_name_upper':partner_id_name_upper}]
+			order_xml = get_rubylong_fields_xml_body(order, order_fields_new)
 			
 			#partner shipping address			
 			purchase_order = self.purchase_order(cr, uid, order.id, context=context)

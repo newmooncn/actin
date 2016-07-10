@@ -59,7 +59,7 @@ class purchase_order(osv.osv):
 						('company_id.logo','company_logo'),
 						
 						'partner_id.name',
-						('partner_id.name', 'partner_id_name_upper', upper),
+#						('partner_id.name', 'partner_id_name_upper', upper),
 						'partner_id.street',
 						'partner_id.street2',
 						'partner_id.city',
@@ -102,7 +102,10 @@ class purchase_order(osv.osv):
 						('company_id.img_stamp','company_stamp')
 						
 						]
-			data_xml += get_rubylong_fields_xml(order, 'header', order_fields)
+			
+			partner_id_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
+			order_fields_new = order_fields + [{'partner_id_name_upper':partner_id_name_upper}]
+			data_xml += get_rubylong_fields_xml(order, 'header', order_fields_new)
 			
 		for order in orders:
 			#detail data

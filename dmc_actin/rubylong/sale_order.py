@@ -66,7 +66,6 @@ class sale_order(osv.osv):
 						'partner_invoice_id.email',
 						
 						'partner_shipping_id.name',
-						('partner_shipping_id.name', 'partner_invoice_id_name_upper', upper),
 						'partner_shipping_id.street',
 						'partner_shipping_id.street2',
 						'partner_shipping_id.city',
@@ -110,7 +109,9 @@ class sale_order(osv.osv):
 						('company_id.bank_id.bank_swift','company_id_bank_id_bank_code')				
 						
 						]
-			data_xml += get_rubylong_fields_xml(order, 'header', order_fields)
+			partner_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
+			order_fields_new = order_fields + [{'partner_name_upper':partner_name_upper}]
+			data_xml += get_rubylong_fields_xml(order, 'header', order_fields_new)
 			
 		for order in orders:
 			#detail data
