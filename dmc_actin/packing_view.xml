@@ -72,7 +72,7 @@
                             <field name="name"/>
                             <field name="qty_per_carton"/>
                             <field name="qty_carton" sum="Total"/>    
-                            <field name="quantity"/>
+                            <field name="quantity" sum="Total"/>
                             <field name="uos_id"/>
                             <field name="weight_net" sum="Total"/>
                             <field name="weight_gross" sum="Total"/>
