@@ -147,7 +147,74 @@ left join account_invoice qc on qc.parent_id = so_inv.id and qc.ci_service_type 
 
 left join account_invoice lab on lab.parent_id = so_inv.id and lab.ci_service_type = 'laboratory'
 
-order by so.id desc, so_inv.id, po.id, po_inv.id
+
+union
+
+select
+((coalesce(so.id,0)::varchar)||coalesce(so_inv.id,0)::varchar||coalesce(po.id,0)::varchar||coalesce(po_inv.id,0)::varchar||coalesce(trans_sf.id,0)::varchar||coalesce(trans_dc.id,0)::varchar||coalesce(qc.id,0)::varchar||coalesce(lab.id,0)::varchar)  as id,
+so.id as so_id,
+so_inv.id as ci_id,
+po.id as po_id,
+po_inv.id as po_inv_id,
+
+so.date_order as pi_date,
+so.name as pi_name,
+so_inv.date_invoice as ci_date,
+so_inv.number as ci_name,
+so_inv.partner_id as customer_id,
+so.note as pi_note,
+so.amount_total as pi_amount,
+so_inv.amount_total as ci_amount,
+
+po.partner_id as supplier_id,
+po.date_order as po_date,
+po.name as po_name,
+po.amount_total as po_amount,
+po_inv.number as po_inv_name,
+po_inv.date_invoice as po_inv_date,
+po_inv.amount_total as po_inv_amount,
+
+so.incoterm as so_incoterm_id,
+
+trans_sf.partner_id as trans_sf_partner_id,
+trans_sf.amount_total as trans_sf_amount,
+trans_sf.date_invoice as trans_sf_date,
+trans_sf_pay.date as trans_sf_date_pay,
+
+trans_dc.partner_id as trans_dc_partner_id,
+trans_dc.amount_total as trans_dc_amount,
+trans_dc.date_invoice as trans_dc_date,
+trans_dc_pay.date as trans_dc_date_pay,
+
+qc.partner_id as qc_partner_id,
+qc.amount_total as qc_amount,
+qc.date_invoice as qc_date,
+
+lab.partner_id as lab_partner_id,
+lab.amount_total as lab_amount,
+lab.date_invoice as lab_date,
+
+(coalesce(so_inv.amount_total,0) - coalesce(po_inv.amount_total,0) - coalesce(trans_sf.amount_total,0) - coalesce(trans_dc.amount_total,0) - coalesce(qc.amount_total,0) - coalesce(lab.amount_total,0)) as sale_margin
+
+--so.name,po.name,so_inv.name,trans_sf.name,trans_dc.name,qc.name
+
+from account_invoice so_inv
+left join sale_order_invoice_rel so_inv_rel on so_inv_rel.invoice_id = so_inv.id
+left join sale_order so on so.id = so_inv_rel.order_id
+
+left join purchase_order po on so.id = po.sale_id
+left join purchase_invoice_rel po_inv_rel on po.id = po_inv_rel.purchase_id
+left join account_invoice po_inv on po_inv_rel.invoice_id = po_inv.id
+
+left join account_invoice trans_sf on trans_sf.parent_id = so_inv.id and trans_sf.ci_service_type = 'trans_sea'
+left join account_voucher trans_sf_pay on trans_sf.id = trans_sf_pay.invoice_id
+
+left join account_invoice trans_dc on trans_dc.parent_id = so_inv.id and trans_dc.ci_service_type = 'trans_dc'
+left join account_voucher trans_dc_pay on trans_dc.id = trans_dc_pay.invoice_id
+
+left join account_invoice qc on qc.parent_id = so_inv.id and qc.ci_service_type = 'quanlity'
+
+left join account_invoice lab on lab.parent_id = so_inv.id and lab.ci_service_type = 'laboratory'
             )
         """)               
 account_rpt()
