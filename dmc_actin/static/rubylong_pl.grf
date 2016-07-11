@@ -223,6 +223,10 @@
 				Item
 					Name='partner_shipping_id_zip'
 				End
+				Item
+					Name='qty_total'
+					Type=Integer
+				End
 			End
 		End
 		Items Column
@@ -1799,7 +1803,7 @@ End
 					Type=MemoBox
 					Name='MemoBox62'
 					Left=9.39271
-					Width=2.19604
+					Width=2.01083
 					Height=0.582083
 					PaddingTop=6
 					Object Border
@@ -1835,10 +1839,11 @@ End
 					Object Font
 						Name='微软雅黑'
 						Size=112500,0
-						Weight=400
+						Bold=T
 						Charset=134
 					End
 					TextAlign=MiddleCenter
+					Text='[#qty_total#]'
 				End
 				Item
 					Type=MemoBox

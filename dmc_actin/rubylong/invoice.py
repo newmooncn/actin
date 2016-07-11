@@ -225,6 +225,12 @@ class account_invoice(osv.osv):
 			
 			partner_invoice_id_name_upper = '%s - %s'%(order.partner_id.ref, upper(order.partner_id.name))
 			order_fields_new = order_fields + [{'partner_invoice_id_name_upper':partner_invoice_id_name_upper}]
+			#qty_total
+			qty_total = 0.0
+			for line in order.pack_line:
+				qty_total += line.quantity
+			order_fields_new.append({'qty_total':qty_total})
+				
 			order_xml = get_rubylong_fields_xml_body(order, order_fields_new)
 			
 			#partner shipping address			
