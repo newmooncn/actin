@@ -195,6 +195,7 @@
 				Item
 					Name='qty_carton_total'
 					Type=Integer
+					Format='#,##0'
 				End
 				Item
 					Name='weight_net_total'
@@ -226,6 +227,7 @@
 				Item
 					Name='qty_total'
 					Type=Integer
+					Format='#,##0'
 				End
 			End
 		End
