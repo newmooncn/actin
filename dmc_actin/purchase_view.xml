@@ -59,8 +59,9 @@
             	</button>    
             <!-- Add print button -->
             	<button name='action_cancel' position="before">
-            		<button name="%(purchase.action_report_purchase_order)d" string="Print" type="action" groups="base.group_user"
-            			attrs="{'invisible':[('state','in',['draft','sent','bid','cancel'])]}"/>
+            		<!-- <button name="%(purchase.action_report_purchase_order)d" string="Print" type="action" groups="base.group_user"
+            			attrs="{'invisible':[('state','in',['draft','sent','bid','cancel'])]}"/> -->
+					<button name="%(purchase.action_report_purchase_order)d" string="Print" type="action" groups="base.group_user"/>            			
             	</button>
             <!-- 'Convert to Sales Offer' button -->     
 	           	<button name='purchase_confirm' position="before">
