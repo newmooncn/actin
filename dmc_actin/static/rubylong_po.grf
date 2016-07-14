@@ -1124,7 +1124,7 @@ End
 			Name='ReportFooter1'
 			KeepTogether=F
 			CanGrow=T
-			Height=13.5996
+			Height=13.3879
 			Items Control
 				Item
 					Type=MemoBox
