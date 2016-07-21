@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='rubylong_pi.xml'
+			QuerySQL='sale_order_79.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -233,7 +233,7 @@ Object Report
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='rubylong_pi.xml'
+			QuerySQL='sale_order_79.xml'
 			Items Field
 				Item
 					Name='item_no'
@@ -1448,6 +1448,7 @@ End
 						Weight=400
 						Charset=134
 					End
+					CanGrow=T
 					Text='[#deliver_memo#]'
 				End
 				Item
@@ -1463,6 +1464,7 @@ End
 						Weight=400
 						Charset=134
 					End
+					CanGrow=T
 					Text='[#incoterm_id_name#]'
 				End
 				Item
@@ -1478,6 +1480,7 @@ End
 						Weight=400
 						Charset=134
 					End
+					CanGrow=T
 					Text='[#payment_term_id_name#]'
 				End
 				Item
@@ -1493,6 +1496,7 @@ End
 						Weight=400
 						Charset=134
 					End
+					CanGrow=T
 					Text='[#ship_type_name#]'
 				End
 				Item
