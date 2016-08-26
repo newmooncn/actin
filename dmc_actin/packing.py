@@ -127,17 +127,17 @@ class account_invoice(osv.osv):
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
                 'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
-    'weight_net_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
+    'weight_net_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Account'), string='Total',
             store={
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
                 'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
-    'weight_gross_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
+    'weight_gross_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Account'), string='Total',
             store={
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
                 'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
             },multi='sums'),
-    'm3_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Product UoS'), string='Total',
+    'm3_total': fields.function(_amount_packing, digits_compute=dp.get_precision('Account'), string='Total',
             store={
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['pack_line'], 10),
                 'account.invoice.pack': (_get_pack, ['qty_carton', 'weight_net', 'weight_gross', 'm3'], 10),
