@@ -20,7 +20,7 @@
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='sale_order_79.xml'
+			QuerySQL='rubylong_pi.xml'
 			Items Field
 				Item
 					Name='order_id'
@@ -233,7 +233,7 @@ Object Report
 		End
 		Object Recordset
 			ConnectionString='XML'
-			QuerySQL='sale_order_79.xml'
+			QuerySQL='rubylong_pi.xml'
 			Items Field
 				Item
 					Name='item_no'
@@ -274,23 +274,23 @@ Object Report
 		Items Column
 			Item
 				Name='supplier_item_no'
-				Width=2.72521
+				Width=2.54
 			End
 			Item
 				Name='supplier_item_name'
-				Width=5.21229
+				Width=9
 			End
 			Item
 				Name='product_qty'
-				Width=3.38667
+				Width=2.8
 			End
 			Item
 				Name='product_uom_name'
-				Width=2.40771
+				Width=1.7
 			End
 			Item
 				Name='price_unit'
-				Width=3.41313
+				Width=2.7
 			End
 			Item
 				Name='Column1'
@@ -298,17 +298,11 @@ Object Report
 			End
 		End
 		Object ColumnContent
+			KeepTogether=F
 			Height=0.61
-			GrowToNextRow=T
 			Items ColumnContentCell
 				Item
 					Column='supplier_item_no'
-					Object Font
-						Name='微软雅黑'
-						Size=112500,0
-						Weight=400
-						Charset=134
-					End
 					WordWrap=T
 					TextAlign=MiddleCenter
 					PaddingTop=4
@@ -327,13 +321,8 @@ Object Report
 				End
 				Item
 					Column='supplier_item_name'
-					Object Font
-						Name='微软雅黑'
-						Size=112500,0
-						Weight=400
-						Charset=134
-					End
 					WordWrap=T
+					TextAlign=MiddleCenter
 					PaddingTop=4
 					CanGrow=T
 					CanShrink=T
@@ -352,12 +341,6 @@ Object Report
 				End
 				Item
 					Column='product_qty'
-					Object Font
-						Name='微软雅黑'
-						Size=112500,0
-						Weight=400
-						Charset=134
-					End
 					TextAlign=MiddleCenter
 					PaddingTop=4
 					DataField='product_qty'
@@ -375,12 +358,6 @@ Object Report
 				End
 				Item
 					Column='product_uom_name'
-					Object Font
-						Name='微软雅黑'
-						Size=112500,0
-						Weight=400
-						Charset=134
-					End
 					TextAlign=MiddleCenter
 					PaddingTop=4
 					DataField='product_uom_name'
@@ -398,12 +375,6 @@ Object Report
 				End
 				Item
 					Column='price_unit'
-					Object Font
-						Name='微软雅黑'
-						Size=112500,0
-						Weight=400
-						Charset=134
-					End
 					TextAlign=MiddleCenter
 					PaddingTop=4
 					DataField='price_unit'
@@ -428,12 +399,6 @@ Object Report
 							Name='MemoBox3'
 							Dock=Fill
 							PaddingTop=4
-							Object Font
-								Name='微软雅黑'
-								Size=112500,0
-								Weight=400
-								Charset=134
-							End
 							TextAlign=MiddleCenter
 							Text='[#currency_symbol#][#price_subtotal#]'
 						End
@@ -447,13 +412,13 @@ Object Report
 		End
 		Object ColumnTitle
 			Height=0.608542
+			RepeatStyle=OnPage
 			Items ColumnTitleCell
 				Item
 					GroupTitle=F
 					Column='supplier_item_no'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -474,7 +439,6 @@ Object Report
 					Column='supplier_item_name'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -495,7 +459,6 @@ Object Report
 					Column='product_qty'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -516,7 +479,6 @@ Object Report
 					Column='product_uom_name'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -537,7 +499,6 @@ Object Report
 					Column='price_unit'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -558,7 +519,6 @@ Object Report
 					Column='Column1'
 					Object Font
 						Name='微软雅黑'
-						Size=112500,0
 						Bold=T
 						Charset=134
 					End
@@ -581,7 +541,7 @@ Object Report
 				Name='Group1'
 				ByFields='order_line_id'
 				Object GroupHeader
-					Height=0.608542
+					Height=0.396875
 					Items Control
 						Item
 							Type=MemoBox
@@ -612,6 +572,7 @@ End
 		End
 		Object ColumnTitle
 			Height=0
+			RepeatStyle=OnPage
 			Items ColumnTitleCell
 				Item
 					GroupTitle=F
@@ -648,9 +609,9 @@ End
 				Type=MemoBox
 				Name='MemoBox5'
 				ForeColor=Navy
-				Left=3.14854
+				Left=3.20146
 				Top=0.396875
-				Width=8.73125
+				Width=8.59896
 				Height=1.19063
 				Object Font
 					Name='微软雅黑'
@@ -1058,18 +1019,18 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox10'
-					Left=2.16958
+					Left=2.01083
 					Top=2.67229
-					Width=5.34458
+					Width=5.3975
 					Height=0.608542
 					Text='[#partner_invoice_id_contact#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox11'
-					Left=2.16958
+					Left=1.40229
 					Top=3.28083
-					Width=5.34458
+					Width=6.19125
 					Height=0.608542
 					Text='[#partner_invoice_id_email#]'
 				End
@@ -1091,7 +1052,7 @@ End
 					End
 					Object Font
 						Name='@微软雅黑'
-						Size=180000,0
+						Size=157500,0
 						Bold=T
 					End
 					CanGrow=T
@@ -1185,9 +1146,9 @@ End
 					Type=MemoBox
 					Name='MemoBox17'
 					ShiftMode=Never
-					Left=13.5467
+					Left=11.5888
 					Top=4.63021
-					Width=5.37104
+					Width=5.42396
 					Height=0.608542
 					Object Font
 						Name='微软雅黑'
@@ -1201,9 +1162,9 @@ End
 					Type=MemoBox
 					Name='MemoBox18'
 					ShiftMode=Never
-					Left=13.5467
+					Left=10.795
 					Top=5.23875
-					Width=5.37104
+					Width=5.3975
 					Height=0.582083
 					Object Font
 						Name='微软雅黑'
@@ -1286,18 +1247,18 @@ End
 				Item
 					Type=MemoBox
 					Name='MemoBox46'
-					Left=2.19604
+					Left=1.40229
 					Top=7.38188
-					Width=5.34458
+					Width=6.40292
 					Height=0.608542
 					Text='[#partner_shipping_id_email#]'
 				End
 				Item
 					Type=MemoBox
 					Name='MemoBox47'
-					Left=2.19604
+					Left=2.01083
 					Top=6.82625
-					Width=5.34458
+					Width=5.3975
 					Height=0.608542
 					Text='[#partner_shipping_id_contact#]'
 				End
@@ -1315,7 +1276,6 @@ End
 	Items ReportFooter
 		Item
 			Name='ReportFooter1'
-			KeepTogether=F
 			CanGrow=T
 			Height=10.0013
 			Items Control
@@ -1448,7 +1408,6 @@ End
 						Weight=400
 						Charset=134
 					End
-					CanGrow=T
 					Text='[#deliver_memo#]'
 				End
 				Item
@@ -1464,7 +1423,6 @@ End
 						Weight=400
 						Charset=134
 					End
-					CanGrow=T
 					Text='[#incoterm_id_name#]'
 				End
 				Item
@@ -1480,7 +1438,6 @@ End
 						Weight=400
 						Charset=134
 					End
-					CanGrow=T
 					Text='[#payment_term_id_name#]'
 				End
 				Item
@@ -1496,7 +1453,6 @@ End
 						Weight=400
 						Charset=134
 					End
-					CanGrow=T
 					Text='[#ship_type_name#]'
 				End
 				Item
