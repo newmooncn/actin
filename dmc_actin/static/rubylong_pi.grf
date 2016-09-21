@@ -198,7 +198,9 @@
 			End
 		End
 		Object ColumnContent
+			KeepTogether=F
 			Height=1.00542
+			GrowToNextRow=T
 			Items ColumnContentCell
 				Item
 					Column='Column1'
@@ -300,6 +302,7 @@ Object Report
 		Object ColumnContent
 			KeepTogether=F
 			Height=0.61
+			GrowToNextRow=T
 			Items ColumnContentCell
 				Item
 					Column='supplier_item_no'
@@ -411,6 +414,7 @@ Object Report
 			End
 		End
 		Object ColumnTitle
+			KeepTogether=F
 			Height=0.608542
 			RepeatStyle=OnPage
 			Items ColumnTitleCell
@@ -1276,6 +1280,7 @@ End
 	Items ReportFooter
 		Item
 			Name='ReportFooter1'
+			KeepTogether=F
 			CanGrow=T
 			Height=10.0013
 			Items Control

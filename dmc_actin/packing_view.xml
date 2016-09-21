@@ -65,10 +65,10 @@
                     <field name="sent" invisible="1"/>
                     <separator string="Packing Lines"/>
                     <field name="pack_line" nolabel="1" widget="one2many_list" context="{'type': type}">
-                        <tree string="Packing Lines" editable="bottom" create="0" delete="0">
+                        <tree string="Packing Lines" editable="bottom">
                             <field name="sequence" widget="handle"/>
                             <field name="product_id"
-                                on_change="product_id_change(product_id, uos_id, quantity, name, parent.type, parent.partner_id, parent.fiscal_position, price_unit, parent.currency_id, parent.company_id, context)"/>
+                                on_change="product_id_change(product_id, context)"/>
                             <field name="name"/>
                             <field name="qty_per_carton"/>
                             <field name="qty_carton" sum="Total"/>    

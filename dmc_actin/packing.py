@@ -165,32 +165,41 @@ class account_invoice_pack(osv.osv):
 		'inv_line_id': fields.many2one('account.invoice.line', 'Invoice line', ondelete='cascade')
 	}		
 
-	def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice',
-			partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
-			company_id=None, context=None):
-		company_id = company_id if company_id is not None else context.get('company_id', False)
-		if not partner_id:
-			raise osv.except_osv(_('No Partner Defined!'), _("You must first select a partner!"))
-		if not product:
-			return {'value': {}, 'domain': {'uos_id': []}}
+#	def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice',
+#			partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
+#			company_id=None, context=None):
+#		company_id = company_id if company_id is not None else context.get('company_id', False)
+#		if not partner_id:
+#			raise osv.except_osv(_('No Partner Defined!'), _("You must first select a partner!"))
+#		if not product:
+#			return {'value': {}, 'domain': {'uos_id': []}}
+#
+#		values = {}
+#		product = self.pool['product.product'].browse(cr, uid, product, context=context)
+#		values['name'] = product.partner_ref
+#		if type in ('out_invoice', 'out_refund'):
+#			if product.description_sale:
+#				values['name'] += '\n' + product.description_sale
+#		else:
+#			if product.description_purchase:
+#				values['name'] += '\n' + product.description_purchase
+#
+#		values['uos_id'] = product.uom_id.id
+#		if uom_id:
+#			uom = self.env['product.uom'].browse(uom_id)
+#			if product.uom_id.category_id.id == uom.category_id.id:
+#				values['uos_id'] = uom_id
+#
+#		domain = {'uos_id': [('category_id', '=', product.uom_id.category_id.id)]}
+#
+#		return {'value': values, 'domain': domain}	
 
-		values = {}
-		product = self.pool['product.product'].browse(product)
-		values['name'] = product.partner_ref
-		if type in ('out_invoice', 'out_refund'):
-			if product.description_sale:
-				values['name'] += '\n' + product.description_sale
-		else:
-			if product.description_purchase:
-				values['name'] += '\n' + product.description_purchase
-
-		values['uos_id'] = product.uom_id.id
-		if uom_id:
-			uom = self.env['product.uom'].browse(uom_id)
-			if product.uom_id.category_id.id == uom.category_id.id:
-				values['uos_id'] = uom_id
-
-		domain = {'uos_id': [('category_id', '=', product.uom_id.category_id.id)]}
-
-		return {'value': values, 'domain': domain}	
+	def product_id_change(self, cr, uid, ids, product_id, context=None):
+		val = {}
+		domain = []
+		if product_id:
+			product = self.pool['product.product'].browse(cr, uid, product_id, context=context)
+			val.update({'name':product.name, 'qty_per_carton':product.qty_per_outer, 'uos_id':product.uom_id.id})
+			domain = {'uos_id': [('category_id', '=', product.uom_id.category_id.id)]}
+		return {'value':val, 'domain':domain}
 #po_super.STATE_SELECTION = STATE_SELECTION_PO	
